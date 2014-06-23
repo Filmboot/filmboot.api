@@ -1,0 +1,70 @@
+{
+    "name": "benatespina/filmboot-api",
+    "description": "The api of Filmboot, social network that geared to film and television",
+    "keywords": ["film", "social network", "api", "symfony"],
+    "type": "project",
+    "homepage": "https://github.com/benatespina/filmboot.api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Beñat Espiña Diaz",
+            "email": "benatespina@gmail.com",
+            "homepage": "http://benatespina.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.x",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "1.2.x",
+        "symfony/swiftmailer-bundle": "2.3.x",
+        "symfony/monolog-bundle": "2.3.x",
+        "sensio/distribution-bundle": "2.3.x",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "friendsofsymfony/rest-bundle": "1.4.x",
+        "jms/serializer-bundle": "0.13.x",
+        "nelmio/api-doc-bundle": "2.5.x",
+        "stof/doctrine-extensions-bundle": "1.1.x-dev"
+    },
+    "require-dev": {
+        "behat/behat": "v3.0.9",
+        "behat/symfony2-extension": "2.0.x-dev",
+        "behat/mink": "1.6.x-dev",
+        "behat/mink-browserkit-driver": "1.2.x-dev",
+        "behat/mink-extension": "2.0.x-dev",
+        "behat/mink-selenium2-driver": "1.2.x-dev",
+        "doctrine/doctrine-fixtures-bundle": "2.2.x-dev",
+        "phpspec/phpspec": "2.1.x-dev"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "2.3-dev"
+        }
+    }
+}
