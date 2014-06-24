@@ -4,11 +4,18 @@ php:
   - 5.3
   - 5.4
   - 5.5
+  - 5.6
+  - hhvm
 
 before_script:
-    - echo "extension = xdebug.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     - composer self-update
     - composer install --prefer-source --no-interaction
 
 script:
-    - bin/phpspec run
+    - bin/phpspec run -fpretty
+
+cache:
+    - vendor
+
+after_script:
+    - bin/coveralls -v

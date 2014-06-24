@@ -24,3 +24,5 @@ code_coverage:
         - src/**/**/Model
         - src/**/**/Security
         - src/**/**/Util
+    format: clover
+    output: coverage.xml

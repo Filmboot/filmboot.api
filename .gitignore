@@ -10,6 +10,7 @@
 /bin/
 /composer.phar
 /coverage
+coverage.xml
 
 # Configuration files
 .settings
