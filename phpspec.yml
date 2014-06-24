@@ -1,0 +1,26 @@
+suites:
+    MovieBundle:
+        namespace: Filmboot
+        spec_path: src/Filmboot/MovieBundle
+
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+
+code_coverage:
+    whitelist:
+        - src/**/**/Command
+        - src/**/**/Controller
+        - src/**/**/DataFixtures
+        - src/**/**/DataTransformer
+        - src/**/**/Entity
+        - src/**/**/EntityManager
+        - src/**/**/Event
+        - src/**/**/EventListener
+        - src/**/**/Factory
+        - src/**/**/Form
+        - src/**/**/Loader
+        - src/**/**/Mailer
+        - src/**/**/Manager
+        - src/**/**/Model
+        - src/**/**/Security
+        - src/**/**/Util
