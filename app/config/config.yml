@@ -14,9 +14,12 @@ framework:
         engines: ['php']
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:
+        handler_id: session.handler.native_file
+        save_path: "%kernel.root_dir%/sessions"
+        name: filmboot-session
     fragments:       ~
-    http_method_override: true
+    http_method_override: true    
 
 doctrine:
     dbal:
@@ -46,6 +49,7 @@ doctrine:
                 is_bundle: false
         resolve_target_entities:
             Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
+
 swiftmailer:
     transport: "%mailer_transport%"
     host: "%mailer_host%"

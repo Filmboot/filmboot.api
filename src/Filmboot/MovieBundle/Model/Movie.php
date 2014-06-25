@@ -34,10 +34,6 @@ class Movie implements MovieInterface
 
     private $producer;
 
-    private $image;
-
-    private $largeImage;
-
     /**
      * Constructor.
      */
