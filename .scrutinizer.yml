@@ -1,5 +1,0 @@
-before_commands:
-     - composer install --prefer-source --no-interaction
-
- filter:
-     excluded_paths: [vendor/*, */spec/*, */feature/*]
