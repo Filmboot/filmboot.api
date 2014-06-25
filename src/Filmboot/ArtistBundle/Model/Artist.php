@@ -12,7 +12,7 @@ namespace Filmboot\ArtistBundle\Model;
 use Filmboot\MovieBundle\Util\Util;
 
 /**
- * Class Artist.
+ * Class Artist model.
  *
  * @package Filmboot\ArtistBundle\Model
  */

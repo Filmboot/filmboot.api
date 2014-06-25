@@ -9,13 +9,13 @@
 
 namespace Filmboot\ArtistBundle\Entity;
 
-use Filmboot\ArtistBundle\Model\Artist as BaseArtist;
+use Filmboot\ArtistBundle\Model\Actor as BaseActor;
 
 /**
- * Class Artist entity.
+ * Class Actor entity.
  *
  * @package Filmboot\ArtistBundle\Entity
  */
-class Artist extends BaseArtist
+class Actor extends BaseActor
 {
 } 

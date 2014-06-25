@@ -2,6 +2,9 @@ suites:
     MovieBundle:
         namespace: Filmboot
         spec_path: src/Filmboot/MovieBundle
+    ArtistBundle:
+        namespace: Filmboot
+        spec_path: src/Filmboot/ArtistBundle
 
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension
