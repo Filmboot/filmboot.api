@@ -1,4 +1,5 @@
 <?php
+
 /**
  * (c) benatespina <benatespina@gmail.com>
  *
@@ -9,11 +10,13 @@
 
 namespace Filmboot\ArtistBundle\Entity;
 
+use Filmboot\ArtistBundle\Model\Role as BaseRole;
+
 /**
- * Class Writer entity.
+ * Class Role entity.
  *
  * @package Filmboot\ArtistBundle\Entity
  */
-class Writer extends Role
+class Role extends BaseRole
 {
-}
+} 

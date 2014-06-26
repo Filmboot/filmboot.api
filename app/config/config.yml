@@ -50,10 +50,6 @@ doctrine:
         resolve_target_entities:
             Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
             Filmboot\ArtistBundle\Model\ArtistInterface: Filmboot\ArtistBundle\Entity\Artist
-            Filmboot\ArtistBundle\Model\RoleInterface: Filmboot\ArtistBundle\Entity\Actor
-            Filmboot\ArtistBundle\Model\RoleInterface: Filmboot\ArtistBundle\Entity\Director
-            Filmboot\ArtistBundle\Model\RoleInterface: Filmboot\ArtistBundle\Entity\Writer
-
 swiftmailer:
     transport: "%mailer_transport%"
     host: "%mailer_host%"

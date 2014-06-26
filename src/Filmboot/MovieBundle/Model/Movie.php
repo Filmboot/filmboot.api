@@ -9,6 +9,10 @@
 
 namespace Filmboot\MovieBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\Director;
+use Filmboot\ArtistBundle\Entity\Writer;
 use Filmboot\MovieBundle\Util\Util;
 
 /**
@@ -18,27 +22,36 @@ use Filmboot\MovieBundle\Util\Util;
  */
 class Movie implements MovieInterface
 {
-    private $id;
+    protected $id;
 
-    private $slug;
+    protected $slug;
 
-    private $title;
+    protected $title;
 
-    private $duration;
+    protected $duration;
 
-    private $year;
+    protected $year;
 
-    private $country;
+    protected $country;
 
-    private $storyline;
+    protected $storyline;
 
-    private $producer;
+    protected $producer;
+
+    protected $cast;
+
+    protected $directors;
+
+    protected $writers;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
+        $this->cast = new ArrayCollection();
+        $this->directors = new ArrayCollection();
+        $this->writers = new ArrayCollection();
     }
 
     /**
@@ -174,6 +187,90 @@ class Movie implements MovieInterface
         $this->slug = Util::getSlug($title);
 
         return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addActor(Actor $actor)
+    {
+        $this->cast[] = $actor;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeActor(Actor $actor)
+    {
+        $this->cast->removeElement($actor);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCast()
+    {
+        return $this->cast;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addDirector(Director $director)
+    {
+        $this->directors[] = $director;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeDirector(Director $director)
+    {
+        $this->directors->removeElement($director);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDirectors()
+    {
+        return $this->directors;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addWriter(Writer $writer)
+    {
+        $this->writers[] = $writer;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeWriter(Writer $writer)
+    {
+        $this->writers->removeElement($writer);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWriters()
+    {
+        return $this->writers;
     }
 
     /**

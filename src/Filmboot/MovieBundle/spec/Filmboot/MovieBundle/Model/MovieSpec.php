@@ -9,6 +9,9 @@
 
 namespace spec\Filmboot\MovieBundle\Model;
 
+use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\Director;
+use Filmboot\ArtistBundle\Entity\Writer;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -80,5 +83,44 @@ class MovieSpec extends ObjectBehavior
         $this->getTitle()->shouldReturn('Pulp fiction');
 
         $this->__toString()->shouldReturn('Pulp fiction');
+    }
+
+    function its_actors_be_mutable(Actor $actor)
+    {
+        $this->getCast()->shouldHaveCount(0);
+
+        $this->addActor($actor);
+
+        $this->getCast()->shouldHaveCount(1);
+
+        $this->removeActor($actor);
+
+        $this->getCast()->shouldHaveCount(0);
+    }
+
+    function its_director_be_mutable(Director $director)
+    {
+        $this->getDirectors()->shouldHaveCount(0);
+
+        $this->addDirector($director);
+
+        $this->getDirectors()->shouldHaveCount(1);
+
+        $this->removeDirector($director);
+
+        $this->getDirectors()->shouldHaveCount(0);
+    }
+
+    function its_writers_be_mutable(Writer $writer)
+    {
+        $this->getWriters()->shouldHaveCount(0);
+
+        $this->addWriter($writer);
+
+        $this->getWriters()->shouldHaveCount(1);
+
+        $this->removeWriter($writer);
+
+        $this->getWriters()->shouldHaveCount(0);
     }
 }

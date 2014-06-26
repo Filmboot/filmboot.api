@@ -1,0 +1,54 @@
+Filmboot\MovieBundle\Entity\Movie:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 100
+        title:
+            type: string
+            length: 50
+        duration:
+            type: integer
+        year:
+            type: integer
+        country:
+            type: string
+            length: 100
+        storyline:
+            type: string
+            length: 2000
+            nullable: true
+        producer:
+            type: string
+            length: 100
+            nullable: true
+    oneToMany:
+        cast:
+            targetEntity: Filmboot\ArtistBundle\Entity\Actor
+            mappedBy: movies
+            cascade: ["remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        directors:
+            targetEntity: Filmboot\ArtistBundle\Entity\Director
+            mappedBy: movies
+            cascade: ["remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        writers:
+            targetEntity: Filmboot\ArtistBundle\Entity\Writer
+            mappedBy: movies
+            cascade: ["remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade

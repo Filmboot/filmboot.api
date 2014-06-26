@@ -19,13 +19,6 @@ use Filmboot\MovieBundle\Model\MovieInterface;
 interface RoleInterface
 {
     /**
-     * Gets id.
-     *
-     * @return string
-     */
-    public function getId();
-
-    /**
      * Gets artist.
      *
      * @return \Filmboot\ArtistBundle\Model\ArtistInterface
@@ -40,6 +33,22 @@ interface RoleInterface
      * @return \Filmboot\ArtistBundle\Model\RoleInterface
      */
     public function setArtist(ArtistInterface $artist);
+
+    /**
+     * Gets movie.
+     *
+     * @return \Filmboot\MovieBundle\Model\MovieInterface
+     */
+    public function getMovie();
+
+    /**
+     * Sets movie.
+     *
+     * @param \Filmboot\MovieBundle\Model\MovieInterface $movie The movie object
+     *
+     * @return \Filmboot\ArtistBundle\Model\RoleInterface
+     */
+    public function setMovie(MovieInterface $movie);
 
 //    /**
 //     * Adds award.
@@ -65,29 +74,4 @@ interface RoleInterface
 //     * @return array
 //     */
 //    public function getAwards();
-
-    /**
-     * Adds movie.
-     *
-     * @param \Filmboot\MovieBundle\Model\MovieInterface $movie The movie object
-     *
-     * @return \Filmboot\ArtistBundle\Model\RoleInterface
-     */
-    public function addMovie(MovieInterface $movie);
-
-    /**
-     * Removes movie.
-     *
-     * @param \Filmboot\MovieBundle\Model\MovieInterface $movie The movie object
-     *
-     * @return \Filmboot\ArtistBundle\Model\RoleInterface
-     */
-    public function removeMovie(MovieInterface $movie);
-
-    /**
-     * Gets array of movies.
-     *
-     * @return array
-     */
-    public function getMovies();
 }

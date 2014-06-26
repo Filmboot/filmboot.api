@@ -14,19 +14,17 @@ use Filmboot\MovieBundle\Model\AwardInterface;
 use Filmboot\MovieBundle\Model\MovieInterface;
 
 /**
- * Class Director model.
+ * Class Role model.
  *
  * @package Filmboot\ArtistBundle\Model
  */
-class Director implements RoleInterface
+class Role implements RoleInterface
 {
-    protected $id;
-
     protected $artist;
 
-    protected $awards;
+    protected $movie;
 
-    protected $movies;
+    protected $awards;
 
     /**
      * Constructor.
@@ -34,15 +32,6 @@ class Director implements RoleInterface
     public function __construct()
     {
         $this->awards = new ArrayCollection;
-        $this->movies = new ArrayCollection;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -63,13 +52,31 @@ class Director implements RoleInterface
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getMovie()
+    {
+        return $this->movie;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMovie(MovieInterface $movie)
+    {
+        $this->movie = $movie;
+
+        return $this;
+    }
+
 //    /**
 //     * {@inheritDoc}
 //     */
 //    public function addAward(AwardInterface $award)
 //    {
 //        $this->awards[] = $award;
-//        $award->setDirector($this);
+//        $award->setRole($this);
 //
 //        return $this;
 //    }
@@ -83,7 +90,7 @@ class Director implements RoleInterface
 //
 //        return $this;
 //    }
-//
+
 //    /**
 //     * {@inheritDoc}
 //     */
@@ -91,33 +98,4 @@ class Director implements RoleInterface
 //    {
 //        return $this->awards;
 //    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addMovie(MovieInterface $movie)
-    {
-        $this->movies[] = $movie;
-//        $movie->addCast($this);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeMovie(MovieInterface $movie)
-    {
-        $this->movies->removeElement($movie);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getMovies()
-    {
-        return $this->movies;
-    }
 }

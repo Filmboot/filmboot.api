@@ -1,0 +1,15 @@
+Filmboot\ArtistBundle\Entity\Writer:
+    type: entity
+    table: MovieWriter
+    id:
+        artist:
+            associationKey: true
+        movie:
+            associationKey: true
+    manyToOne:
+        artist:
+            targetEntity: Filmboot\ArtistBundle\Model\ArtistInterface
+            inversedBy: artist
+        movie:
+            targetEntity: Filmboot\MovieBundle\Model\MovieInterface
+            inversedBy: writers

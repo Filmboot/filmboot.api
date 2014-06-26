@@ -9,6 +9,10 @@
 
 namespace Filmboot\ArtistBundle\Model;
 
+use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\Director;
+use Filmboot\ArtistBundle\Entity\Writer;
+
 /**
  * Interface ArtistInterface.
  *
@@ -116,4 +120,79 @@ interface ArtistInterface
      * @return \Filmboot\ArtistBundle\Model\ArtistInterface
      */
     public function setBiography($biography);
+
+    /**
+     * Adds actor.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Actor $actor The actor object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function addActor(Actor $actor);
+
+    /**
+     * Removes actor.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Actor $actor The actor object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function removeActor(Actor $actor);
+
+    /**
+     * Gets array of actors.
+     *
+     * @return array
+     */
+    public function getActors();
+
+    /**
+     * Adds director.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Director $director The director object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function addDirector(Director $director);
+
+    /**
+     * Removes director.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Director $director The director object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function removeDirector(Director $director);
+
+    /**
+     * Gets array of directors.
+     *
+     * @return array
+     */
+    public function getDirectors();
+
+    /**
+     * Adds writer.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Writer $writer The writer object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function addWriter(Writer $writer);
+
+    /**
+     * Removes writer.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\Writer $writer The writer object
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function removeWriter(Writer $writer);
+
+    /**
+     * Gets array of writers.
+     *
+     * @return array
+     */
+    public function getWriters();
 }

@@ -1,0 +1,36 @@
+Filmboot\ArtistBundle\Entity\Artist:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 100
+        firstName:
+            type: string
+            length: 50
+        lastName:
+            type: string
+            length: 100
+        birthday:
+            type: datetime
+            nullable: true
+        birthplace:
+            type: string
+            nullable: true
+        biography:
+            type: string
+            nullable: true
+    oneToMany:
+        actors:
+            targetEntity: Filmboot\ArtistBundle\Entity\Actor
+            mappedBy: artist
+        directors:
+            targetEntity: Filmboot\ArtistBundle\Entity\Director
+            mappedBy: artist
+        writers:
+            targetEntity: Filmboot\ArtistBundle\Entity\Writer
+            mappedBy: artist

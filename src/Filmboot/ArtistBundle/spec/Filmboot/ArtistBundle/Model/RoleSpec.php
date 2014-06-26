@@ -15,25 +15,20 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class ActorSpec.
+ * Class RoleSpec.
  *
  * @package spec\Filmboot\ArtistBundle\Model
  */
-class ActorSpec extends ObjectBehavior
+class RoleSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Filmboot\ArtistBundle\Model\Actor');
+        $this->shouldHaveType('Filmboot\ArtistBundle\Model\Role');
     }
 
     function it_implements_role_interface()
     {
         $this->shouldImplement('Filmboot\ArtistBundle\Model\RoleInterface');
-    }
-
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
     }
 
     function its_artist_is_mutable(ArtistInterface $artist)
@@ -44,14 +39,7 @@ class ActorSpec extends ObjectBehavior
 
     function its_movies_be_mutable(MovieInterface $movie)
     {
-        $this->getMovies()->shouldHaveCount(0);
-
-        $this->addMovie($movie);
-
-        $this->getMovies()->shouldHaveCount(1);
-
-        $this->removeMovie($movie);
-
-        $this->getMovies()->shouldHaveCount(0);
+        $this->setMovie($movie)->shouldReturn($this);
+        $this->getMovie()->shouldReturn($movie);
     }
 }

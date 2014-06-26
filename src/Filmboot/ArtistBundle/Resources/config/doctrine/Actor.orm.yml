@@ -1,0 +1,15 @@
+Filmboot\ArtistBundle\Entity\Actor:
+    type: entity
+    table: MovieActor
+    id:
+        artist:
+            associationKey: true
+        movie:
+            associationKey: true
+    manyToOne:
+        artist:
+            targetEntity: Filmboot\ArtistBundle\Model\ArtistInterface
+            inversedBy: actor
+        movie:
+            targetEntity: Filmboot\MovieBundle\Model\MovieInterface
+            inversedBy: cast
