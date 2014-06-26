@@ -1,7 +1,7 @@
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2013, 2014 Landuz - [landuz2013@gmail.com](mailto:landuz2013@gmail.com)
+Copyright (c) 2014 **benatespina** - [benatespina@gmail.com](mailto:benatespina@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
