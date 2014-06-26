@@ -142,7 +142,7 @@ interface ArtistInterface
     /**
      * Gets array of actors.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Actor>
      */
     public function getActors();
 
@@ -167,7 +167,7 @@ interface ArtistInterface
     /**
      * Gets array of directors.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Director>
      */
     public function getDirectors();
 
@@ -192,7 +192,7 @@ interface ArtistInterface
     /**
      * Gets array of writers.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Writer>
      */
     public function getWriters();
 }

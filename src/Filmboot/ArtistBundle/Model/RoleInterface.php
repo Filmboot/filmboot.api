@@ -9,6 +9,7 @@
 
 namespace Filmboot\ArtistBundle\Model;
 
+use Filmboot\MovieBundle\Model\AwardInterface;
 use Filmboot\MovieBundle\Model\MovieInterface;
 
 /**
@@ -50,28 +51,28 @@ interface RoleInterface
      */
     public function setMovie(MovieInterface $movie);
 
-//    /**
-//     * Adds award.
-//     *
-//     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
-//     *
-//     * @return \Filmboot\ArtistBundle\Model\RoleInterface
-//     */
-//    public function addAward(AwardInterface $award);
-//
-//    /**
-//     * Removes award.
-//     *
-//     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
-//     *
-//     * @return \Filmboot\ArtistBundle\Model\RoleInterface
-//     */
-//    public function removeAward(AwardInterface $award);
+    /**
+     * Adds award.
+     *
+     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
+     *
+     * @return \Filmboot\ArtistBundle\Model\RoleInterface
+     */
+    public function addAward(AwardInterface $award);
 
-//    /**
-//     * Gets array of awards.
-//     *
-//     * @return array
-//     */
-//    public function getAwards();
+    /**
+     * Removes award.
+     *
+     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
+     *
+     * @return \Filmboot\ArtistBundle\Model\RoleInterface
+     */
+    public function removeAward(AwardInterface $award);
+
+    /**
+     * Gets array of awards.
+     *
+     * @return array<\Filmboot\MovieBundle\Model\AwardInterface>
+     */
+    public function getAwards();
 }

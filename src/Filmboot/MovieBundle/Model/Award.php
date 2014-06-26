@@ -9,20 +9,20 @@
 
 namespace Filmboot\MovieBundle\Model;
 
-use Filmboot\MovieBundle\Util\Util;
-
 /**
- * Class Genre model.
+ * Class Award model.
  *
  * @package Filmboot\MovieBundle\Model
  */
-class Genre implements GenreInterface
+class Award implements AwardInterface
 {
     protected $id;
 
-    protected $slug;
-
     protected $name;
+
+    protected $year;
+
+    protected $category;
 
     /**
      * Constructor.
@@ -42,24 +42,6 @@ class Genre implements GenreInterface
     /**
      * {@inheritDoc}
      */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getName()
     {
         return $this->name;
@@ -71,7 +53,42 @@ class Genre implements GenreInterface
     public function setName($name)
     {
         $this->name = $name;
-        $this->slug = Util::getSlug($name);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
 
         return $this;
     }

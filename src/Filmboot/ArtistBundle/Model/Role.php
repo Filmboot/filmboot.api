@@ -70,32 +70,31 @@ class Role implements RoleInterface
         return $this;
     }
 
-//    /**
-//     * {@inheritDoc}
-//     */
-//    public function addAward(AwardInterface $award)
-//    {
-//        $this->awards[] = $award;
-//        $award->setRole($this);
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * {@inheritDoc}
-//     */
-//    public function removeAward(AwardInterface $award)
-//    {
-//        $this->awards->removeElement($award);
-//
-//        return $this;
-//    }
+    /**
+     * {@inheritDoc}
+     */
+    public function addAward(AwardInterface $award)
+    {
+        $this->awards[] = $award;
 
-//    /**
-//     * {@inheritDoc}
-//     */
-//    public function getAwards()
-//    {
-//        return $this->awards;
-//    }
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeAward(AwardInterface $award)
+    {
+        $this->awards->removeElement($award);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAwards()
+    {
+        return $this->awards;
+    }
 }

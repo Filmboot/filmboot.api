@@ -160,7 +160,7 @@ interface MovieInterface
     /**
      * Gets array of actors.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Actor>
      */
     public function getCast();
 
@@ -185,7 +185,7 @@ interface MovieInterface
     /**
      * Gets array of directors.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Director>
      */
     public function getDirectors();
 
@@ -210,7 +210,7 @@ interface MovieInterface
     /**
      * Gets array of writers.
      *
-     * @return array
+     * @return array<\Filmboot\ArtistBundle\Entity\Writer>
      */
     public function getWriters();
 
@@ -236,7 +236,7 @@ interface MovieInterface
     /**
      * Gets genres.
      *
-     * @return array
+     * @return array<\Filmboot\MovieBundle\Model\GenreInterface>
      */
     public function getGenres();
 }

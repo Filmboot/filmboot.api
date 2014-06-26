@@ -54,12 +54,12 @@ Filmboot\MovieBundle\Entity\Movie:
                 onDelete: cascade
     manyToMany:
         genres:
-          targetEntity: Filmboot\MovieBundle\Model\GenreInterface
-          joinTable:
-            name: MovieGenre
-            joinColumns:
-              movie_id:
-                referencedColumnName: id
-            inverseJoinColumns:
-              genre_id:
-                referencedColumnName: id
+            targetEntity: Filmboot\MovieBundle\Model\GenreInterface
+            joinTable:
+                name: MovieGenre
+                joinColumns:
+                    movie_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    genre_id:
+                        referencedColumnName: id
