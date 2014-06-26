@@ -12,11 +12,12 @@ namespace spec\Filmboot\MovieBundle\Model;
 use Filmboot\ArtistBundle\Entity\Actor;
 use Filmboot\ArtistBundle\Entity\Director;
 use Filmboot\ArtistBundle\Entity\Writer;
+use Filmboot\MovieBundle\Model\GenreInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class MovieSpec
+ * Class MovieSpec.
  *
  * @package spec\Filmboot\MovieBundle\Model
  */
@@ -122,5 +123,18 @@ class MovieSpec extends ObjectBehavior
         $this->removeWriter($writer);
 
         $this->getWriters()->shouldHaveCount(0);
+    }
+
+    function its_genders_be_mutable(GenreInterface $genre)
+    {
+        $this->getGenres()->shouldHaveCount(0);
+
+        $this->addGenre($genre);
+
+        $this->getGenres()->shouldHaveCount(1);
+
+        $this->removeGenre($genre);
+
+        $this->getGenres()->shouldHaveCount(0);
     }
 }

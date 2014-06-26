@@ -214,4 +214,29 @@ interface MovieInterface
      */
     public function getWriters();
 
+
+    /**
+     * Adds genre.
+     *
+     * @param \Filmboot\MovieBundle\Model\GenreInterface $genre The genre object
+     *
+     * @return \Filmboot\MovieBundle\Model\MovieInterface
+     */
+    public function addGenre(GenreInterface $genre);
+
+    /**
+     * Removes genre.
+     *
+     * @param \Filmboot\MovieBundle\Model\GenreInterface $genre The genre object
+     *
+     * @return \Filmboot\MovieBundle\Model\MovieInterface
+     */
+    public function removeGenre(GenreInterface $genre);
+
+    /**
+     * Gets genres.
+     *
+     * @return array
+     */
+    public function getGenres();
 }

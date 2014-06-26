@@ -44,6 +44,8 @@ class Movie implements MovieInterface
 
     protected $writers;
 
+    protected $genres;
+
     /**
      * Constructor.
      */
@@ -52,6 +54,7 @@ class Movie implements MovieInterface
         $this->cast = new ArrayCollection();
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
+        $this->genres = new ArrayCollection();
     }
 
     /**
@@ -271,6 +274,34 @@ class Movie implements MovieInterface
     public function getWriters()
     {
         return $this->writers;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addGenre(GenreInterface $genre)
+    {
+        $this->genres[] = $genre;
+        
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeGenre(GenreInterface $genre)
+    {
+        $this->genres->removeElement($genre);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     /**

@@ -48,8 +48,11 @@ doctrine:
                 alias: GedmoTree # this one is optional and will default to the name set for the mapping
                 is_bundle: false
         resolve_target_entities:
-            Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
             Filmboot\ArtistBundle\Model\ArtistInterface: Filmboot\ArtistBundle\Entity\Artist
+            
+            Filmboot\MovieBundle\Model\GenreInterface: Filmboot\MovieBundle\Entity\Genre
+            Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
+
 swiftmailer:
     transport: "%mailer_transport%"
     host: "%mailer_host%"
