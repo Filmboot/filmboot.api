@@ -9,7 +9,7 @@ Filmboot\ArtistBundle\Entity\Director:
     manyToOne:
         artist:
             targetEntity: Filmboot\ArtistBundle\Model\ArtistInterface
-            inversedBy: director
+            inversedBy: directors
         movie:
             targetEntity: Filmboot\MovieBundle\Model\MovieInterface
             inversedBy: directors
