@@ -10,6 +10,7 @@
 namespace spec\Filmboot\ArtistBundle\Model;
 
 use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\ArtistTranslation;
 use Filmboot\ArtistBundle\Entity\Director;
 use Filmboot\ArtistBundle\Entity\Writer;
 use PhpSpec\ObjectBehavior;
@@ -129,4 +130,21 @@ class ArtistSpec extends ObjectBehavior
 
         $this->getWriters()->shouldHaveCount(0);
     }
+
+    function its_translation_should_be_mutable()
+    {
+        $translation = new ArtistTranslation('es', 'biography', 'spanish-biography-translation');
+
+        $this->getTranslations()->shouldHaveCount(0);
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        // If array of translations contains translation, it does not add it again
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        $this->removeTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(0);
+    }
+
 }

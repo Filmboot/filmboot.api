@@ -1,5 +1,8 @@
 Filmboot\ArtistBundle\Entity\Artist:
     type: entity
+    gedmo:
+        translation:
+            entity: Filmboot\ArtistBundle\Entity\ArtistTranslation
     id:
         id:
             type: string
@@ -22,8 +25,10 @@ Filmboot\ArtistBundle\Entity\Artist:
             type: string
             nullable: true
         biography:
-            type: string
+            type: text
             nullable: true
+            gedmo:
+                - translatable
     oneToMany:
         actors:
             targetEntity: Filmboot\ArtistBundle\Entity\Actor
@@ -34,3 +39,7 @@ Filmboot\ArtistBundle\Entity\Artist:
         writers:
             targetEntity: Filmboot\ArtistBundle\Entity\Writer
             mappedBy: artist
+        translations:
+            targetEntity: Filmboot\ArtistBundle\Entity\ArtistTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]

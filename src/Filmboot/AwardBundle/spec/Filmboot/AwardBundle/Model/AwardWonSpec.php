@@ -32,6 +32,11 @@ class AwardWonSpec extends ObjectBehavior
         $this->shouldImplement('Filmboot\AwardBundle\Model\AwardWonInterface');
     }
 
+    function it_should_not_have_id_by_default()
+    {
+        $this->getId()->shouldReturn(null);
+    }
+
     function its_artist_is_mutable(ArtistInterface $artist)
     {
         $this->setArtist($artist)->shouldReturn($this);

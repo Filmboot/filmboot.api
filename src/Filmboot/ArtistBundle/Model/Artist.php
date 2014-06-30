@@ -11,6 +11,7 @@ namespace Filmboot\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\ArtistTranslation;
 use Filmboot\ArtistBundle\Entity\Director;
 use Filmboot\ArtistBundle\Entity\Writer;
 use Filmboot\MovieBundle\Util\Util;
@@ -41,6 +42,8 @@ class Artist implements ArtistInterface
     protected $directors;
     
     protected $writers;
+    
+    protected $translations;
 
     /**
      * Constructor.
@@ -50,6 +53,7 @@ class Artist implements ArtistInterface
         $this->actors = new ArrayCollection();
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -250,6 +254,37 @@ class Artist implements ArtistInterface
     public function getWriters()
     {
         return $this->writers;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addTranslation(ArtistTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeTranslation(ArtistTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 
     /**

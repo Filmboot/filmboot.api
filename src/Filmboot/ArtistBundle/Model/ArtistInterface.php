@@ -10,6 +10,7 @@
 namespace Filmboot\ArtistBundle\Model;
 
 use Filmboot\ArtistBundle\Entity\Actor;
+use Filmboot\ArtistBundle\Entity\ArtistTranslation;
 use Filmboot\ArtistBundle\Entity\Director;
 use Filmboot\ArtistBundle\Entity\Writer;
 
@@ -188,6 +189,31 @@ interface ArtistInterface
      * @return \Filmboot\ArtistBundle\Model\ArtistInterface
      */
     public function removeWriter(Writer $writer);
+
+    /**
+     * Gets array of translations.
+     *
+     * @return array<\Filmboot\ArtistBundle\Entity\ArtistTranslation>
+     */
+    public function getTranslations();
+
+    /**
+     * Adds translation.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\ArtistTranslation $translation The translation
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function addTranslation(ArtistTranslation $translation);
+
+    /**
+     * Removes translation.
+     *
+     * @param \Filmboot\ArtistBundle\Entity\ArtistTranslation $translation The translation
+     *
+     * @return \Filmboot\ArtistBundle\Model\ArtistInterface
+     */
+    public function removeTranslation(ArtistTranslation $translation);
 
     /**
      * Gets array of writers.
