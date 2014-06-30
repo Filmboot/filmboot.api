@@ -7,7 +7,7 @@
  * with all information about license.
  */
 
-namespace spec\Filmboot\ArtistBundle\Model;
+namespace spec\Filmboot\AwardBundle\Model;
 
 use Filmboot\ArtistBundle\Model\ArtistInterface;
 use Filmboot\AwardBundle\Model\AwardInterface;
@@ -16,20 +16,20 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class RoleSpec.
+ * Class AwardWonSpec.
  *
- * @package spec\Filmboot\ArtistBundle\Model
+ * @package spec\Filmboot\AwardBundle\Model
  */
-class RoleSpec extends ObjectBehavior
+class AwardWonSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Filmboot\ArtistBundle\Model\Role');
+        $this->shouldHaveType('Filmboot\AwardBundle\Model\AwardWon');
     }
 
-    function it_implements_role_interface()
+    function it_implements_award_won_interface()
     {
-        $this->shouldImplement('Filmboot\ArtistBundle\Model\RoleInterface');
+        $this->shouldImplement('Filmboot\AwardBundle\Model\AwardWonInterface');
     }
 
     function its_artist_is_mutable(ArtistInterface $artist)
@@ -38,22 +38,21 @@ class RoleSpec extends ObjectBehavior
         $this->getArtist()->shouldReturn($artist);
     }
 
-    function its_movies_be_mutable(MovieInterface $movie)
+    function its_award_is_mutable(AwardInterface $award)
+    {
+        $this->setAward($award)->shouldReturn($this);
+        $this->getAward()->shouldReturn($award);
+    }
+
+    function its_movie_is_mutable(MovieInterface $movie)
     {
         $this->setMovie($movie)->shouldReturn($this);
         $this->getMovie()->shouldReturn($movie);
     }
 
-    function its_awards_be_mutable(AwardInterface $award)
+    function its_role_is_mutable()
     {
-        $this->getAwards()->shouldHaveCount(0);
-
-        $this->addAward($award);
-
-        $this->getAwards()->shouldHaveCount(1);
-
-        $this->removeAward($award);
-
-        $this->getAwards()->shouldHaveCount(0);
+        $this->setRole('director')->shouldReturn($this);
+        $this->getRole()->shouldReturn('director');
     }
 }

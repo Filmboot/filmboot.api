@@ -9,7 +9,7 @@
 
 namespace Filmboot\ArtistBundle\Model;
 
-use Filmboot\MovieBundle\Model\AwardInterface;
+use Filmboot\AwardBundle\Model\AwardInterface;
 use Filmboot\MovieBundle\Model\MovieInterface;
 
 /**
@@ -54,7 +54,7 @@ interface RoleInterface
     /**
      * Adds award.
      *
-     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
+     * @param \Filmboot\AwardBundle\Model\AwardInterface $award The award object
      *
      * @return \Filmboot\ArtistBundle\Model\RoleInterface
      */
@@ -63,7 +63,7 @@ interface RoleInterface
     /**
      * Removes award.
      *
-     * @param \Filmboot\MovieBundle\Model\AwardInterface $award The award object
+     * @param \Filmboot\AwardBundle\Model\AwardInterface $award The award object
      *
      * @return \Filmboot\ArtistBundle\Model\RoleInterface
      */

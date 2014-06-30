@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             
             new Filmboot\ArtistBundle\FilmbootArtistBundle(),
+            new Filmboot\AwardBundle\FilmbootAwardBundle(),
             new Filmboot\MovieBundle\FilmbootMovieBundle(),
         );
 

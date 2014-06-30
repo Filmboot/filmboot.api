@@ -7,14 +7,14 @@
  * with all information about license.
  */
 
-namespace Filmboot\MovieBundle\Entity;
+namespace Filmboot\AwardBundle\Entity;
 
-use Filmboot\MovieBundle\Model\Award as BaseAward;
+use Filmboot\AwardBundle\Model\Award as BaseAward;
 
 /**
  * Class Award entity.
  *
- * @package Filmboot\MovieBundle\Entity
+ * @package Filmboot\AwardBundle\Entity
  */
 class Award extends BaseAward
 {

@@ -7,12 +7,12 @@
  * with all information about license.
  */
 
-namespace Filmboot\MovieBundle\Model;
+namespace Filmboot\AwardBundle\Model;
 
 /**
  * Class Award model.
  *
- * @package Filmboot\MovieBundle\Model
+ * @package Filmboot\AwardBundle\Model
  */
 class Award implements AwardInterface
 {
@@ -98,6 +98,6 @@ class Award implements AwardInterface
      */
     public function __toString()
     {
-        return $this->name;
+        return $this->year . ': ' . $this->name . '. ' . $this->category;
     }
 }

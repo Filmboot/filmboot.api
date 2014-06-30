@@ -1,10 +1,13 @@
 suites:
-    MovieBundle:
-        namespace: Filmboot
-        spec_path: src/Filmboot/MovieBundle
     ArtistBundle:
         namespace: Filmboot
         spec_path: src/Filmboot/ArtistBundle
+    AwardBundle:
+        namespace: Filmboot
+        spec_path: src/Filmboot/AwardBundle
+    MovieBundle:
+        namespace: Filmboot
+        spec_path: src/Filmboot/MovieBundle
 
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension

@@ -50,7 +50,8 @@ doctrine:
         resolve_target_entities:
             Filmboot\ArtistBundle\Model\ArtistInterface: Filmboot\ArtistBundle\Entity\Artist
             
-            Filmboot\MovieBundle\Model\AwardInterface: Filmboot\MovieBundle\Entity\Award
+            Filmboot\AwardBundle\Model\AwardInterface: Filmboot\AwardBundle\Entity\Award
+            
             Filmboot\MovieBundle\Model\GenreInterface: Filmboot\MovieBundle\Entity\Genre
             Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
 

@@ -7,12 +7,12 @@
  * with all information about license.
  */
 
-namespace Filmboot\MovieBundle\Model;
+namespace Filmboot\AwardBundle\Model;
 
 /**
  * Interface AwardInterface.
  *
- * @package Filmboot\MovieBundle\Model
+ * @package Filmboot\AwardBundle\Model
  */
 interface AwardInterface
 {
@@ -35,7 +35,7 @@ interface AwardInterface
      *
      * @param string $name The name
      *
-     * @return \Filmboot\MovieBundle\Model\AwardInterface
+     * @return \Filmboot\AwardBundle\Model\AwardInterface
      */
     public function setName($name);
 
@@ -51,7 +51,7 @@ interface AwardInterface
      *
      * @param int $year The year
      *
-     * @return \Filmboot\MovieBundle\Model\AwardInterface
+     * @return \Filmboot\AwardBundle\Model\AwardInterface
      */
     public function setYear($year);
 
@@ -67,7 +67,7 @@ interface AwardInterface
      *
      * @param string $category The category
      *
-     * @return \Filmboot\MovieBundle\Model\AwardInterface
+     * @return \Filmboot\AwardBundle\Model\AwardInterface
      */
     public function setCategory($category);
 }

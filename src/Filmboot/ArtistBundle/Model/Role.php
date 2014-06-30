@@ -10,7 +10,7 @@
 namespace Filmboot\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Filmboot\MovieBundle\Model\AwardInterface;
+use Filmboot\AwardBundle\Model\AwardInterface;
 use Filmboot\MovieBundle\Model\MovieInterface;
 
 /**
