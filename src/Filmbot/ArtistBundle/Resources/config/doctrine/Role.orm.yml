@@ -1,0 +1,2 @@
+Filmbot\ArtistBundle\Entity\Role:
+    type: mappedSuperclass

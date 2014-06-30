@@ -1,0 +1,14 @@
+Filmbot\MovieBundle\Entity\Genre:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 50
+        name:
+            type: string
+            length: 50

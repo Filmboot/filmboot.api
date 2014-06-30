@@ -1,0 +1,14 @@
+parameters:
+    filmbot_artist.class.artist: Filmbot\ArtistBundle\Entity\Artist
+
+services:
+    # Managers
+    filmbot_artist.manager.artist:
+        class: Filmbot\ArtistBundle\Manager\ArtistManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_artist.class.artist%']
+
+    # Commands
+    filmbot_artist.command_artists:
+        class: Filmbot\ArtistBundle\Command\LoadArtistsCommand
+        calls:
+            - [setContainer, ["@service_container"] ]

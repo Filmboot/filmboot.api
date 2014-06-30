@@ -20,9 +20,9 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             
-            new Filmboot\ArtistBundle\FilmbootArtistBundle(),
-            new Filmboot\AwardBundle\FilmbootAwardBundle(),
-            new Filmboot\MovieBundle\FilmbootMovieBundle(),
+            new Filmbot\ArtistBundle\FilmbotArtistBundle(),
+            new Filmbot\AwardBundle\FilmbotAwardBundle(),
+            new Filmbot\MovieBundle\FilmbotMovieBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -40,7 +40,7 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        $filename = '/dev/shm/filmboot.api/cache/';
+        $filename = '/dev/shm/symfony/cache/';
 
         if (in_array($this->environment, array('dev', 'test')) && file_exists($filename)) {
             return $filename . $this->environment;
@@ -51,7 +51,7 @@ class AppKernel extends Kernel
 
     public function getLogDir()
     {
-        $filename = '/dev/shm/filmboot.api/logs/';
+        $filename = '/dev/shm/symfony/logs/';
 
         if (in_array($this->environment, array('dev', 'test')) && file_exists($filename)) {
             return $filename . $this->environment;

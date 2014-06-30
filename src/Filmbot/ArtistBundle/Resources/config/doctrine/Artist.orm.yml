@@ -1,0 +1,45 @@
+Filmbot\ArtistBundle\Entity\Artist:
+    type: entity
+    gedmo:
+        translation:
+            entity: Filmbot\ArtistBundle\Entity\ArtistTranslation
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 100
+        firstName:
+            type: string
+            length: 50
+        lastName:
+            type: string
+            length: 100
+        birthday:
+            type: datetime
+            nullable: true
+        birthplace:
+            type: string
+            nullable: true
+        biography:
+            type: text
+            nullable: true
+            gedmo:
+                - translatable
+    oneToMany:
+        actors:
+            targetEntity: Filmbot\ArtistBundle\Entity\Actor
+            mappedBy: artist
+        directors:
+            targetEntity: Filmbot\ArtistBundle\Entity\Director
+            mappedBy: artist
+        writers:
+            targetEntity: Filmbot\ArtistBundle\Entity\Writer
+            mappedBy: artist
+        translations:
+            targetEntity: Filmbot\ArtistBundle\Entity\ArtistTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]

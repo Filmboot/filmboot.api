@@ -17,7 +17,7 @@ framework:
     session:
         handler_id: session.handler.native_file
         save_path: "%kernel.root_dir%/sessions"
-        name: filmboot-session
+        name: filmbot-session
     fragments:       ~
     http_method_override: true    
 
@@ -48,12 +48,12 @@ doctrine:
                 alias: GedmoTree # this one is optional and will default to the name set for the mapping
                 is_bundle: false
         resolve_target_entities:
-            Filmboot\ArtistBundle\Model\ArtistInterface: Filmboot\ArtistBundle\Entity\Artist
+            Filmbot\ArtistBundle\Model\ArtistInterface: Filmbot\ArtistBundle\Entity\Artist
             
-            Filmboot\AwardBundle\Model\AwardInterface: Filmboot\AwardBundle\Entity\Award
+            Filmbot\AwardBundle\Model\AwardInterface: Filmbot\AwardBundle\Entity\Award
             
-            Filmboot\MovieBundle\Model\GenreInterface: Filmboot\MovieBundle\Entity\Genre
-            Filmboot\MovieBundle\Model\MovieInterface: Filmboot\MovieBundle\Entity\Movie
+            Filmbot\MovieBundle\Model\GenreInterface: Filmbot\MovieBundle\Entity\Genre
+            Filmbot\MovieBundle\Model\MovieInterface: Filmbot\MovieBundle\Entity\Movie
 
 swiftmailer:
     transport: "%mailer_transport%"
