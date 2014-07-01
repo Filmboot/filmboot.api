@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new JJs\Bundle\GeonamesBundle\JJsGeonamesBundle(),
             
             new Filmbot\ArtistBundle\FilmbotArtistBundle(),
             new Filmbot\AwardBundle\FilmbotAwardBundle(),
