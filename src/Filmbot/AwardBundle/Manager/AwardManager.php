@@ -8,16 +8,16 @@
  * with all information about license.
  */
 
-namespace Filmbot\MovieBundle\Manager;
+namespace Filmbot\AwardBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class MovieManager.
+ * Class AwardManager.
  *
- * @package Filmbot\MovieBundle\Manager
+ * @package Filmbot\AwardBundle\Manager
  */
-class MovieManager
+class AwardManager
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -50,7 +50,7 @@ class MovieManager
     /**
      * Returns a new instance of a class
      *
-     * @return \Filmbot\MovieBundle\Entity\Movie
+     * @return \Filmbot\AwardBundle\Entity\Award
      */
     public function create()
     {
@@ -58,14 +58,14 @@ class MovieManager
     }
 
     /**
-     * Finds movie with title given.
+     * Finds award with name given.
      *
-     * @param string $title The title of movie
+     * @param string $name The name of award
      *
-     * @return null|\Filmbot\MovieBundle\Model\MovieInterface
+     * @return null|\Filmbot\AwardBundle\Model\AwardInterface
      */
-    public function findOneByTitle($title)
+    public function findOneByName($name)
     {
-        return $this->repository->findOneBy(array('title' => $title));
+        return $this->repository->findOneBy(array('name' => $name));
     }
 }

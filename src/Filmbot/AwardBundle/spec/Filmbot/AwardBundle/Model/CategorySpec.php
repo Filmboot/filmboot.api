@@ -10,25 +10,25 @@
 
 namespace spec\Filmbot\AwardBundle\Model;
 
-use Filmbot\AwardBundle\Entity\AwardTranslation;
+use Filmbot\AwardBundle\Entity\CategoryTranslation;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class AwardSpec.
+ * Class CategorySpec.
  *
  * @package spec\Filmbot\AwardBundle\Model
  */
-class AwardSpec extends ObjectBehavior
+class CategorySpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Filmbot\AwardBundle\Model\Award');
+        $this->shouldHaveType('Filmbot\AwardBundle\Model\Category');
     }
 
-    function it_implements_award_interface()
+    function it_implements_category_interface()
     {
-        $this->shouldImplement('Filmbot\AwardBundle\Model\AwardInterface');
+        $this->shouldImplement('Filmbot\AwardBundle\Model\CategoryInterface');
     }
 
     function it_should_not_have_id_by_default()
@@ -38,13 +38,13 @@ class AwardSpec extends ObjectBehavior
 
     function its_name_is_mutable()
     {
-        $this->setName('Oscar')->shouldReturn($this);
-        $this->getName()->shouldReturn('Oscar');
+        $this->setName('Best director')->shouldReturn($this);
+        $this->getName()->shouldReturn('Best director');
     }
 
     function its_name_translations_be_mutable()
     {
-        $translation = new AwardTranslation('es', 'name', 'spanish-name-translation');
+        $translation = new CategoryTranslation('es', 'name', 'spanish-name-translation');
 
         $this->getTranslations()->shouldHaveCount(0);
         $this->addTranslation($translation);
@@ -62,8 +62,8 @@ class AwardSpec extends ObjectBehavior
     {
         $this->__toString()->shouldReturn(null);
 
-        $this->setName('Oscar')->shouldReturn($this);
+        $this->setName('Best director')->shouldReturn($this);
 
-        $this->__toString()->shouldReturn('Oscar');
+        $this->__toString()->shouldReturn('Best director');
     }
 }

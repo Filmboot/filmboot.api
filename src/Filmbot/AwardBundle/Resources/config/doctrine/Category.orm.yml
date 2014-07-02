@@ -1,4 +1,4 @@
-Filmbot\AwardBundle\Entity\Award:
+Filmbot\AwardBundle\Entity\Category:
     type: entity
     id:
         id:
@@ -11,6 +11,6 @@ Filmbot\AwardBundle\Entity\Award:
             length: 100
     oneToMany:
         translations:
-            targetEntity: Filmbot\AwardBundle\Entity\AwardTranslation
+            targetEntity: Filmbot\AwardBundle\Entity\CategoryTranslation
             mappedBy: object
             cascade: ["persist", "remove"]

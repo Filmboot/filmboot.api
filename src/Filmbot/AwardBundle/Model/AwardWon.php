@@ -28,6 +28,10 @@ class AwardWon implements AwardWonInterface
     
     protected $award;
     
+    protected $category;
+    
+    protected $year;
+    
     protected $role;
 
     /**
@@ -98,6 +102,42 @@ class AwardWon implements AwardWonInterface
     {
         return $this->movie;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
     
     /**
      * {@inheritdoc}
@@ -116,4 +156,4 @@ class AwardWon implements AwardWonInterface
         
         return $this;
     }
-} 
+}

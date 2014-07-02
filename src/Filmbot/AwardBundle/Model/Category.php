@@ -11,19 +11,19 @@
 namespace Filmbot\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Filmbot\AwardBundle\Entity\AwardTranslation;
+use Filmbot\AwardBundle\Entity\CategoryTranslation;
 
 /**
- * Class Award model.
+ * Class Category model.
  *
  * @package Filmbot\AwardBundle\Model
  */
-class Award implements AwardInterface
+class Category implements CategoryInterface
 {
     protected $id;
 
     protected $name;
-    
+
     protected $translations;
 
     /**
@@ -63,7 +63,7 @@ class Award implements AwardInterface
     /**
      * {@inheritdoc}
      */
-    public function addTranslation(AwardTranslation $translation)
+    public function addTranslation(CategoryTranslation $translation)
     {
         if (!$this->translations->contains($translation)) {
             $this->translations[] = $translation;
@@ -76,7 +76,7 @@ class Award implements AwardInterface
     /**
      * {@inheritdoc}
      */
-    public function removeTranslation(AwardTranslation $translation)
+    public function removeTranslation(CategoryTranslation $translation)
     {
         $this->translations->removeElement($translation);
 
@@ -96,6 +96,6 @@ class Award implements AwardInterface
      */
     public function __toString()
     {
-        return$this->getName();
+        return $this->getName();
     }
 }

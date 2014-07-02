@@ -26,7 +26,7 @@ interface AwardWonInterface
      * @return string
      */
     public function getId();
-    
+
     /**
      * Gets movie.
      *
@@ -74,4 +74,52 @@ interface AwardWonInterface
      * @return \Filmbot\AwardBundle\Model\AwardWonInterface
      */
     public function setAward(AwardInterface $award);
-} 
+
+    /**
+     * Gets year.
+     *
+     * @return int
+     */
+    public function getYear();
+
+    /**
+     * Sets year.
+     *
+     * @param int $year The year
+     *
+     * @return \Filmbot\AwardBundle\Model\AwardWonInterface
+     */
+    public function setYear($year);
+
+    /**
+     * Gets category.
+     *
+     * @return string
+     */
+    public function getCategory();
+
+    /**
+     * Sets category.
+     *
+     * @param string $category The category
+     *
+     * @return \Filmbot\AwardBundle\Model\AwardWonInterface
+     */
+    public function setCategory($category);
+
+    /**
+     * Gets role.
+     *
+     * @return null|'actor'|'director'|'writer'
+     */
+    public function getRole();
+
+    /**
+     * Sets role.
+     *
+     * @param null|'actor'|'director'|'writer' $role The role
+     *
+     * @return \Filmbot\AwardBundle\Model\AwardWonInterface
+     */
+    public function setRole($role);
+}

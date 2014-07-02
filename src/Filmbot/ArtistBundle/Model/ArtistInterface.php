@@ -191,6 +191,13 @@ interface ArtistInterface
     public function removeWriter(Writer $writer);
 
     /**
+     * Gets array of writers.
+     *
+     * @return array<\Filmbot\ArtistBundle\Entity\Writer>
+     */
+    public function getWriters();
+
+    /**
      * Gets array of translations.
      *
      * @return array<\Filmbot\ArtistBundle\Entity\ArtistTranslation>
@@ -214,11 +221,4 @@ interface ArtistInterface
      * @return \Filmbot\ArtistBundle\Model\ArtistInterface
      */
     public function removeTranslation(ArtistTranslation $translation);
-
-    /**
-     * Gets array of writers.
-     *
-     * @return array<\Filmbot\ArtistBundle\Entity\Writer>
-     */
-    public function getWriters();
 }

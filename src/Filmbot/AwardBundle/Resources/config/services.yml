@@ -1,12 +1,30 @@
 parameters:
-#    filmbot.movie.example.class: Filmbot\MovieBundle\Example
+    filmbot_award.class.award: Filmbot\AwardBundle\Entity\Award
+    filmbot_award.class.awardWon: Filmbot\AwardBundle\Entity\AwardWon
+    filmbot_award.class.category: Filmbot\AwardBundle\Entity\Category
 
 services:
-#    filmbot.movie.example:
-#        class: %filmbot.movie.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-#        calls:
-#            - [setService, [@service_id]]
-#        tags:
-#            - { name: twig.extension }
-#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+    # Managers
+    filmbot_award.manager.award:
+        class: Filmbot\AwardBundle\Manager\AwardManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_award.class.award%']
+    filmbot_award.manager.awarWon:
+        class: Filmbot\AwardBundle\Manager\AwardWonManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_award.class.awardWon%']
+    filmbot_award.manager.category:
+        class: Filmbot\AwardBundle\Manager\CategoryManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_award.class.category%']
+
+    # Commands
+    filmbot_award.command_awards:
+        class: Filmbot\AwardBundle\Command\LoadAwardsCommand
+        calls:
+            - [setContainer, ["@service_container"] ]
+    filmbot_award.command_awardsWon:
+        class: Filmbot\AwardBundle\Command\LoadAwardsWonCommand
+        calls:
+            - [setContainer, ["@service_container"] ]
+    filmbot_award.command_categories:
+        class: Filmbot\AwardBundle\Command\LoadCategoriesCommand
+        calls:
+            - [setContainer, ["@service_container"] ]

@@ -51,7 +51,8 @@ doctrine:
             Filmbot\ArtistBundle\Model\ArtistInterface: Filmbot\ArtistBundle\Entity\Artist
             
             Filmbot\AwardBundle\Model\AwardInterface: Filmbot\AwardBundle\Entity\Award
-            
+            Filmbot\AwardBundle\Model\CategoryInterface: Filmbot\AwardBundle\Entity\Category
+
             Filmbot\MovieBundle\Model\GenreInterface: Filmbot\MovieBundle\Entity\Genre
             Filmbot\MovieBundle\Model\MovieInterface: Filmbot\MovieBundle\Entity\Movie
 

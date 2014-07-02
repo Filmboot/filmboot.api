@@ -1,5 +1,4 @@
 <?php
-
 /**
  * (c) benatespina <benatespina@gmail.com>
  *
@@ -10,14 +9,14 @@
 
 namespace Filmbot\AwardBundle\Model;
 
-use Filmbot\AwardBundle\Entity\AwardTranslation;
+use Filmbot\AwardBundle\Entity\CategoryTranslation;
 
 /**
- * Interface AwardInterface.
+ * Interface CategoryInterface.
  *
  * @package Filmbot\AwardBundle\Model
  */
-interface AwardInterface
+interface CategoryInterface
 {
     /**
      * Gets id.
@@ -38,32 +37,32 @@ interface AwardInterface
      *
      * @param string $name The name
      *
-     * @return \Filmbot\AwardBundle\Model\AwardInterface
+     * @return \Filmbot\AwardBundle\Model\CategoryInterface
      */
     public function setName($name);
 
     /**
      * Gets array of translations.
      *
-     * @return array<\Filmbot\AwardBundle\Entity\AwardTranslation>
+     * @return array<\Filmbot\AwardBundle\Entity\CategoryTranslation>
      */
     public function getTranslations();
 
     /**
      * Adds translation.
      *
-     * @param \Filmbot\AwardBundle\Entity\AwardTranslation $translation The translation
+     * @param \Filmbot\AwardBundle\Entity\CategoryTranslation $translation The translation
      *
-     * @return \Filmbot\AwardBundle\Model\AwardInterface
+     * @return \Filmbot\AwardBundle\Model\CategoryInterface
      */
-    public function addTranslation(AwardTranslation $translation);
+    public function addTranslation(CategoryTranslation $translation);
 
     /**
      * Removes translation.
      *
-     * @param \Filmbot\AwardBundle\Entity\AwardTranslation $translation The translation
+     * @param \Filmbot\AwardBundle\Entity\CategoryTranslation $translation The translation
      *
-     * @return \Filmbot\AwardBundle\Model\AwardInterface
+     * @return \Filmbot\AwardBundle\Model\CategoryInterface
      */
-    public function removeTranslation(AwardTranslation $translation);
+    public function removeTranslation(CategoryTranslation $translation);
 }

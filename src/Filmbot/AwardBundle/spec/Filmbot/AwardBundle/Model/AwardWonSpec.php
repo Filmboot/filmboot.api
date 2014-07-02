@@ -1,4 +1,5 @@
 <?php
+
 /**
  * (c) benatespina <benatespina@gmail.com>
  *
@@ -11,6 +12,7 @@ namespace spec\Filmbot\AwardBundle\Model;
 
 use Filmbot\ArtistBundle\Model\ArtistInterface;
 use Filmbot\AwardBundle\Model\AwardInterface;
+use Filmbot\AwardBundle\Model\CategoryInterface;
 use Filmbot\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -53,6 +55,18 @@ class AwardWonSpec extends ObjectBehavior
     {
         $this->setMovie($movie)->shouldReturn($this);
         $this->getMovie()->shouldReturn($movie);
+    }
+
+    function its_category_is_mutable(CategoryInterface $category)
+    {
+        $this->setCategory($category)->shouldReturn($this);
+        $this->getCategory()->shouldReturn($category);
+    }
+
+    function its_year_is_mutable()
+    {
+        $this->setYear('1992')->shouldReturn($this);
+        $this->getYear()->shouldReturn('1992');
     }
 
     function its_role_is_mutable()
