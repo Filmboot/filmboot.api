@@ -13,6 +13,7 @@ namespace spec\Filmbot\MovieBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Filmbot\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -40,5 +41,13 @@ class MovieManagerSpec extends ObjectBehavior
     function it_creates_movies()
     {
         $this->create()->shouldReturnAnInstanceOf('Filmbot\MovieBundle\Entity\Movie');
+    }
+    
+    function it_finds_one_by_title(EntityRepository $repository, MovieInterface $movie)
+    {
+        $repository->findOneBy(array('title' => 'movie-title'))
+            ->shouldBeCalled()->willReturn($movie);
+        
+        $this->findOneByTitle('movie-title');
     }
 }
