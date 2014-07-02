@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5a18f5e3f2336864512d23e4f87759dd",
+    "hash": "cbbfb8354013e25e5959d62e363801fe",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2693,12 +2693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/henrikbjorn/PhpSpecCodeCoverageExtension.git",
-                "reference": "068e6d72d24ae8bcc0a72d6667732bebdb80bd0f"
+                "reference": "11afc5b93e1ed3083fc8f660f73c9f9f0a31d5f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/henrikbjorn/PhpSpecCodeCoverageExtension/zipball/068e6d72d24ae8bcc0a72d6667732bebdb80bd0f",
-                "reference": "068e6d72d24ae8bcc0a72d6667732bebdb80bd0f",
+                "url": "https://api.github.com/repos/henrikbjorn/PhpSpecCodeCoverageExtension/zipball/11afc5b93e1ed3083fc8f660f73c9f9f0a31d5f0",
+                "reference": "11afc5b93e1ed3083fc8f660f73c9f9f0a31d5f0",
                 "shasum": ""
             },
             "require": {
@@ -2706,6 +2706,9 @@
                 "php": ">=5.3.3",
                 "phpspec/phpspec": "~2.0",
                 "phpunit/php-code-coverage": "~2.0"
+            },
+            "require-dev": {
+                "bossa/phpspec2-expect": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -2723,7 +2726,7 @@
                 "MIT"
             ],
             "description": "Integrates CodeCoverage with PhpSpec",
-            "time": "2014-06-19 16:14:38"
+            "time": "2014-07-02 15:45:31"
         },
         {
             "name": "phpspec/php-diff",
@@ -2765,12 +2768,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "4e2a03397e551316ac2a29189d4d925b30a7d373"
+                "reference": "337bd56394c99eaca0a7b9f195ade84f3379d3d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/4e2a03397e551316ac2a29189d4d925b30a7d373",
-                "reference": "4e2a03397e551316ac2a29189d4d925b30a7d373",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/337bd56394c99eaca0a7b9f195ade84f3379d3d1",
+                "reference": "337bd56394c99eaca0a7b9f195ade84f3379d3d1",
                 "shasum": ""
             },
             "require": {
@@ -2831,7 +2834,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2014-06-26 14:27:25"
+            "time": "2014-07-01 14:12:46"
         },
         {
             "name": "phpspec/prophecy",
@@ -3262,7 +3265,7 @@
         "henrikbjorn/phpspec-code-coverage": 20
     },
     "platform": {
-        "php": ">=5.3.3"
+        "php": ">=5.4"
     },
     "platform-dev": [
 
