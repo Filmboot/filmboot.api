@@ -29,6 +29,11 @@ code_coverage:
         - src/**/**/Manager
         - src/**/**/Model
         - src/**/**/Security
+        - src/**/**/Type
         - src/**/**/Util
-    format: clover
-    output: coverage.xml
+    format:
+        - html
+        - clover
+    output:
+        html: coverage
+        clover: coverage.xml
