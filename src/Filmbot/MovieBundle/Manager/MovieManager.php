@@ -8,16 +8,16 @@
  * with all information about license.
  */
 
-namespace Filmbot\ArtistBundle\Manager;
+namespace Filmbot\MovieBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class ArtistManager.
+ * Class MovieManager.
  *
- * @package Filmbot\ArtistBundle\Manager
+ * @package Filmbot\MovieBundle\Manager
  */
-class ArtistManager
+class MovieManager
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -50,25 +50,10 @@ class ArtistManager
     /**
      * Returns a new instance of a class
      *
-     * @return \Filmbot\ArtistBundle\Entity\Artist
+     * @return \Filmbot\MovieBundle\Entity\Movie
      */
     public function create()
     {
         return new $this->class();
-    }
-
-    /**
-     * Finds artist with firstName and lastName given.
-     *
-     * @param string $firstName The first name
-     * @param string $lastName  The last name
-     *
-     * @return null|\Filmbot\ArtistBundle\Model\ArtistInterface
-     */
-    public function findOneByFullName($firstName, $lastName)
-    {
-        return $this->repository->findOneBy(
-            array('firstName' => $firstName, 'lastName' => $lastName)
-        );
     }
 }

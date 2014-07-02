@@ -12,6 +12,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class FilmbotAwardBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
     public function boot()
     {
         $connection = $this->container->get('doctrine')->getConnection();

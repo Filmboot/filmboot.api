@@ -12,8 +12,10 @@ namespace spec\Filmbot\ArtistBundle\Command;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Filmbot\ArtistBundle\Manager\ArtistManager;
 use Filmbot\ArtistBundle\Model\ArtistInterface;
+use JJs\Bundle\GeonamesBundle\Entity\City;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -49,7 +51,9 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         ManagerRegistry $managerRegistry,
         ObjectManager $manager,
         ArtistManager $artistManager,
-        ArtistInterface $artist
+        ArtistInterface $artist,
+        ObjectRepository $cityRepository,
+        City $birthplace
     )
     {
         $output->writeln("Loading artists")->shouldBeCalled();
@@ -65,10 +69,17 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $container->get('filmbot_artist.manager.artist')
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->create()->shouldBeCalled()->willReturn($artist);
+
+        $managerRegistry->getRepository('JJsGeonamesBundle:City')
+            ->shouldBeCalled()->willReturn($cityRepository);
+        $cityRepository->findOneBy(Argument::any())
+            ->shouldBeCalled()->willReturn($birthplace);
+
+
         $artist->setFirstName(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setLastName(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setBirthday(Argument::type('DateTime'))->shouldBeCalled()->willReturn($artist);
-        $artist->setBirthplace(Argument::any())->shouldBeCalled()->willReturn($artist);
+        $artist->setBirthplace($birthplace)->shouldBeCalled()->willReturn($artist);
         $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
 

@@ -8,7 +8,7 @@
  * with all information about license.
  */
 
-namespace Filmbot\ArtistBundle\DataFixtures\ORM;
+namespace Filmbot\MovieBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -17,11 +17,11 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class Artists.
+ * Class Movies.
  *
  * @package Filmbot\ArtistBundle\DataFixtures\ORM
  */
-class Artists extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class Movies extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
@@ -41,8 +41,8 @@ class Artists extends AbstractFixture implements OrderedFixtureInterface, Contai
      */
     public function load(ObjectManager $manager)
     {
-        $this->container->get('filmbot_artist.command_artists')->loadArtists(
-            $this->container->get('kernel')->getRootDir().'/../app/Resources/fixtures/artists.yml'
+        $this->container->get('filmbot_movie.command_movies')->loadMovies(
+            $this->container->get('kernel')->getRootDir().'/../app/Resources/fixtures/movies.yml'
         );
     }
 
@@ -51,6 +51,6 @@ class Artists extends AbstractFixture implements OrderedFixtureInterface, Contai
      */
     public function getOrder()
     {
-        return 0;
+        return 1;
     }
 }

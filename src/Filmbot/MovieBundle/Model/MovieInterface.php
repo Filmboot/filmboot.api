@@ -12,6 +12,7 @@ namespace Filmbot\MovieBundle\Model;
 use Filmbot\ArtistBundle\Entity\Actor;
 use Filmbot\ArtistBundle\Entity\Director;
 use Filmbot\ArtistBundle\Entity\Writer;
+use Filmbot\MovieBundle\Entity\MovieTranslation;
 
 /**
  * Interface MovieInterface.
@@ -239,4 +240,30 @@ interface MovieInterface
      * @return array<\Filmbot\MovieBundle\Model\GenreInterface>
      */
     public function getGenres();
+
+
+    /**
+     * Gets array of translations.
+     *
+     * @return array<\Filmbot\MovieBundle\Entity\MovieTranslation>
+     */
+    public function getTranslations();
+
+    /**
+     * Adds translation.
+     *
+     * @param \Filmbot\MovieBundle\Entity\MovieTranslation $translation The translation
+     *
+     * @return \Filmbot\MovieBundle\Model\MovieInterface
+     */
+    public function addTranslation(MovieTranslation $translation);
+
+    /**
+     * Removes translation.
+     *
+     * @param \Filmbot\MovieBundle\Entity\MovieTranslation $translation The translation
+     *
+     * @return \Filmbot\MovieBundle\Model\MovieInterface
+     */
+    public function removeTranslation(MovieTranslation $translation);
 }

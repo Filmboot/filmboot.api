@@ -1,11 +1,23 @@
 parameters:
+    filmbot_artist.class.actor: Filmbot\ArtistBundle\Entity\Actor
     filmbot_artist.class.artist: Filmbot\ArtistBundle\Entity\Artist
+    filmbot_artist.class.director: Filmbot\ArtistBundle\Entity\Director
+    filmbot_artist.class.writer: Filmbot\ArtistBundle\Entity\Writer
 
 services:
     # Managers
+    filmbot_artist.manager.actor:
+        class: Filmbot\ArtistBundle\Manager\ActorManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_artist.class.actor%']
     filmbot_artist.manager.artist:
         class: Filmbot\ArtistBundle\Manager\ArtistManager
         arguments: ["@doctrine.orm.entity_manager",'%filmbot_artist.class.artist%']
+    filmbot_artist.manager.director:
+        class: Filmbot\ArtistBundle\Manager\DirectorManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_artist.class.director%']
+    filmbot_artist.manager.writer:
+        class: Filmbot\ArtistBundle\Manager\WriterManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_artist.class.writer%']
 
     # Commands
     filmbot_artist.command_artists:

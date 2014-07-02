@@ -9,9 +9,7 @@
 
 namespace spec\Filmbot\MovieBundle\Model;
 
-use Filmbot\ArtistBundle\Entity\Actor;
-use Filmbot\ArtistBundle\Entity\Director;
-use Filmbot\ArtistBundle\Entity\Writer;
+use Filmbot\MovieBundle\Entity\GenreTranslation;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -49,5 +47,21 @@ class GenreSpec extends ObjectBehavior
         $this->getName()->shouldReturn('Science Fiction');
         
         $this->__toString()->shouldReturn('Science Fiction');
+    }
+
+    function its_name_translations_be_mutable()
+    {
+        $translation = new GenreTranslation('es', 'name', 'spanish-name-translation');
+
+        $this->getTranslations()->shouldHaveCount(0);
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        // If array of translations contains translation, it does not add it again
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        $this->removeTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(0);
     }
 }

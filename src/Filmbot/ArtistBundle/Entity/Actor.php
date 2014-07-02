@@ -16,4 +16,4 @@ namespace Filmbot\ArtistBundle\Entity;
  */
 class Actor extends Role
 {
-} 
+}

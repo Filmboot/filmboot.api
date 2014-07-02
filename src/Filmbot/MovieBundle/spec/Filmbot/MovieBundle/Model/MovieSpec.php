@@ -12,6 +12,7 @@ namespace spec\Filmbot\MovieBundle\Model;
 use Filmbot\ArtistBundle\Entity\Actor;
 use Filmbot\ArtistBundle\Entity\Director;
 use Filmbot\ArtistBundle\Entity\Writer;
+use Filmbot\MovieBundle\Entity\MovieTranslation;
 use Filmbot\MovieBundle\Model\GenreInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -136,5 +137,37 @@ class MovieSpec extends ObjectBehavior
         $this->removeGenre($genre);
 
         $this->getGenres()->shouldHaveCount(0);
+    }
+
+    function its_title_translations_be_mutable()
+    {
+        $translation = new MovieTranslation('es', 'title', 'spanish-title-translation');
+
+        $this->getTranslations()->shouldHaveCount(0);
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        // If array of translations contains translation, it does not add it again
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        $this->removeTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(0);
+    }
+
+    function its_storyline_translations_be_mutable()
+    {
+        $translation = new MovieTranslation('es', 'storyline', 'spanish-storyline-translation');
+
+        $this->getTranslations()->shouldHaveCount(0);
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        // If array of translations contains translation, it does not add it again
+        $this->addTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(1);
+
+        $this->removeTranslation($translation);
+        $this->getTranslations()->shouldHaveCount(0);
     }
 }

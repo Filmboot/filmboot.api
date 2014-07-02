@@ -19,4 +19,4 @@ use Filmbot\ArtistBundle\Model\Role as BaseRole;
  */
 class Role extends BaseRole
 {
-} 
+}

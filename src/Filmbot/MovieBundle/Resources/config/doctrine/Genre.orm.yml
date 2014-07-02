@@ -1,5 +1,8 @@
 Filmbot\MovieBundle\Entity\Genre:
     type: entity
+    gedmo:
+        translation:
+            entity: Filmbot\MovieBundle\Entity\GenreTranslation
     id:
         id:
             type: string
@@ -12,3 +15,10 @@ Filmbot\MovieBundle\Entity\Genre:
         name:
             type: string
             length: 50
+            gedmo:
+                - translatable
+    oneToMany:
+        translations:
+            targetEntity: Filmbot\MovieBundle\Entity\GenreTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]

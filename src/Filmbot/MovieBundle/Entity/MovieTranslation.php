@@ -8,16 +8,16 @@
  * with all information about license.
  */
 
-namespace Filmbot\ArtistBundle\Entity;
+namespace Filmbot\MovieBundle\Entity;
 
 use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 
 /**
- * Class ArtistTranslation.
+ * Class GenreTranslation.
  *
- * @package Filmbot\ArtistBundle\Entity
+ * @package Filmbot\MovieBundle\Entity
  */
-class ArtistTranslation extends AbstractPersonalTranslation
+class MovieTranslation extends AbstractPersonalTranslation
 {
     /**
      * Constructor.

@@ -13,11 +13,11 @@ namespace Filmbot\ArtistBundle\Manager;
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class ArtistManager.
+ * Class DirectorManager.
  *
  * @package Filmbot\ArtistBundle\Manager
  */
-class ArtistManager
+class DirectorManager
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -50,25 +50,10 @@ class ArtistManager
     /**
      * Returns a new instance of a class
      *
-     * @return \Filmbot\ArtistBundle\Entity\Artist
+     * @return \Filmbot\ArtistBundle\Entity\Director
      */
     public function create()
     {
         return new $this->class();
-    }
-
-    /**
-     * Finds artist with firstName and lastName given.
-     *
-     * @param string $firstName The first name
-     * @param string $lastName  The last name
-     *
-     * @return null|\Filmbot\ArtistBundle\Model\ArtistInterface
-     */
-    public function findOneByFullName($firstName, $lastName)
-    {
-        return $this->repository->findOneBy(
-            array('firstName' => $firstName, 'lastName' => $lastName)
-        );
     }
 }

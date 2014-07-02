@@ -1,12 +1,22 @@
 parameters:
-#    filmbot.movie.example.class: Filmbot\MovieBundle\Example
+    filmbot_movie.class.genre: Filmbot\MovieBundle\Entity\Genre
+    filmbot_movie.class.movie: Filmbot\MovieBundle\Entity\Movie
 
 services:
-#    filmbot.movie.example:
-#        class: %filmbot.movie.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-#        calls:
-#            - [setService, [@service_id]]
-#        tags:
-#            - { name: twig.extension }
-#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+    # Managers
+    filmbot_movie.manager.genre:
+        class: Filmbot\MovieBundle\Manager\GenreManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_movie.class.genre%']
+    filmbot_movie.manager.movie:
+        class: Filmbot\MovieBundle\Manager\MovieManager
+        arguments: ["@doctrine.orm.entity_manager",'%filmbot_movie.class.movie%']
+
+    # Commands
+    filmbot_movie.command_genres:
+        class: Filmbot\MovieBundle\Command\LoadGenresCommand
+        calls:
+            - [setContainer, ["@service_container"] ]
+    filmbot_movie.command_movies:
+        class: Filmbot\MovieBundle\Command\LoadMoviesCommand
+        calls:
+            - [setContainer, ["@service_container"] ]

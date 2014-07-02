@@ -63,17 +63,22 @@ class LoadArtistsCommand extends ContainerAwareCommand
         $fixtures = $yaml->parse(file_get_contents($path));
 
         $container = $this->getContainer();
-        $manager = $container->get('doctrine')->getManager();
+        $doctrine = $container->get('doctrine');
+        $manager = $doctrine->getManager();
         foreach ($fixtures as $values) {
             $artist = $container->get('filmbot_artist.manager.artist')->create();
+            $birthplace = $doctrine->getRepository('JJsGeonamesBundle:City')
+                ->findOneBy(array('geonameIdentifier' => $values['birthplace']));
+
             $artist->setFirstName($values['firstName']);
             $artist->setLastName($values['lastName']);
             $artist->setBirthday(new \DateTime($values['birthday']));
-            $artist->setBirthplace($values['birthplace']);
+            $artist->setBirthplace($birthplace);
             $artist->setBiography($values['biography']['en']);
-            $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);
-            $artist->addTranslation($translation);
-
+            if ($values['biography']['es']) {
+                $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);
+                $artist->addTranslation($translation);
+            }
             $manager->persist($artist);
         }
 

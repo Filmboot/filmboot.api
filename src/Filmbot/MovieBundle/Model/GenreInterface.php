@@ -9,6 +9,8 @@
 
 namespace Filmbot\MovieBundle\Model;
 
+use Filmbot\MovieBundle\Entity\GenreTranslation;
+
 /**
  * Interface GenreInterface.
  *
@@ -54,4 +56,29 @@ interface GenreInterface
      * @return \Filmbot\MovieBundle\Model\GenreInterface
      */
     public function setName($name);
+
+    /**
+     * Gets array of translations.
+     *
+     * @return array<\Filmbot\MovieBundle\Entity\GenreTranslation>
+     */
+    public function getTranslations();
+
+    /**
+     * Adds translation.
+     *
+     * @param \Filmbot\MovieBundle\Entity\GenreTranslation $translation The translation
+     *
+     * @return \Filmbot\MovieBundle\Model\GenreInterface
+     */
+    public function addTranslation(GenreTranslation $translation);
+
+    /**
+     * Removes translation.
+     *
+     * @param \Filmbot\MovieBundle\Entity\GenreTranslation $translation The translation
+     *
+     * @return \Filmbot\MovieBundle\Model\GenreInterface
+     */
+    public function removeTranslation(GenreTranslation $translation);
 }

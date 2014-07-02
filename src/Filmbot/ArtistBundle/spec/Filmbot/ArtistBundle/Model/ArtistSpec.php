@@ -131,7 +131,7 @@ class ArtistSpec extends ObjectBehavior
         $this->getWriters()->shouldHaveCount(0);
     }
 
-    function its_translation_should_be_mutable()
+    function its_biography_translation_be_mutable()
     {
         $translation = new ArtistTranslation('es', 'biography', 'spanish-biography-translation');
 
@@ -146,5 +146,4 @@ class ArtistSpec extends ObjectBehavior
         $this->removeTranslation($translation);
         $this->getTranslations()->shouldHaveCount(0);
     }
-
 }

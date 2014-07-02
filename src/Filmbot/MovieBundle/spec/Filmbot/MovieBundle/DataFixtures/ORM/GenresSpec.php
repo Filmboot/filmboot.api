@@ -8,20 +8,20 @@
  * with all information about license.
  */
 
-namespace spec\Filmbot\ArtistBundle\DataFixtures\ORM;
+namespace spec\Filmbot\MovieBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Filmbot\ArtistBundle\Command\LoadArtistsCommand;
+use Filmbot\MovieBundle\Command\LoadGenresCommand;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Class ArtistsSpec.
+ * Class GenresSpec.
  *
- * @package spec\Filmbot\ArtistBundle\DataFixtures\ORM
+ * @package spec\Filmbot\MovieBundle\DataFixtures\ORM
  */
-class ArtistsSpec extends ObjectBehavior
+class GenresSpec extends ObjectBehavior
 {
     function let(ContainerInterface $container)
     {
@@ -30,7 +30,7 @@ class ArtistsSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Filmbot\ArtistBundle\DataFixtures\ORM\Artists');
+        $this->shouldHaveType('Filmbot\MovieBundle\DataFixtures\ORM\Genres');
     }
 
     function it_extends_abstract_fixtures()
@@ -48,14 +48,14 @@ class ArtistsSpec extends ObjectBehavior
         ObjectManager $manager,
         ContainerInterface $container,
         KernelInterface $kernel,
-        LoadArtistsCommand $loadArtistsCommand
+        LoadGenresCommand $loadGenresCommand
     )
     {
         $container->get('kernel')->shouldBeCalled()->willReturn($kernel);
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
-        $container->get('filmbot_artist.command_artists')
-            ->shouldBeCalled()->willReturn($loadArtistsCommand);
-        $loadArtistsCommand->loadArtists('rootDir/../app/Resources/fixtures/artists.yml')
+        $container->get('filmbot_movie.command_genres')
+            ->shouldBeCalled()->willReturn($loadGenresCommand);
+        $loadGenresCommand->loadGenres('rootDir/../app/Resources/fixtures/genres.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

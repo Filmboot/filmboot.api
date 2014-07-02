@@ -9,6 +9,8 @@
 
 namespace Filmbot\MovieBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Filmbot\MovieBundle\Entity\GenreTranslation;
 use Filmbot\MovieBundle\Util\Util;
 
 /**
@@ -24,11 +26,14 @@ class Genre implements GenreInterface
 
     protected $name;
 
+    protected $translations;
+
     /**
      * Constructor.
      */
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -79,8 +84,39 @@ class Genre implements GenreInterface
     /**
      * {@inheritDoc}
      */
+    public function addTranslation(GenreTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeTranslation(GenreTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function __toString()
     {
-        return $this->name;
+        return $this->getName();
     }
 }

@@ -8,20 +8,20 @@
  * with all information about license.
  */
 
-namespace spec\Filmbot\ArtistBundle\DataFixtures\ORM;
+namespace spec\Filmbot\MovieBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Filmbot\ArtistBundle\Command\LoadArtistsCommand;
+use Filmbot\MovieBundle\Command\LoadMoviesCommand;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Class ArtistsSpec.
+ * Class MoviesSpec.
  *
- * @package spec\Filmbot\ArtistBundle\DataFixtures\ORM
+ * @package spec\Filmbot\MovieBundle\DataFixtures\ORM
  */
-class ArtistsSpec extends ObjectBehavior
+class MoviesSpec extends ObjectBehavior
 {
     function let(ContainerInterface $container)
     {
@@ -30,7 +30,7 @@ class ArtistsSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Filmbot\ArtistBundle\DataFixtures\ORM\Artists');
+        $this->shouldHaveType('Filmbot\MovieBundle\DataFixtures\ORM\Movies');
     }
 
     function it_extends_abstract_fixtures()
@@ -48,21 +48,21 @@ class ArtistsSpec extends ObjectBehavior
         ObjectManager $manager,
         ContainerInterface $container,
         KernelInterface $kernel,
-        LoadArtistsCommand $loadArtistsCommand
+        LoadMoviesCommand $loadMoviesCommand
     )
     {
         $container->get('kernel')->shouldBeCalled()->willReturn($kernel);
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
-        $container->get('filmbot_artist.command_artists')
-            ->shouldBeCalled()->willReturn($loadArtistsCommand);
-        $loadArtistsCommand->loadArtists('rootDir/../app/Resources/fixtures/artists.yml')
+        $container->get('filmbot_movie.command_movies')
+            ->shouldBeCalled()->willReturn($loadMoviesCommand);
+        $loadMoviesCommand->loadMovies('rootDir/../app/Resources/fixtures/movies.yml')
             ->shouldBeCalled();
 
         $this->load($manager);
     }
 
-    function its_order_is_zero()
+    function its_order_is_one()
     {
-        $this->getOrder()->shouldReturn(0);
+        $this->getOrder()->shouldReturn(1);
     }
 }

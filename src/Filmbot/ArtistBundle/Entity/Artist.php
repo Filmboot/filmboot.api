@@ -18,4 +18,4 @@ use Filmbot\ArtistBundle\Model\Artist as BaseArtist;
  */
 class Artist extends BaseArtist
 {
-} 
+}

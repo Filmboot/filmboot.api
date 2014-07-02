@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Filmbot\ArtistBundle\Entity\Actor;
 use Filmbot\ArtistBundle\Entity\Director;
 use Filmbot\ArtistBundle\Entity\Writer;
+use Filmbot\MovieBundle\Entity\MovieTranslation;
 use Filmbot\MovieBundle\Util\Util;
 
 /**
@@ -46,6 +47,8 @@ class Movie implements MovieInterface
 
     protected $genres;
 
+    protected $translations;
+
     /**
      * Constructor.
      */
@@ -55,6 +58,7 @@ class Movie implements MovieInterface
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -282,7 +286,7 @@ class Movie implements MovieInterface
     public function addGenre(GenreInterface $genre)
     {
         $this->genres[] = $genre;
-        
+
         return $this;
     }
 
@@ -302,6 +306,37 @@ class Movie implements MovieInterface
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addTranslation(MovieTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeTranslation(MovieTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 
     /**
