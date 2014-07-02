@@ -32,7 +32,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -40,7 +40,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -48,7 +48,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -58,7 +58,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getYear()
     {
@@ -66,7 +66,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setYear($year)
     {
@@ -76,7 +76,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getCategory()
     {
@@ -84,7 +84,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setCategory($category)
     {
@@ -94,7 +94,7 @@ class Award implements AwardInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __toString()
     {

@@ -38,7 +38,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -46,7 +46,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setArtist(ArtistInterface $artist)
     {
@@ -56,7 +56,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getArtist()
     {
@@ -64,7 +64,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setAward(AwardInterface $award)
     {
@@ -74,7 +74,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getAward()
     {
@@ -82,7 +82,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setMovie(MovieInterface $movie)
     {
@@ -92,7 +92,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getMovie()
     {
@@ -100,7 +100,7 @@ class AwardWon implements AwardWonInterface
     }
     
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getRole()
     {
@@ -108,7 +108,7 @@ class AwardWon implements AwardWonInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setRole($role)
     {

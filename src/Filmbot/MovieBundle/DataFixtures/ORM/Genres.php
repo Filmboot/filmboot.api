@@ -29,7 +29,7 @@ class Genres extends AbstractFixture implements OrderedFixtureInterface, Contain
     private $container;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -37,7 +37,7 @@ class Genres extends AbstractFixture implements OrderedFixtureInterface, Contain
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -47,7 +47,7 @@ class Genres extends AbstractFixture implements OrderedFixtureInterface, Contain
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getOrder()
     {

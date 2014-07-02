@@ -37,7 +37,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -45,7 +45,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getSlug()
     {
@@ -53,7 +53,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {
@@ -63,7 +63,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -71,7 +71,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -82,7 +82,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addTranslation(GenreTranslation $translation)
     {
@@ -95,7 +95,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeTranslation(GenreTranslation $translation)
     {
@@ -105,7 +105,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getTranslations()
     {
@@ -113,7 +113,7 @@ class Genre implements GenreInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __toString()
     {

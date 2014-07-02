@@ -35,7 +35,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getArtist()
     {
@@ -43,7 +43,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setArtist(ArtistInterface $artist)
     {
@@ -53,7 +53,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getMovie()
     {
@@ -61,7 +61,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setMovie(MovieInterface $movie)
     {
@@ -71,7 +71,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addAward(AwardInterface $award)
     {
@@ -81,7 +81,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeAward(AwardInterface $award)
     {
@@ -91,7 +91,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getAwards()
     {

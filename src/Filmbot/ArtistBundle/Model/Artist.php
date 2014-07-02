@@ -57,7 +57,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -65,7 +65,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getSlug()
     {
@@ -73,7 +73,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setSlug()
     {
@@ -83,7 +83,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFirstName()
     {
@@ -91,7 +91,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setFirstName($firstName)
     {
@@ -101,7 +101,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getLastName()
     {
@@ -109,7 +109,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setLastName($lastName)
     {
@@ -119,7 +119,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getBirthday()
     {
@@ -127,7 +127,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setBirthday(\DateTime $birthday)
     {
@@ -137,7 +137,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getBirthplace()
     {
@@ -145,7 +145,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setBirthplace($birthplace)
     {
@@ -155,7 +155,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getBiography()
     {
@@ -163,7 +163,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setBiography($biography)
     {
@@ -173,7 +173,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addActor(Actor $actor)
     {
@@ -183,7 +183,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeActor(Actor $actor)
     {
@@ -193,7 +193,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getActors()
     {
@@ -201,7 +201,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addDirector(Director $director)
     {
@@ -211,7 +211,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeDirector(Director $director)
     {
@@ -221,7 +221,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getDirectors()
     {
@@ -229,7 +229,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addWriter(Writer $writer)
     {
@@ -239,7 +239,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeWriter(Writer $writer)
     {
@@ -249,7 +249,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getWriters()
     {
@@ -257,7 +257,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addTranslation(ArtistTranslation $translation)
     {
@@ -270,7 +270,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeTranslation(ArtistTranslation $translation)
     {
@@ -280,7 +280,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getTranslations()
     {
@@ -288,7 +288,7 @@ class Artist implements ArtistInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __toString()
     {

@@ -62,7 +62,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -70,7 +70,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getSlug()
     {
@@ -78,7 +78,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {
@@ -88,7 +88,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getDuration()
     {
@@ -96,7 +96,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setDuration($duration)
     {
@@ -106,7 +106,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getYear()
     {
@@ -114,7 +114,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setYear($year)
     {
@@ -124,7 +124,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getCountry()
     {
@@ -132,7 +132,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setCountry($country)
     {
@@ -142,7 +142,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getStoryline()
     {
@@ -150,7 +150,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setStoryline($storyline)
     {
@@ -160,7 +160,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getProducer()
     {
@@ -168,7 +168,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setProducer($producer)
     {
@@ -178,7 +178,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -186,7 +186,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -197,7 +197,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addActor(Actor $actor)
     {
@@ -207,7 +207,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeActor(Actor $actor)
     {
@@ -217,7 +217,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getCast()
     {
@@ -225,7 +225,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addDirector(Director $director)
     {
@@ -235,7 +235,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeDirector(Director $director)
     {
@@ -245,7 +245,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getDirectors()
     {
@@ -253,7 +253,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addWriter(Writer $writer)
     {
@@ -263,7 +263,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeWriter(Writer $writer)
     {
@@ -273,7 +273,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getWriters()
     {
@@ -281,7 +281,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addGenre(GenreInterface $genre)
     {
@@ -291,7 +291,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeGenre(GenreInterface $genre)
     {
@@ -301,7 +301,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getGenres()
     {
@@ -309,7 +309,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addTranslation(MovieTranslation $translation)
     {
@@ -322,7 +322,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeTranslation(MovieTranslation $translation)
     {
@@ -332,7 +332,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getTranslations()
     {
@@ -340,7 +340,7 @@ class Movie implements MovieInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __toString()
     {

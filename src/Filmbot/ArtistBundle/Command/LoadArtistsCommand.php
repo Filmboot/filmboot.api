@@ -25,7 +25,7 @@ use Symfony\Component\Yaml\Parser;
 class LoadArtistsCommand extends ContainerAwareCommand
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -40,7 +40,7 @@ class LoadArtistsCommand extends ContainerAwareCommand
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
