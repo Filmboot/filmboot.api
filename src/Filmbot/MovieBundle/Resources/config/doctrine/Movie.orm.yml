@@ -30,7 +30,7 @@ Filmbot\MovieBundle\Entity\Movie:
     oneToMany:
         cast:
             targetEntity: Filmbot\ArtistBundle\Entity\Actor
-            mappedBy: movies
+            mappedBy: movie
             cascade: ["persist", "remove"]
             joinColumn:
                 name: movie_id
@@ -38,7 +38,7 @@ Filmbot\MovieBundle\Entity\Movie:
                 onDelete: cascade
         directors:
             targetEntity: Filmbot\ArtistBundle\Entity\Director
-            mappedBy: movies
+            mappedBy: movie
             cascade: ["persist", "remove"]
             joinColumn:
                 name: movie_id
@@ -46,7 +46,7 @@ Filmbot\MovieBundle\Entity\Movie:
                 onDelete: cascade
         writers:
             targetEntity: Filmbot\ArtistBundle\Entity\Writer
-            mappedBy: movies
+            mappedBy: movie
             cascade: ["persist", "remove"]
             joinColumn:
                 name: movie_id
@@ -58,7 +58,7 @@ Filmbot\MovieBundle\Entity\Movie:
             cascade: ["persist", "remove"]
     manyToOne:
         country:
-            targetEntity: JJs\Bundle\GeonamesBundle\Entity\City
+            targetEntity: JJs\Bundle\GeonamesBundle\Entity\Country
 
     manyToMany:
         genres:

@@ -67,8 +67,8 @@ class LoadMoviesCommand extends ContainerAwareCommand
         $manager = $doctrine->getManager();
         foreach ($fixtures as $values) {
             $movie = $container->get('filmbot_movie.manager.movie')->create();
-            $country = $doctrine->getRepository('JJsGeonamesBundle:City')
-                ->findOneBy(array('geonameIdentifier' => $values['country']));
+            $country = $doctrine->getRepository('JJsGeonamesBundle:Country')
+                ->findOneBy(array('code' => $values['country']));
 
             $movie->setTitle($values['title']['en']);
             $this->addTranslation($movie, $values, 'title');

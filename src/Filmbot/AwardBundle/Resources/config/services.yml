@@ -8,7 +8,7 @@ services:
     filmbot_award.manager.award:
         class: Filmbot\AwardBundle\Manager\AwardManager
         arguments: ["@doctrine.orm.entity_manager",'%filmbot_award.class.award%']
-    filmbot_award.manager.awarWon:
+    filmbot_award.manager.awardWon:
         class: Filmbot\AwardBundle\Manager\AwardWonManager
         arguments: ["@doctrine.orm.entity_manager",'%filmbot_award.class.awardWon%']
     filmbot_award.manager.category:

@@ -21,4 +21,4 @@ class RoleEnumType extends BaseEnumType
 {
     protected $name = 'RoleEnum';
     protected $values = array('actor', 'director', 'writer');
-} 
+}

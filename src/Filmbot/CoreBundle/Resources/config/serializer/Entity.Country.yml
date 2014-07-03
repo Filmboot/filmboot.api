@@ -1,0 +1,12 @@
+JJs\Bundle\GeonamesBundle\Entity\Country:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [movie]
+        code:
+            expose: true
+            groups: [movie]
+        name:
+            expose: true
+            groups: [movie]

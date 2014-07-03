@@ -5,6 +5,9 @@ suites:
     AwardBundle:
         namespace: Filmbot
         spec_path: src/Filmbot/AwardBundle
+    CoreBundle:
+        namespace: Filmbot
+        spec_path: src/Filmbot/CoreBundle
     MovieBundle:
         namespace: Filmbot
         spec_path: src/Filmbot/MovieBundle

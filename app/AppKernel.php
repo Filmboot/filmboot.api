@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             
             new Filmbot\ArtistBundle\FilmbotArtistBundle(),
             new Filmbot\AwardBundle\FilmbotAwardBundle(),
+            new Filmbot\CoreBundle\FilmbotCoreBundle(),
             new Filmbot\MovieBundle\FilmbotMovieBundle(),
         );
 

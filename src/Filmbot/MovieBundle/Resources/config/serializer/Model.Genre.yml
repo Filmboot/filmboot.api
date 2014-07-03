@@ -1,0 +1,12 @@
+Filmbot\MovieBundle\Model\Genre:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [movie]
+        slug:
+            expose: true
+            groups: [movie]
+        name:
+            expose: true
+            groups: [movie]

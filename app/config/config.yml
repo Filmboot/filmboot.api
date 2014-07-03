@@ -79,3 +79,11 @@ fos_rest:
         array_normalizer: fos_rest.normalizer.camel_keys
 
 nelmio_api_doc: ~
+
+jms_serializer:
+    metadata:
+        auto_detection: true
+        directories:
+            JJsGeonamesBundle:
+                namespace_prefix: "JJs\\Bundle\\GeonamesBundle"
+                path: "@FilmbotCoreBundle/Resources/config/serializer"

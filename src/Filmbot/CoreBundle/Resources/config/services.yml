@@ -1,0 +1,7 @@
+parameters:
+#    filmbot_core.example.class: Filmbot\CoreBundle\Example
+
+services:
+#    filmbot_core.example:
+#        class: %filmbot_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -90,7 +90,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($movieManager);
         $movieManager->create()->shouldBeCalled()->willReturn($movie);
 
-        $managerRegistry->getRepository('JJsGeonamesBundle:City')
+        $managerRegistry->getRepository('JJsGeonamesBundle:Country')
             ->shouldBeCalled()->willReturn($cityRepository);
         $cityRepository->findOneBy(Argument::any())
             ->shouldBeCalled()->willReturn($country);

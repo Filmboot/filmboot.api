@@ -1,0 +1,18 @@
+JJs\Bundle\GeonamesBundle\Entity\Locality:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [movie]
+        geonameIdentifier:
+            expose: true
+            groups: [movie]
+        nameUtf8:
+            expose: true
+            groups: [movie]
+        nameAscii:
+            expose: true
+            groups: [movie]
+        country:
+            expose: true
+            groups: [movie]

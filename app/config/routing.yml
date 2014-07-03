@@ -1,3 +1,7 @@
 api_docs:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /doc
+    resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
+    prefix: /doc
+
+filmbot_movie:
+    type: rest
+    resource: '@FilmbotMovieBundle/Resources/config/routing.yml'
