@@ -11,7 +11,7 @@ framework:
     csrf_protection: ~
     validation:      { enable_annotations: true }
     templating:
-        engines: ['php']
+        engines: ['twig']
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:
@@ -19,7 +19,7 @@ framework:
         save_path: "%kernel.root_dir%/sessions"
         name: filmbot-session
     fragments:       ~
-    http_method_override: true    
+    http_method_override: true
 
 doctrine:
     dbal:
