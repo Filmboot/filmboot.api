@@ -1,9 +1,9 @@
 {
-    "name": "MyClapboard/myclapboard-api",
-    "description": "The api of MyClapboard, social network that geared to film and television",
+    "name": "myClapboard/myclapboard.api",
+    "description": "The api of myClapboard, social network that geared to film and television",
     "keywords": ["film", "social network", "api", "symfony"],
     "type": "project",
-    "homepage": "https://github.com/MyClapboard/myclapboard.api",
+    "homepage": "https://github.com/myClapboard/myclapboard.api",
     "license": "MIT",
     "authors": [
         {
