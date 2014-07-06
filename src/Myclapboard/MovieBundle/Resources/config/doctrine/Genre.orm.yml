@@ -1,0 +1,24 @@
+Myclapboard\MovieBundle\Entity\Genre:
+    type: entity
+    gedmo:
+        translation:
+            entity: Myclapboard\MovieBundle\Entity\GenreTranslation
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 50
+        name:
+            type: string
+            length: 50
+            gedmo:
+                - translatable
+    oneToMany:
+        translations:
+            targetEntity: Myclapboard\MovieBundle\Entity\GenreTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]

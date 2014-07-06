@@ -1,0 +1,16 @@
+Myclapboard\AwardBundle\Entity\Category:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        name:
+            type: string
+            length: 100
+    oneToMany:
+        translations:
+            targetEntity: Myclapboard\AwardBundle\Entity\CategoryTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]

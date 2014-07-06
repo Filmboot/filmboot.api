@@ -17,7 +17,7 @@ framework:
     session:
         handler_id: session.handler.native_file
         save_path: "%kernel.root_dir%/sessions"
-        name: filmbot-session
+        name: myclapboard-session
     fragments:       ~
     http_method_override: true
 
@@ -48,13 +48,13 @@ doctrine:
                 alias: GedmoTree # this one is optional and will default to the name set for the mapping
                 is_bundle: false
         resolve_target_entities:
-            Filmbot\ArtistBundle\Model\ArtistInterface: Filmbot\ArtistBundle\Entity\Artist
+            Myclapboard\ArtistBundle\Model\ArtistInterface: Myclapboard\ArtistBundle\Entity\Artist
             
-            Filmbot\AwardBundle\Model\AwardInterface: Filmbot\AwardBundle\Entity\Award
-            Filmbot\AwardBundle\Model\CategoryInterface: Filmbot\AwardBundle\Entity\Category
+            Myclapboard\AwardBundle\Model\AwardInterface: Myclapboard\AwardBundle\Entity\Award
+            Myclapboard\AwardBundle\Model\CategoryInterface: Myclapboard\AwardBundle\Entity\Category
 
-            Filmbot\MovieBundle\Model\GenreInterface: Filmbot\MovieBundle\Entity\Genre
-            Filmbot\MovieBundle\Model\MovieInterface: Filmbot\MovieBundle\Entity\Movie
+            Myclapboard\MovieBundle\Model\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
+            Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
 
 swiftmailer:
     transport: "%mailer_transport%"
@@ -86,4 +86,4 @@ jms_serializer:
         directories:
             JJsGeonamesBundle:
                 namespace_prefix: "JJs\\Bundle\\GeonamesBundle"
-                path: "@FilmbotCoreBundle/Resources/config/serializer"
+                path: "@MyclapboardCoreBundle/Resources/config/serializer"

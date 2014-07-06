@@ -1,0 +1,26 @@
+Myclapboard\ArtistBundle\Entity\ArtistTranslation:
+    type: entity
+    table: ArtistTranslation
+    uniqueConstraints:
+        lookup_unique_idx:
+            columns: locale, object_id, field
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        locale:
+            type: string
+        field:
+            type: string
+        content:
+            type: text
+    manyToOne:
+        object:
+            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+            inversedBy: translations
+            joinColumn:
+                name: object_id
+                referencedColumnName: id
+                onDelete: CASCADE

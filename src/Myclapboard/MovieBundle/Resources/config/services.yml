@@ -1,0 +1,22 @@
+parameters:
+    myclapboard_movie.class.genre: Myclapboard\MovieBundle\Entity\Genre
+    myclapboard_movie.class.movie: Myclapboard\MovieBundle\Entity\Movie
+
+services:
+    # Managers
+    myclapboard_movie.manager.genre:
+        class: Myclapboard\MovieBundle\Manager\GenreManager
+        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_movie.class.genre%']
+    myclapboard_movie.manager.movie:
+        class: Myclapboard\MovieBundle\Manager\MovieManager
+        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_movie.class.movie%']
+
+    # Commands
+    myclapboard_movie.command_genres:
+        class: Myclapboard\MovieBundle\Command\LoadGenresCommand
+        calls:
+            - [setContainer, ["@service_container"] ]
+    myclapboard_movie.command_movies:
+        class: Myclapboard\MovieBundle\Command\LoadMoviesCommand
+        calls:
+            - [setContainer, ["@service_container"] ]

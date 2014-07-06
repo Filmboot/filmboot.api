@@ -1,3 +1,0 @@
-filmbot_movie_movies:
-    type: rest
-    resource: Filmbot\MovieBundle\Controller\MovieController

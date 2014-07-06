@@ -1,0 +1,15 @@
+Myclapboard\ArtistBundle\Entity\Director:
+    type: entity
+    table: MovieDirector
+    id:
+        artist:
+            associationKey: true
+        movie:
+            associationKey: true
+    manyToOne:
+        artist:
+            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+            inversedBy: directors
+        movie:
+            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            inversedBy: directors

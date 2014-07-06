@@ -1,0 +1,73 @@
+Myclapboard\MovieBundle\Entity\Movie:
+    type: entity
+    gedmo:
+        translation:
+            entity: Myclapboard\MovieBundle\Entity\MovieTranslation
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        slug:
+            type: string
+            length: 100
+        title:
+            type: string
+            length: 50
+        duration:
+            type: integer
+        year:
+            type: integer
+        storyline:
+            type: string
+            length: 2000
+            nullable: true
+        producer:
+            type: string
+            length: 100
+            nullable: true
+    oneToMany:
+        cast:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Actor
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        directors:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Director
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        writers:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Writer
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        translations:
+            targetEntity: Myclapboard\MovieBundle\Entity\MovieTranslation
+            mappedBy: object
+            cascade: ["persist", "remove"]
+    manyToOne:
+        country:
+            targetEntity: JJs\Bundle\GeonamesBundle\Entity\Country
+
+    manyToMany:
+        genres:
+            targetEntity: Myclapboard\MovieBundle\Model\GenreInterface
+            joinTable:
+                name: MovieGenre
+                joinColumns:
+                    movie_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    genre_id:
+                        referencedColumnName: id

@@ -1,0 +1,12 @@
+Myclapboard\ArtistBundle\Model\Role:
+    exclusion_policy: ALL
+    properties:
+        artist:
+            expose: true
+            groups: [movie]
+        movie:
+            expose: false
+            groups: []
+        awards:
+            expose: true
+            groups: [movie]

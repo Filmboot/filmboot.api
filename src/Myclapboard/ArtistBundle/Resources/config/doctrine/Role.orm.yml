@@ -1,0 +1,2 @@
+Myclapboard\ArtistBundle\Entity\Role:
+    type: mappedSuperclass

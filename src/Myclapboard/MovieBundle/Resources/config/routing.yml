@@ -1,0 +1,3 @@
+myclapboard_movie_movies:
+    type: rest
+    resource: Myclapboard\MovieBundle\Controller\MovieController

@@ -21,10 +21,10 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new JJs\Bundle\GeonamesBundle\JJsGeonamesBundle(),
             
-            new Filmbot\ArtistBundle\FilmbotArtistBundle(),
-            new Filmbot\AwardBundle\FilmbotAwardBundle(),
-            new Filmbot\CoreBundle\FilmbotCoreBundle(),
-            new Filmbot\MovieBundle\FilmbotMovieBundle(),
+            new Myclapboard\ArtistBundle\MyclapboardArtistBundle(),
+            new Myclapboard\AwardBundle\MyclapboardAwardBundle(),
+            new Myclapboard\CoreBundle\MyclapboardCoreBundle(),
+            new Myclapboard\MovieBundle\MyclapboardMovieBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

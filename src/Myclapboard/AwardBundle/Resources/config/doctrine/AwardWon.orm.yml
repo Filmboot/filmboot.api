@@ -1,0 +1,22 @@
+Myclapboard\AwardBundle\Entity\AwardWon:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        role:
+            type: RoleEnum
+            nullable: true
+        year:
+            type: integer
+    manyToOne:
+        movie:
+            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+        artist:
+            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+        award:
+            targetEntity: Myclapboard\AwardBundle\Model\AwardInterface
+        category:
+            targetEntity: Myclapboard\AwardBundle\Model\CategoryInterface

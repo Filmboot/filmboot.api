@@ -1,16 +1,16 @@
 suites:
     ArtistBundle:
-        namespace: Filmbot
-        spec_path: src/Filmbot/ArtistBundle
+        namespace: Myclapboard
+        spec_path: src/Myclapboard/ArtistBundle
     AwardBundle:
-        namespace: Filmbot
-        spec_path: src/Filmbot/AwardBundle
+        namespace: Myclapboard
+        spec_path: src/Myclapboard/AwardBundle
     CoreBundle:
-        namespace: Filmbot
-        spec_path: src/Filmbot/CoreBundle
+        namespace: Myclapboard
+        spec_path: src/Myclapboard/CoreBundle
     MovieBundle:
-        namespace: Filmbot
-        spec_path: src/Filmbot/MovieBundle
+        namespace: Myclapboard
+        spec_path: src/Myclapboard/MovieBundle
 
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension

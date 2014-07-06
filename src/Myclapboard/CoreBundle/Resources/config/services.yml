@@ -1,0 +1,7 @@
+parameters:
+#    myclapboard_core.example.class: Myclapboard\CoreBundle\Example
+
+services:
+#    myclapboard_core.example:
+#        class: %myclapboard_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
