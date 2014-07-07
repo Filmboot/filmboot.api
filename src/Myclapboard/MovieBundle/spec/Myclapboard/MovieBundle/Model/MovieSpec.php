@@ -51,10 +51,12 @@ class MovieSpec extends ObjectBehavior
         $this->getDuration()->shouldReturn('98');
     }
 
-    function its_year_is_mutable()
+    function its_release_date_is_mutable()
     {
-        $this->setYear('2010')->shouldReturn($this);
-        $this->getYear()->shouldReturn('2010');
+        $releaseDate = new \DateTime('12-05-1994');
+        
+        $this->setReleaseDate($releaseDate)->shouldReturn($this);
+        $this->getReleaseDate()->shouldReturn($releaseDate);
     }
 
     function its_country_is_mutable()

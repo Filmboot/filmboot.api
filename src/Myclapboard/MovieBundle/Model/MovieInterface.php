@@ -61,20 +61,20 @@ interface MovieInterface
     public function setDuration($duration);
 
     /**
-     * Gets year.
+     * Gets releaseDate.
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getYear();
+    public function getReleaseDate();
 
     /**
-     * Sets year.
+     * Sets releaseDate.
      *
-     * @param int $year The year
+     * @param \DateTime $releaseDate The release date
      *
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
-    public function setYear($year);
+    public function setReleaseDate(\DateTime $releaseDate);
 
     /**
      * Gets country.

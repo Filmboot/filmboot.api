@@ -17,8 +17,8 @@ Myclapboard\MovieBundle\Entity\Movie:
             length: 50
         duration:
             type: integer
-        year:
-            type: integer
+        releaseDate:
+            type: datetime
         storyline:
             type: string
             length: 2000

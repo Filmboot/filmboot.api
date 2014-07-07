@@ -13,7 +13,7 @@ Myclapboard\MovieBundle\Model\Movie:
         duration:
             expose: true
             groups: [movie]
-        year:
+        releaseDate:
             expose: true
             groups: [movie]
         country:

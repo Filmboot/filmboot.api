@@ -74,7 +74,7 @@ class LoadMoviesCommand extends ContainerAwareCommand
             $this->addTranslation($movie, $values, 'title');
 
             $movie->setDuration($values['duration']);
-            $movie->setYear($values['year']);
+            $movie->setReleaseDate(new \DateTime($values['releaseDate']));
             $movie->setCountry($country);
 
             $movie->setStoryline($values['storyline']['en']);

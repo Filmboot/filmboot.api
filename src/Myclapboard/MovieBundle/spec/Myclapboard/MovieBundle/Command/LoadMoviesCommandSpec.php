@@ -98,7 +98,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $movie->setTitle(Argument::any())->shouldBeCalled()->willReturn($movie);
         $movie->addTranslation(Argument::any())->shouldBeCalled()->willReturn($movie);
         $movie->setDuration(Argument::any())->shouldBeCalled()->willReturn($movie);
-        $movie->setYear(Argument::any())->shouldBeCalled()->willReturn($movie);
+        $movie->setReleaseDate(Argument::type('DateTime'))->shouldBeCalled()->willReturn($movie);
         $movie->setCountry($country)->shouldBeCalled()->willReturn($movie);
         $movie->setStoryline(Argument::any())->shouldBeCalled()->willReturn($movie);
         $movie->addTranslation(Argument::any())->shouldBeCalled()->willReturn($movie);

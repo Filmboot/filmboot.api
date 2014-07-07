@@ -31,7 +31,7 @@ class Movie implements MovieInterface
 
     protected $duration;
 
-    protected $year;
+    protected $releaseDate;
 
     protected $country;
 
@@ -108,17 +108,17 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function getYear()
+    public function getReleaseDate()
     {
-        return $this->year;
+        return $this->releaseDate;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setYear($year)
+    public function setReleaseDate(\DateTime $releaseDate)
     {
-        $this->year = $year;
+        $this->releaseDate = $releaseDate;
 
         return $this;
     }
