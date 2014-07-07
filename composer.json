@@ -25,8 +25,8 @@
         "jms/serializer-bundle": "0.13.x",
         "nelmio/api-doc-bundle": "2.5.x",
         "stof/doctrine-extensions-bundle": "1.1.x",
-        "jjs/common": "dev-master",
-        "jjs/geonames-bundle": "dev-master"
+        "jjs/common": "*@dev",
+        "jjs/geonames-bundle": "*@dev"
     },
     "require-dev": {
         "behat/behat": "v3.0.9",
