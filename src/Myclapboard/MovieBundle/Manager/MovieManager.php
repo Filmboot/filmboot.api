@@ -84,22 +84,22 @@ class MovieManager
     public function findAll($order, $query = "", $count = 10, $page = 0)
     {
         $order = 'm.' . $order;
-        $whereSql = " 1=1 ";
+        $whereSql = ' 1=1 ';
         $parameters = array();
 
-        if ($query != "") {
-            $whereSql .= "AND m.title LIKE :title ";
+        if ($query !== '') {
+            $whereSql .= 'AND m.title LIKE :title ';
             $parameters['title'] = '%' . $query . '%';
         }
 
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g'))
+        $query = $queryBuilder->select(array('m', 'c', /* 'ca', 'd', 'w', 'g' */))
             ->leftJoin('m.country', 'c')
-            ->leftJoin('m.cast', 'ca')
-            ->leftJoin('m.directors', 'd')
-            ->leftJoin('m.writers', 'w')
-            ->leftJoin('m.genres', 'g')
+//            ->leftJoin('m.cast', 'ca')
+//            ->leftJoin('m.directors', 'd')
+//            ->leftJoin('m.writers', 'w')
+//            ->leftJoin('m.genres', 'g')
             ->where($whereSql)
             ->setParameters($parameters)
             ->setMaxResults($count)
