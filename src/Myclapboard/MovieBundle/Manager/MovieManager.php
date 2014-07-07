@@ -114,4 +114,26 @@ class MovieManager
             )
             ->getResult();
     }
+
+    public function findOneById($id)
+    {
+        $queryBuilder = $this->repository->createQueryBuilder('m');
+
+        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g'))
+            ->leftJoin('m.country', 'c')
+            ->leftJoin('m.cast', 'ca')
+            ->leftJoin('m.directors', 'd')
+            ->leftJoin('m.writers', 'w')
+            ->leftJoin('m.genres', 'g')
+            ->where($queryBuilder->expr()->eq('m.id', ':id'))
+            ->setParameter(':id', $id)
+            ->getQuery();
+
+        return $query
+            ->setHint(
+                \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getOneOrNullResult();
+    }
 }

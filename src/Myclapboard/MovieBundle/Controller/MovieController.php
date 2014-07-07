@@ -14,6 +14,7 @@ use Myclapboard\CoreBundle\Controller\BaseApiController;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class MovieController extends BaseApiController
 {
@@ -28,7 +29,8 @@ class MovieController extends BaseApiController
      * @QueryParam(name="page", requirements="\d+", default="0", description="Offset in pages")
      *
      * @ApiDoc(
-     *  description = "Returns all the movies, it admits ordering, filter, count and pagination"
+     *  description = "Returns all the movies, it admits ordering, filter, count and pagination",
+     *  output = "array<\Myclapboard|MovieBundle\Entity\Movie>"
      * )
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -44,5 +46,33 @@ class MovieController extends BaseApiController
             );
 
         return $this->handleView($this->createView($movies, array('movie')));
+    }
+
+    /**
+     * Returns movie for given id
+     *
+     * @param string $id The id of movie
+     *
+     * @ApiDoc(
+     *  description = "Returns movie for given id",
+     *  output = "\Myclapboard|MovieBundle\Entity\Movie",
+     *  statusCodes = {
+     *      404 = "Does not exist any movie with <$id> id"
+     *  }
+     * )
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getMovieAction($id)
+    {
+        $movie = $this->get('myclapboard_movie.manager.movie')->findOneById($id);
+
+        if ($movie === null) {
+            throw new NotFoundHttpException('Does not exist any movie with ' . $id . ' id');
+        }
+
+        return $this->handleView($this->createView($movie, array('movie')));
     }
 }

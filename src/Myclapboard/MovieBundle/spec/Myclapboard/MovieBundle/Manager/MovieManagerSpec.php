@@ -14,6 +14,7 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
@@ -50,7 +51,7 @@ class MovieManagerSpec extends ObjectBehavior
         $repository->findOneBy(array('title' => 'movie-title'))
             ->shouldBeCalled()->willReturn($movie);
 
-        $this->findOneByTitle('movie-title');
+        $this->findOneByTitle('movie-title')->shouldReturn($movie);
     }
 
     function it_finds_all_with_defaults_values(
@@ -117,5 +118,39 @@ class MovieManagerSpec extends ObjectBehavior
         $query->getResult()->shouldBeCalled()->willReturn($movie);
 
         $this->findAll('country', 'dj');
+    }
+
+    function it_finds_one_by_id(
+        EntityRepository $repository,
+        QueryBuilder $queryBuilder,
+        AbstractQuery $query,
+        MovieInterface $movie,
+        Expr $expr,
+        Expr\Comparison $comparison
+    )
+    {
+        $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
+
+        $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g'))
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.cast', 'ca')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.directors', 'd')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.writers', 'w')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.genres', 'g')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->expr()->shouldBeCalled()->willReturn($expr);
+        $expr->eq('m.id', ':id')->shouldBeCalled()->willReturn($comparison);
+        $queryBuilder->where($comparison)->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->setParameter(':id', 'movie-id')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->getQuery()->shouldBeCalled()->willReturn($query);
+        $query
+            ->setHint(
+                \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->shouldBeCalled()->willReturn($query);
+        $query->getOneOrNullResult()->shouldBeCalled()->willReturn($movie);
+
+        $this->findOneById('movie-id')->shouldReturn($movie);
     }
 }
