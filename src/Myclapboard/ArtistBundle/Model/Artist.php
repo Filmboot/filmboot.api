@@ -11,6 +11,7 @@
 namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
@@ -152,7 +153,7 @@ class Artist implements ArtistInterface
     /**
      * {@inheritdoc}
      */
-    public function setBirthplace($birthplace)
+    public function setBirthplace(City $birthplace)
     {
         $this->birthplace = $birthplace;
 

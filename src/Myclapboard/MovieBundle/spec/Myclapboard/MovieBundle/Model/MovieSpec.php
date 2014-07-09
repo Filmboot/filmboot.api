@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\MovieBundle\Model;
 
+use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
@@ -61,10 +62,10 @@ class MovieSpec extends ObjectBehavior
         $this->getReleaseDate()->shouldReturn($releaseDate);
     }
 
-    function its_country_is_mutable()
+    function its_country_is_mutable(Country $country)
     {
-        $this->setCountry('Santurtzi')->shouldReturn($this);
-        $this->getCountry()->shouldReturn('Santurtzi');
+        $this->setCountry($country)->shouldReturn($this);
+        $this->getCountry()->shouldReturn($country);
     }
 
     function its_storyline_is_mutable()

@@ -13,6 +13,7 @@ namespace spec\Myclapboard\MovieBundle\Command;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
@@ -27,7 +28,6 @@ use Myclapboard\MovieBundle\Manager\GenreManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use Myclapboard\MovieBundle\Model\GenreInterface;
 use Myclapboard\MovieBundle\Model\MovieInterface;
-use JJs\Bundle\GeonamesBundle\Entity\City;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -65,7 +65,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         MovieManager $movieManager,
         MovieInterface $movie,
         ObjectRepository $cityRepository,
-        City $country,
+        Country $country,
         ArtistManager $artistManager,
         ArtistInterface $artist,
         ActorManager $actorManager,
@@ -154,7 +154,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $image->getFixturePath('movies')
             ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/movies/');
         $image->getAbsolutePath()
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images');
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
 
         $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
         $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);

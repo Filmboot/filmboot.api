@@ -11,6 +11,7 @@
 namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
@@ -139,7 +140,7 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function setCountry($country)
+    public function setCountry(Country $country)
     {
         $this->country = $country;
 

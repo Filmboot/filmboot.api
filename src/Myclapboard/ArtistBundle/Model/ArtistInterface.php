@@ -10,6 +10,7 @@
 
 namespace Myclapboard\ArtistBundle\Model;
 
+use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
@@ -95,18 +96,18 @@ interface ArtistInterface
     /**
      * Gets birthplace.
      *
-     * @return string
+     * @return \JJs\Bundle\GeonamesBundle\Entity\City
      */
     public function getBirthplace();
 
     /**
      * Sets birthplace.
      *
-     * @param string $birthplace The birthplace
+     * @param \JJs\Bundle\GeonamesBundle\Entity\City $birthplace The birthplace
      *
      * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
      */
-    public function setBirthplace($birthplace);
+    public function setBirthplace(City $birthplace);
 
     /**
      * Gets biography.

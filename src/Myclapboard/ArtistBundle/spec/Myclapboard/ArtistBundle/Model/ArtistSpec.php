@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\ArtistBundle\Model;
 
+use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
@@ -78,10 +79,10 @@ class ArtistSpec extends ObjectBehavior
         $this->getBirthday()->shouldReturn($birthday);
     }
 
-    function its_birthplace_is_mutable()
+    function its_birthplace_is_mutable(City $birthplace)
     {
-        $this->setBirthplace('Los Ángeles, California, USA')->shouldReturn($this);
-        $this->getBirthplace()->shouldReturn('Los Ángeles, California, USA');
+        $this->setBirthplace($birthplace)->shouldReturn($this);
+        $this->getBirthplace()->shouldReturn($birthplace);
     }
 
     function its_biography_is_mutable()

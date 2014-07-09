@@ -10,6 +10,7 @@
 
 namespace Myclapboard\MovieBundle\Model;
 
+use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
@@ -81,18 +82,18 @@ interface MovieInterface
     /**
      * Gets country.
      *
-     * @return string
+     * @return \JJs\Bundle\GeonamesBundle\Entity\Country
      */
     public function getCountry();
 
     /**
      * Sets country.
      *
-     * @param string $country The name of the country
+     * @param \JJs\Bundle\GeonamesBundle\Entity\Country $country The code of the country
      *
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
-    public function setCountry($country);
+    public function setCountry(Country $country);
 
     /**
      * Gets storyline.
@@ -216,7 +217,6 @@ interface MovieInterface
      * @return array<\Myclapboard\ArtistBundle\Entity\Writer>
      */
     public function getWriters();
-
 
     /**
      * Adds genre.

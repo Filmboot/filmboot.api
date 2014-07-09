@@ -96,7 +96,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $image->getFixturePath('artists')
             ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/artists/');
         $image->getAbsolutePath()
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images');
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
         
         $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
         $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
