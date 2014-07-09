@@ -1,5 +1,5 @@
 {
-    "name": "myClapboard/myclapboard.api",
+    "name": "my-clapboard/myclapboard.api",
     "description": "The api of myClapboard, social network that geared to film and television",
     "keywords": ["film", "social network", "api", "symfony"],
     "type": "project",
@@ -36,7 +36,9 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.x-dev",
         "phpspec/phpspec": "2.1.x-dev",
         "henrikbjorn/phpspec-code-coverage": "1.0.x-dev",
-        "satooshi/php-coveralls": "0.6"
+        "satooshi/php-coveralls": "0.6",
+        "squizlabs/php_codesniffer": "1.*",
+        "phpmd/phpmd": "dev-master"
     },
     "autoload": {
         "psr-0": { "": "src/" }
