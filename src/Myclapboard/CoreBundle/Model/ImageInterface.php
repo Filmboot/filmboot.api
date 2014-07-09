@@ -15,14 +15,7 @@ use Myclapboard\MovieBundle\Model\MovieInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface ImageInterface
-{
-    /**
-     * Gets id.
-     * 
-     * @return string
-     */
-    public function getId();
-    
+{   
     /**
      * Gets name.
      *

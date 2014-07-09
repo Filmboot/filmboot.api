@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
 
@@ -47,6 +48,8 @@ class Movie implements MovieInterface
     protected $writers;
 
     protected $genres;
+    
+    protected $images;
 
     protected $translations;
 
@@ -59,6 +62,7 @@ class Movie implements MovieInterface
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -307,6 +311,34 @@ class Movie implements MovieInterface
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addImage(ImageInterface $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeImage(ImageInterface $image)
+    {
+        $this->images->removeElement($image);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**

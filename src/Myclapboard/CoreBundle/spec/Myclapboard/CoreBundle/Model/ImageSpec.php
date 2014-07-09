@@ -26,11 +26,6 @@ class ImageSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\CoreBundle\Model\ImageInterface');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
     function its_name_is_mutable()
     {
         $this->setName('image-name')->shouldReturn($this);

@@ -52,6 +52,8 @@ doctrine:
             
             Myclapboard\AwardBundle\Model\AwardInterface: Myclapboard\AwardBundle\Entity\Award
             Myclapboard\AwardBundle\Model\CategoryInterface: Myclapboard\AwardBundle\Entity\Category
+            
+            Myclapboard\CoreBundle\Model\ImageInterface: Myclapboard\CoreBundle\Entity\Image
 
             Myclapboard\MovieBundle\Model\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
             Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie

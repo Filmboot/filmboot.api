@@ -13,6 +13,7 @@ namespace spec\Myclapboard\MovieBundle\Model;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Model\GenreInterface;
 use PhpSpec\ObjectBehavior;
@@ -140,6 +141,19 @@ class MovieSpec extends ObjectBehavior
         $this->removeGenre($genre);
 
         $this->getGenres()->shouldHaveCount(0);
+    }
+
+    function its_images_be_mutable(ImageInterface $image)
+    {
+        $this->getImages()->shouldHaveCount(0);
+
+        $this->addImage($image);
+
+        $this->getImages()->shouldHaveCount(1);
+
+        $this->removeImage($image);
+
+        $this->getImages()->shouldHaveCount(0);
     }
 
     function its_title_translations_be_mutable()

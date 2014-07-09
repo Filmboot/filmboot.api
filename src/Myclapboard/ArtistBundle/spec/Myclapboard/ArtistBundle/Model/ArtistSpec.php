@@ -14,6 +14,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -130,6 +131,19 @@ class ArtistSpec extends ObjectBehavior
         $this->removeWriter($writer);
 
         $this->getWriters()->shouldHaveCount(0);
+    }
+
+    function its_images_be_mutable(ImageInterface $image)
+    {
+        $this->getImages()->shouldHaveCount(0);
+
+        $this->addImage($image);
+
+        $this->getImages()->shouldHaveCount(1);
+
+        $this->removeImage($image);
+
+        $this->getImages()->shouldHaveCount(0);
     }
 
     function its_biography_translation_be_mutable()

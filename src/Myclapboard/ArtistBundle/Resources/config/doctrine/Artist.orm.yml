@@ -36,6 +36,10 @@ Myclapboard\ArtistBundle\Entity\Artist:
         writers:
             targetEntity: Myclapboard\ArtistBundle\Entity\Writer
             mappedBy: artist
+        images:
+            targetEntity: Myclapboard\CoreBundle\Model\ImageInterface
+            mappedBy: artist
+            cascade: ["persist", "remove"]
         translations:
             targetEntity: Myclapboard\ArtistBundle\Entity\ArtistTranslation
             mappedBy: object

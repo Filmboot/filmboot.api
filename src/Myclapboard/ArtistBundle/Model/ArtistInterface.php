@@ -14,6 +14,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 
 /**
  * Interface ArtistInterface.
@@ -197,6 +198,31 @@ interface ArtistInterface
      * @return array<\Myclapboard\ArtistBundle\Entity\Writer>
      */
     public function getWriters();
+
+    /**
+     * Adds images.
+     *
+     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     *
+     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     */
+    public function addImage(ImageInterface $image);
+
+    /**
+     * Removes image.
+     *
+     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     *
+     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     */
+    public function removeImage(ImageInterface $image);
+
+    /**
+     * Gets image.
+     *
+     * @return array<\Myclapboard\CoreBundle\Model\ImageInterface>
+     */
+    public function getImages();
 
     /**
      * Gets array of translations.

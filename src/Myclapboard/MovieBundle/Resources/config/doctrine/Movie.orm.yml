@@ -52,6 +52,10 @@ Myclapboard\MovieBundle\Entity\Movie:
                 name: movie_id
                 referencedColumnName: id
                 onDelete: cascade
+        images:
+            targetEntity: Myclapboard\CoreBundle\Model\ImageInterface
+            mappedBy: movie
+            cascade: ["persist", "remove"]
         translations:
             targetEntity: Myclapboard\MovieBundle\Entity\MovieTranslation
             mappedBy: object

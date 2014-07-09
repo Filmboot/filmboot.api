@@ -13,6 +13,7 @@ namespace Myclapboard\MovieBundle\Model;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 
 /**
@@ -242,6 +243,30 @@ interface MovieInterface
      */
     public function getGenres();
 
+    /**
+     * Adds images.
+     *
+     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function addImage(ImageInterface $image);
+
+    /**
+     * Removes image.
+     *
+     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function removeImage(ImageInterface $image);
+
+    /**
+     * Gets image.
+     *
+     * @return array<\Myclapboard\CoreBundle\Model\ImageInterface>
+     */
+    public function getImages();
 
     /**
      * Gets array of translations.

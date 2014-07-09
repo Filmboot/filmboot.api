@@ -15,6 +15,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -37,13 +38,15 @@ class Artist implements ArtistInterface
     protected $birthplace;
 
     protected $biography;
-    
+
     protected $actors;
-    
+
     protected $directors;
-    
+
     protected $writers;
-    
+
+    protected $images;
+
     protected $translations;
 
     /**
@@ -54,6 +57,7 @@ class Artist implements ArtistInterface
         $this->actors = new ArrayCollection();
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -255,6 +259,34 @@ class Artist implements ArtistInterface
     public function getWriters()
     {
         return $this->writers;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addImage(ImageInterface $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeImage(ImageInterface $image)
+    {
+        $this->images->removeElement($image);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**

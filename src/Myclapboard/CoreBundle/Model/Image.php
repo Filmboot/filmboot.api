@@ -21,8 +21,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Image implements ImageInterface
 {
-    protected $id;
-
     protected $name;
 
     protected $file;
@@ -36,11 +34,6 @@ class Image implements ImageInterface
      */
     public function __construct()
     {
-    }
-    
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
