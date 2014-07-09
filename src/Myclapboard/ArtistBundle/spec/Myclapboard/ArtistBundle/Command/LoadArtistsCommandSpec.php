@@ -16,6 +16,8 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use Myclapboard\ArtistBundle\Manager\ArtistManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
 use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\CoreBundle\Manager\ImageManager;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -53,7 +55,9 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         ArtistManager $artistManager,
         ArtistInterface $artist,
         ObjectRepository $cityRepository,
-        City $birthplace
+        City $birthplace,
+        ImageManager $imageManager,
+        ImageInterface $image
     )
     {
         $output->writeln("Loading artists")->shouldBeCalled();
@@ -82,6 +86,23 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $artist->setBirthplace($birthplace)->shouldBeCalled()->willReturn($artist);
         $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
+        
+        $container->get('myclapboard_core.manager.image')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+        
+        $artist->getSlug()->shouldBeCalled()->willReturn('alex-de-la-iglesia');
+
+        $image->getFixturePath('artists')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/artists/');
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images');
+        
+        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setArtist($artist)->shouldBeCalled()->willReturn($image);
+        
+        $manager->persist($image)->shouldBeCalled();
 
         $manager->persist($artist)->shouldBeCalled();
 

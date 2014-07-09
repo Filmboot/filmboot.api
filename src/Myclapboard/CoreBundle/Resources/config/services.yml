@@ -1,7 +1,7 @@
 parameters:
-#    myclapboard_core.example.class: Myclapboard\CoreBundle\Example
+    myclapboard_core.image.class: Myclapboard\CoreBundle\Entity\Image
 
 services:
-#    myclapboard_core.example:
-#        class: %myclapboard_core.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    # Managers
+    myclapboard_core.manager.image:
+        class: Myclapboard\CoreBundle\Manager\ImageManager

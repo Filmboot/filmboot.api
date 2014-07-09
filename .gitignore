@@ -6,6 +6,8 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+web/uploads/images/*
+!web/uploads/images/.gitkeep
 /vendor/
 /bin/
 /composer.phar

@@ -37,7 +37,7 @@ class DirectorManagerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\ArtistBundle\Manager\DirectorManager');
     }
 
-    function it_creates_knowledge()
+    function it_creates_director()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Director');
     }

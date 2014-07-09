@@ -37,7 +37,7 @@ class ActorManagerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\ArtistBundle\Manager\ActorManager');
     }
 
-    function it_creates_knowledge()
+    function it_creates_actor()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Actor');
     }

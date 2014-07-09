@@ -1,0 +1,19 @@
+Myclapboard\CoreBundle\Entity\Image:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID    
+    fields:
+        name:
+            type: string
+            length: 100
+            column: image
+    manyToOne:
+        movie:
+            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+        artist:
+            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+    lifecycleCallbacks:
+        postRemove: [removeUpload]

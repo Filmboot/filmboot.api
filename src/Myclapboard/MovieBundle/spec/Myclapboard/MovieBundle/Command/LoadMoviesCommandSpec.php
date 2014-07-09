@@ -21,6 +21,8 @@ use Myclapboard\ArtistBundle\Manager\ArtistManager;
 use Myclapboard\ArtistBundle\Manager\DirectorManager;
 use Myclapboard\ArtistBundle\Manager\WriterManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\CoreBundle\Manager\ImageManager;
+use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Manager\GenreManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use Myclapboard\MovieBundle\Model\GenreInterface;
@@ -73,7 +75,9 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         Director $director,
         Writer $writer,
         GenreManager $genreManager,
-        GenreInterface $genre
+        GenreInterface $genre,
+        ImageManager $imageManager,
+        ImageInterface $image
     )
     {
         $output->writeln("Loading movies")->shouldBeCalled();
@@ -140,6 +144,23 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $genreManager->findOneByName(Argument::any())
             ->shouldBeCalled()->willReturn($genre);
         $movie->addGenre($genre)->shouldBeCalled()->willReturn($movie);
+
+        $container->get('myclapboard_core.manager.image')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+
+        $movie->getSlug()->shouldBeCalled()->willReturn('reservoir-dogs');
+
+        $image->getFixturePath('movies')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/movies/');
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images');
+
+        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setMovie($movie)->shouldBeCalled()->willReturn($image);
+
+        $manager->persist($image)->shouldBeCalled();
 
         $manager->persist($movie)->shouldBeCalled();
 

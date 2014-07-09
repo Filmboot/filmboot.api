@@ -38,7 +38,7 @@ class ArtistManagerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\ArtistBundle\Manager\ArtistManager');
     }
 
-    function it_creates_knowledge()
+    function it_creates_artist()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Artist');
     }

@@ -37,7 +37,7 @@ class WriterManagerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\ArtistBundle\Manager\WriterManager');
     }
 
-    function it_creates_knowledge()
+    function it_creates_director()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Writer');
     }

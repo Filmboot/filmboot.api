@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -79,9 +80,26 @@ class LoadArtistsCommand extends ContainerAwareCommand
                 $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);
                 $artist->addTranslation($translation);
             }
+            $this->addImage($artist, $manager);
+
             $manager->persist($artist);
         }
 
         $manager->flush();
+    }
+
+    private function addImage($artist, $manager)
+    {
+        $image = $this->getContainer()->get('myclapboard_core.manager.image')->create();
+
+        $fileName = $artist->getSlug() . '-' . uniqid() . '.jpg';
+
+        copy($image->getFixturePath('artists') . $artist->getSlug() . '.jpg', $image->getAbsolutePath() . $fileName);
+        $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
+
+        $image->setName($fileName);
+        $image->setFile($file);
+        $image->setArtist($artist);
+        $manager->persist($image);
     }
 }

@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -80,7 +81,6 @@ class LoadMoviesCommand extends ContainerAwareCommand
             $movie->setStoryline($values['storyline']['en']);
             $this->addTranslation($movie, $values, 'storyline');
 
-
             $movie->setProducer($values['producer']);
 
             $this->addArtists($movie, $values['cast'], 'addActor', 'actor');
@@ -92,6 +92,8 @@ class LoadMoviesCommand extends ContainerAwareCommand
                     ->findOneByName(array('name' => $nameOfGenre));
                 $movie->addGenre($genre);
             }
+            
+            $this->addImage($movie, $manager);
 
             $manager->persist($movie);
         }
@@ -99,13 +101,14 @@ class LoadMoviesCommand extends ContainerAwareCommand
         $manager->flush();
     }
 
+
     /**
      * Finds artist and creates the role with the role given, adding this role into movie object.
      *
      * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie  The movie object
-     * @param array                                     $array  The values of yaml file
-     * @param string                                    $method The name of the function
-     * @param string                                    $class  The class
+     * @param array                                         $array  The values of yaml file
+     * @param string                                        $method The name of the function
+     * @param string                                        $class  The class
      *
      * @return void
      */
@@ -132,8 +135,8 @@ class LoadMoviesCommand extends ContainerAwareCommand
      * Adds translations into Movie with the field given.
      *
      * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
-     * @param array                                     $array The values of yaml file
-     * @param string                                    $field The name of field which is translatable
+     * @param array                                         $array The values of yaml file
+     * @param string                                        $field The name of field which is translatable
      *
      * @return void
      */
@@ -143,5 +146,20 @@ class LoadMoviesCommand extends ContainerAwareCommand
             $translation = new MovieTranslation('es', $field, $array[$field]['es']);
             $movie->addTranslation($translation);
         }
+    }
+
+    private function addImage($movie, $manager)
+    {
+        $image = $this->getContainer()->get('myclapboard_core.manager.image')->create();
+
+        $fileName = $movie->getSlug() . '-' . uniqid() . '.jpg';
+
+        copy($image->getFixturePath('movies') . $movie->getSlug() . '.jpg', $image->getAbsolutePath() . $fileName);
+        $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
+
+        $image->setName($fileName);
+        $image->setFile($file);
+        $image->setMovie($movie);
+        $manager->persist($image);
     }
 }
