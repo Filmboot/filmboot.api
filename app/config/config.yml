@@ -57,6 +57,8 @@ doctrine:
 
             Myclapboard\MovieBundle\Model\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
             Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
+            
+            Myclapboard\UserBundle\Model\UserInterface: Myclapboard\UserBundle\Entity\User
 
 swiftmailer:
     transport: "%mailer_transport%"

@@ -1,0 +1,57 @@
+Myclapboard\UserBundle\Entity\User:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        email:
+            type: string
+            length: 60
+        firstName:
+            type: string
+            length: 100
+            nullable: true
+        lastName:
+            type: string
+            length: 100
+            nullable: true
+        password:
+            type: string
+            length: 100
+        salt:
+            type: string
+            length: 50
+        mobile:
+            type: string
+            length: 20
+            nullable: true
+        phone:
+            type: string
+            length: 20
+            nullable: true
+        birthday:
+            type: datetime
+            nullable: true
+        gender:
+            type: GenderEnum
+            nullable: true
+        role:
+            type: string
+            length: 20
+        locale:
+            type: string
+            length: 6
+        createdAt:
+            type: datetime
+        lastLogin:
+            type: datetime
+            nullable: true
+        activated:
+            type: boolean
+        cookiesAccepted:
+            type: boolean
+    manyToOne:
+        location:
+            targetEntity: JJs\Bundle\GeonamesBundle\Entity\City

@@ -12,6 +12,9 @@ security:
                 users:
                     user:  { password: %userpass%, roles: [ 'ROLE_USER' ] }
                     admin: { password: %adminpass%, roles: [ 'ROLE_ADMIN' ] }
+    
+    encoders:
+        Myclapboard\UserBundle\Entity\User: { algorithm: sha512, iterations: 10 }
 
     firewalls:
         dev:

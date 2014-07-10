@@ -11,6 +11,9 @@ suites:
     MovieBundle:
         namespace: Myclapboard
         spec_path: src/Myclapboard/MovieBundle
+    UserBundle:
+        namespace: Myclapboard
+        spec_path: src/Myclapboard/UserBundle
 
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension

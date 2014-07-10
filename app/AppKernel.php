@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Myclapboard\AwardBundle\MyclapboardAwardBundle(),
             new Myclapboard\CoreBundle\MyclapboardCoreBundle(),
             new Myclapboard\MovieBundle\MyclapboardMovieBundle(),
+            new Myclapboard\UserBundle\MyclapboardUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
