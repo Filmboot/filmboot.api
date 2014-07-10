@@ -10,7 +10,7 @@
 
 namespace Myclapboard\AwardBundle\Type;
 
-use Myclapboard\MovieBundle\Type\BaseEnumType;
+use Myclapboard\CoreBundle\Type\BaseEnumType;
 
 /**
  * Class RoleEnumType.

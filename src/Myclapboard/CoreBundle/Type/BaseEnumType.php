@@ -8,7 +8,7 @@
  * with all information about license.
  */
 
-namespace Myclapboard\MovieBundle\Type;
+namespace Myclapboard\CoreBundle\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -16,7 +16,7 @@ use Doctrine\DBAL\Types\Type;
 /**
  * Class BaseEnumType.
  *
- * @package Myclapboard\MovieBundle\Type
+ * @package Myclapboard\CoreBundle\Type
  */
 abstract class BaseEnumType extends Type
 {
