@@ -68,6 +68,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, Containe
     private function createUsers(ObjectManager $manager, $name = 'user', $role = 'ROLE_USER', $activated = false)
     {
         $locations = $manager->getRepository('JJsGeonamesBundle:City')->findAll();
+        $genders = array('female', 'male');
 
         for ($i = 0; $i < 10; $i++) {
             $user = $this->container->get('myclapboard_user.manager.user')->create();
@@ -85,7 +86,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, Containe
             $user->setPhone('999999999');
             $user->setLocation($locations[array_rand($locations)]);
             $user->setBirthday(new \DateTime('198' . $i . '-0' . $i . '-1' . $i));
-            $user->setGender(array('female', 'male')[array_rand(array('female', 'male'))]);
+            $user->setGender($genders[array_rand($genders)]);
             $user->setRole($role);
             $user->setActivated($activated);
 
