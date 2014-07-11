@@ -1,5 +1,6 @@
-Myclapboard\CoreBundle\Entity\Image:
+Myclapboard\MovieBundle\Entity\Image:
     type: entity
+    table: MovieImage
     id:
         name:
             type: string
@@ -7,7 +8,5 @@ Myclapboard\CoreBundle\Entity\Image:
     manyToOne:
         movie:
             targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
-        artist:
-            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
     lifecycleCallbacks:
         postRemove: [removeUpload]

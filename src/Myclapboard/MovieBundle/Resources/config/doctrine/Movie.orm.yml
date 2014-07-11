@@ -27,6 +27,10 @@ Myclapboard\MovieBundle\Entity\Movie:
             type: string
             length: 100
             nullable: true
+        poster:
+            type: string
+            length: 100
+            nullable: true
     oneToMany:
         cast:
             targetEntity: Myclapboard\ArtistBundle\Entity\Actor
@@ -53,7 +57,7 @@ Myclapboard\MovieBundle\Entity\Movie:
                 referencedColumnName: id
                 onDelete: cascade
         images:
-            targetEntity: Myclapboard\CoreBundle\Model\ImageInterface
+            targetEntity: Myclapboard\MovieBundle\Model\ImageInterface
             mappedBy: movie
             cascade: ["persist", "remove"]
         translations:

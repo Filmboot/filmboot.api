@@ -14,7 +14,7 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
+use Myclapboard\MovieBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Model\GenreInterface;
 use PhpSpec\ObjectBehavior;
@@ -90,6 +90,12 @@ class MovieSpec extends ObjectBehavior
         $this->getTitle()->shouldReturn('Pulp fiction');
 
         $this->__toString()->shouldReturn('Pulp fiction');
+    }
+
+    function its_poster_is_mutable()
+    {
+        $this->setPoster('pulp-fiction.jpg')->shouldReturn($this);
+        $this->getPoster()->shouldReturn('pulp-fiction.jpg');
     }
 
     function its_actors_be_mutable(Actor $actor)

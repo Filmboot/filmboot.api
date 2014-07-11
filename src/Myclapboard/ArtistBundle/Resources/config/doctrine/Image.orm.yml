@@ -1,0 +1,12 @@
+Myclapboard\ArtistBundle\Entity\Image:
+    type: entity
+    table: ArtistImage
+    id:
+        name:
+            type: string
+            length: 100
+    manyToOne:
+        artist:
+            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+    lifecycleCallbacks:
+        postRemove: [removeUpload]

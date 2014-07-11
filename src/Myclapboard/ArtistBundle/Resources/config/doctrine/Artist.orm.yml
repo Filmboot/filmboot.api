@@ -26,6 +26,10 @@ Myclapboard\ArtistBundle\Entity\Artist:
             nullable: true
             gedmo:
                 - translatable
+        photo:
+            type: string
+            length: 100
+            nullable: true
     oneToMany:
         actors:
             targetEntity: Myclapboard\ArtistBundle\Entity\Actor
@@ -37,7 +41,7 @@ Myclapboard\ArtistBundle\Entity\Artist:
             targetEntity: Myclapboard\ArtistBundle\Entity\Writer
             mappedBy: artist
         images:
-            targetEntity: Myclapboard\CoreBundle\Model\ImageInterface
+            targetEntity: Myclapboard\ArtistBundle\Model\ImageInterface
             mappedBy: artist
             cascade: ["persist", "remove"]
         translations:

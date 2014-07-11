@@ -15,7 +15,6 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
 
 /**
  * Interface ArtistInterface.
@@ -126,6 +125,22 @@ interface ArtistInterface
     public function setBiography($biography);
 
     /**
+     * Gets photo.
+     *
+     * @return string
+     */
+    public function getPhoto();
+
+    /**
+     * Sets photo.
+     *
+     * @param string $photo The photo
+     *
+     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     */
+    public function setPhoto($photo);
+
+    /**
      * Adds actor.
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
@@ -203,7 +218,7 @@ interface ArtistInterface
     /**
      * Adds images.
      *
-     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
      * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
      */
@@ -212,7 +227,7 @@ interface ArtistInterface
     /**
      * Removes image.
      *
-     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
      * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
      */
@@ -221,7 +236,7 @@ interface ArtistInterface
     /**
      * Gets image.
      *
-     * @return array<\Myclapboard\CoreBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
      */
     public function getImages();
 

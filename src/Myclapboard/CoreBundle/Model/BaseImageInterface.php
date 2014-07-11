@@ -10,12 +10,15 @@
 
 namespace Myclapboard\CoreBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-interface ImageInterface
-{   
+/**
+ * Interface BaseImageInterface,
+ *
+ * @package Myclapboard\CoreBundle\Model
+ */
+interface BaseImageInterface
+{
     /**
      * Gets name.
      *
@@ -47,38 +50,6 @@ interface ImageInterface
      * @return \Myclapboard\CoreBundle\Model\ImageInterface
      */
     public function setFile(UploadedFile $file = null);
-
-    /**
-     * Gets movie.
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function getMovie();
-
-    /**
-     * Sets movie.
-     *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
-     *
-     * @return \Myclapboard\CoreBundle\Model\ImageInterface
-     */
-    public function setMovie(MovieInterface $movie);
-
-    /**
-     * Gets artist.
-     *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
-     */
-    public function getArtist();
-
-    /**
-     * Sets artist.
-     *
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
-     *
-     * @return \Myclapboard\CoreBundle\Model\ImageInterface
-     */
-    public function setArtist(ArtistInterface $artist);
 
     /**
      * Uploads image creating a unique file name.

@@ -3,24 +3,29 @@ parameters:
     myclapboard_artist.class.artist: Myclapboard\ArtistBundle\Entity\Artist
     myclapboard_artist.class.director: Myclapboard\ArtistBundle\Entity\Director
     myclapboard_artist.class.writer: Myclapboard\ArtistBundle\Entity\Writer
+    myclapboard_artist.class.image: Myclapboard\ArtistBundle\Entity\Image
 
 services:
     # Managers
     myclapboard_artist.manager.actor:
         class: Myclapboard\ArtistBundle\Manager\ActorManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_artist.class.actor%']
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_artist.class.actor%']
     myclapboard_artist.manager.artist:
         class: Myclapboard\ArtistBundle\Manager\ArtistManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_artist.class.artist%']
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_artist.class.artist%']
     myclapboard_artist.manager.director:
         class: Myclapboard\ArtistBundle\Manager\DirectorManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_artist.class.director%']
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_artist.class.director%']
     myclapboard_artist.manager.writer:
         class: Myclapboard\ArtistBundle\Manager\WriterManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_artist.class.writer%']
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_artist.class.writer%']
+    myclapboard_artist.manager.image:
+        class: Myclapboard\ArtistBundle\Manager\ImageManager
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_artist.class.image%']
 
     # Commands
     myclapboard_artist.command_artists:
         class: Myclapboard\ArtistBundle\Command\LoadArtistsCommand
         calls:
-            - [setContainer, ["@service_container"] ]
+            - [setContainer, ['@service_container'] ]
+

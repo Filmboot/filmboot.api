@@ -1,0 +1,2 @@
+Myclapboard\CoreBundle\Entity\BaseImage:
+    type: mappedSuperclass

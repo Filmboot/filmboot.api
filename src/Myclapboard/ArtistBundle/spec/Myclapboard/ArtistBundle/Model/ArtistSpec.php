@@ -15,7 +15,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
+use Myclapboard\ArtistBundle\Model\ImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -93,6 +93,12 @@ class ArtistSpec extends ObjectBehavior
         $this->getBiography()->shouldReturn(
             'Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in eum liber hendrerit an.'
         );
+    }
+
+    function its_photo_is_mutable()
+    {
+        $this->setPhoto('quentin-tarantino.jpg')->shouldReturn($this);
+        $this->getPhoto()->shouldReturn('quentin-tarantino.jpg');
     }
 
     function its_actors_be_mutable(Actor $actor)

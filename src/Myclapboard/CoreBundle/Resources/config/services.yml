@@ -1,8 +1,8 @@
 parameters:
-    myclapboard_core.class.image: Myclapboard\CoreBundle\Entity\Image
+    myclapboard_core.class.baseImage: Myclapboard\CoreBundle\Entity\BaseImage
 
 services:
     # Managers
-    myclapboard_core.manager.image:
-        class: Myclapboard\CoreBundle\Manager\ImageManager
-        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_core.class.image%']
+    myclapboard_core.manager.baseImage:
+        class: Myclapboard\CoreBundle\Manager\BaseImageManager
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_core.class.baseImage%']

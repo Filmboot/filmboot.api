@@ -16,7 +16,6 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -39,6 +38,8 @@ class Artist implements ArtistInterface
     protected $birthplace;
 
     protected $biography;
+    
+    protected $photo;
 
     protected $actors;
 
@@ -174,6 +175,24 @@ class Artist implements ArtistInterface
     public function setBiography($biography)
     {
         $this->biography = $biography;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
 
         return $this;
     }

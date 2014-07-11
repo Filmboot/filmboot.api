@@ -13,11 +13,11 @@ namespace Myclapboard\CoreBundle\Manager;
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class ImageManager.
+ * Class BaseImageManager.
  *
- * @package Myclapboard\MovieBundle\Manager
+ * @package Myclapboard\CoreBundle\Manager
  */
-class ImageManager
+class BaseImageManager
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -50,7 +50,7 @@ class ImageManager
     /**
      * Returns a new instance of a class
      *
-     * @return \Myclapboard\CoreBundle\Entity\Image
+     * @return \Myclapboard\CoreBundle\Entity\BaseImage
      */
     public function create()
     {

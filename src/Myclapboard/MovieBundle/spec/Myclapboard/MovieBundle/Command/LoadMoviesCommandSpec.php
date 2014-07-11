@@ -22,8 +22,10 @@ use Myclapboard\ArtistBundle\Manager\ArtistManager;
 use Myclapboard\ArtistBundle\Manager\DirectorManager;
 use Myclapboard\ArtistBundle\Manager\WriterManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\CoreBundle\Manager\ImageManager;
-use Myclapboard\CoreBundle\Model\ImageInterface;
+use Myclapboard\CoreBundle\Manager\BaseImageManager;
+use Myclapboard\MovieBundle\Manager\ImageManager;
+use Myclapboard\CoreBundle\Model\BaseImageInterface;
+use Myclapboard\MovieBundle\Model\Image;
 use Myclapboard\MovieBundle\Manager\GenreManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use Myclapboard\MovieBundle\Model\GenreInterface;
@@ -76,8 +78,10 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         Writer $writer,
         GenreManager $genreManager,
         GenreInterface $genre,
+        BaseImageManager $baseImageManager,
+        BaseImageInterface $baseImage,
         ImageManager $imageManager,
-        ImageInterface $image
+        Image $image
     )
     {
         $output->writeln("Loading movies")->shouldBeCalled();
@@ -145,22 +149,20 @@ class LoadMoviesCommandSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($genre);
         $movie->addGenre($genre)->shouldBeCalled()->willReturn($movie);
 
-        $container->get('myclapboard_core.manager.image')
-            ->shouldBeCalled()->willReturn($imageManager);
-        $imageManager->create()->shouldBeCalled()->willReturn($image);
+        $this->addPoster(
+            $container,
+            $baseImageManager,
+            $baseImage,
+            $movie
+        );
 
-        $movie->getSlug()->shouldBeCalled()->willReturn('reservoir-dogs');
-
-        $image->getFixturePath('movies')
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/movies/');
-        $image->getAbsolutePath()
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
-
-        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
-        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
-        $image->setMovie($movie)->shouldBeCalled()->willReturn($image);
-
-        $manager->persist($image)->shouldBeCalled();
+        $this->addImage(
+            $container,
+            $imageManager,
+            $image,
+            $movie,
+            $manager
+        );
 
         $manager->persist($movie)->shouldBeCalled();
 
@@ -196,5 +198,53 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $role->setMovie($movie)->shouldBeCalled()->willReturn($role);
 
         $movie->$method($role)->shouldBeCalled()->willReturn($role);
+    }
+
+    private function addPoster(
+        ContainerInterface $container,
+        BaseImageManager $imageManager,
+        BaseImageInterface $image,
+        MovieInterface $movie
+    )
+    {
+        $container->get('myclapboard_core.manager.baseImage')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+
+        $movie->getSlug()->shouldBeCalled()->willReturn('django-unchained');
+
+        $image->getFixturePath('posters')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/posters/');
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
+
+        $movie->setPoster('django-unchained.jpg')->shouldBeCalled()->willReturn($movie);
+    }
+
+    private function addImage(
+        ContainerInterface $container,
+        ImageManager $imageManager,
+        Image $image,
+        MovieInterface $movie,
+        ObjectManager $manager
+    )
+    {
+        $container->get('myclapboard_movie.manager.image')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+
+        $image->getFixturePath('images/movies')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/movies/');
+
+        $movie->getSlug()->shouldBeCalled()->willReturn('django-unchained');
+
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
+
+        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setMovie($movie)->shouldBeCalled()->willReturn($image);
+
+        $manager->persist($image)->shouldBeCalled();
     }
 }

@@ -12,7 +12,6 @@ namespace spec\Myclapboard\MovieBundle\Controller;
 
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\View\ViewHandler;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -35,16 +34,15 @@ class MovieControllerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Controller\MovieController');
     }
 
-    function it_extends_base_api_controller()
+    function it_extends_fos_rest_controller()
     {
-        $this->shouldHaveType('Myclapboard\CoreBundle\Controller\BaseApiController');
+        $this->shouldHaveType('FOS\RestBundle\Controller\FOSRestController');
     }
 
     function it_gets_movies(
         ContainerInterface $container,
         MovieManager $movieManager,
-        ParamFetcher $paramFetcher,
-        ViewHandler $viewHandler
+        ParamFetcher $paramFetcher
     )
     {
         $container->get('myclapboard_movie.manager.movie')
@@ -56,9 +54,7 @@ class MovieControllerSpec extends ObjectBehavior
 
         $movieManager->findAll('title', 'query', 10, 1)->shouldBeCalled()->willReturn(array());
 
-        $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
-
-        $this->getMoviesAction($paramFetcher);
+        $this->getMoviesAction($paramFetcher)->shouldReturnAnInstanceOf('FOS\RestBundle\View\View');
     }
 
     function it_does_not_get_movie_for_given_id_because_it_does_not_exist(
@@ -78,8 +74,7 @@ class MovieControllerSpec extends ObjectBehavior
     function it_gets_movie_for_given_id(
         ContainerInterface $container,
         MovieManager $movieManager,
-        MovieInterface $movie,
-        ViewHandler $viewHandler
+        MovieInterface $movie
     )
     {
         $container->get('myclapboard_movie.manager.movie')
@@ -87,8 +82,6 @@ class MovieControllerSpec extends ObjectBehavior
         $movieManager->findOneById('movie-id')
             ->shouldBeCalled()->willReturn($movie);
 
-        $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
-
-        $this->getMovieAction('movie-id');
+        $this->getMovieAction('movie-id')->shouldReturnAnInstanceOf('FOS\RestBundle\View\View');
     }
 }

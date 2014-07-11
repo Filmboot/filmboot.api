@@ -10,13 +10,13 @@
 
 namespace Myclapboard\MovieBundle\Controller;
 
-use Myclapboard\CoreBundle\Controller\BaseApiController;
+use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class MovieController extends BaseApiController
+class MovieController extends FOSRestController
 {
     /**
      * Returns all the movies, it admits ordering, filter, count and pagination
@@ -39,7 +39,7 @@ class MovieController extends BaseApiController
      *  },
      * )
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \FOS\RestBundle\View\View
      */
     public function getMoviesAction(ParamFetcher $paramFetcher)
     {
@@ -69,13 +69,13 @@ class MovieController extends BaseApiController
      *    }
      *  },
      *  statusCodes = {
-     *      404 = "Does not exist any movie with <$id> id"
+     *    404 = "Does not exist any movie with <$id> id"
      *  }
      * )
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * 
+     * @return \FOS\RestBundle\View\View
      */
     public function getMovieAction($id)
     {

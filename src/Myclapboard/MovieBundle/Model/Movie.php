@@ -15,7 +15,6 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
 
@@ -41,6 +40,8 @@ class Movie implements MovieInterface
     protected $storyline;
 
     protected $producer;
+
+    protected $poster;
 
     protected $cast;
 
@@ -89,6 +90,25 @@ class Movie implements MovieInterface
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        $this->slug = Util::getSlug($title);
 
         return $this;
     }
@@ -182,22 +202,21 @@ class Movie implements MovieInterface
 
         return $this;
     }
-
+    
     /**
      * {@inheritdoc}
      */
-    public function getTitle()
+    public function getPoster()
     {
-        return $this->title;
+        return $this->poster;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setTitle($title)
+    public function setPoster($poster)
     {
-        $this->title = $title;
-        $this->slug = Util::getSlug($title);
+        $this->poster = $poster;
 
         return $this;
     }

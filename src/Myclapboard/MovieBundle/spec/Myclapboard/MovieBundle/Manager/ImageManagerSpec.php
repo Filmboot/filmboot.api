@@ -8,32 +8,37 @@
  * with all information about license.
  */
 
-namespace spec\Myclapboard\CoreBundle\Manager;
+namespace spec\Myclapboard\MovieBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use PhpSpec\ObjectBehavior;
 
+/**
+ * Class ImageManagerSpec.
+ *
+ * @package spec\Myclapboard\MovieBundle\Manager
+ */
 class ImageManagerSpec extends ObjectBehavior
 {
     function let(EntityManager $manager, EntityRepository $repository, ClassMetadata $metadata)
     {
-        $manager->getRepository('Myclapboard\CoreBundle\Entity\Image')
+        $manager->getRepository('Myclapboard\MovieBundle\Entity\Image')
             ->shouldBeCalled()->willReturn($repository);
-        $manager->getClassMetadata('Myclapboard\CoreBundle\Entity\Image')
+        $manager->getClassMetadata('Myclapboard\MovieBundle\Entity\Image')
             ->shouldBeCalled()->willReturn($metadata);
-        $metadata->name = 'Myclapboard\CoreBundle\Entity\Image';
-        $this->beConstructedWith($manager, 'Myclapboard\CoreBundle\Entity\Image');
+        $metadata->name = 'Myclapboard\MovieBundle\Entity\Image';
+        $this->beConstructedWith($manager, 'Myclapboard\MovieBundle\Entity\Image');
     }
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Myclapboard\CoreBundle\Manager\ImageManager');
+        $this->shouldHaveType('Myclapboard\MovieBundle\Manager\ImageManager');
     }
 
     function it_creates_image()
     {
-        $this->create()->shouldReturnAnInstanceOf('Myclapboard\CoreBundle\Entity\Image');
+        $this->create()->shouldReturnAnInstanceOf('Myclapboard\MovieBundle\Entity\Image');
     }
 }

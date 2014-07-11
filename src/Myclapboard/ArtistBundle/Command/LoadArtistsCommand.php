@@ -80,6 +80,8 @@ class LoadArtistsCommand extends ContainerAwareCommand
                 $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);
                 $artist->addTranslation($translation);
             }
+
+            $this->addPhoto($artist);
             $this->addImage($artist, $manager);
 
             $manager->persist($artist);
@@ -88,18 +90,51 @@ class LoadArtistsCommand extends ContainerAwareCommand
         $manager->flush();
     }
 
+    /**
+     * Adds the main photo into artist.
+     * 
+     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
+     *
+     * @return void
+     */
+    private function addPhoto($artist)
+    {
+        $photo = $this->getContainer()->get('myclapboard_core.manager.baseImage')->create();
+
+        $fileName = $artist->getSlug() . '.jpg';
+
+        copy($photo->getFixturePath('photos') . $fileName, $photo->getAbsolutePath() . $fileName);
+
+        $artist->setPhoto($fileName);
+
+    }
+
+    /**
+     * Create artist's image object with the path and artist's slug given, adding into database.
+     *
+     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist  The artist object
+     * @param \Doctrine\Common\Persistence\ObjectManager      $manager The manager
+     *
+     * @return void
+     */
     private function addImage($artist, $manager)
     {
-        $image = $this->getContainer()->get('myclapboard_core.manager.image')->create();
-
-        $fileName = $artist->getSlug() . '-' . uniqid() . '.jpg';
-
-        copy($image->getFixturePath('artists') . $artist->getSlug() . '.jpg', $image->getAbsolutePath() . $fileName);
-        $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
-
-        $image->setName($fileName);
-        $image->setFile($file);
-        $image->setArtist($artist);
-        $manager->persist($image);
+        for ($i = 1; $i > 0; $i++) {
+            $image = $this->getContainer()->get('myclapboard_artist.manager.image')->create();
+            $absolutePath = $image->getFixturePath('images/artists') . $artist->getSlug() . '-' . $i . '.jpg';
+            
+            if (file_exists($absolutePath)) {
+                $fileName = $artist->getSlug() . '-' . uniqid() . '.jpg';
+        
+                copy($absolutePath, $image->getAbsolutePath() . $fileName);
+                $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
+                $image->setName($fileName);
+                $image->setFile($file);
+                $image->setArtist($artist);
+                $manager->persist($image);
+            } else {
+                $i = -1;
+            }
+        }
     }
 }

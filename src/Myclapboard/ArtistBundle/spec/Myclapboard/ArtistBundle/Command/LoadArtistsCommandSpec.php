@@ -14,10 +14,12 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Myclapboard\ArtistBundle\Manager\ArtistManager;
+use Myclapboard\ArtistBundle\Manager\ImageManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
 use JJs\Bundle\GeonamesBundle\Entity\City;
-use Myclapboard\CoreBundle\Manager\ImageManager;
-use Myclapboard\CoreBundle\Model\ImageInterface;
+use Myclapboard\ArtistBundle\Model\Image;
+use Myclapboard\CoreBundle\Manager\BaseImageManager;
+use Myclapboard\CoreBundle\Model\BaseImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -56,8 +58,10 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         ArtistInterface $artist,
         ObjectRepository $cityRepository,
         City $birthplace,
+        BaseImageManager $baseImageManager,
+        BaseImageInterface $baseImage,
         ImageManager $imageManager,
-        ImageInterface $image
+        Image $image
     )
     {
         $output->writeln("Loading artists")->shouldBeCalled();
@@ -87,23 +91,21 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
         
-        $container->get('myclapboard_core.manager.image')
-            ->shouldBeCalled()->willReturn($imageManager);
-        $imageManager->create()->shouldBeCalled()->willReturn($image);
+        $this->addPhoto(
+            $container,
+            $baseImageManager,
+            $baseImage,
+            $artist
+        );
         
-        $artist->getSlug()->shouldBeCalled()->willReturn('alex-de-la-iglesia');
-
-        $image->getFixturePath('artists')
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/artists/');
-        $image->getAbsolutePath()
-            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
+        $this->addImage(
+            $container,
+            $imageManager,
+            $image,
+            $artist,
+            $manager
+        );
         
-        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
-        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
-        $image->setArtist($artist)->shouldBeCalled()->willReturn($image);
-        
-        $manager->persist($image)->shouldBeCalled();
-
         $manager->persist($artist)->shouldBeCalled();
 
         $manager->flush()->shouldBeCalled();
@@ -112,4 +114,52 @@ class LoadArtistsCommandSpec extends ObjectBehavior
 
         $this->run($input, $output);
     }
-} 
+
+    private function addPhoto(
+        ContainerInterface $container,
+        BaseImageManager $imageManager,
+        BaseImageInterface $image,
+        ArtistInterface $artist
+    )
+    {
+        $container->get('myclapboard_core.manager.baseImage')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+
+        $artist->getSlug()->shouldBeCalled()->willReturn('quentin-tarantino');
+
+        $image->getFixturePath('photos')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/photos/');
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
+
+        $artist->setPhoto('quentin-tarantino.jpg')->shouldBeCalled()->willReturn($artist);
+    }
+    
+    private function addImage(
+        ContainerInterface $container,
+        ImageManager $imageManager,
+        Image $image,
+        ArtistInterface $artist,
+        ObjectManager $manager
+    )
+    {
+        $container->get('myclapboard_artist.manager.image')
+            ->shouldBeCalled()->willReturn($imageManager);
+        $imageManager->create()->shouldBeCalled()->willReturn($image);
+
+        $image->getFixturePath('images/artists')
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/artists/');
+        
+        $artist->getSlug()->shouldBeCalled()->willReturn('quentin-tarantino');
+
+        $image->getAbsolutePath()
+            ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
+
+        $image->setName(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setFile(Argument::any())->shouldBeCalled()->willReturn($image);
+        $image->setArtist($artist)->shouldBeCalled()->willReturn($image);
+
+        $manager->persist($image)->shouldBeCalled();
+    }
+}

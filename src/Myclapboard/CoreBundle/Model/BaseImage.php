@@ -10,24 +10,18 @@
 
 namespace Myclapboard\CoreBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Class Image.
+ * Class BaseImage.
  *
  * @package Myclapboard\CoreBundle\Model
  */
-class Image implements ImageInterface
+class BaseImage implements BaseImageInterface
 {
     protected $name;
 
     protected $file;
-
-    protected $movie;
-
-    protected $artist;
 
     /**
      * Constructor.
@@ -73,42 +67,6 @@ class Image implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setMovie(MovieInterface $movie)
-    {
-        $this->movie = $movie;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getArtist()
-    {
-        return $this->artist;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setArtist(ArtistInterface $artist)
-    {
-        $this->artist = $artist;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function upload()
     {
         if (null === $this->getFile()) {
@@ -144,9 +102,9 @@ class Image implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getFixturePath($folder)
+    public function getFixturePath($path)
     {
-        return $this->getFixtureRootDir($folder) . '/';
+        return $this->getFixtureRootDir($path) . '/';
     }
 
     /**
@@ -168,16 +126,16 @@ class Image implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    protected function getFixtureRootDir($folder)
+    protected function getFixtureRootDir($path)
     {
-        return __DIR__ . '/../../../../app/' . $this->getFixtureDir($folder);
+        return __DIR__ . '/../../../../app/' . $this->getFixtureDir($path);
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function getFixtureDir($folder)
+    protected function getFixtureDir($path)
     {
-        return 'Resources/fixtures/images/' . $folder;
+        return 'Resources/fixtures/' . $path;
     }
-} 
+}

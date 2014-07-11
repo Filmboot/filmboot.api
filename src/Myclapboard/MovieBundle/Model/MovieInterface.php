@@ -14,7 +14,6 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\CoreBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 
 /**
@@ -46,6 +45,22 @@ interface MovieInterface
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
     public function setSlug($slug);
+
+    /**
+     * Gets title.
+     *
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * Sets title.
+     *
+     * @param string $title The title
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function setTitle($title);
 
     /**
      * Gets duration.
@@ -128,20 +143,20 @@ interface MovieInterface
     public function setProducer($producer);
 
     /**
-     * Gets title.
+     * Gets poster.
      *
      * @return string
      */
-    public function getTitle();
+    public function getPoster();
 
     /**
-     * Sets title.
+     * Sets poster.
      *
-     * @param string $title The title
+     * @param string $poster The poster
      *
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
-    public function setTitle($title);
+    public function setPoster($poster);
 
     /**
      * Adds actor.
@@ -246,7 +261,7 @@ interface MovieInterface
     /**
      * Adds images.
      *
-     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
      *
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
@@ -255,7 +270,7 @@ interface MovieInterface
     /**
      * Removes image.
      *
-     * @param \Myclapboard\CoreBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
      *
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
@@ -264,7 +279,7 @@ interface MovieInterface
     /**
      * Gets image.
      *
-     * @return array<\Myclapboard\CoreBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
      */
     public function getImages();
 

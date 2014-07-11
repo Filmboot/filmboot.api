@@ -10,38 +10,29 @@
 
 namespace spec\Myclapboard\CoreBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 
-class ImageSpec extends ObjectBehavior
+/**
+ * Class BaseImageSpec.
+ *
+ * @package spec\Myclapboard\CoreBundle\Model
+ */
+class BaseImageSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Myclapboard\CoreBundle\Model\Image');
+        $this->shouldHaveType('Myclapboard\CoreBundle\Model\BaseImage');
     }
 
-    function it_implements_image_interface()
+    function it_implements_base_image_interface()
     {
-        $this->shouldImplement('Myclapboard\CoreBundle\Model\ImageInterface');
+        $this->shouldImplement('Myclapboard\CoreBundle\Model\BaseImageInterface');
     }
 
     function its_name_is_mutable()
     {
         $this->setName('image-name')->shouldReturn($this);
         $this->getName()->shouldReturn('image-name');
-    }
-    
-    function its_movie_is_mutable(MovieInterface $movie)
-    {
-        $this->setMovie($movie)->shouldReturn($this);
-        $this->getMovie()->shouldReturn($movie);
-    }
-
-    function its_artist_is_mutable(ArtistInterface $artist)
-    {
-        $this->setArtist($artist)->shouldReturn($this);
-        $this->getArtist()->shouldReturn($artist);
     }
     
     function it_gets_absolute_path()

@@ -10,13 +10,13 @@
 
 namespace Myclapboard\CoreBundle\Entity;
 
-use Myclapboard\CoreBundle\Model\Image as BaseImage;
+use Myclapboard\CoreBundle\Model\BaseImage as BaseBaseImage;
 
 /**
- * Class Image.
+ * Class BaseImage.
  *
  * @package Myclapboard\CoreBundle\Entity
  */
-class Image extends BaseImage
+class BaseImage extends BaseBaseImage
 {
 } 
