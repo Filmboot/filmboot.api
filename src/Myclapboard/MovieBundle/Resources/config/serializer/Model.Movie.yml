@@ -3,40 +3,43 @@ Myclapboard\MovieBundle\Model\Movie:
     properties:
         id:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         slug:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         title:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         duration:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         releaseDate:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         country:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         storyline:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         producer:
             expose: true
             groups: [movie]
+        poster:
+            expose: true
+            groups: [movielist, movie]
         cast:
             expose: true
             groups: [movie]
         directors:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         writers:
             expose: true
             groups: [movie]
         genres:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         images:
             expose: true
             groups: [movie]

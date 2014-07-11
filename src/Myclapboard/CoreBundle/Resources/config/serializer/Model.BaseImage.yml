@@ -1,0 +1,6 @@
+Myclapboard\CoreBundle\Model\BaseImage:
+    exclusion_policy: ALL
+    properties:
+        name:
+            expose: true
+            groups: [movie]

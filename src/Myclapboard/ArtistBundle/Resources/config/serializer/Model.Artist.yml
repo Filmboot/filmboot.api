@@ -3,22 +3,22 @@ Myclapboard\ArtistBundle\Model\Artist:
     properties:
         id:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         slug:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         firstName:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         lastName:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         birthday:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         birthplace:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         biography:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]

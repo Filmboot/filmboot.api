@@ -3,7 +3,7 @@ Myclapboard\ArtistBundle\Model\Role:
     properties:
         artist:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         movie:
             expose: false
             groups: []

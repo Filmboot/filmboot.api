@@ -3,16 +3,16 @@ JJs\Bundle\GeonamesBundle\Entity\Locality:
     properties:
         id:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         geonameIdentifier:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         nameUtf8:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         nameAscii:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]
         country:
             expose: true
-            groups: [movie]
+            groups: [movielist, movie]

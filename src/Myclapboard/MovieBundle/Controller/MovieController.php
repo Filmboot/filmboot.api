@@ -10,13 +10,13 @@
 
 namespace Myclapboard\MovieBundle\Controller;
 
-use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
+use Myclapboard\CoreBundle\Controller\BaseApiController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class MovieController extends FOSRestController
+class MovieController extends BaseApiController
 {
     /**
      * Returns all the movies, it admits ordering, filter, count and pagination
@@ -39,7 +39,7 @@ class MovieController extends FOSRestController
      *  },
      * )
      *
-     * @return \FOS\RestBundle\View\View
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getMoviesAction(ParamFetcher $paramFetcher)
     {
@@ -51,7 +51,7 @@ class MovieController extends FOSRestController
                 $paramFetcher->get('page')
             );
 
-        return $this->view($movies, 200, array('movie'));
+        return $this->handleView($this->createView($movies, array('movielist')));
     }
 
     /**
@@ -75,7 +75,7 @@ class MovieController extends FOSRestController
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * 
-     * @return \FOS\RestBundle\View\View
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getMovieAction($id)
     {
@@ -85,6 +85,6 @@ class MovieController extends FOSRestController
             throw new NotFoundHttpException('Does not exist any movie with ' . $id . ' id');
         }
 
-        return $this->view($movie, 200, array('movie'));
+        return $this->handleView($this->createView($movie, array('movie')));
     }
 }

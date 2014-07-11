@@ -1,0 +1,6 @@
+Myclapboard\MovieBundle\Model\Image:
+    exclusion_policy: ALL
+    properties:
+        movie:
+            expose: true
+            groups: []
