@@ -49,14 +49,14 @@ doctrine:
                 is_bundle: false
         resolve_target_entities:
             Myclapboard\ArtistBundle\Model\ArtistInterface: Myclapboard\ArtistBundle\Entity\Artist
+            Myclapboard\ArtistBundle\Model\ArtistImageInterface: Myclapboard\ArtistBundle\Entity\ArtistImage
             
             Myclapboard\AwardBundle\Model\AwardInterface: Myclapboard\AwardBundle\Entity\Award
             Myclapboard\AwardBundle\Model\CategoryInterface: Myclapboard\AwardBundle\Entity\Category
             
-            Myclapboard\CoreBundle\Model\ImageInterface: Myclapboard\CoreBundle\Entity\Image
-
             Myclapboard\MovieBundle\Model\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
             Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
+            Myclapboard\MovieBundle\Model\ImageInterface: Myclapboard\MovieBundle\Entity\Image
             
             Myclapboard\UserBundle\Model\UserInterface: Myclapboard\UserBundle\Entity\User
 
@@ -67,22 +67,22 @@ swiftmailer:
     password: "%mailer_password%"
     spool: { type: memory }
 
-stof_doctrine_extensions:
-    default_locale: en
-    orm:
-        default:
-          translatable: true
-          tree: true
 
 fos_rest:
     routing_loader:
-        include_format: false
         default_format: json
     param_fetcher_listener: true
     body_listener:
         array_normalizer: fos_rest.normalizer.camel_keys
+    view:
+        view_response_listener: true
+        mime_types:
+            jsonp: ['application/javascript']
+        jsonp_handler: ~
+        formats:
+            jsonp: true
+            json: true
 
-nelmio_api_doc: ~
 
 jms_serializer:
     metadata:
@@ -91,3 +91,18 @@ jms_serializer:
             JJsGeonamesBundle:
                 namespace_prefix: "JJs\\Bundle\\GeonamesBundle"
                 path: "@MyclapboardCoreBundle/Resources/config/serializer"
+
+nelmio_api_doc: ~
+
+sensio_framework_extra:
+    view:
+        annotations: false
+
+stof_doctrine_extensions:
+    default_locale: en
+    orm:
+        default:
+          translatable: true
+          tree: true
+
+

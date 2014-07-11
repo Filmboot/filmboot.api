@@ -30,7 +30,13 @@ class MovieController extends BaseApiController
      *
      * @ApiDoc(
      *  description = "Returns all the movies, it admits ordering, filter, count and pagination",
-     *  output = "array<\Myclapboard|MovieBundle\Entity\Movie>"
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
      * )
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -45,7 +51,7 @@ class MovieController extends BaseApiController
                 $paramFetcher->get('page')
             );
 
-        return $this->handleView($this->createView($movies, array('movie')));
+        return $this->view($movies, 200, array('movie'));
     }
 
     /**
@@ -55,7 +61,13 @@ class MovieController extends BaseApiController
      *
      * @ApiDoc(
      *  description = "Returns movie for given id",
-     *  output = "\Myclapboard|MovieBundle\Entity\Movie",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
      *  statusCodes = {
      *      404 = "Does not exist any movie with <$id> id"
      *  }
@@ -73,6 +85,6 @@ class MovieController extends BaseApiController
             throw new NotFoundHttpException('Does not exist any movie with ' . $id . ' id');
         }
 
-        return $this->handleView($this->createView($movie, array('movie')));
+        return $this->view($movie, 200, array('movie'));
     }
 }
