@@ -10,7 +10,7 @@
 
 namespace Myclapboard\ArtistBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * Class ArtistManager.
@@ -35,20 +35,20 @@ class ArtistManager
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \Doctrine\ORM\EntityManager $manager The entityManager
-     * @param string                      $class   The class
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry The manager registry
+     * @param string                                       $class           The class
      */
-    public function __construct(EntityManager $manager, $class)
+    public function __construct(ManagerRegistry $managerRegistry, $class)
     {
-        $this->manager = $manager;
-        $this->repository = $manager->getRepository($class);
-        $this->class = $manager->getClassMetadata($class)->name;
+        $this->manager = $managerRegistry->getManagerForClass($class);
+        $this->repository = $this->manager->getRepository($class);
+        $this->class = $this->manager->getClassMetadata($class)->getName();
     }
 
     /**
-     * Returns a new instance of a class
+     * Returns a new instance of a class.
      *
      * @return \Myclapboard\ArtistBundle\Entity\Artist
      */

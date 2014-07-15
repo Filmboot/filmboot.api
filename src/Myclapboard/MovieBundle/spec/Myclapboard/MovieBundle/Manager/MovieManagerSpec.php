@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\MovieBundle\Manager;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -26,14 +27,22 @@ use PhpSpec\ObjectBehavior;
  */
 class MovieManagerSpec extends ObjectBehavior
 {
-    function let(EntityManager $manager, EntityRepository $repository, ClassMetadata $metadata)
+    function let(
+        ManagerRegistry $managerRegistry,
+        EntityManager $manager,
+        EntityRepository $repository,
+        ClassMetadata $metadata
+    )
     {
+        $managerRegistry->getManagerForClass('Myclapboard\MovieBundle\Entity\Movie')
+            ->shouldBeCalled()->willReturn($manager);
         $manager->getRepository('Myclapboard\MovieBundle\Entity\Movie')
             ->shouldBeCalled()->willReturn($repository);
         $manager->getClassMetadata('Myclapboard\MovieBundle\Entity\Movie')
             ->shouldBeCalled()->willReturn($metadata);
-        $metadata->name = 'Myclapboard\MovieBundle\Entity\Movie';
-        $this->beConstructedWith($manager, 'Myclapboard\MovieBundle\Entity\Movie');
+        $metadata->getName()
+            ->shouldBeCalled()->willReturn('Myclapboard\MovieBundle\Entity\Movie');
+        $this->beConstructedWith($managerRegistry, 'Myclapboard\MovieBundle\Entity\Movie');
     }
 
     function it_is_initializable()

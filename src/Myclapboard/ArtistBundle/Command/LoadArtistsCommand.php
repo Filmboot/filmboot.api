@@ -45,9 +45,9 @@ class LoadArtistsCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading artists");
+        $output->writeln('Loading artists');
         $this->loadArtists($input->getArgument('file'));
-        $output->writeln("Artists loaded successfully");
+        $output->writeln('Artists loaded successfully');
     }
 
     /**
@@ -81,8 +81,8 @@ class LoadArtistsCommand extends ContainerAwareCommand
                 $artist->addTranslation($translation);
             }
 
-            $this->addPhoto($artist);
-            $this->addImage($artist, $manager);
+            $this->linkedMainImage($artist, 'setPhoto', 'photos');
+            $this->linkedOtherImages($artist, 'artist', 'setArtist', $manager);
 
             $manager->persist($artist);
         }
@@ -91,46 +91,50 @@ class LoadArtistsCommand extends ContainerAwareCommand
     }
 
     /**
-     * Adds the main photo into artist.
-     * 
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
+     * Adds the main image into resource.
+     *
+     * @param mixed  $resource The resource object
+     * @param string $method   The name of the method
+     * @param string $path     The path
      *
      * @return void
      */
-    private function addPhoto($artist)
+    protected function linkedMainImage($resource, $method, $path)
     {
-        $photo = $this->getContainer()->get('myclapboard_core.manager.baseImage')->create();
+        $image = $this->getContainer()->get('myclapboard_core.manager.baseImage')->create();
 
-        $fileName = $artist->getSlug() . '.jpg';
+        $fileName = $resource->getSlug() . '.jpg';
 
-        copy($photo->getFixturePath('photos') . $fileName, $photo->getAbsolutePath() . $fileName);
+        copy($image->getFixturePath($path) . $fileName, $image->getAbsolutePath() . $fileName);
 
-        $artist->setPhoto($fileName);
+        $resource->$method($fileName);
 
     }
 
     /**
-     * Create artist's image object with the path and artist's slug given, adding into database.
+     * Create resource's image object with the path and resource's slug given, adding into database.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist  The artist object
-     * @param \Doctrine\Common\Persistence\ObjectManager      $manager The manager
+     * @param mixed                                      $resource The resource object
+     * @param string                                     $class    The name of the class
+     * @param string                                     $method   The name of the method
+     * @param \Doctrine\Common\Persistence\ObjectManager $manager  The manager
      *
      * @return void
      */
-    private function addImage($artist, $manager)
+    protected function linkedOtherImages($resource, $class, $method, $manager)
     {
         for ($i = 1; $i > 0; $i++) {
-            $image = $this->getContainer()->get('myclapboard_artist.manager.image')->create();
-            $absolutePath = $image->getFixturePath('images/artists') . $artist->getSlug() . '-' . $i . '.jpg';
-            
-            if (file_exists($absolutePath)) {
-                $fileName = $artist->getSlug() . '-' . uniqid() . '.jpg';
-        
+            $image = $this->getContainer()->get('myclapboard_' . $class . '.manager.image')->create();
+            $absolutePath = $image->getFixturePath('images/' . $class . 's') . $resource->getSlug() . '-' . $i . '.jpg';
+
+            if (file_exists($absolutePath) === true) {
+                $fileName = $resource->getSlug() . '-' . uniqid() . '.jpg';
+
                 copy($absolutePath, $image->getAbsolutePath() . $fileName);
                 $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
                 $image->setName($fileName);
                 $image->setFile($file);
-                $image->setArtist($artist);
+                $image->$method($resource);
                 $manager->persist($image);
             } else {
                 $i = -1;

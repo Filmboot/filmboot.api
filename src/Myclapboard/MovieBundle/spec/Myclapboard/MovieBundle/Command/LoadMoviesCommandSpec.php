@@ -53,9 +53,9 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Command\LoadMoviesCommand');
     }
 
-    function it_should_be_extends_Container_Aware_Command()
+    function it_should_be_extends_load_artists_command_spec()
     {
-        $this->shouldHaveType('Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand');
+        $this->shouldHaveType('Myclapboard\ArtistBundle\Command\LoadArtistsCommand');
     }
 
     function it_executes_and_loads_movies(

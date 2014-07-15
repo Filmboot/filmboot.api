@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\UserBundle\Manager;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -22,14 +23,22 @@ use PhpSpec\ObjectBehavior;
  */
 class UserManagerSpec extends ObjectBehavior
 {
-    function let(EntityManager $manager, EntityRepository $repository, ClassMetadata $metadata)
+    function let(
+        ManagerRegistry $managerRegistry,
+        EntityManager $manager,
+        EntityRepository $repository,
+        ClassMetadata $metadata
+    )
     {
+        $managerRegistry->getManagerForClass('Myclapboard\UserBundle\Entity\User')
+            ->shouldBeCalled()->willReturn($manager);
         $manager->getRepository('Myclapboard\UserBundle\Entity\User')
             ->shouldBeCalled()->willReturn($repository);
         $manager->getClassMetadata('Myclapboard\UserBundle\Entity\User')
             ->shouldBeCalled()->willReturn($metadata);
-        $metadata->name = 'Myclapboard\UserBundle\Entity\User';
-        $this->beConstructedWith($manager, 'Myclapboard\UserBundle\Entity\User');
+        $metadata->getName()
+            ->shouldBeCalled()->willReturn('Myclapboard\UserBundle\Entity\User');
+        $this->beConstructedWith($managerRegistry, 'Myclapboard\UserBundle\Entity\User');
     }
 
     function it_is_initializable()

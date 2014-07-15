@@ -10,7 +10,7 @@
 
 namespace Myclapboard\MovieBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * Class MovieManager.
@@ -35,20 +35,20 @@ class MovieManager
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \Doctrine\ORM\EntityManager $manager The entityManager
-     * @param string                      $class   The class
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry The manager registry
+     * @param string                                       $class           The class
      */
-    public function __construct(EntityManager $manager, $class)
+    public function __construct(ManagerRegistry $managerRegistry, $class)
     {
-        $this->manager = $manager;
-        $this->repository = $manager->getRepository($class);
-        $this->class = $manager->getClassMetadata($class)->name;
+        $this->manager = $managerRegistry->getManagerForClass($class);
+        $this->repository = $this->manager->getRepository($class);
+        $this->class = $this->manager->getClassMetadata($class)->getName();
     }
 
     /**
-     * Returns a new instance of a class
+     * Returns a new instance of a class.
      *
      * @return \Myclapboard\MovieBundle\Entity\Movie
      */
@@ -94,12 +94,8 @@ class MovieManager
 
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', /* 'ca', 'd', 'w', 'g', */ 'i'))
+        $query = $queryBuilder->select(array('m', 'c', 'i'))
             ->leftJoin('m.country', 'c')
-//            ->leftJoin('m.cast', 'ca')
-//            ->leftJoin('m.directors', 'd')
-//            ->leftJoin('m.writers', 'w')
-//            ->leftJoin('m.genres', 'g')
             ->leftJoin('m.images', 'i')
             ->where($whereSql)
             ->setParameters($parameters)
@@ -116,6 +112,13 @@ class MovieManager
             ->getResult();
     }
 
+    /**
+     * Finds the movie with id given.
+     * 
+     * @param string $id The id
+     *
+     * @return null|\Myclapboard\MovieBundle\Model\MovieInterface
+     */
     public function findOneById($id)
     {
         $queryBuilder = $this->repository->createQueryBuilder('m');

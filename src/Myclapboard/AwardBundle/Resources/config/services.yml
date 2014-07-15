@@ -7,24 +7,24 @@ services:
     # Managers
     myclapboard_award.manager.award:
         class: Myclapboard\AwardBundle\Manager\AwardManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_award.class.award%']
+        arguments: ['@doctrine', '%myclapboard_award.class.award%']
     myclapboard_award.manager.awardWon:
         class: Myclapboard\AwardBundle\Manager\AwardWonManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_award.class.awardWon%']
+        arguments: ['@doctrine', '%myclapboard_award.class.awardWon%']
     myclapboard_award.manager.category:
         class: Myclapboard\AwardBundle\Manager\CategoryManager
-        arguments: ["@doctrine.orm.entity_manager",'%myclapboard_award.class.category%']
+        arguments: ['@doctrine', '%myclapboard_award.class.category%']
 
     # Commands
     myclapboard_award.command_awards:
         class: Myclapboard\AwardBundle\Command\LoadAwardsCommand
         calls:
-            - [setContainer, ["@service_container"] ]
+            - [setContainer, ['@service_container'] ]
     myclapboard_award.command_awardsWon:
         class: Myclapboard\AwardBundle\Command\LoadAwardsWonCommand
         calls:
-            - [setContainer, ["@service_container"] ]
+            - [setContainer, ['@service_container'] ]
     myclapboard_award.command_categories:
         class: Myclapboard\AwardBundle\Command\LoadCategoriesCommand
         calls:
-            - [setContainer, ["@service_container"] ]
+            - [setContainer, ['@service_container'] ]

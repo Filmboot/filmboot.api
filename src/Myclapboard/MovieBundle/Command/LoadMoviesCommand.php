@@ -10,12 +10,11 @@
 
 namespace Myclapboard\MovieBundle\Command;
 
+use Myclapboard\ArtistBundle\Command\LoadArtistsCommand;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -23,7 +22,7 @@ use Symfony\Component\Yaml\Parser;
  *
  * @package Myclapboard\MovieBundle\Command
  */
-class LoadMoviesCommand extends ContainerAwareCommand
+class LoadMoviesCommand extends LoadArtistsCommand
 {
     /**
      * {@inheritdoc}
@@ -93,8 +92,8 @@ class LoadMoviesCommand extends ContainerAwareCommand
                 $movie->addGenre($genre);
             }
             
-            $this->addPoster($movie);
-            $this->addImage($movie, $manager);
+            $this->linkedMainImage($movie, 'setPoster', 'posters');
+            $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
 
             $manager->persist($movie);
         }
@@ -149,51 +148,5 @@ class LoadMoviesCommand extends ContainerAwareCommand
         }
     }
 
-    /**
-     * Adds the main poster into artist.
-     *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
-     *
-     * @return void
-     */
-    private function addPoster($movie)
-    {
-        $poster = $this->getContainer()->get('myclapboard_core.manager.baseImage')->create();
-
-        $fileName = $movie->getSlug() . '.jpg';
-
-        copy($poster->getFixturePath('posters') . $fileName, $poster->getAbsolutePath() . $fileName);
-
-        $movie->setPoster($fileName);
-
-    }
-
-    /**
-     * Create movie's image object with the path and movie's slug given, adding into database.
-     *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie   The movie object
-     * @param \Doctrine\Common\Persistence\ObjectManager    $manager The manager
-     *
-     * @return void
-     */
-    private function addImage($movie, $manager)
-    {
-        for ($i = 1; $i > 0; $i++) {
-            $image = $this->getContainer()->get('myclapboard_movie.manager.image')->create();
-            $absolutePath = $image->getFixturePath('images/movies') . $movie->getSlug() . '-' . $i . '.jpg';
-
-            if (file_exists($absolutePath)) {
-                $fileName = $movie->getSlug() . '-' . uniqid() . '.jpg';
-
-                copy($absolutePath, $image->getAbsolutePath() . $fileName);
-                $file = new UploadedFile($image->getAbsolutePath() . $fileName, $fileName, null, null, null, true);
-                $image->setName($fileName);
-                $image->setFile($file);
-                $image->setMovie($movie);
-                $manager->persist($image);
-            } else {
-                $i = -1;
-            }
-        }
-    }
+    
 }

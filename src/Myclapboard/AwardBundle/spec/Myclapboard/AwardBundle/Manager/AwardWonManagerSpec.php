@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\AwardBundle\Manager;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -22,14 +23,22 @@ use PhpSpec\ObjectBehavior;
  */
 class AwardWonManagerSpec extends ObjectBehavior
 {
-    function let(EntityManager $manager, EntityRepository $repository, ClassMetadata $metadata)
+    function let(
+        ManagerRegistry $managerRegistry,
+        EntityManager $manager,
+        EntityRepository $repository,
+        ClassMetadata $metadata
+    )
     {
+        $managerRegistry->getManagerForClass('Myclapboard\AwardBundle\Entity\AwardWon')
+            ->shouldBeCalled()->willReturn($manager);
         $manager->getRepository('Myclapboard\AwardBundle\Entity\AwardWon')
             ->shouldBeCalled()->willReturn($repository);
         $manager->getClassMetadata('Myclapboard\AwardBundle\Entity\AwardWon')
             ->shouldBeCalled()->willReturn($metadata);
-        $metadata->name = 'Myclapboard\AwardBundle\Entity\AwardWon';
-        $this->beConstructedWith($manager, 'Myclapboard\AwardBundle\Entity\AwardWon');
+        $metadata->getName()
+            ->shouldBeCalled()->willReturn('Myclapboard\AwardBundle\Entity\AwardWon');
+        $this->beConstructedWith($managerRegistry, 'Myclapboard\AwardBundle\Entity\AwardWon');
     }
 
     function it_is_initializable()

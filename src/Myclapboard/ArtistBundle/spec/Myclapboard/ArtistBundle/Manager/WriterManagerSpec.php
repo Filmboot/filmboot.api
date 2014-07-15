@@ -10,6 +10,7 @@
 
 namespace spec\Myclapboard\ArtistBundle\Manager;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -22,14 +23,22 @@ use PhpSpec\ObjectBehavior;
  */
 class WriterManagerSpec extends ObjectBehavior
 {
-    function let(EntityManager $manager, EntityRepository $repository, ClassMetadata $metadata)
+    function let(
+        ManagerRegistry $managerRegistry,
+        EntityManager $manager,
+        EntityRepository $repository,
+        ClassMetadata $metadata
+    )
     {
+        $managerRegistry->getManagerForClass('Myclapboard\ArtistBundle\Entity\Writer')
+            ->shouldBeCalled()->willReturn($manager);
         $manager->getRepository('Myclapboard\ArtistBundle\Entity\Writer')
             ->shouldBeCalled()->willReturn($repository);
         $manager->getClassMetadata('Myclapboard\ArtistBundle\Entity\Writer')
             ->shouldBeCalled()->willReturn($metadata);
-        $metadata->name = 'Myclapboard\ArtistBundle\Entity\Writer';
-        $this->beConstructedWith($manager, 'Myclapboard\ArtistBundle\Entity\Writer');
+        $metadata->getName()
+            ->shouldBeCalled()->willReturn('Myclapboard\ArtistBundle\Entity\Writer');
+        $this->beConstructedWith($managerRegistry, 'Myclapboard\ArtistBundle\Entity\Writer');
     }
 
     function it_is_initializable()
