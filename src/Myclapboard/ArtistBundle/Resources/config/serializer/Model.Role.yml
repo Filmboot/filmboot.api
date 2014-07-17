@@ -5,8 +5,8 @@ Myclapboard\ArtistBundle\Model\Role:
             expose: true
             groups: [movielist, movie]
         movie:
-            expose: false
-            groups: []
+            expose: true
+            groups: [artist]
         awards:
             expose: true
-            groups: [movie]
+            groups: [movie, artist]

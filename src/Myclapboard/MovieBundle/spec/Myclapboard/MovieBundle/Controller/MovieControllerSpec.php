@@ -35,7 +35,7 @@ class MovieControllerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Controller\MovieController');
     }
 
-    function it_extends_fos_rest_controller()
+    function it_extends_base_api_controller()
     {
         $this->shouldHaveType('Myclapboard\CoreBundle\Controller\BaseApiController');
     }

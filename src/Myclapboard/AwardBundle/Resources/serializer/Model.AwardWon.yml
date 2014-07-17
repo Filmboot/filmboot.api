@@ -1,0 +1,24 @@
+Myclapboard\AwardBundle\Model\AwardWon:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [movie, artist]
+        movie:
+            expose: true
+            groups: [movie, artist]
+        artist:
+            expose: true
+            groups: [movie, artist]
+        award:
+            expose: true
+            groups: [movie, artist]
+        category:
+            expose: true
+            groups: [movie, artist]
+        year:
+            expose: true
+            groups: [movie, artist]
+        role:
+            expose: true
+            groups: [movie, artist]

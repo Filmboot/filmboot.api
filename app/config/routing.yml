@@ -2,6 +2,10 @@ api_docs:
     resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
     prefix: /doc
 
+myclapboard_artist:
+    type: rest
+    resource: '@MyclapboardArtistBundle/Resources/config/routing.yml'
+
 myclapboard_movie:
     type: rest
     resource: '@MyclapboardMovieBundle/Resources/config/routing.yml'

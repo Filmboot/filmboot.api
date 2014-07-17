@@ -3,4 +3,4 @@ Myclapboard\CoreBundle\Model\BaseImage:
     properties:
         name:
             expose: true
-            groups: [movie]
+            groups: [movie, artist]

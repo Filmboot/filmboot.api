@@ -72,13 +72,9 @@ class MovieManagerSpec extends ObjectBehavior
     {
         $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
 
-        $queryBuilder->select(array('m', 'c', /* 'ca', 'd', 'w', 'g', */ 'i'))
+        $queryBuilder->select(array('m', 'c', 'i'))
             ->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.cast', 'ca')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.directors', 'd')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.writers', 'w')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.genres', 'g')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.images', 'i')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->where(' 1=1 ')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setParameters(array())->shouldBeCalled()->willReturn($queryBuilder);
@@ -97,7 +93,7 @@ class MovieManagerSpec extends ObjectBehavior
         $this->findAll('title');
     }
 
-    function it_filters_knowledge_with_query_parameter(
+    function it_filters_movie_with_query_parameter(
         EntityRepository $repository,
         QueryBuilder $queryBuilder,
         AbstractQuery $query,
@@ -106,13 +102,9 @@ class MovieManagerSpec extends ObjectBehavior
     {
         $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
 
-        $queryBuilder->select(array('m', 'c', /* 'ca', 'd', 'w', 'g', */ 'i'))
+        $queryBuilder->select(array('m', 'c', 'i'))
             ->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.cast', 'ca')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.directors', 'd')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.writers', 'w')->shouldBeCalled()->willReturn($queryBuilder);
-//        $queryBuilder->leftJoin('m.genres', 'g')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.images', 'i')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->where(' 1=1 AND m.title LIKE :title ')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setParameters(array('title' => '%dj%'))->shouldBeCalled()->willReturn($queryBuilder);

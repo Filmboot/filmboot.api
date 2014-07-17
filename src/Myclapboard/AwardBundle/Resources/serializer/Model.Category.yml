@@ -1,6 +1,9 @@
-Myclapboard\CoreBundle\Model\Image:
+Myclapboard\AwardBundle\Model\Category:
     exclusion_policy: ALL
     properties:
+        id:
+            expose: true
+            groups: [movie, artist]
         name:
             expose: true
             groups: [movie, artist]

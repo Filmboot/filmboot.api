@@ -3,13 +3,13 @@ Myclapboard\MovieBundle\Model\Movie:
     properties:
         id:
             expose: true
-            groups: [movielist, movie]
+            groups: [movielist, movie, artist]
         slug:
             expose: true
-            groups: [movielist, movie]
+            groups: [movielist, movie, artist]
         title:
             expose: true
-            groups: [movielist, movie]
+            groups: [movielist, movie, artist]
         duration:
             expose: true
             groups: [movielist, movie]
