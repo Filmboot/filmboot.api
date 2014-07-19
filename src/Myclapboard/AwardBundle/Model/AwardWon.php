@@ -10,29 +10,33 @@
 
 namespace Myclapboard\AwardBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Entity\Actor;
+use Myclapboard\ArtistBundle\Entity\Director;
+use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**
- * Class AwardWon model: ternary relationship table that joins Movie, Artist and Award tables.
+ * Class AwardWon model: ternary relationship table that joins Movie, Role and Award tables.
  *
  * @package Myclapboard\AwardBundle\Model
  */
 class AwardWon implements AwardWonInterface
 {
     protected $id;
-    
+
     protected $movie;
-    
-    protected $artist;
-    
+
+    protected $actor;
+
+    protected $director;
+
+    protected $writer;
+
     protected $award;
-    
+
     protected $category;
-    
+
     protected $year;
-    
-    protected $role;
 
     /**
      * Constructor.
@@ -52,28 +56,54 @@ class AwardWon implements AwardWonInterface
     /**
      * {@inheritdoc}
      */
-    public function setArtist(ArtistInterface $artist)
+    public function getActor()
     {
-        $this->artist = $artist;
-        
+        return $this->actor;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setActor(Actor $actor)
+    {
+        $this->actor = $actor;
+
         return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getArtist()
+    public function getDirector()
     {
-        return $this->artist;
+        return $this->director;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setAward(AwardInterface $award)
+    public function setDirector(Director $director)
     {
-        $this->award = $award;
-        
+        $this->director = $director;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getWriter()
+    {
+        return $this->writer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setWriter(Writer $writer)
+    {
+        $this->writer = $writer;
+
         return $this;
     }
 
@@ -88,10 +118,10 @@ class AwardWon implements AwardWonInterface
     /**
      * {@inheritdoc}
      */
-    public function setMovie(MovieInterface $movie)
+    public function setAward(AwardInterface $award)
     {
-        $this->movie = $movie;
-        
+        $this->award = $award;
+
         return $this;
     }
 
@@ -101,6 +131,16 @@ class AwardWon implements AwardWonInterface
     public function getMovie()
     {
         return $this->movie;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMovie(MovieInterface $movie)
+    {
+        $this->movie = $movie;
+
+        return $this;
     }
 
     /**
@@ -136,24 +176,6 @@ class AwardWon implements AwardWonInterface
     {
         $this->category = $category;
 
-        return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-        
         return $this;
     }
 }

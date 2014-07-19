@@ -56,6 +56,14 @@ Myclapboard\MovieBundle\Entity\Movie:
                 name: movie_id
                 referencedColumnName: id
                 onDelete: cascade
+        awards:
+            targetEntity: Myclapboard\AwardBundle\Model\AwardWonInterface
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
         images:
             targetEntity: Myclapboard\MovieBundle\Model\ImageInterface
             mappedBy: movie
@@ -67,7 +75,6 @@ Myclapboard\MovieBundle\Entity\Movie:
     manyToOne:
         country:
             targetEntity: JJs\Bundle\GeonamesBundle\Entity\Country
-
     manyToMany:
         genres:
             targetEntity: Myclapboard\MovieBundle\Model\GenreInterface

@@ -11,6 +11,9 @@
 namespace Myclapboard\ArtistBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\MyclapboardArtistBundle;
+use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**
  * Class WriterManager.
@@ -55,5 +58,18 @@ class WriterManager
     public function create()
     {
         return new $this->class();
+    }
+
+    /**
+     * Finds the writer with artist and movie given.
+     *
+     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist
+     * @param \Myclapboard\MovieBundle\Model\MovieInterface   $movie  The movie
+     *
+     * @return null||Myclapboard\ArtistBundle\Entity\Writer
+     */
+    public function findOneByArtistAndMovie(ArtistInterface $artist, MovieInterface $movie)
+    {
+        return $this->repository->findOneBy(array('artist' => $artist, 'movie' => $movie));
     }
 }

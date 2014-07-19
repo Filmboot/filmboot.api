@@ -10,7 +10,7 @@
 
 namespace Myclapboard\ArtistBundle\Model;
 
-use Myclapboard\AwardBundle\Model\AwardInterface;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**
@@ -20,6 +20,13 @@ use Myclapboard\MovieBundle\Model\MovieInterface;
  */
 interface RoleInterface
 {
+    /**
+     * Gets id.
+     *
+     * @return string
+     */
+    public function getId();
+
     /**
      * Gets artist.
      *
@@ -55,25 +62,25 @@ interface RoleInterface
     /**
      * Adds award.
      *
-     * @param \Myclapboard\AwardBundle\Model\AwardInterface $award The award object
+     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
      * @return \Myclapboard\ArtistBundle\Model\RoleInterface
      */
-    public function addAward(AwardInterface $award);
+    public function addAward(AwardWonInterface $award);
 
     /**
      * Removes award.
      *
-     * @param \Myclapboard\AwardBundle\Model\AwardInterface $award The award object
+     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
      * @return \Myclapboard\ArtistBundle\Model\RoleInterface
      */
-    public function removeAward(AwardInterface $award);
+    public function removeAward(AwardWonInterface $award);
 
     /**
      * Gets array of awards.
      *
-     * @return array<\Myclapboard\MovieBundle\Model\AwardInterface>
+     * @return array<\Myclapboard\MovieBundle\Model\AwardWonInterface>
      */
     public function getAwards();
 }

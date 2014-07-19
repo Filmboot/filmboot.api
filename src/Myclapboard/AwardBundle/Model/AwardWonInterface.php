@@ -10,11 +10,13 @@
 
 namespace Myclapboard\AwardBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Entity\Actor;
+use Myclapboard\ArtistBundle\Entity\Director;
+use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**
- * Interface AwardWonInterface: ternary relationship table that joins Movie, Artist and Award tables.
+ * Interface AwardWonInterface: ternary relationship table that joins Movie, Role and Award tables.
  *
  * @package Myclapboard\AwardBundle\Model
  */
@@ -44,20 +46,52 @@ interface AwardWonInterface
     public function setMovie(MovieInterface $movie);
 
     /**
-     * Gets artist.
+     * Gets actor.
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return \Myclapboard\ArtistBundle\Entity\Actor
      */
-    public function getArtist();
+    public function getActor();
 
     /**
-     * Sets artist.
+     * Sets actor.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
+     * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
      * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
      */
-    public function setArtist(ArtistInterface $artist);
+    public function setActor(Actor $actor);
+
+    /**
+     * Gets director.
+     *
+     * @return \Myclapboard\ArtistBundle\Entity\Director
+     */
+    public function getDirector();
+
+    /**
+     * Sets director.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
+     *
+     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     */
+    public function setDirector(Director $director);
+
+    /**
+     * Gets writer.
+     *
+     * @return \Myclapboard\ArtistBundle\Entity\Writer
+     */
+    public function getWriter();
+
+    /**
+     * Sets writer.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
+     *
+     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     */
+    public function setWriter(Writer $writer);
 
     /**
      * Gets award.
@@ -106,20 +140,4 @@ interface AwardWonInterface
      * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
      */
     public function setCategory($category);
-
-    /**
-     * Gets role.
-     *
-     * @return null|'actor'|'director'|'writer'
-     */
-    public function getRole();
-
-    /**
-     * Sets role.
-     *
-     * @param null|'actor'|'director'|'writer' $role The role
-     *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
-     */
-    public function setRole($role);
 }

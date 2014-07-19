@@ -2,10 +2,10 @@ Myclapboard\ArtistBundle\Entity\Actor:
     type: entity
     table: MovieActor
     id:
-        artist:
-            associationKey: true
-        movie:
-            associationKey: true
+        id:
+            type: string
+            generator:
+                strategy: UUID
     manyToOne:
         artist:
             targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
@@ -13,3 +13,12 @@ Myclapboard\ArtistBundle\Entity\Actor:
         movie:
             targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
             inversedBy: cast
+    oneToMany:
+        awards:
+            targetEntity: Myclapboard\AwardBundle\Model\AwardWonInterface
+            mappedBy: actor
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: actor_id
+                referencedColumnName: id
+                onDelete: cascade

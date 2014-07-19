@@ -15,6 +15,7 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
 
@@ -51,6 +52,8 @@ class Movie implements MovieInterface
 
     protected $genres;
     
+    protected $awards;
+    
     protected $images;
 
     protected $translations;
@@ -64,6 +67,7 @@ class Movie implements MovieInterface
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->awards = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
@@ -331,6 +335,34 @@ class Movie implements MovieInterface
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addAward(AwardWonInterface $award)
+    {
+        $this->awards[] = $award;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeAward(AwardWonInterface $award)
+    {
+        $this->awards->removeElement($award);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAwards()
+    {
+        return $this->awards;
     }
 
     /**

@@ -11,6 +11,9 @@
     producer: Live Entertainment, Dog Eat Dog Productions Inc.
     cast:
         -
+            firstName: Roger
+            lastName: Avary
+        -
             firstName: Harvey
             lastName: Keitel
         -

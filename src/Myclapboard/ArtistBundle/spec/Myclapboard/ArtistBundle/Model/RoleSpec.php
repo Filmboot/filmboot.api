@@ -11,7 +11,7 @@
 namespace spec\Myclapboard\ArtistBundle\Model;
 
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\AwardBundle\Model\AwardInterface;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -33,6 +33,11 @@ class RoleSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\ArtistBundle\Model\RoleInterface');
     }
 
+    function it_should_not_have_id_by_default()
+    {
+        $this->getId()->shouldReturn(null);
+    }
+
     function its_artist_is_mutable(ArtistInterface $artist)
     {
         $this->setArtist($artist)->shouldReturn($this);
@@ -45,7 +50,7 @@ class RoleSpec extends ObjectBehavior
         $this->getMovie()->shouldReturn($movie);
     }
 
-    function its_awards_be_mutable(AwardInterface $award)
+    function its_awards_be_mutable(AwardWonInterface $award)
     {
         $this->getAwards()->shouldHaveCount(0);
 

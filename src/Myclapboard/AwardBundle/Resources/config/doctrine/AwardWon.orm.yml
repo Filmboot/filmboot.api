@@ -6,16 +6,20 @@ Myclapboard\AwardBundle\Entity\AwardWon:
             generator:
                 strategy: UUID
     fields:
-        role:
-            type: RoleEnum
-            nullable: true
         year:
             type: integer
     manyToOne:
         movie:
             targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
-        artist:
-            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+        actor:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Actor
+            inversedBy: awards
+        director:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Director
+            inversedBy: awards
+        writer:
+            targetEntity: Myclapboard\ArtistBundle\Entity\Writer
+            inversedBy: awards
         award:
             targetEntity: Myclapboard\AwardBundle\Model\AwardInterface
         category:

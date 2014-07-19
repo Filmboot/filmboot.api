@@ -12,7 +12,13 @@ namespace spec\Myclapboard\AwardBundle\Command;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Myclapboard\ArtistBundle\Entity\Actor;
+use Myclapboard\ArtistBundle\Entity\Director;
+use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\ArtistBundle\Manager\ActorManager;
 use Myclapboard\ArtistBundle\Manager\ArtistManager;
+use Myclapboard\ArtistBundle\Manager\DirectorManager;
+use Myclapboard\ArtistBundle\Manager\WriterManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
 use Myclapboard\AwardBundle\Manager\AwardManager;
 use Myclapboard\AwardBundle\Manager\AwardWonManager;
@@ -65,7 +71,13 @@ class LoadAwardsWonCommandSpec extends ObjectBehavior
         MovieManager $movieManager,
         MovieInterface $movie,
         ArtistManager $artistManager,
-        ArtistInterface $artist
+        ArtistInterface $artist,
+        ActorManager $actorManager,
+        Actor $actor,
+        DirectorManager $directorManager,
+        Director $director,
+        WriterManager $writerManager,
+        Writer $writer
     )
     {
         $output->writeln("Loading awardsWon")->shouldBeCalled();
@@ -78,39 +90,54 @@ class LoadAwardsWonCommandSpec extends ObjectBehavior
         $container->get('doctrine')->shouldBeCalled()->willReturn($managerRegistry);
         $managerRegistry->getManager()->shouldBeCalled()->willReturn($manager);
 
-        $container->get('myclapboard_award.manager.awardWon')
-            ->shouldBeCalled()->willReturn($awardWonManager);
-        $awardWonManager->create()->shouldBeCalled()->willReturn($awardWon);
 
         $container->get('myclapboard_award.manager.award')
             ->shouldBeCalled()->willReturn($awardManager);
         $awardManager->findOneByName(Argument::any())
             ->shouldBeCalled()->willReturn($award);
 
-        $awardWon->setAward($award)->shouldBeCalled()->willReturn($awardWon);
-
         $container->get('myclapboard_award.manager.category')
             ->shouldBeCalled()->willReturn($categoryManager);
         $categoryManager->findOneByName(Argument::any())
             ->shouldBeCalled()->willReturn($category);
-
-        $awardWon->setCategory($category)->shouldBeCalled()->willReturn($awardWon);
 
         $container->get('myclapboard_movie.manager.movie')
             ->shouldBeCalled()->willReturn($movieManager);
         $movieManager->findOneByTitle(Argument::any())
             ->shouldBeCalled()->willReturn($movie);
 
+        $container->get('myclapboard_award.manager.awardWon')
+            ->shouldBeCalled()->willReturn($awardWonManager);
+        $awardWonManager->create()->shouldBeCalled()->willReturn($awardWon);
+
+        $awardWon->setAward($award)->shouldBeCalled()->willReturn($awardWon);
+        $awardWon->setCategory($category)->shouldBeCalled()->willReturn($awardWon);
         $awardWon->setMovie($movie)->shouldBeCalled()->willReturn($awardWon);
+        $awardWon->setYear(Argument::any())->shouldBeCalled()->willReturn($awardWon);
 
         $container->get('myclapboard_artist.manager.artist')
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->findOneByFullName(Argument::any(), Argument::any())
             ->shouldBeCalled()->willReturn($artist);
 
-        $awardWon->setArtist($artist)->shouldBeCalled()->willReturn($awardWon);
-        $awardWon->setRole(Argument::any())->shouldBeCalled()->willReturn($awardWon);
-        $awardWon->setYear(Argument::any())->shouldBeCalled()->willReturn($awardWon);
+        $container->get('myclapboard_artist.manager.actor')
+            ->shouldBeCalled()->willReturn($actorManager);
+        $actorManager->findOneByArtistAndMovie($artist, $movie)
+            ->shouldBeCalled()->willReturn($actor);
+
+        $container->get('myclapboard_artist.manager.director')
+            ->shouldBeCalled()->willReturn($directorManager);
+        $directorManager->findOneByArtistAndMovie($artist, $movie)
+            ->shouldBeCalled()->willReturn($director);
+
+        $container->get('myclapboard_artist.manager.writer')
+            ->shouldBeCalled()->willReturn($writerManager);
+        $writerManager->findOneByArtistAndMovie($artist, $movie)
+            ->shouldBeCalled()->willReturn($writer);
+
+        $awardWon->setActor($actor)->shouldBeCalled()->willReturn($awardWon);
+        $awardWon->setDirector($director)->shouldBeCalled()->willReturn($awardWon);
+        $awardWon->setWriter($writer)->shouldBeCalled()->willReturn($awardWon);
 
         $manager->persist($awardWon)->shouldBeCalled();
 

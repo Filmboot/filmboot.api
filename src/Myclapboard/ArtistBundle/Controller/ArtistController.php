@@ -15,10 +15,10 @@ use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\CoreBundle\Controller\ResourceController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-class ArtistController extends ResourceController 
+class ArtistController extends ResourceController
 {
     protected $class;
-    
+
     protected $bundle;
 
     /**
@@ -29,7 +29,7 @@ class ArtistController extends ResourceController
         $this->class = 'artist';
         $this->bundle = $this->class;
     }
-    
+
     /**
      * Returns all the artists, it admits ordering, filter, count and pagination
      *

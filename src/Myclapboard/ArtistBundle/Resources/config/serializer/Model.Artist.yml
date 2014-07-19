@@ -15,17 +15,14 @@ Myclapboard\ArtistBundle\Model\Artist:
             groups: [movielist, movie, artistList, artist]
         birthday:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [artistList, artist]
         birthplace:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [artistList, artist]
         biography:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [artistList, artist]
         photo:
-            expose: true
-            groups: [movielist, movie, artistList, artist]
-        awards:
             expose: true
             groups: [movielist, movie, artistList, artist]
         actors:

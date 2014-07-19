@@ -11,7 +11,7 @@
 namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\AwardBundle\Model\AwardInterface;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**
@@ -21,6 +21,8 @@ use Myclapboard\MovieBundle\Model\MovieInterface;
  */
 class Role implements RoleInterface
 {
+    protected $id;
+    
     protected $artist;
 
     protected $movie;
@@ -33,6 +35,14 @@ class Role implements RoleInterface
     public function __construct()
     {
         $this->awards = new ArrayCollection;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -74,7 +84,7 @@ class Role implements RoleInterface
     /**
      * {@inheritdoc}
      */
-    public function addAward(AwardInterface $award)
+    public function addAward(AwardWonInterface $award)
     {
         $this->awards[] = $award;
 
@@ -84,7 +94,7 @@ class Role implements RoleInterface
     /**
      * {@inheritdoc}
      */
-    public function removeAward(AwardInterface $award)
+    public function removeAward(AwardWonInterface $award)
     {
         $this->awards->removeElement($award);
 

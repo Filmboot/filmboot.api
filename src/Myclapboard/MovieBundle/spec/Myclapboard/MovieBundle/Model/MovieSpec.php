@@ -14,6 +14,7 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Model\GenreInterface;
@@ -148,6 +149,19 @@ class MovieSpec extends ObjectBehavior
         $this->removeGenre($genre);
 
         $this->getGenres()->shouldHaveCount(0);
+    }
+
+    function its_awards_be_mutable(AwardWonInterface $award)
+    {
+        $this->getAwards()->shouldHaveCount(0);
+
+        $this->addAward($award);
+
+        $this->getAwards()->shouldHaveCount(1);
+
+        $this->removeAward($award);
+
+        $this->getAwards()->shouldHaveCount(0);
     }
 
     function its_images_be_mutable(ImageInterface $image)

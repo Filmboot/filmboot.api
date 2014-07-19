@@ -94,8 +94,9 @@ class MovieManager
 
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'i'))
+        $query = $queryBuilder->select(array('m', 'c', 'a', 'i'))
             ->leftJoin('m.country', 'c')
+            ->leftJoin('m.awards', 'a')
             ->leftJoin('m.images', 'i')
             ->where($whereSql)
             ->setParameters($parameters)
@@ -114,7 +115,7 @@ class MovieManager
 
     /**
      * Finds the movie with id given.
-     * 
+     *
      * @param string $id The id
      *
      * @return null|\Myclapboard\MovieBundle\Model\MovieInterface
@@ -123,12 +124,13 @@ class MovieManager
     {
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'i'))
+        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'a', 'i'))
             ->leftJoin('m.country', 'c')
             ->leftJoin('m.cast', 'ca')
             ->leftJoin('m.directors', 'd')
             ->leftJoin('m.writers', 'w')
             ->leftJoin('m.genres', 'g')
+            ->leftJoin('m.awards', 'a')
             ->leftJoin('m.images', 'i')
             ->where($queryBuilder->expr()->eq('m.id', ':id'))
             ->setParameter(':id', $id)

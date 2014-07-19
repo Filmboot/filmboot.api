@@ -14,6 +14,9 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\MovieBundle\Model\MovieInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -49,5 +52,18 @@ class WriterManagerSpec extends ObjectBehavior
     function it_creates_director()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Writer');
+    }
+
+    function it_finds_one_by_artist_and_movie(
+        EntityRepository $repository,
+        ArtistInterface $artist,
+        MovieInterface $movie,
+        Writer $writer
+    )
+    {
+        $repository->findOneBy(array('artist' => $artist, 'movie' => $movie))
+            ->shouldBeCalled()->willReturn($writer);
+
+        $this->findOneByArtistAndMovie($artist, $movie)->shouldReturn($writer);
     }
 }

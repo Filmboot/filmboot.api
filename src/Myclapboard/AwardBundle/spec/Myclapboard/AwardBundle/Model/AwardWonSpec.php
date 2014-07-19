@@ -10,7 +10,9 @@
 
 namespace spec\Myclapboard\AwardBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Entity\Actor;
+use Myclapboard\ArtistBundle\Entity\Director;
+use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardInterface;
 use Myclapboard\AwardBundle\Model\CategoryInterface;
 use Myclapboard\MovieBundle\Model\MovieInterface;
@@ -39,22 +41,34 @@ class AwardWonSpec extends ObjectBehavior
         $this->getId()->shouldReturn(null);
     }
 
-    function its_artist_is_mutable(ArtistInterface $artist)
+    function its_movie_is_mutable(MovieInterface $movie)
     {
-        $this->setArtist($artist)->shouldReturn($this);
-        $this->getArtist()->shouldReturn($artist);
+        $this->setMovie($movie)->shouldReturn($this);
+        $this->getMovie()->shouldReturn($movie);
+    }
+
+    function its_actor_is_mutable(Actor $actor)
+    {
+        $this->setActor($actor)->shouldReturn($this);
+        $this->getActor()->shouldReturn($actor);
+    }
+
+    function its_director_is_mutable(Director $director)
+    {
+        $this->setDirector($director)->shouldReturn($this);
+        $this->getDirector()->shouldReturn($director);
+    }
+
+    function its_writer_is_mutable(Writer $writer)
+    {
+        $this->setWriter($writer)->shouldReturn($this);
+        $this->getWriter()->shouldReturn($writer);
     }
 
     function its_award_is_mutable(AwardInterface $award)
     {
         $this->setAward($award)->shouldReturn($this);
         $this->getAward()->shouldReturn($award);
-    }
-
-    function its_movie_is_mutable(MovieInterface $movie)
-    {
-        $this->setMovie($movie)->shouldReturn($this);
-        $this->getMovie()->shouldReturn($movie);
     }
 
     function its_category_is_mutable(CategoryInterface $category)
@@ -67,11 +81,5 @@ class AwardWonSpec extends ObjectBehavior
     {
         $this->setYear('1992')->shouldReturn($this);
         $this->getYear()->shouldReturn('1992');
-    }
-
-    function its_role_is_mutable()
-    {
-        $this->setRole('director')->shouldReturn($this);
-        $this->getRole()->shouldReturn('director');
     }
 }

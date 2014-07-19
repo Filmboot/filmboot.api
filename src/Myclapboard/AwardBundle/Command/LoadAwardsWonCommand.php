@@ -65,31 +65,43 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
         $doctrine = $container->get('doctrine');
         $manager = $doctrine->getManager();
         foreach ($fixtures as $values) {
-            $awardWon = $container->get('myclapboard_award.manager.awardWon')->create();
-            
             $award = $container->get('myclapboard_award.manager.award')
                 ->findOneByName($values['name']);
-            if ($award) {
+            $category = $container->get('myclapboard_award.manager.category')
+                ->findOneByName($values['category']);
+            $movie = $container->get('myclapboard_movie.manager.movie')
+                ->findOneByTitle($values['movie']);
+
+            if ($award !== null && $category !== null && $movie !== null) {
+                $awardWon = $container->get('myclapboard_award.manager.awardWon')->create();
+                
                 $awardWon->setAward($award);
-                $category = $container->get('myclapboard_award.manager.category')
-                    ->findOneByName($values['category']);
-                if ($category) {
-                    $awardWon->setCategory($category);
-                    $movie = $container->get('myclapboard_movie.manager.movie')
-                        ->findOneByTitle($values['movie']);
-                    if ($movie) {
-                        $awardWon->setMovie($movie);
-                        $artist = $container->get('myclapboard_artist.manager.artist')
-                            ->findOneByFullName($values['artist']['firstName'], $values['artist']['lastName']);
-                        if ($artist) {
-                            $awardWon->setArtist($artist);
-                            $awardWon->setRole($values['role']);
-                            $awardWon->setYear($values['year']);
+                $awardWon->setCategory($category);
+                $awardWon->setMovie($movie);
+                $awardWon->setYear($values['year']);
+                
+                $artist = $container->get('myclapboard_artist.manager.artist')
+                    ->findOneByFullName($values['artist']['firstName'], $values['artist']['lastName']);
+
+                if ($artist !== null) {
+                    $role = $container->get('myclapboard_artist.manager.' . $values['role'])
+                        ->findOneByArtistAndMovie($artist, $movie);
+                    if ($role) {
+                        switch ($values['role']) {
+                            case 'actor':
+                                $awardWon->setActor($role);
+                                break;
+                            case 'director':
+                                $awardWon->setDirector($role);
+                                break;
+                            case 'writer':
+                                $awardWon->setWriter($role);
+                                break;
                         }
-        
-                        $manager->persist($awardWon);
                     }
                 }
+                
+                $manager->persist($awardWon);
             }
         }
 

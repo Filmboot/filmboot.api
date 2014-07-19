@@ -9,4 +9,4 @@ Myclapboard\ArtistBundle\Model\Role:
             groups: [artist]
         awards:
             expose: true
-            groups: [movie, artist]
+            groups: [artist]

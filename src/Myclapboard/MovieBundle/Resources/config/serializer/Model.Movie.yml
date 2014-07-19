@@ -1,5 +1,5 @@
 Myclapboard\MovieBundle\Model\Movie:
-    exclusion_policy: NONE
+    exclusion_policy: ALL
     properties:
         id:
             expose: true
@@ -40,6 +40,9 @@ Myclapboard\MovieBundle\Model\Movie:
         genres:
             expose: true
             groups: [movielist, movie]
+        awards:
+            expose: true
+            groups: [movie]
         images:
             expose: true
             groups: [movie]

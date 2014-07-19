@@ -6,8 +6,14 @@ Myclapboard\AwardBundle\Model\AwardWon:
             groups: [movie, artist]
         movie:
             expose: true
+            groups: [movie]
+        actor:
+            expose: true
             groups: [movie, artist]
-        artist:
+        director:
+            expose: true
+            groups: [movie, artist]
+        writer:
             expose: true
             groups: [movie, artist]
         award:
@@ -17,8 +23,5 @@ Myclapboard\AwardBundle\Model\AwardWon:
             expose: true
             groups: [movie, artist]
         year:
-            expose: true
-            groups: [movie, artist]
-        role:
             expose: true
             groups: [movie, artist]

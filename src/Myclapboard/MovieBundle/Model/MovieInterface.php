@@ -14,6 +14,7 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 
 /**
@@ -257,6 +258,31 @@ interface MovieInterface
      * @return array<\Myclapboard\MovieBundle\Model\GenreInterface>
      */
     public function getGenres();
+
+    /**
+     * Adds award.
+     *
+     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
+     *
+     * @return \Myclapboard\ArtistBundle\Model\RoleInterface
+     */
+    public function addAward(AwardWonInterface $award);
+
+    /**
+     * Removes award.
+     *
+     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
+     *
+     * @return \Myclapboard\ArtistBundle\Model\RoleInterface
+     */
+    public function removeAward(AwardWonInterface $award);
+
+    /**
+     * Gets array of awards.
+     *
+     * @return array<\Myclapboard\MovieBundle\Model\AwardWonInterface>
+     */
+    public function getAwards();
 
     /**
      * Adds images.
