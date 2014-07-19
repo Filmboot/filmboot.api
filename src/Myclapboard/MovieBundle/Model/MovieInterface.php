@@ -264,7 +264,7 @@ interface MovieInterface
      *
      * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
-     * @return \Myclapboard\ArtistBundle\Model\RoleInterface
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
     public function addAward(AwardWonInterface $award);
 
@@ -273,14 +273,14 @@ interface MovieInterface
      *
      * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
-     * @return \Myclapboard\ArtistBundle\Model\RoleInterface
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
     public function removeAward(AwardWonInterface $award);
 
     /**
      * Gets array of awards.
      *
-     * @return array<\Myclapboard\MovieBundle\Model\AwardWonInterface>
+     * @return array<\Myclapboard\AwardBundle\Model\AwardWonInterface>
      */
     public function getAwards();
 

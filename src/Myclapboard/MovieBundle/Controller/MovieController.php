@@ -12,12 +12,24 @@ namespace Myclapboard\MovieBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
-use Myclapboard\CoreBundle\Controller\BaseApiController;
+use Myclapboard\CoreBundle\Controller\ResourceController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class MovieController extends BaseApiController
+class MovieController extends ResourceController
 {
+    protected $class;
+
+    protected $bundle;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->class = 'movie';
+        $this->bundle = $this->class;
+    }
+
     /**
      * Returns all the movies, it admits ordering, filter, count and pagination
      *
@@ -43,15 +55,7 @@ class MovieController extends BaseApiController
      */
     public function getMoviesAction(ParamFetcher $paramFetcher)
     {
-        $movies = $this->get('myclapboard_movie.manager.movie')
-            ->findAll(
-                $paramFetcher->get('order'),
-                $paramFetcher->get('q'),
-                $paramFetcher->get('count'),
-                $paramFetcher->get('page')
-            );
-
-        return $this->handleView($this->createView($movies, array('movielist')));
+        return $this->getAll($paramFetcher, array('movieList'));
     }
 
     /**
@@ -74,17 +78,11 @@ class MovieController extends BaseApiController
      * )
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     * 
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getMovieAction($id)
     {
-        $movie = $this->get('myclapboard_movie.manager.movie')->findOneById($id);
-
-        if ($movie === null) {
-            throw new NotFoundHttpException('Does not exist any movie with ' . $id . ' id');
-        }
-
-        return $this->handleView($this->createView($movie, array('movie')));
+        return $this->getOne($id, array('movie'));
     }
 }

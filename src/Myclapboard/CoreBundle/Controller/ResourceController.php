@@ -55,7 +55,7 @@ class ResourceController extends BaseApiController
             ->findOneById($id);
 
         if ($resource === null) {
-            throw new NotFoundHttpException('Does not exist any artist with ' . $id . ' id');
+            throw new NotFoundHttpException('Does not exist any ' . $this->class . ' with ' . $id . ' id');
         }
 
         return $this->handleView($this->createView($resource, $groups));
