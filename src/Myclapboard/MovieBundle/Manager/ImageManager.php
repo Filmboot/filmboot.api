@@ -56,4 +56,28 @@ class ImageManager
     {
         return new $this->class();
     }
+
+    /**
+     * Finds all the images of the id of movie given.
+     *
+     * @param string $id The movie id
+     *
+     * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
+     */
+    public function findAllByMovie($id)
+    {
+        return $this->repository->findBy(array('movie' => $id));
+    }
+
+    /**
+     * Finds the image with name given.
+     *
+     * @param string $name The name
+     *
+     * @return null|\Myclapboard\MovieBundle\Model\ImageInterface
+     */
+    public function findOneByName($name)
+    {
+        return $this->repository->findOneBy(array('name' => $name));
+    }
 }

@@ -1,18 +1,28 @@
 Myclapboard\ArtistBundle\Model\Artist:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: myclapboard_artist_get_artist
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
     properties:
         id:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist]
         slug:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist]
         firstName:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist]
         lastName:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist]
         birthday:
             expose: true
             groups: [artistList, artist]
@@ -24,7 +34,7 @@ Myclapboard\ArtistBundle\Model\Artist:
             groups: [artistList, artist]
         photo:
             expose: true
-            groups: [movielist, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist]
         actors:
             expose: true
             groups: [artist]

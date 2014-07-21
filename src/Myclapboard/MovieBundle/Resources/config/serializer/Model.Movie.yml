@@ -1,48 +1,92 @@
 Myclapboard\MovieBundle\Model\Movie:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: myclapboard_movie_get_movie
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie,]
+        -
+            rel: movies
+            href: 
+                route: myclapboard_movie_get_movies
+                absolute: true
+            exclusion:
+                groups: [movie]
+        -
+            rel: cast
+            href: 
+                route: myclapboard_movie_get_movie_cast
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
+        -
+            rel: awards
+            href: 
+                route: myclapboard_movie_get_movie_awards
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
+        -
+            rel: images
+            href: 
+                route: myclapboard_movie_get_movie_images
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
     properties:
         id:
             expose: true
-            groups: [movielist, movie, artist]
+            groups: [movieList, movie, artist]
         slug:
             expose: true
-            groups: [movielist, movie, artist]
+            groups: [movieList, movie, artist]
         title:
             expose: true
-            groups: [movielist, movie, artist]
+            groups: [movieList, movie, artist]
         duration:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         releaseDate:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         country:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         storyline:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         producer:
             expose: true
             groups: [movie]
         poster:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         cast:
             expose: true
             groups: [movie]
         directors:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         writers:
             expose: true
             groups: [movie]
         genres:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         awards:
             expose: true
-            groups: [movie]
+            groups: []
         images:
             expose: true
-            groups: [movie]
+            groups: []

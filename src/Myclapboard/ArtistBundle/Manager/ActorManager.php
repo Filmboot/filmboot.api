@@ -71,4 +71,16 @@ class ActorManager
     {
         return $this->repository->findOneBy(array('artist' => $artist, 'movie' => $movie));
     }
+
+    /**
+     * Finds all the actors of the id of movie given.
+     *
+     * @param string $id The movie id
+     *
+     * @return array<\Myclapboard\ArtistBundle\Entity\Actor>
+     */
+    public function findAllByMovie($id)
+    {
+        return $this->repository->findBy(array('movie' => $id));
+    }
 }

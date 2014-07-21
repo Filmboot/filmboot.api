@@ -14,6 +14,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Myclapboard\MovieBundle\Model\ImageInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -49,5 +50,21 @@ class ImageManagerSpec extends ObjectBehavior
     function it_creates_image()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\MovieBundle\Entity\Image');
+    }
+
+    function it_finds_all_by_movie(EntityRepository $repository)
+    {
+        $repository->findBy(array('movie' => 'movie-id'))
+            ->shouldBeCalled()->willReturn(array());
+
+        $this->findAllByMovie('movie-id')->shouldReturn(array());
+    }
+
+    function it_finds_one_by_name(EntityRepository $repository, ImageInterface $image)
+    {
+        $repository->findOneBy(array('name' => 'image-name'))
+            ->shouldBeCalled()->willReturn($image);
+
+        $this->findOneByName('image-name')->shouldReturn($image);
     }
 }

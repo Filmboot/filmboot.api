@@ -6,6 +6,10 @@ myclapboard_artist:
     type: rest
     resource: '@MyclapboardArtistBundle/Resources/config/routing.yml'
 
+myclapboard_core:
+    type: rest
+    resource: '@MyclapboardCoreBundle/Resources/config/routing.yml'
+
 myclapboard_movie:
     type: rest
     resource: '@MyclapboardMovieBundle/Resources/config/routing.yml'

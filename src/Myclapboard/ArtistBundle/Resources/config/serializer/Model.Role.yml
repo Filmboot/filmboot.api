@@ -1,9 +1,19 @@
 Myclapboard\ArtistBundle\Model\Role:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: movie
+            href: 
+                route: myclapboard_movie_get_movie
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [cast]
     properties:
         artist:
             expose: true
-            groups: [movielist, movie]
+            groups: [movieList, movie]
         movie:
             expose: true
             groups: [artist]

@@ -1,21 +1,31 @@
 Myclapboard\AwardBundle\Model\AwardWon:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: movie
+            href: 
+                route: myclapboard_movie_get_movie
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [movie]
     properties:
         id:
             expose: true
             groups: [movie, artist]
         movie:
             expose: true
-            groups: [movie]
+            groups: [artist]
         actor:
             expose: true
-            groups: [movie, artist]
+            groups: [movie]
         director:
             expose: true
-            groups: [movie, artist]
+            groups: [movie]
         writer:
             expose: true
-            groups: [movie, artist]
+            groups: [movie]
         award:
             expose: true
             groups: [movie, artist]

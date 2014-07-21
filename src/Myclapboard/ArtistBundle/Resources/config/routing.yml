@@ -1,3 +1,10 @@
-myclapboard_artist_artists:
+#myclapboard_artist_artists:
+#    type: rest
+#    resource: Myclapboard\ArtistBundle\Controller\ArtistController
+
+myclapboard_artist_get_artist:
     type: rest
-    resource: Myclapboard\ArtistBundle\Controller\ArtistController
+    pattern:  /artists/{id}
+    defaults: {_controller: MyclapboardArtistBundle:Artist:getArtist }
+    requirements:
+        _method: GET

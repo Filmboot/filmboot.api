@@ -60,4 +60,24 @@ class ResourceController extends BaseApiController
 
         return $this->handleView($this->createView($resource, $groups));
     }
+
+    /**
+     * Returns the resource for given id if exists, otherwise throws the exception.
+     *
+     * @param string $id The id of the resource
+     *
+     * @return mixed
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    protected function getResourceIfExists($id)
+    {
+        $resource = $this->get('myclapboard_' . $this->bundle . '.manager.' . $this->class)
+            ->findOneById($id);
+
+        if ($resource === null) {
+            throw new NotFoundHttpException('Does not exist any ' . $this->class . ' with ' . $id . ' id');
+        }
+
+        return $resource;
+    }
 }

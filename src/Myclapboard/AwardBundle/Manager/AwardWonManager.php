@@ -56,4 +56,16 @@ class AwardWonManager
     {
         return new $this->class();
     }
+
+    /**
+     * Finds all the awards of the id of movie given.
+     *
+     * @param string $id The movie id
+     *
+     * @return array<\Myclapboard\AwardBundle\Model\AwardWonInterface>
+     */
+    public function findAllByMovie($id)
+    {
+        return $this->repository->findBy(array('movie' => $id));
+    }
 }

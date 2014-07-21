@@ -66,4 +66,12 @@ class ActorManagerSpec extends ObjectBehavior
         
         $this->findOneByArtistAndMovie($artist, $movie)->shouldReturn($actor);
     }
+    
+    function it_finds_all_by_movie(EntityRepository $repository)
+    {
+        $repository->findBy(array('movie' => 'movie-id'))
+            ->shouldBeCalled()->willReturn(array());
+        
+        $this->findAllByMovie('movie-id')->shouldReturn(array());
+    }
 }

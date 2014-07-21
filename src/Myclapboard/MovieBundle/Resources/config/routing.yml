@@ -1,3 +1,34 @@
-myclapboard_movie_movies:
+myclapboard_movie_get_movies:
     type: rest
-    resource: Myclapboard\MovieBundle\Controller\MovieController
+    pattern:  /movies
+    defaults: { _controller: MyclapboardMovieBundle:Movie:getMovies }
+    requirements:
+        _method: GET
+
+myclapboard_movie_get_movie:
+    type: rest
+    pattern:  /movies/{id}
+    defaults: { _controller: MyclapboardMovieBundle:Movie:getMovie }
+    requirements:
+        _method: GET
+        
+myclapboard_movie_get_movie_cast:
+    type: rest
+    pattern:  /movies/{id}/cast
+    defaults: { _controller: MyclapboardMovieBundle:Movie:getMoviesCast }
+    requirements:
+        _method: GET
+        
+myclapboard_movie_get_movie_awards:
+    type: rest
+    pattern:  /movies/{id}/awards
+    defaults: { _controller: MyclapboardMovieBundle:Movie:getMoviesAwards }
+    requirements:
+        _method: GET
+
+myclapboard_movie_get_movie_images:
+    type: rest
+    pattern:  /movies/{id}/images
+    defaults: { _controller: MyclapboardMovieBundle:Movie:getMoviesImages }
+    requirements:
+        _method: GET

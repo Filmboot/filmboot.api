@@ -1,6 +1,25 @@
 Myclapboard\MovieBundle\Model\Image:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: myclapboard_movie_get_movie_images
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: []
+        -
+            rel: movie
+            href: 
+                route: myclapboard_movie_get_movie
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: []
     properties:
         movie:
-            expose: true
+            expose: false
             groups: []
