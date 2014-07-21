@@ -1,0 +1,25 @@
+Myclapboard\ArtistBundle\Model\Image:
+    exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: myclapboard_artist_get_artist_images
+                parameters:
+                    id: expr(object.getArtist().getId())
+                absolute: true
+            exclusion:
+                groups: []
+        -
+            rel: artist
+            href: 
+                route: myclapboard_artist_get_artist
+                parameters:
+                    id: expr(object.getArtist().getId())
+                absolute: true
+            exclusion:
+                groups: []
+    properties:
+        artist:
+            expose: false
+            groups: []

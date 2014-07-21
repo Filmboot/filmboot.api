@@ -52,12 +52,12 @@ class ImageManagerSpec extends ObjectBehavior
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\MovieBundle\Entity\Image');
     }
 
-    function it_finds_all_by_movie(EntityRepository $repository)
+    function it_finds_all_by_movie_id(EntityRepository $repository)
     {
         $repository->findBy(array('movie' => 'movie-id'))
             ->shouldBeCalled()->willReturn(array());
 
-        $this->findAllByMovie('movie-id')->shouldReturn(array());
+        $this->findAllBy('movie-id')->shouldReturn(array());
     }
 
     function it_finds_one_by_name(EntityRepository $repository, ImageInterface $image)

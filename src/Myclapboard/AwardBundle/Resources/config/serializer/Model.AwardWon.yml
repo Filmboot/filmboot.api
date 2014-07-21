@@ -9,29 +9,29 @@ Myclapboard\AwardBundle\Model\AwardWon:
                     id: expr(object.getMovie().getId())
                 absolute: true
             exclusion:
-                groups: [movie]
+                groups: [movie, artist]
     properties:
         id:
-            expose: true
-            groups: [movie, artist]
+            expose: false
+            groups: []
         movie:
             expose: true
-            groups: [artist]
+            groups: [artist, awardList]
         actor:
             expose: true
-            groups: [movie]
+            groups: [movie, awardList, role]
         director:
             expose: true
-            groups: [movie]
+            groups: [movie, awardList, role]
         writer:
             expose: true
-            groups: [movie]
+            groups: [movie, awardList, role]
         award:
             expose: true
-            groups: [movie, artist]
+            groups: [movie, artist, awardList]
         category:
             expose: true
-            groups: [movie, artist]
+            groups: [movie, artist, awardList]
         year:
             expose: true
-            groups: [movie, artist]
+            groups: [movie, artist, awardList]

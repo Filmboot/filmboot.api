@@ -182,7 +182,7 @@ class MovieController extends ResourceController
     {
         $this->getResourceIfExists($id);
 
-        $images = $this->get('myclapboard_movie.manager.image')->findAllByMovie($id);
+        $images = $this->get('myclapboard_movie.manager.image')->findAllBy($id);
 
         foreach ($images as $image) {
             $image->setName(

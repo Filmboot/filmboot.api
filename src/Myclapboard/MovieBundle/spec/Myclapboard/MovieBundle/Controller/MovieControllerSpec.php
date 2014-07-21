@@ -204,7 +204,7 @@ class MovieControllerSpec extends ObjectBehavior
 
         $container->get('myclapboard_movie.manager.image')
             ->shouldBeCalled()->willReturn($imageManager);
-        $imageManager->findAllByMovie('movie-id')
+        $imageManager->findAllBy('movie-id')
             ->shouldBeCalled()->willReturn(array($image));
         
         $image->getName()->shouldBeCalled()->willReturn('image-name.jpg');

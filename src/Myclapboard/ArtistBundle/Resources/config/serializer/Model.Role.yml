@@ -9,14 +9,23 @@ Myclapboard\ArtistBundle\Model\Role:
                     id: expr(object.getMovie().getId())
                 absolute: true
             exclusion:
-                groups: [cast]
+                groups: [cast, artist]
+        -
+            rel: artist
+            href: 
+                route: myclapboard_artist_get_artist
+                parameters:
+                    id: expr(object.getArtist().getId())
+                absolute: true
+            exclusion:
+                groups: [awardList]
     properties:
         artist:
             expose: true
             groups: [movieList, movie]
         movie:
             expose: true
-            groups: [artist]
+            groups: [artist, role]
         awards:
             expose: true
             groups: [artist]

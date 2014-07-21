@@ -1,4 +1,4 @@
 myclapboard_core_get_image:
-    pattern:  /uploads/images/{name}
+    pattern: /uploads/images/{name}
     requirements:
         name: ^[\w,\s-]+\.[A-Za-z]{3}$

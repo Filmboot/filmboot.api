@@ -68,4 +68,33 @@ class AwardWonManager
     {
         return $this->repository->findBy(array('movie' => $id));
     }
+
+    /**
+     * Finds all the awards of the id of artist given.
+     *
+     * @param string $id The artist id
+     *
+     * @return array<\Myclapboard\AwardBundle\Model\AwardWonInterface>
+     */
+    public function findAllByArtist($id)
+    {
+        $queryBuilder = $this->repository->createQueryBuilder('aw');
+
+        $query = $queryBuilder->select(array('aw', 'a', 'd', 'w'))
+            ->leftJoin('aw.actor', 'a')
+            ->leftJoin('aw.director', 'd')
+            ->leftJoin('aw.writer', 'w')
+            ->where($queryBuilder->expr()->eq('a.artist', ':id'))
+            ->orWhere($queryBuilder->expr()->eq('d.artist', ':id'))
+            ->orWhere($queryBuilder->expr()->eq('w.artist', ':id'))
+            ->setParameter(':id', $id)
+            ->getQuery();
+
+        return $query
+            ->setHint(
+                \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getResult();
+    }
 }

@@ -62,6 +62,28 @@ class ResourceController extends BaseApiController
     }
 
     /**
+     * Returns the images of resource's given id.
+     *
+     * @param string $id The id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function getOnesImages($id)
+    {
+        $this->getResourceIfExists($id);
+
+        $images = $this->get('myclapboard_' . $this->bundle . '.manager.image')->findAllBy($id);
+
+        foreach ($images as $image) {
+            $image->setName(
+                $this->generateUrl('myclapboard_core_get_image', array('name' => $image->getName()), true)
+            );
+        }
+
+        return $this->handleView($this->createView($images));
+    }
+
+    /**
      * Returns the resource for given id if exists, otherwise throws the exception.
      *
      * @param string $id The id of the resource
@@ -79,5 +101,38 @@ class ResourceController extends BaseApiController
         }
 
         return $resource;
+    }
+
+    /**
+     * Skeleton for some basic methods, returning a response with resource and its groups.
+     *
+     * @param string $id     The id
+     * @param array  $groups The array of groups
+     * @param null   $bundle The bundle name, defaults null (it uses value for this)
+     * @param null   $class  The class name, defaults null (it uses value for this)
+     * @param string $method The method name
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function getOnesResources(
+        $id,
+        $groups = array('artist'),
+        $bundle = null,
+        $class = null,
+        $method = 'findOneById'
+    )
+    {
+        $this->getResourceIfExists($id);
+
+        if ($class === null) {
+            $class = $this->class;
+        }
+        if ($bundle === null) {
+            $bundle = $this->bundle;
+        }
+
+        $resources = $this->get('myclapboard_' . $bundle . '.manager.' . $class)->$method($id);
+
+        return $this->handleView($this->createView($resources, $groups));
     }
 }

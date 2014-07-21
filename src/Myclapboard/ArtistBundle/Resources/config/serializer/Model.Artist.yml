@@ -9,7 +9,34 @@ Myclapboard\ArtistBundle\Model\Artist:
                     id: expr(object.getId())
                 absolute: true
             exclusion:
-                groups: [movieList, movie]
+                groups: [movieList, movie, artistList, artist, role]
+        -
+            rel: movies
+            href: 
+                route: myclapboard_artist_get_artist_movies
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [artistList, artist]
+        -
+            rel: awards
+            href: 
+                route: myclapboard_artist_get_artist_awards
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [artistList, artist, role]
+        -
+            rel: images
+            href: 
+                route: myclapboard_artist_get_artist_images
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [artistList, artist]
     properties:
         id:
             expose: true
@@ -37,13 +64,13 @@ Myclapboard\ArtistBundle\Model\Artist:
             groups: [movieList, movie, artistList, artist]
         actors:
             expose: true
-            groups: [artist]
+            groups: [actor]
         directors:
             expose: true
-            groups: [artist]
+            groups: [director]
         writers:
             expose: true
-            groups: [artist]
+            groups: [writer]
         images:
             expose: true
-            groups: [artist]
+            groups: []

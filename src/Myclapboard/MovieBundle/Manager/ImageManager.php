@@ -64,7 +64,7 @@ class ImageManager
      *
      * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
      */
-    public function findAllByMovie($id)
+    public function findAllBy($id)
     {
         return $this->repository->findBy(array('movie' => $id));
     }

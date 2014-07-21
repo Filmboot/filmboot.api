@@ -50,4 +50,12 @@ class ImageManagerSpec extends ObjectBehavior
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Image');
     }
+    
+    function it_finds_all_by_artist_id(EntityRepository $repository)
+    {
+        $repository->findBy(array('artist' => 'artist-id'))
+            ->shouldBeCalled()->willReturn(array());
+        
+        $this->findAllBy('artist-id')->shouldReturn(array());
+    }
 }

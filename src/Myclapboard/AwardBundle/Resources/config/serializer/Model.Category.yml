@@ -3,7 +3,7 @@ Myclapboard\AwardBundle\Model\Category:
     properties:
         id:
             expose: true
-            groups: [movie, artist]
+            groups: [movie, artist, awardList]
         name:
             expose: true
-            groups: [movie, artist]
+            groups: [movie, artist, awardLists]

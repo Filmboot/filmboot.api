@@ -31,7 +31,7 @@ class ArtistController extends ResourceController
     }
 
     /**
-     * Returns all the artists, it admits ordering, filter, count and pagination
+     * Returns all the artists, it admits ordering, filter, count and pagination.
      *
      * @param ParamFetcher $paramFetcher The param fetcher
      *
@@ -59,7 +59,7 @@ class ArtistController extends ResourceController
     }
 
     /**
-     * Returns artist for given id
+     * Returns artist for given id.
      *
      * @param string $id The id of the artist
      *
@@ -84,5 +84,92 @@ class ArtistController extends ResourceController
     public function getArtistAction($id)
     {
         return $this->getOne($id, array('artist'));
+    }
+
+    /**
+     * Returns all the movies of the artist given id, it admits filtering by role.
+     *
+     * @param string       $id           The id
+     * @param ParamFetcher $paramFetcher The param fetcher
+     *
+     * @QueryParam(name="q", requirements="(actor|director|writer)", strict=true, nullable=true, description="Query")
+     *
+     * @ApiDoc(
+     *  description = "Returns all the movies of the artist given id, it admits filtering by role.",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
+     * )
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getArtistsMoviesAction($id, ParamFetcher $paramFetcher)
+    {
+        $groups = array('role', 'actor', 'director', 'writer');
+        if ($paramFetcher->get('q')) {
+            $groups = array('role', $paramFetcher->get('q'));
+        }
+
+        return $this->getOnesResources($id, $groups);
+    }
+
+    /**
+     * Returns the awards of the artist for given id.
+     *
+     * @param string $id The id of artist
+     *
+     * @ApiDoc(
+     *  description = "Returns the awards of the artist for given id",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
+     *  statusCodes = {
+     *    404 = "Does not exist any artist with <$id> id"
+     *  }
+     * )
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getArtistsAwardsAction($id)
+    {
+        return $this->getOnesResources($id, array('awardList'), 'award', 'awardWon', 'findAllByArtist');
+    }
+
+    /**
+     * Returns the images of the artist for given id.
+     *
+     * @param string $id The id of artist
+     *
+     * @ApiDoc(
+     *  description = "Returns the images of the artist for given id",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
+     *  statusCodes = {
+     *    404 = "Does not exist any artist with <$id> id"
+     *  }
+     * )
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getArtistsImagesAction($id)
+    {
+        return $this->getOnesImages($id);
     }
 }

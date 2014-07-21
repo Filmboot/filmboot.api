@@ -56,4 +56,16 @@ class ImageManager
     {
         return new $this->class();
     }
+
+    /**
+     * Finds all the images of the id of artist given.
+     *
+     * @param string $id The artist id
+     *
+     * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
+     */
+    public function findAllBy($id)
+    {
+        return $this->repository->findBy(array('artist' => $id));
+    }
 }
