@@ -2,7 +2,7 @@
 
 /**
  * (c) benatespina <benatespina@gmail.com>
- * 
+ *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
@@ -27,7 +27,7 @@ class User implements AdvancedUserInterface, UserInterface
     protected $firstName;
 
     protected $lastName;
-    
+
     protected $password;
 
     protected $salt;
@@ -142,7 +142,7 @@ class User implements AdvancedUserInterface, UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-        
+
         return $this;
     }
 
@@ -160,7 +160,7 @@ class User implements AdvancedUserInterface, UserInterface
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
-        
+
         return $this;
     }
 
@@ -217,7 +217,7 @@ class User implements AdvancedUserInterface, UserInterface
 
         return $this;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -414,11 +414,11 @@ class User implements AdvancedUserInterface, UserInterface
         if ($this->firstName === null && $this->lastName === null) {
             return $this->email;
         }
-        
+
         if ($this->firstName === null) {
             return $this->lastName;
         }
-        
+
         if ($this->lastName === null) {
             return $this->firstName;
         }

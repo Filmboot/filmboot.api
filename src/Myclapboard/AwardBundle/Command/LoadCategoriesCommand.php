@@ -34,7 +34,7 @@ class LoadCategoriesCommand extends ContainerAwareCommand
             ->setDescription('Loads category from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:award:load:category</info> command loads content of file passed by argument 
+                'The <info>myclapboard:award:load:category</info> command loads content of file passed by argument
 <info>php app/console myclapboard:award:load:category <path-of-file></info>'
             );
     }

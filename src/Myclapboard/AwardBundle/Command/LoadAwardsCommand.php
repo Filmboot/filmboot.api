@@ -34,7 +34,7 @@ class LoadAwardsCommand extends ContainerAwareCommand
             ->setDescription('Loads award from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:award:load:award</info> command loads content of file passed by argument 
+                'The <info>myclapboard:award:load:award</info> command loads content of file passed by argument
 <info>php app/console myclapboard:award:load:award <path-of-file></info>'
             );
     }
@@ -73,7 +73,7 @@ class LoadAwardsCommand extends ContainerAwareCommand
                 $translation = new AwardTranslation('es', 'name', $values['es']);
                 $award->addTranslation($translation);
             }
-            
+
             $manager->persist($award);
         }
 

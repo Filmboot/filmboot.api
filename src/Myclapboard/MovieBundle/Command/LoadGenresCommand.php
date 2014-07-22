@@ -34,7 +34,7 @@ class LoadGenresCommand extends ContainerAwareCommand
             ->setDescription('Loads genre from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:movie:load:genre</info> command loads content of file passed by argument 
+                'The <info>myclapboard:movie:load:genre</info> command loads content of file passed by argument
 <info>php app/console myclapboard:movie:load:genre <path-of-file></info>'
             );
     }

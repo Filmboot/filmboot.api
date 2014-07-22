@@ -33,7 +33,7 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
             ->setDescription('Loads awardWon from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:award:load:awardWon</info> command loads content of file passed by argument 
+                'The <info>myclapboard:award:load:awardWon</info> command loads content of file passed by argument
 <info>php app/console myclapboard:award:load:awardWon <path-of-file></info>'
             );
     }
@@ -74,12 +74,12 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
 
             if ($award !== null && $category !== null && $movie !== null) {
                 $awardWon = $container->get('myclapboard_award.manager.awardWon')->create();
-                
+
                 $awardWon->setAward($award);
                 $awardWon->setCategory($category);
                 $awardWon->setMovie($movie);
                 $awardWon->setYear($values['year']);
-                
+
                 $artist = $container->get('myclapboard_artist.manager.artist')
                     ->findOneByFullName($values['artist']['firstName'], $values['artist']['lastName']);
 
@@ -100,7 +100,7 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
                         }
                     }
                 }
-                
+
                 $manager->persist($awardWon);
             }
         }

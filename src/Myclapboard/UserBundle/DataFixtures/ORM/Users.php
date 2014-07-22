@@ -2,7 +2,7 @@
 
 /**
  * (c) benatespina <benatespina@gmail.com>
- * 
+ *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
@@ -56,8 +56,8 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, Containe
     }
 
     /**
-     * Creates ten users with with name, role and activated given. 
-     * 
+     * Creates ten users with with name, role and activated given.
+     *
      * @param \Doctrine\Common\Persistence\ObjectManager $manager   The object manager
      * @param string                                     $name      The name
      * @param string                                     $role      The role
@@ -75,7 +75,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, Containe
             $user->setEmail($name . $i . '@gmail.com');
             $user->setFirstName($name . $i);
             $user->setLastName('surname');
-            
+
             $plainPass = $name . $i;
             $user->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);

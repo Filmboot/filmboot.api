@@ -14,4 +14,4 @@ use Myclapboard\UserBundle\Model\User as BaseUser;
 
 class User extends BaseUser
 {
-} 
+}

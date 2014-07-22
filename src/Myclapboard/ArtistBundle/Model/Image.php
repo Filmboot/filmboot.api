@@ -20,7 +20,7 @@ use Myclapboard\CoreBundle\Model\BaseImage;
 class Image extends BaseImage implements ImageInterface
 {
     protected $artist;
-    
+
     /**
      * Constructor.
      */
