@@ -75,6 +75,7 @@ class LoadArtistsCommand extends ContainerAwareCommand
             $artist->setLastName($values['lastName']);
             $artist->setBirthday(new \DateTime($values['birthday']));
             $artist->setBirthplace($birthplace);
+            $artist->setWebsite($values['website']);
             $artist->setBiography($values['biography']['en']);
             if ($values['biography']['es']) {
                 $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);

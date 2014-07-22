@@ -88,6 +88,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $artist->setLastName(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setBirthday(Argument::type('DateTime'))->shouldBeCalled()->willReturn($artist);
         $artist->setBirthplace($birthplace)->shouldBeCalled()->willReturn($artist);
+        $artist->setWebsite(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
         

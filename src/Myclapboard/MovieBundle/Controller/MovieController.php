@@ -180,16 +180,6 @@ class MovieController extends ResourceController
      */
     public function getMoviesImagesAction($id)
     {
-        $this->getResourceIfExists($id);
-
-        $images = $this->get('myclapboard_movie.manager.image')->findAllBy($id);
-
-        foreach ($images as $image) {
-            $image->setName(
-                $this->generateUrl('myclapboard_core_get_image', array('name' => $image->getName()), true)
-            );
-        }
-
-        return $this->handleView($this->createView($images));
+        return $this->getOnesImages($id);
     }
 }

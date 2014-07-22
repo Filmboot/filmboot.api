@@ -144,6 +144,22 @@ interface MovieInterface
     public function setProducer($producer);
 
     /**
+     * Gets website.
+     *
+     * @return string
+     */
+    public function getWebsite();
+
+    /**
+     * Sets website.
+     *
+     * @param string $website The website
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function setWebsite($website);
+
+    /**
      * Gets poster.
      *
      * @return string

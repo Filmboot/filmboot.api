@@ -42,6 +42,8 @@ class Movie implements MovieInterface
 
     protected $producer;
 
+    protected $website;
+
     protected $poster;
 
     protected $cast;
@@ -51,9 +53,9 @@ class Movie implements MovieInterface
     protected $writers;
 
     protected $genres;
-    
+
     protected $awards;
-    
+
     protected $images;
 
     protected $translations;
@@ -206,7 +208,25 @@ class Movie implements MovieInterface
 
         return $this;
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
     /**
      * {@inheritdoc}
      */

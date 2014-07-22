@@ -95,6 +95,12 @@ class ArtistSpec extends ObjectBehavior
         );
     }
 
+    function its_website_is_mutable()
+    {
+        $this->setWebsite('http://www.tarantino.info/')->shouldReturn($this);
+        $this->getWebsite()->shouldReturn('http://www.tarantino.info/');
+    }
+
     function its_photo_is_mutable()
     {
         $this->setPhoto('quentin-tarantino.jpg')->shouldReturn($this);

@@ -76,6 +76,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
             $movie->setDuration($values['duration']);
             $movie->setReleaseDate(new \DateTime($values['releaseDate']));
             $movie->setCountry($country);
+            $movie->setWebsite($values['website']);
 
             $movie->setStoryline($values['storyline']['en']);
             $this->addTranslation($movie, $values, 'storyline');

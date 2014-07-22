@@ -85,6 +85,12 @@ class MovieSpec extends ObjectBehavior
         $this->getProducer()->shouldReturn('Quentin Tarantino');
     }
 
+    function its_website_is_mutable()
+    {
+        $this->setWebsite('http://unchainedmovie.com/')->shouldReturn($this);
+        $this->getWebsite()->shouldReturn('http://unchainedmovie.com/');
+    }
+
     function its_title_is_mutable()
     {
         $this->setTitle('Pulp fiction')->shouldReturn($this);

@@ -125,6 +125,22 @@ interface ArtistInterface
     public function setBiography($biography);
 
     /**
+     * Gets website.
+     *
+     * @return string
+     */
+    public function getWebsite();
+
+    /**
+     * Sets website.
+     *
+     * @param string $website The website
+     *
+     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     */
+    public function setWebsite($website);
+
+    /**
      * Gets photo.
      *
      * @return string

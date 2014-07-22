@@ -27,6 +27,9 @@ Myclapboard\MovieBundle\Entity\Movie:
             type: string
             length: 100
             nullable: true
+        website:
+            type: string
+            nullable: true
         poster:
             type: string
             length: 100

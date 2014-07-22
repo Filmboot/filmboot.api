@@ -26,6 +26,9 @@ Myclapboard\ArtistBundle\Entity\Artist:
             nullable: true
             gedmo:
                 - translatable
+        website:
+            type: string
+            nullable: true
         photo:
             type: string
             length: 100

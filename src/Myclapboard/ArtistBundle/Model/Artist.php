@@ -38,7 +38,9 @@ class Artist implements ArtistInterface
     protected $birthplace;
 
     protected $biography;
-    
+
+    protected $website;
+
     protected $photo;
 
     protected $actors;
@@ -175,6 +177,24 @@ class Artist implements ArtistInterface
     public function setBiography($biography)
     {
         $this->biography = $biography;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
 
         return $this;
     }
