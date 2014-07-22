@@ -2,7 +2,6 @@
 
 namespace Myclapboard\AwardBundle;
 
-use Doctrine\DBAL\Types\Type;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**

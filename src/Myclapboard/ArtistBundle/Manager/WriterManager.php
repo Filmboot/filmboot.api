@@ -12,7 +12,6 @@ namespace Myclapboard\ArtistBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\ArtistBundle\MyclapboardArtistBundle;
 use Myclapboard\MovieBundle\Model\MovieInterface;
 
 /**

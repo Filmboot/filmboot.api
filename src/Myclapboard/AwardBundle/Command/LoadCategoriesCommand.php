@@ -44,9 +44,9 @@ class LoadCategoriesCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading categories");
+        $output->writeln('Loading categories');
         $this->loadCategories($input->getArgument('file'));
-        $output->writeln("Categories loaded successfully");
+        $output->writeln('Categories loaded successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class LoadCategoriesCommand extends ContainerAwareCommand
             $award = $container->get('myclapboard_award.manager.category')->create();
 
             $award->setName($values['en']);
-            if ($values['es']) {
+            if ($values['es'] !== null) {
                 $translation = new CategoryTranslation('es', 'name', $values['es']);
                 $award->addTranslation($translation);
             }

@@ -22,8 +22,8 @@ class ResourceController extends BaseApiController
     /**
      * Returns all the resources, it admits ordering, filter, count and pagination.
      *
-     * @param ParamFetcher          $paramFetcher The param fetcher
-     * @param array()|array<string> $groups       The array of serialization groups
+     * @param ParamFetcher $paramFetcher The param fetcher
+     * @param string[]     $groups       The array of serialization groups
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -43,8 +43,8 @@ class ResourceController extends BaseApiController
     /**
      * Returns the resource for given id.
      *
-     * @param string $id     The id of the resource
-     * @param array  $groups The serialization groups
+     * @param string   $id     The id of the resource
+     * @param string[] $groups The serialization groups
      *
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -108,8 +108,8 @@ class ResourceController extends BaseApiController
      *
      * @param string $id     The id
      * @param array  $groups The array of groups
-     * @param null   $bundle The bundle name, defaults null (it uses value for this)
-     * @param null   $class  The class name, defaults null (it uses value for this)
+     * @param string $bundle The bundle name, defaults null (it uses value for this)
+     * @param string $class  The class name, defaults null (it uses value for this)
      * @param string $method The method name
      *
      * @return \Symfony\Component\HttpFoundation\Response

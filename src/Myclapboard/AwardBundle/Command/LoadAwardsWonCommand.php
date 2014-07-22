@@ -43,9 +43,9 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading awardsWon");
+        $output->writeln('Loading awardsWon');
         $this->loadAwardsWon($input->getArgument('file'));
-        $output->writeln("AwardsWon loaded successfully");
+        $output->writeln('AwardsWon loaded successfully');
     }
 
     /**
@@ -86,7 +86,7 @@ class LoadAwardsWonCommand extends ContainerAwareCommand
                 if ($artist !== null) {
                     $role = $container->get('myclapboard_artist.manager.' . $values['role'])
                         ->findOneByArtistAndMovie($artist, $movie);
-                    if ($role) {
+                    if ($role !== null) {
                         switch ($values['role']) {
                             case 'actor':
                                 $awardWon->setActor($role);

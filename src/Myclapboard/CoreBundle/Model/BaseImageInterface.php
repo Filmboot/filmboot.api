@@ -31,7 +31,7 @@ interface BaseImageInterface
      *
      * @param string $name The name of image
      *
-     * @return \Myclapboard\CoreBundle\Model\ImageInterface
+     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
      */
     public function setName($name);
 
@@ -47,7 +47,7 @@ interface BaseImageInterface
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file The image file
      *
-     * @return \Myclapboard\CoreBundle\Model\ImageInterface
+     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
      */
     public function setFile(UploadedFile $file = null);
 
@@ -80,4 +80,4 @@ interface BaseImageInterface
      * @return string
      */
     public function getFixturePath($folder);
-} 
+}

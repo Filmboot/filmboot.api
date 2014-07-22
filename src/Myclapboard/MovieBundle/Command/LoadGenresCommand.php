@@ -44,9 +44,9 @@ class LoadGenresCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading genres");
+        $output->writeln('Loading genres');
         $this->loadGenres($input->getArgument('file'));
-        $output->writeln("Genres loaded successfully");
+        $output->writeln('Genres loaded successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class LoadGenresCommand extends ContainerAwareCommand
             $genre = $container->get('myclapboard_movie.manager.genre')->create();
 
             $genre->setName($values['en']);
-            if ($values['es']) {
+            if ($values['es'] !== null) {
                 $translation = new GenreTranslation('es', 'name', $values['es']);
                 $genre->addTranslation($translation);
             }

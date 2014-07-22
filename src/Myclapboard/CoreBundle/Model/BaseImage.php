@@ -86,7 +86,7 @@ class BaseImage implements BaseImageInterface
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath()) {
+        if (isset($this->file)) {
             unlink($this->file);
         }
     }
@@ -108,15 +108,21 @@ class BaseImage implements BaseImageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the root directory of uploaded file.
+     *
+     * @return string
      */
     protected function getUploadRootDir()
     {
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+        $thisClass = new \ReflectionClass($this);
+
+        return dirname($thisClass->getFileName()) . '/../../../../web/' . $this->getUploadDir();
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the directory of uploaded file.
+     *
+     * @return string
      */
     protected function getUploadDir()
     {
@@ -124,15 +130,25 @@ class BaseImage implements BaseImageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the root directory of fixture file.
+     *
+     * @param string $path The path
+     *
+     * @return string
      */
     protected function getFixtureRootDir($path)
     {
-        return __DIR__ . '/../../../../app/' . $this->getFixtureDir($path);
+        $thisClass = new \ReflectionClass($this);
+
+        return dirname($thisClass->getFileName()) . '/../../../../app/' . $this->getFixtureDir($path);
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the directory of fixture file.
+     *
+     * @param string $path The path
+     *
+     * @return string
      */
     protected function getFixtureDir($path)
     {

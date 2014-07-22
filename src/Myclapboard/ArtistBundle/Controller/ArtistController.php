@@ -110,7 +110,7 @@ class ArtistController extends ResourceController
     public function getArtistsMoviesAction($id, ParamFetcher $paramFetcher)
     {
         $groups = array('role', 'actor', 'director', 'writer');
-        if ($paramFetcher->get('q')) {
+        if ($paramFetcher->get('q') !== null) {
             $groups = array('role', $paramFetcher->get('q'));
         }
 

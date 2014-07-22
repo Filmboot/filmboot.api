@@ -44,9 +44,9 @@ class LoadAwardsCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading awards");
+        $output->writeln('Loading awards');
         $this->loadAwards($input->getArgument('file'));
-        $output->writeln("Awards loaded successfully");
+        $output->writeln('Awards loaded successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class LoadAwardsCommand extends ContainerAwareCommand
             $award = $container->get('myclapboard_award.manager.award')->create();
 
             $award->setName($values['en']);
-            if ($values['es']) {
+            if ($values['es'] !== null) {
                 $translation = new AwardTranslation('es', 'name', $values['es']);
                 $award->addTranslation($translation);
             }
