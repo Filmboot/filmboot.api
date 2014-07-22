@@ -19,4 +19,4 @@ use Myclapboard\CoreBundle\Model\BaseImage as BaseBaseImage;
  */
 class BaseImage extends BaseBaseImage
 {
-} 
+}

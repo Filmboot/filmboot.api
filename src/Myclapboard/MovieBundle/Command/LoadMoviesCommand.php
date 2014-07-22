@@ -34,7 +34,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
             ->setDescription('Loads movie from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:movie:load:movie</info> command loads content of file passed by argument 
+                'The <info>myclapboard:movie:load:movie</info> command loads content of file passed by argument
 <info>php app/console myclapboard:movie:load:movie <path-of-file></info>'
             );
     }
@@ -92,7 +92,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
                     ->findOneByName(array('name' => $nameOfGenre));
                 $movie->addGenre($genre);
             }
-            
+
             $this->linkedMainImage($movie, 'setPoster', 'posters');
             $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
 
@@ -101,7 +101,6 @@ class LoadMoviesCommand extends LoadArtistsCommand
 
         $manager->flush();
     }
-
 
     /**
      * Finds artist and creates the role with the role given, adding this role into movie object.
@@ -149,5 +148,4 @@ class LoadMoviesCommand extends LoadArtistsCommand
         }
     }
 
-    
 }

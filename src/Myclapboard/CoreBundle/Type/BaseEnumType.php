@@ -21,7 +21,7 @@ use Doctrine\DBAL\Types\Type;
 abstract class BaseEnumType extends Type
 {
     protected $name;
-    
+
     protected $values = array();
 
     /**
@@ -55,7 +55,7 @@ abstract class BaseEnumType extends Type
         if (!in_array($value, $this->values)) {
             throw new \InvalidArgumentException("Invalid '" . $this->name . "' value.");
         }
-        
+
         return $value;
     }
 

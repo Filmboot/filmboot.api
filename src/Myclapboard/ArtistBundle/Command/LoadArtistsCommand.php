@@ -35,7 +35,7 @@ class LoadArtistsCommand extends ContainerAwareCommand
             ->setDescription('Loads artist from yml file')
             ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
-                'The <info>myclapboard:artist:load:artist</info> command loads content of file passed by argument 
+                'The <info>myclapboard:artist:load:artist</info> command loads content of file passed by argument
 <info>php app/console myclapboard:artist:load:artist <path-of-file></info>'
             );
     }

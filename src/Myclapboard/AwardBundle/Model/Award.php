@@ -23,7 +23,7 @@ class Award implements AwardInterface
     protected $id;
 
     protected $name;
-    
+
     protected $translations;
 
     /**
