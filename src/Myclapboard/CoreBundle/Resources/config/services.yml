@@ -6,3 +6,10 @@ services:
     myclapboard_core.manager.baseImage:
         class: Myclapboard\CoreBundle\Manager\BaseImageManager
         arguments: ['@doctrine', '%myclapboard_core.class.baseImage%']
+
+    # Listeners
+    myclapboard_core.listener.imageUrlSubscriber:
+        class: Myclapboard\CoreBundle\Listener\ImageUrlSubscriber
+        arguments: [@router]
+        tags:
+            - { name: jms_serializer.event_subscriber }
