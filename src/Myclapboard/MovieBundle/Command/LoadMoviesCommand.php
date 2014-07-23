@@ -102,7 +102,6 @@ class LoadMoviesCommand extends LoadArtistsCommand
         $manager->flush();
     }
 
-
     /**
      * Finds artist and creates the role with the role given, adding this role into movie object.
      *

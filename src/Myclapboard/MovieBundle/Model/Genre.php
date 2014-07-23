@@ -87,7 +87,7 @@ class Genre implements GenreInterface
      */
     public function addTranslation(GenreTranslation $translation)
     {
-        if (!$this->translations->contains($translation)) {
+        if ($this->translations->contains($translation) === false) {
             $this->translations[] = $translation;
             $translation->setObject($this);
         }
