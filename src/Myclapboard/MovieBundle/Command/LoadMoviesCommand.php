@@ -44,9 +44,9 @@ class LoadMoviesCommand extends LoadArtistsCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Loading movies");
+        $output->writeln('Loading movies');
         $this->loadMovies($input->getArgument('file'));
-        $output->writeln("Movies loaded successfully");
+        $output->writeln('Movies loaded successfully');
     }
 
     /**
@@ -92,7 +92,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
                     ->findOneByName(array('name' => $nameOfGenre));
                 $movie->addGenre($genre);
             }
-            
+
             $this->linkedMainImage($movie, 'setPoster', 'posters');
             $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
 
@@ -121,7 +121,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
             $artist = $container->get('myclapboard_artist.manager.artist')
                 ->findOneByFullName($artist['firstName'], $artist['lastName']);
 
-            if ($artist) {
+            if ($artist !== null) {
                 $role = $container->get('myclapboard_artist.manager.' . $class)->create();
 
                 $role->setArtist($artist);
@@ -143,11 +143,9 @@ class LoadMoviesCommand extends LoadArtistsCommand
      */
     private function addTranslation($movie, $array, $field)
     {
-        if ($array[$field]['es']) {
+        if ($array[$field]['es'] !== null) {
             $translation = new MovieTranslation('es', $field, $array[$field]['es']);
             $movie->addTranslation($translation);
         }
     }
-
-    
 }

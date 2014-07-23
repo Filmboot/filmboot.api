@@ -334,7 +334,7 @@ class Artist implements ArtistInterface
      */
     public function addTranslation(ArtistTranslation $translation)
     {
-        if (!$this->translations->contains($translation)) {
+        if ($this->translations->contains($translation) === false) {
             $this->translations[] = $translation;
             $translation->setObject($this);
         }

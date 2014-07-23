@@ -418,7 +418,7 @@ class Movie implements MovieInterface
      */
     public function addTranslation(MovieTranslation $translation)
     {
-        if (!$this->translations->contains($translation)) {
+        if ($this->translations->contains($translation) === false) {
             $this->translations[] = $translation;
             $translation->setObject($this);
         }

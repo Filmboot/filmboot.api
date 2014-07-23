@@ -11,6 +11,13 @@ Myclapboard\ArtistBundle\Model\Artist:
             exclusion:
                 groups: [movieList, movie, artistList, artist, role]
         -
+            rel: artists
+            href: 
+                route: myclapboard_artist_get_artists
+                absolute: true
+            exclusion:
+                groups: [artist]
+        -
             rel: movies
             href: 
                 route: myclapboard_artist_get_artist_movies
@@ -59,6 +66,9 @@ Myclapboard\ArtistBundle\Model\Artist:
         biography:
             expose: true
             groups: [artistList, artist]
+        website:
+            expose: true
+            groups: [artist]
         photo:
             expose: true
             groups: [movieList, movie, artistList, artist]

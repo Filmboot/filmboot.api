@@ -19,7 +19,7 @@ class MyclapboardUserBundle extends Bundle
     {
         $connection = $this->container->get('doctrine')->getConnection();
 
-        if (!Type::hasType('GenderEnum')) {
+        if (Type::hasType('GenderEnum') === false) {
             Type::addType('GenderEnum', 'Myclapboard\UserBundle\Type\GenderEnumType');
             $connection->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
         }

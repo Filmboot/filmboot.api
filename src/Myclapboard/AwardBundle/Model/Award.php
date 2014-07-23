@@ -65,7 +65,7 @@ class Award implements AwardInterface
      */
     public function addTranslation(AwardTranslation $translation)
     {
-        if (!$this->translations->contains($translation)) {
+        if ($this->translations->contains($translation) === false) {
             $this->translations[] = $translation;
             $translation->setObject($this);
         }

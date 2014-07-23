@@ -86,7 +86,7 @@ class BaseImage implements BaseImageInterface
      */
     public function removeUpload()
     {
-        if (isset($this->file)) {
+        if (isset($this->file) === true) {
             unlink($this->file);
         }
     }

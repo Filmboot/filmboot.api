@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9c19e08983224b73835833d6f4f0d469",
+    "hash": "176e6ab8e3ab68b8cf487151af56495c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -139,9 +139,9 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -187,7 +187,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -282,7 +282,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -487,7 +487,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -541,7 +541,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1109,9 +1109,9 @@
             ],
             "authors": [
                 {
-                    "name": "Johannes M. Schmitt",
+                    "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -2373,7 +2373,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
@@ -3039,12 +3039,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "8dd5a63077f10d394e5927cd75f0d21bdac52ffa"
+                "reference": "b96a48eaa0b68cb040860723f3c4aad3a6c9a8c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/8dd5a63077f10d394e5927cd75f0d21bdac52ffa",
-                "reference": "8dd5a63077f10d394e5927cd75f0d21bdac52ffa",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/b96a48eaa0b68cb040860723f3c4aad3a6c9a8c5",
+                "reference": "b96a48eaa0b68cb040860723f3c4aad3a6c9a8c5",
                 "shasum": ""
             },
             "require": {
@@ -3073,7 +3073,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of PHPMD handled with Composer.",
-            "time": "2014-07-08 07:12:05"
+            "time": "2014-07-23 08:12:48"
         },
         {
             "name": "phpspec/php-diff",
@@ -3682,7 +3682,6 @@
     "stability-flags": {
         "jjs/common": 20,
         "jjs/geonames-bundle": 20,
-        "willdurand/hateoas-bundle": 0,
         "behat/symfony2-extension": 20,
         "behat/mink": 20,
         "behat/mink-extension": 20,

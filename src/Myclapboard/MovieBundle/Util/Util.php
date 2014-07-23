@@ -30,9 +30,9 @@ class Util
     public static function getSlug($string, $delimiter = '-')
     {
         $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
-        $slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $slug);
+        $slug = preg_replace('/[^a-zA-Z0-9\/_|+ -]/', '', $slug);
         $slug = strtolower(trim($slug, $delimiter));
-        $slug = preg_replace("/[\/_|+ -]+/", $delimiter, $slug);
+        $slug = preg_replace('/[\/_|+ -]+/', $delimiter, $slug);
 
         return $slug;
     }

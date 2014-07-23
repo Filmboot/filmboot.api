@@ -65,7 +65,7 @@ class Category implements CategoryInterface
      */
     public function addTranslation(CategoryTranslation $translation)
     {
-        if (!$this->translations->contains($translation)) {
+        if ($this->translations->contains($translation) === false) {
             $this->translations[] = $translation;
             $translation->setObject($this);
         }

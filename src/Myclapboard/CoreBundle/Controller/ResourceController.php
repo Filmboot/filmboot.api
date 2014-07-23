@@ -47,18 +47,10 @@ class ResourceController extends BaseApiController
      * @param string[] $groups The serialization groups
      *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     protected function getOne($id, $groups = array())
     {
-        $resource = $this->get('myclapboard_' . $this->bundle . '.manager.' . $this->class)
-            ->findOneById($id);
-
-        if ($resource === null) {
-            throw new NotFoundHttpException('Does not exist any ' . $this->class . ' with ' . $id . ' id');
-        }
-
-        return $this->handleView($this->createView($resource, $groups));
+        return $this->handleView($this->createView($this->getResourceIfExists($id), $groups));
     }
 
     /**
