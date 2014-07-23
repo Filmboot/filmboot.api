@@ -22,7 +22,7 @@ use Myclapboard\MovieBundle\Model\MovieInterface;
 class Role implements RoleInterface
 {
     protected $id;
-    
+
     protected $artist;
 
     protected $movie;

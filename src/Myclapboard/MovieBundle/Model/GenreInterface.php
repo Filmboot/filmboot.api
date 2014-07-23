@@ -21,23 +21,23 @@ interface GenreInterface
 {
     /**
      * Gets id.
-     * 
+     *
      * @return string
      */
     public function getId();
 
     /**
      * Gets slug.
-     * 
+     *
      * @return string
      */
     public function getSlug();
 
     /**
      * Sets slug.
-     * 
+     *
      * @param string $slug The slug
-     * 
+     *
      * @return \Myclapboard\MovieBundle\Model\GenreInterface
      */
     public function setSlug($slug);
