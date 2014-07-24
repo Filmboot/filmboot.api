@@ -13,6 +13,7 @@ namespace Myclapboard\CoreBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializationContext;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class BaseApiController extends FOSRestController
 {
@@ -36,5 +37,18 @@ class BaseApiController extends FOSRestController
         }
 
         return $view;
+    }
+
+    /**
+     * Throws an exception if the user is not authenticated.
+     * 
+     * @return void
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    protected function isSecure()
+    {
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') === false) {
+            throw new AccessDeniedException();
+        }
     }
 }

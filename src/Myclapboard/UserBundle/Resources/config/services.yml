@@ -5,4 +5,9 @@ services:
     # Managers
     myclapboard_user.manager.user:
         class: Myclapboard\UserBundle\Manager\UserManager
-        arguments: ['@doctrine', '%myclapboard_user.class.user%']
+        arguments: ['@doctrine.orm.entity_manager', '%myclapboard_user.class.user%']
+
+    # Security
+    myclapboard_user.provider.user:
+        class: Myclapboard\UserBundle\Provider\UserProvider
+        arguments: ['@doctrine', '@session', '@security.encoder_factory', '%myclapboard_user.class.user%']

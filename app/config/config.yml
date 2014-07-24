@@ -74,6 +74,17 @@ bazinga_hateoas:
         file_cache:
             dir: %kernel.cache_dir%/hateoas
 
+fos_oauth_server:
+    db_driver: orm
+    client_class: Myclapboard\UserBundle\Entity\Client
+    access_token_class: Myclapboard\UserBundle\Entity\AccessToken
+    refresh_token_class: Myclapboard\UserBundle\Entity\RefreshToken
+    auth_code_class: Myclapboard\UserBundle\Entity\AuthCode
+    service:
+        user_provider: myclapboard_user.provider.user
+        options:
+            supported_scopes: user
+
 fos_rest:
     routing_loader:
         default_format: json
