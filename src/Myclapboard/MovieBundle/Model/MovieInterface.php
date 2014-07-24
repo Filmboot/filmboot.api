@@ -16,6 +16,8 @@ use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
+use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\ReviewInterface;
 
 /**
  * Interface MovieInterface.
@@ -349,4 +351,54 @@ interface MovieInterface
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
     public function removeTranslation(MovieTranslation $translation);
+
+    /**
+     * Adds rating.
+     *
+     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function addRating(RatingInterface $rating);
+
+    /**
+     * Removes rating.
+     *
+     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function removeRating(RatingInterface $rating);
+
+    /**
+     * Gets ratings.
+     *
+     * @return array<\Myclapboard\UserBundle\Model\RatingInterface>
+     */
+    public function getRatings();
+
+    /**
+     * Adds review.
+     *
+     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function addReview(ReviewInterface $review);
+
+    /**
+     * Removes review.
+     *
+     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function removeReview(ReviewInterface $review);
+
+    /**
+     * Gets reviews.
+     *
+     * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
+     */
+    public function getReviews();
 }

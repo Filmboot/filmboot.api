@@ -18,6 +18,8 @@ use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Model\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Model\GenreInterface;
+use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\ReviewInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -213,5 +215,31 @@ class MovieSpec extends ObjectBehavior
 
         $this->removeTranslation($translation);
         $this->getTranslations()->shouldHaveCount(0);
+    }
+
+    function its_ratings_be_mutable(RatingInterface $rating)
+    {
+        $this->getRatings()->shouldHaveCount(0);
+
+        $this->addRating($rating);
+
+        $this->getRatings()->shouldHaveCount(1);
+
+        $this->removeRating($rating);
+
+        $this->getRatings()->shouldHaveCount(0);
+    }
+
+    function its_reviews_be_mutable(ReviewInterface $review)
+    {
+        $this->getReviews()->shouldHaveCount(0);
+
+        $this->addReview($review);
+
+        $this->getReviews()->shouldHaveCount(1);
+
+        $this->removeReview($review);
+
+        $this->getReviews()->shouldHaveCount(0);
     }
 }

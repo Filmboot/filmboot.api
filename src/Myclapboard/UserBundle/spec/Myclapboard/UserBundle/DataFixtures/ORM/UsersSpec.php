@@ -14,7 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use JJs\Bundle\GeonamesBundle\Entity\CityRepository;
 use Myclapboard\UserBundle\Manager\UserManager;
-use Myclapboard\UserBundle\Model\User;
+use Myclapboard\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DependencyInjection\ContainerInterface;

@@ -18,6 +18,8 @@ use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
+use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\ReviewInterface;
 
 /**
  * Class Movie model.
@@ -59,6 +61,10 @@ class Movie implements MovieInterface
     protected $images;
 
     protected $translations;
+    
+    protected $ratings;
+    
+    protected $reviews;
 
     /**
      * Constructor.
@@ -72,6 +78,8 @@ class Movie implements MovieInterface
         $this->awards = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     /**
@@ -442,6 +450,62 @@ class Movie implements MovieInterface
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addRating(RatingInterface $rating)
+    {
+        $this->ratings[] = $rating;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeRating(RatingInterface $rating)
+    {
+        $this->ratings->removeElement($rating);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRatings()
+    {
+        return $this->ratings;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addReview(ReviewInterface $review)
+    {
+        $this->reviews[] = $review;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeReview(ReviewInterface $review)
+    {
+        $this->reviews->removeElement($review);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 
     /**

@@ -75,6 +75,22 @@ Myclapboard\MovieBundle\Entity\Movie:
             targetEntity: Myclapboard\MovieBundle\Entity\MovieTranslation
             mappedBy: object
             cascade: ["persist", "remove"]
+        ratings:
+            targetEntity: Myclapboard\UserBundle\Model\RatingInterface
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
+        reviews:
+            targetEntity: Myclapboard\UserBundle\Model\ReviewInterface
+            mappedBy: movie
+            cascade: ["persist", "remove"]
+            joinColumn:
+                name: movie_id
+                referencedColumnName: id
+                onDelete: cascade
     manyToOne:
         country:
             targetEntity: JJs\Bundle\GeonamesBundle\Entity\Country

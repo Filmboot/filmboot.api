@@ -59,7 +59,9 @@ doctrine:
             Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
             Myclapboard\MovieBundle\Model\ImageInterface: Myclapboard\MovieBundle\Entity\Image
             
-            Myclapboard\UserBundle\Model\UserInterface: Myclapboard\UserBundle\Entity\User
+            Myclapboard\UserBundle\Model\RatingInterface: Myclapboard\UserBundle\Entity\Rating
+            Myclapboard\UserBundle\Model\ReviewInterface: Myclapboard\UserBundle\Entity\Review
+            Myclapboard\UserBundle\Model\AccountInterface: Myclapboard\UserBundle\Entity\User
 
 swiftmailer:
     transport: "%mailer_transport%"

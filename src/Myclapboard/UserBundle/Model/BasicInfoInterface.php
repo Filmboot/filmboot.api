@@ -13,11 +13,11 @@ namespace Myclapboard\UserBundle\Model;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 
 /**
- * Interface UserInterface.
+ * Interface BasicInfoInterface.
  *
  * @package Myclapboard\UserBundle\Model
  */
-interface UserInterface
+interface BasicInfoInterface
 {
     /**
      * Gets id.
@@ -38,7 +38,7 @@ interface UserInterface
      *
      * @param string $email The email
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setEmail($email);
 
@@ -54,7 +54,7 @@ interface UserInterface
      *
      * @param string $firstName The firstName
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setFirstName($firstName);
 
@@ -70,7 +70,7 @@ interface UserInterface
      *
      * @param string $lastName The lastName
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setLastName($lastName);
 
@@ -86,7 +86,7 @@ interface UserInterface
      *
      * @param string $mobile The mobile
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setMobile($mobile);
 
@@ -102,7 +102,7 @@ interface UserInterface
      *
      * @param string $phone The phone
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setPhone($phone);
 
@@ -118,7 +118,7 @@ interface UserInterface
      *
      * @param \JJs\Bundle\GeonamesBundle\Entity\City $location The location
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setLocation(City $location);
 
@@ -134,7 +134,7 @@ interface UserInterface
      *
      * @param \DateTime $birthday The birthday
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setBirthday(\DateTime $birthday);
 
@@ -150,94 +150,7 @@ interface UserInterface
      *
      * @param string $gender The gender
      *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
+     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setGender($gender);
-
-    /**
-     * Gets role.
-     *
-     * @return string
-     */
-    public function getRole();
-
-    /**
-     * Sets role.
-     *
-     * @param string $role The role
-     *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
-     */
-    public function setRole($role);
-
-    /**
-     * Gets locale.
-     *
-     * @return string
-     */
-    public function getLocale();
-
-    /**
-     * Sets locale.
-     *
-     * @param string $locale The locale
-     *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
-     */
-    public function setLocale($locale);
-
-    /**
-     * Gets true if has account activated, otherwise gets false.
-     *
-     * @return boolean
-     */
-    public function hasActivated();
-
-    /**
-     * Sets activated.
-     *
-     * @param boolean $activated The activated
-     *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
-     */
-    public function setActivated($activated);
-
-    /**
-     * Gets createdAt.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt();
-
-    /**
-     * Gets lastLogin.
-     *
-     * @return \DateTime
-     */
-    public function getLastLogin();
-
-    /**
-     * Sets lastLogin.
-     *
-     * @param \DateTime $lastLogin The last login
-     *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
-     */
-    public function setLastLogin(\DateTime $lastLogin);
-
-    /**
-     * Gets true if has cookies accepted, otherwise gets false.
-     *
-     * @return boolean
-     */
-    public function hasCookiesAccepted();
-
-    /**
-     * Sets cookiesAccepted.
-     *
-     * @param boolean $cookiesAccepted The cookies accepted
-     *
-     * @return \Myclapboard\UserBundle\Model\UserInterface
-     */
-    public function setCookiesAccepted($cookiesAccepted);
 }

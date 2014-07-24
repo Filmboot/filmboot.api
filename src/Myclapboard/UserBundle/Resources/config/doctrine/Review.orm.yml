@@ -1,0 +1,28 @@
+Myclapboard\UserBundle\Entity\Review:
+    type: entity
+    id:
+        id:
+            type: string
+            generator:
+                strategy: UUID
+    fields:
+        title:
+            type: string
+            length: 100
+        content:
+            type: text
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+            nullable: true
+        locale:
+            type: string
+            length: 6
+    manyToOne:
+        user:
+            targetEntity: Myclapboard\UserBundle\Model\AccountInterface
+            inversedBy: reviews
+        movie:
+            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            inversedBy: reviews

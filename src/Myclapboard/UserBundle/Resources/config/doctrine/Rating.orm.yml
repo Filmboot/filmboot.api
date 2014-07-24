@@ -1,0 +1,19 @@
+Myclapboard\UserBundle\Entity\Rating:
+    type: entity
+    id:
+        user:
+            associationKey: true
+        movie:
+            associationKey: true
+    fields:
+        mark:
+            type: integer
+        date:
+            type: datetime
+    manyToOne:
+        user:
+            targetEntity: Myclapboard\UserBundle\Model\AccountInterface
+            inversedBy: ratings
+        movie:
+            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            inversedBy: ratings

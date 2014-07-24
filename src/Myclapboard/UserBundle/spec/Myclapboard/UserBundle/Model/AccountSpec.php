@@ -10,30 +10,32 @@
 
 namespace spec\Myclapboard\UserBundle\Model;
 
-use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\ReviewInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class UserSpec.
+ * Class AccountSpec.
  *
  * @package spec\Myclapboard\UserBundle\Model
  */
-class UserSpec extends ObjectBehavior
+class AccountSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Myclapboard\UserBundle\Model\User');
+        $this->shouldHaveType('Myclapboard\UserBundle\Model\Account');
     }
-
-    function it_implements_user_interface()
+    
+    function it_extends_basic_info()
     {
-        $this->shouldImplement('Myclapboard\UserBundle\Model\UserInterface');
+        $this->shouldHaveType('Myclapboard\UserBundle\Model\BasicInfo');
     }
 
-    function it_implements_advanced_user_interface()
+    function it_implements_advanced_user_interface_and_account_interface()
     {
         $this->shouldImplement('Symfony\Component\Security\Core\User\AdvancedUserInterface');
+        $this->shouldImplement('Myclapboard\UserBundle\Model\AccountInterface');
     }
 
     function it_is_account_non_expired()
@@ -76,29 +78,6 @@ class UserSpec extends ObjectBehavior
         $this->getUsername()->shouldReturn('email@email.com');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
-    function its_email_is_mutable()
-    {
-        $this->setEmail('email@email.com')->shouldReturn($this);
-        $this->getEmail()->shouldReturn('email@email.com');
-    }
-
-    function its_first_name_is_mutable()
-    {
-        $this->setFirstName('my-first-name')->shouldReturn($this);
-        $this->getFirstName()->shouldReturn('my-first-name');
-    }
-
-    function its_last_name_is_mutable()
-    {
-        $this->setLastName('my-last-name')->shouldReturn($this);
-        $this->getLastName()->shouldReturn('my-last-name');
-    }
-
     function its_password_is_mutable()
     {
         $this->setPassword('my-password')->shouldReturn($this);
@@ -109,38 +88,6 @@ class UserSpec extends ObjectBehavior
     {
         $this->setSalt('password-salt')->shouldReturn($this);
         $this->getSalt()->shouldReturn('password-salt');
-    }
-
-    function its_mobile_name_is_mutable()
-    {
-        $this->setMobile('666666666')->shouldReturn($this);
-        $this->getMobile()->shouldReturn('666666666');
-    }
-
-    function its_phone_name_is_mutable()
-    {
-        $this->setPhone('999999999')->shouldReturn($this);
-        $this->getPhone()->shouldReturn('999999999');
-    }
-
-    function its_location_is_mutable(City $location)
-    {
-        $this->setLocation($location)->shouldReturn($this);
-        $this->getLocation()->shouldReturn($location);
-    }
-
-    function its_birthday_is_mutable()
-    {
-        $birthday = new \DateTime('25-03-1990');
-
-        $this->setBirthday($birthday)->shouldReturn($this);
-        $this->getBirthday()->shouldReturn($birthday);
-    }
-
-    function its_gender_is_mutable()
-    {
-        $this->setGender('female')->shouldReturn($this);
-        $this->getGender()->shouldReturn('female');
     }
 
     function its_role_is_mutable()
@@ -187,32 +134,29 @@ class UserSpec extends ObjectBehavior
         $this->hasCookiesAccepted()->shouldReturn(true);
     }
 
-    function it_returns_email_if_first_name_and_last_name_are_null()
+    function its_ratings_be_mutable(RatingInterface $rating)
     {
-        $this->setEmail('email@email.com')->shouldReturn($this);
+        $this->getRatings()->shouldHaveCount(0);
 
-        $this->__toString()->shouldReturn('email@email.com');
+        $this->addRating($rating);
+
+        $this->getRatings()->shouldHaveCount(1);
+
+        $this->removeRating($rating);
+
+        $this->getRatings()->shouldHaveCount(0);
     }
-
-    function it_returns_last_name_if_first_name_is_null()
+    
+    function its_reviews_be_mutable(ReviewInterface $review)
     {
-        $this->setLastName('surname')->shouldReturn($this);
+        $this->getReviews()->shouldHaveCount(0);
 
-        $this->__toString()->shouldReturn('surname');
-    }
+        $this->addReview($review);
 
-    function it_returns_first_name_if_last_name_is_null()
-    {
-        $this->setFirstName('name')->shouldReturn($this);
+        $this->getReviews()->shouldHaveCount(1);
 
-        $this->__toString()->shouldReturn('name');
-    }
+        $this->removeReview($review);
 
-    function it_returns_first_name_plus_last_name_if_it_is_default_situation()
-    {
-        $this->setFirstName('name')->shouldReturn($this);
-        $this->setLastName('surname')->shouldReturn($this);
-
-        $this->__toString()->shouldReturn('name surname');
+        $this->getReviews()->shouldHaveCount(0);
     }
 }

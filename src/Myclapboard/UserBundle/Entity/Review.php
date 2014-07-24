@@ -10,13 +10,13 @@
 
 namespace Myclapboard\UserBundle\Entity;
 
-use Myclapboard\UserBundle\Model\Account as BaseUser;
+use Myclapboard\UserBundle\Model\Review as BaseReview;
 
 /**
- * Class User.
+ * Class Review.
  *
  * @package Myclapboard\UserBundle\Entity
  */
-class User extends BaseUser
+class Review extends BaseReview
 {
 }
