@@ -1,8 +1,18 @@
 parameters:
     myclapboard_user.class.user: Myclapboard\UserBundle\Entity\User
+    myclapboard_user.class.rating: Myclapboard\UserBundle\Entity\Rating
+    myclapboard_user.class.review: Myclapboard\UserBundle\Entity\Review
 
 services:
     # Managers
     myclapboard_user.manager.user:
         class: Myclapboard\UserBundle\Manager\UserManager
         arguments: ['@doctrine', '%myclapboard_user.class.user%']
+
+    myclapboard_user.manager.rating:
+        class: Myclapboard\UserBundle\Manager\RatingManager
+        arguments: ['@doctrine', '%myclapboard_user.class.rating%']
+
+    myclapboard_user.manager.review:
+        class: Myclapboard\UserBundle\Manager\ReviewManager
+        arguments: ['@doctrine', '%myclapboard_user.class.review%']

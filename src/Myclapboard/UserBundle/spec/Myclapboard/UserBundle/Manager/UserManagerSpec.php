@@ -11,9 +11,11 @@
 namespace spec\Myclapboard\UserBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -49,5 +51,22 @@ class UserManagerSpec extends ObjectBehavior
     function it_creates_user()
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\UserBundle\Entity\User');
+    }
+
+    function it_finds_all(EntityRepository $repository, QueryBuilder $queryBuilder, AbstractQuery $query)
+    {
+        $repository->createQueryBuilder('u')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->select(array('u', 'r', 're'))
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.ratings', 'r')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.reviews', 're')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->getQuery()->shouldBeCalled()->willReturn($query);
+
+        $query->getResult()->shouldBeCalled()->willReturn(array());
+
+        $this->findAll()->shouldReturn(array());
     }
 }

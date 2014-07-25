@@ -12,11 +12,11 @@ namespace Myclapboard\UserBundle\Manager;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Class UserManager.
+ * Class RatingManager.
  *
  * @package Myclapboard\UserBundle\Manager
  */
-class UserManager
+class RatingManager
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -49,27 +49,10 @@ class UserManager
     /**
      * Returns a new instance of a class.
      *
-     * @return \Myclapboard\UserBundle\Entity\User
+     * @return \Myclapboard\UserBundle\Entity\Rating
      */
     public function create()
     {
         return new $this->class();
-    }
-
-    /**
-     * Find all the users of the database
-     * 
-     * @return array<\Myclapboard\UserBundle\Entity\User>
-     */
-    public function findAll()
-    {
-        $queryBuilder = $this->repository->createQueryBuilder('u');
-
-        $query = $queryBuilder->select(array('u', 'r', 're'))
-            ->leftJoin('u.ratings', 'r')
-            ->leftJoin('u.reviews', 're')
-            ->getQuery();
-
-        return $query->getResult();
     }
 }
