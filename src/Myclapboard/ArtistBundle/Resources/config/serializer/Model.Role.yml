@@ -4,7 +4,7 @@ Myclapboard\ArtistBundle\Model\Role:
         -
             rel: movie
             href: 
-                route: myclapboard_movie_get_movie
+                route: get_movie
                 parameters:
                     id: expr(object.getMovie().getId())
                 absolute: true
@@ -13,7 +13,7 @@ Myclapboard\ArtistBundle\Model\Role:
         -
             rel: artist
             href: 
-                route: myclapboard_artist_get_artist
+                route: get_artist
                 parameters:
                     id: expr(object.getArtist().getId())
                 absolute: true

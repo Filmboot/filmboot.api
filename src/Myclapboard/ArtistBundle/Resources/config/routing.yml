@@ -1,34 +1,3 @@
-myclapboard_artist_get_artists:
+myclapboard_artist:
     type: rest
-    pattern: /artists
-    defaults: {_controller: MyclapboardArtistBundle:Artist:getArtists }
-    requirements:
-        _method: GET
-
-myclapboard_artist_get_artist:
-    type: rest
-    pattern: /artists/{id}
-    defaults: {_controller: MyclapboardArtistBundle:Artist:getArtist }
-    requirements:
-        _method: GET
-
-myclapboard_artist_get_artist_movies:
-    type: rest
-    pattern: /artists/{id}/movies
-    defaults: { _controller: MyclapboardArtistBundle:Artist:getArtistsMovies }
-    requirements:
-        _method: GET
-        
-myclapboard_artist_get_artist_awards:
-    type: rest
-    pattern: /artists/{id}/awards
-    defaults: { _controller: MyclapboardArtistBundle:Artist:getArtistsAwards }
-    requirements:
-        _method: GET
-        
-myclapboard_artist_get_artist_images:
-    type: rest
-    pattern: /artists/{id}/images
-    defaults: { _controller: MyclapboardArtistBundle:Artist:getArtistsImages }
-    requirements:
-        _method: GET
+    resource: Myclapboard\ArtistBundle\Controller\ArtistController

@@ -4,7 +4,7 @@ Myclapboard\MovieBundle\Model\Movie:
         -
             rel: self
             href: 
-                route: myclapboard_movie_get_movie
+                route: get_movie
                 parameters:
                     id: expr(object.getId())
                 absolute: true
@@ -13,14 +13,14 @@ Myclapboard\MovieBundle\Model\Movie:
         -
             rel: movies
             href: 
-                route: myclapboard_movie_get_movies
+                route: get_movies
                 absolute: true
             exclusion:
                 groups: [movie]
         -
             rel: cast
             href: 
-                route: myclapboard_movie_get_movie_cast
+                route: get_movies_cast
                 parameters:
                     id: expr(object.getId())
                 absolute: true
@@ -29,7 +29,7 @@ Myclapboard\MovieBundle\Model\Movie:
         -
             rel: awards
             href: 
-                route: myclapboard_movie_get_movie_awards
+                route: get_movies_awards
                 parameters:
                     id: expr(object.getId())
                 absolute: true
@@ -38,7 +38,7 @@ Myclapboard\MovieBundle\Model\Movie:
         -
             rel: images
             href: 
-                route: myclapboard_movie_get_movie_images
+                route: get_movies_images
                 parameters:
                     id: expr(object.getId())
                 absolute: true
