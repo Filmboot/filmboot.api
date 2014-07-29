@@ -38,15 +38,6 @@ class RatingTypeSpec extends ObjectBehavior
 
         $builder
             ->add(
-                'date', 'date', array(
-                    'format' => 'yyyy-MM-dd',
-                    'widget' => 'single_text'
-                )
-            )
-            ->shouldBeCalled()->willReturn($builder);
-        
-        $builder
-            ->add(
                 'movie', 'entity', array(
                     'class' => 'MyclapboardMovieBundle:Movie'
                 )

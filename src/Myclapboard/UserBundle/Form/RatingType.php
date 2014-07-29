@@ -29,13 +29,6 @@ class RatingType extends AbstractType
             ->add('mark', 'integer')
 
             ->add(
-                'date', 'date', array(
-                    'format' => 'yyyy-MM-dd',
-                    'widget' => 'single_text'
-                )
-            )
-
-            ->add(
                 'movie', 'entity', array(
                     'class' => 'MyclapboardMovieBundle:Movie'
                 )

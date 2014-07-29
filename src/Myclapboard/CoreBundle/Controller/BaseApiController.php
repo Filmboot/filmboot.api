@@ -15,7 +15,6 @@ use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializationContext;
 use Myclapboard\UserBundle\Model\AccountInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class BaseApiController extends FOSRestController
