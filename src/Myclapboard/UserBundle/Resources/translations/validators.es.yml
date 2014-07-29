@@ -1,0 +1,4 @@
+myclapboard:
+    user:
+        validation:
+            uniqueRating: Esta puntuación ya ha sido añadida

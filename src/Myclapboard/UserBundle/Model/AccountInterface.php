@@ -15,7 +15,7 @@ namespace Myclapboard\UserBundle\Model;
  *
  * @package Myclapboard\UserBundle\Model
  */
-interface AccountInterface
+interface AccountInterface extends BasicInfoInterface
 {
     /**
      * Gets role.

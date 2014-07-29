@@ -1,0 +1,4 @@
+myclapboard:
+    user:
+        validation:
+            uniqueRating: This rating is already added
