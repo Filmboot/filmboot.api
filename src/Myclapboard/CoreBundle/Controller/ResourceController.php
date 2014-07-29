@@ -183,7 +183,7 @@ class ResourceController extends BaseApiController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteResource($id)
+    protected function deleteResource($id)
     {
         $resource = $this->getResourceIfExists($id);
 

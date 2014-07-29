@@ -10,7 +10,6 @@
 namespace Myclapboard\UserBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Myclapboard\UserBundle\Model\AccountInterface;
 
 /**
  * Class RatingManager.
