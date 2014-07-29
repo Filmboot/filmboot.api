@@ -186,11 +186,12 @@ class ResourceController extends BaseApiController
     protected function deleteResource($id)
     {
         $resource = $this->getResourceIfExists($id);
+        $this->checkSameId($resource->getUser()->getId());
 
         $manager = $this->getDoctrine()->getManager();
         $manager->remove($resource);
         $manager->flush();
 
-        return $this->handleView($this->createView('', array(), 204));
+        return $this->handleView($this->createView('', null, 204));
     }
 }

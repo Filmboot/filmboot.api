@@ -39,7 +39,7 @@ class RatingController extends ResourceController
     }
 
     /**
-     * Returns all the ratings of the user logged, it admits ordering, filter, count and pagination.
+     * Returns all the ratings of the user logged, it admits ordering, count and pagination.
      *
      * @param ParamFetcher $paramFetcher The param fetcher
      *

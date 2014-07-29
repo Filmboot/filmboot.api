@@ -1,3 +1,7 @@
 myclapboard_rating:
     type: rest
     resource: Myclapboard\UserBundle\Controller\RatingController
+
+myclapboard_review:
+    type: rest
+    resource: Myclapboard\UserBundle\Controller\ReviewController

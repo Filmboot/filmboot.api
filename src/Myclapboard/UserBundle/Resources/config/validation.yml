@@ -10,3 +10,11 @@ Myclapboard\UserBundle\Model\Rating:
             - NotBlank: ~
         movie:
             - NotBlank: ~
+Myclapboard\UserBundle\Model\Review:
+    properties:
+        title:
+            - NotBlank: ~
+        content:
+            - NotBlank: ~
+        locale:
+            - NotBlank: ~

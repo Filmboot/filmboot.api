@@ -87,14 +87,14 @@ class BaseApiController extends FOSRestController
      *
      * @param string $id The id of user
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\HttpException when not allowed to access this resource
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
      *
      * @return void
      */
     protected function checkSameId($id)
     {
         if ($id !== $this->getUser()->getId()) {
-            throw new HttpException(403, 'Not allowed to access this resource');
+            throw new AccessDeniedException('Not allowed to access this resource');
         }
     }
 }
