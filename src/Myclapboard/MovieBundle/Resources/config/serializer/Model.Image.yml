@@ -4,7 +4,7 @@ Myclapboard\MovieBundle\Model\Image:
         -
             rel: self
             href: 
-                route: myclapboard_movie_get_movie_images
+                route: get_movies_images
                 parameters:
                     id: expr(object.getMovie().getId())
                 absolute: true
@@ -13,7 +13,7 @@ Myclapboard\MovieBundle\Model\Image:
         -
             rel: movie
             href: 
-                route: myclapboard_movie_get_movie
+                route: get_movie
                 parameters:
                     id: expr(object.getMovie().getId())
                 absolute: true

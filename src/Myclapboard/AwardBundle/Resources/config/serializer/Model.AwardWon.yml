@@ -4,7 +4,7 @@ Myclapboard\AwardBundle\Model\AwardWon:
         -
             rel: movie
             href: 
-                route: myclapboard_movie_get_movie
+                route: get_movie
                 parameters:
                     id: expr(object.getMovie().getId())
                 absolute: true

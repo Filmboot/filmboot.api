@@ -4,7 +4,7 @@ Myclapboard\ArtistBundle\Model\Image:
         -
             rel: self
             href: 
-                route: myclapboard_artist_get_artist_images
+                route: get_artists_images
                 parameters:
                     id: expr(object.getArtist().getId())
                 absolute: true
@@ -13,7 +13,7 @@ Myclapboard\ArtistBundle\Model\Image:
         -
             rel: artist
             href: 
-                route: myclapboard_artist_get_artist
+                route: get_artist
                 parameters:
                     id: expr(object.getArtist().getId())
                 absolute: true
