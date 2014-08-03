@@ -34,6 +34,8 @@ Myclapboard\MovieBundle\Entity\Movie:
             type: string
             length: 100
             nullable: true
+    lifecycleCallbacks:
+        postLoad: [calculateScore]
     oneToMany:
         cast:
             targetEntity: Myclapboard\ArtistBundle\Entity\Actor
@@ -78,6 +80,7 @@ Myclapboard\MovieBundle\Entity\Movie:
         ratings:
             targetEntity: Myclapboard\UserBundle\Model\RatingInterface
             mappedBy: movie
+            fetch: EXTRA_LAZY
             cascade: ["persist", "remove"]
             joinColumn:
                 name: movie_id

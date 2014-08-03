@@ -1,0 +1,6 @@
+Myclapboard\UserBundle\Model\Rating:
+    exclusion_policy: ALL
+    properties:
+        mark:
+            expose: true
+            groups: [movieList, movie]

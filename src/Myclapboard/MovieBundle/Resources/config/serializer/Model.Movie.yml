@@ -44,6 +44,15 @@ Myclapboard\MovieBundle\Model\Movie:
                 absolute: true
             exclusion:
                 groups: [movieList, movie]
+        -
+            rel: reviews
+            href: 
+                route: get_movies_reviews
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
     properties:
         id:
             expose: true
@@ -93,3 +102,9 @@ Myclapboard\MovieBundle\Model\Movie:
         images:
             expose: true
             groups: []
+        reviews:
+            expose: true
+            groups: []
+        score:
+            expose: true
+            groups: [movieList, movie]

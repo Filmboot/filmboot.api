@@ -401,4 +401,18 @@ interface MovieInterface
      * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
      */
     public function getReviews();
+
+    /**
+     * Gets the score average.
+     * 
+     * @return float
+     */
+    public function getScore();
+
+    /**
+     * Calculates the score average.
+     *
+     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     */
+    public function calculateScore();
 }

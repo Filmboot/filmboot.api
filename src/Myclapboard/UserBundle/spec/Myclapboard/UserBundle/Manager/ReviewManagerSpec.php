@@ -143,4 +143,12 @@ class ReviewManagerSpec extends ObjectBehavior
 
         $this->findOneById('review-id', 'movie', 10, 0)->shouldReturn($review);
     }
+    
+    function it_finds_all_by_movie(EntityRepository $repository)
+    {
+        $repository->findBy(array('movie' => 'movie-id'))
+            ->shouldBeCalled()->willReturn(array());
+        
+        $this->findAllByMovie('movie-id')->shouldReturn(array());
+    }
 }

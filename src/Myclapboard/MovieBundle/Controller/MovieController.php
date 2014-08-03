@@ -182,4 +182,36 @@ class MovieController extends ResourceController
     {
         return $this->getOnesImages($id);
     }
+
+    /**
+     * Returns the reviews of the movie for given id.
+     *
+     * @param string $id The id of movie
+     *
+     * @ApiDoc(
+     *  description = "Returns the reviews of the movie for given id",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
+     *  statusCodes = {
+     *    404 = "Does not exist any movie with <$id> id"
+     *  }
+     * )
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getMoviesReviewsAction($id)
+    {
+        $this->getResourceIfExists($id);
+
+        $awards = $this->get('myclapboard_user.manager.review')->findAllByMovie($id);
+
+        return $this->handleView($this->createView($awards, array('movie')));
+    }
 }

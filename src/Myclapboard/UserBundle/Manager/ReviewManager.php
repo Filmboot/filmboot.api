@@ -120,4 +120,17 @@ class ReviewManager
             )
             ->getOneOrNullResult();
     }
+
+    /**
+     * Finds all the reviews of the id of movie given.
+     *
+     * @param string $id The movie id
+     *
+     * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
+     */
+    public function findAllByMovie($id)
+    {
+        return $this->repository->findBy(array('movie' => $id));
+    }
+
 }

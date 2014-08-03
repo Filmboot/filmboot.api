@@ -94,10 +94,11 @@ class MovieManager
 
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'a', 'i'))
+        $query = $queryBuilder->select(array('m', 'c', 'a', 'i', 're'))
             ->leftJoin('m.country', 'c')
             ->leftJoin('m.awards', 'a')
             ->leftJoin('m.images', 'i')
+            ->leftJoin('m.reviews', 're')
             ->where($whereSql)
             ->setParameters($parameters)
             ->setMaxResults($count)
@@ -124,7 +125,7 @@ class MovieManager
     {
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'a', 'i'))
+        $query = $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'a', 'i', 're'))
             ->leftJoin('m.country', 'c')
             ->leftJoin('m.cast', 'ca')
             ->leftJoin('m.directors', 'd')
@@ -132,6 +133,7 @@ class MovieManager
             ->leftJoin('m.genres', 'g')
             ->leftJoin('m.awards', 'a')
             ->leftJoin('m.images', 'i')
+            ->leftJoin('m.reviews', 're')
             ->where($queryBuilder->expr()->eq('m.id', ':id'))
             ->setParameter(':id', $id)
             ->getQuery();

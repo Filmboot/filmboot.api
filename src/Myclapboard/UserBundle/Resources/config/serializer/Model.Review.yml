@@ -1,0 +1,37 @@
+Myclapboard\UserBundle\Model\Review:
+    exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: get_movies_reviews
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
+        -
+            rel: movie
+            href: 
+                route: get_movie
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [movieList, movie]
+    properties:
+        title:
+            expose: true
+            groups: [movieList, movie]
+        content:
+            expose: true
+            groups: [movieList, movie]
+        createdAt:
+            expose: true
+            groups: [movieList, movie]
+        updatedAt:
+            expose: true
+            groups: [movieList, movie]
+        locale:
+            expose: true
+            groups: [movieList, movie]
