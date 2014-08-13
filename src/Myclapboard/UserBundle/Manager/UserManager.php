@@ -10,7 +10,9 @@
 namespace Myclapboard\UserBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Myclapboard\UserBundle\Model\BasicInfoInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * Class UserManager.
@@ -96,5 +98,17 @@ class UserManager
     public function findByUsername($username)
     {
         return $this->repository->findOneBy(array('email' => $username));
+    }
+
+    public function createApiKey(BasicInfoInterface $user)
+    {
+        $token = md5(uniqid($user->getEmail(), true));
+
+        $user->setApiKey($token);
+
+        $this->manager->persist($user);
+        $this->manager->flush();
+
+        return $token;
     }
 }
