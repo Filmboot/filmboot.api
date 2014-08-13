@@ -10,6 +10,7 @@
 namespace Myclapboard\UserBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class UserManager.
@@ -58,7 +59,7 @@ class UserManager
 
     /**
      * Find all the users of the database
-     * 
+     *
      * @return array<\Myclapboard\UserBundle\Entity\User>
      */
     public function findAll()
@@ -71,5 +72,29 @@ class UserManager
             ->getQuery();
 
         return $query->getResult();
+    }
+
+    /**
+     * Finds user by API key string
+     *
+     * @param string $apiKey API key string
+     *
+     * @return null|UserInterface
+     */
+    public function findByApiKey($apiKey)
+    {
+        return $this->repository->findOneBy(array('apiKey' => $apiKey));
+    }
+
+    /**
+     * Finds user by its username
+     *
+     * @param string $username Username string
+     *
+     * @return null|UserInterface
+     */
+    public function findByUsername($username)
+    {
+        return $this->repository->findOneBy(array('email' => $username));
     }
 }
