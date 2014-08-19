@@ -10,24 +10,29 @@
             "name": "Beñat Espiña Diaz",
             "email": "benatespina@gmail.com",
             "homepage": "http://benatespina.com"
+        },
+        {
+            "name": "Gorka Laucirica Ibarra",
+            "email": "gorka.lauzirika@gmail.com",
+            "homepage": "http://gorkalaucirica.net"
         }
     ],
     "require": {
         "php": ">=5.4",
-        "symfony/symfony": "2.3.x",
         "doctrine/orm": "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle": "1.2.x",
-        "symfony/swiftmailer-bundle": "2.3.x",
-        "symfony/monolog-bundle": "2.3.x",
-        "sensio/distribution-bundle": "2.3.x",
-        "sensio/framework-extra-bundle": "2.3.x",
-        "incenteev/composer-parameter-handler": "~2.0",
+        "doctrine/doctrine-bundle": "~1.2",
         "friendsofsymfony/rest-bundle": "1.4.x",
-        "jms/serializer-bundle": "0.13.x",
-        "nelmio/api-doc-bundle": "2.5.x",
-        "stof/doctrine-extensions-bundle": "1.1.x",
+        "incenteev/composer-parameter-handler": "~2.0",
         "jjs/common": "*@dev",
         "jjs/geonames-bundle": "*@dev",
+        "jms/serializer-bundle": "0.13.x",
+        "nelmio/api-doc-bundle": "2.5.x",
+        "sensio/distribution-bundle": "~3.0",
+        "sensio/framework-extra-bundle": "~3.0",
+        "stof/doctrine-extensions-bundle": "1.1.x",
+        "symfony/monolog-bundle": "~2.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/symfony": "2.5.*",
         "willdurand/hateoas-bundle": "0.3.x"
     },
     "require-dev": {
@@ -70,7 +75,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.3-dev"
+            "dev-master": "2.5-dev"
         }
     }
 }

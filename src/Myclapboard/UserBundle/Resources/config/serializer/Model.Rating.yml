@@ -1,6 +1,31 @@
 Myclapboard\UserBundle\Model\Rating:
     exclusion_policy: ALL
+    relations:
+        -
+            rel: self
+            href: 
+                route: get_rating
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [self]
+        -
+            rel: movie
+            href: 
+                route: get_movie
+                parameters:
+                    id: expr(object.getMovie().getId())
+                absolute: true
+            exclusion:
+                groups: [self]
     properties:
         mark:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]
+        date:
+            expose: true
+            groups: [self]
+        movie:
+            expose: true
+            groups: [self]

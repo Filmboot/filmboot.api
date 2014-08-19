@@ -67,15 +67,15 @@ class LoadMoviesCommand extends LoadArtistsCommand
         $manager = $doctrine->getManager();
         foreach ($fixtures as $values) {
             $movie = $container->get('myclapboard_movie.manager.movie')->create();
-            $country = $doctrine->getRepository('JJsGeonamesBundle:Country')
-                ->findOneBy(array('code' => $values['country']));
+//            $country = $doctrine->getRepository('JJsGeonamesBundle:Country')
+//                ->findOneBy(array('code' => $values['country']));
 
             $movie->setTitle($values['title']['en']);
             $this->addTranslation($movie, $values, 'title');
 
             $movie->setDuration($values['duration']);
             $movie->setReleaseDate(new \DateTime($values['releaseDate']));
-            $movie->setCountry($country);
+//            $movie->setCountry($country);
             $movie->setWebsite($values['website']);
 
             $movie->setStoryline($values['storyline']['en']);

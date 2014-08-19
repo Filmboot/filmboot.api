@@ -41,7 +41,7 @@ class ReviewController extends ResourceController
      *
      * @param ParamFetcher $paramFetcher The param fetcher
      *
-     * @QueryParam(name="order", requirements="(date|title|movie)", default="date", description="Order")
+     * @QueryParam(name="order", requirements="(date|movie)", default="date", description="Order")
      * @QueryParam(name="count", requirements="\d+", default="9999", description="Amount of movies to be returned")
      * @QueryParam(name="page", requirements="\d+", default="0", description="Offset in pages")
      *
@@ -61,7 +61,7 @@ class ReviewController extends ResourceController
      */
     public function getReviewsAction(ParamFetcher $paramFetcher)
     {
-        return $this->getAllForUser($this->getUserLogged(), $paramFetcher, array('reviewList'));
+        return $this->getAllForUser($this->getUserLogged(), $paramFetcher, array('self'));
     }
 
     /**
@@ -92,7 +92,7 @@ class ReviewController extends ResourceController
         $review = $this->getResourceIfExists($id);
         $this->checkSameId($review->getUser()->getId());
 
-        return $this->handleView($this->createView($review, array('reviewList', 'review')));
+        return $this->handleView($this->createView($review, array('self')));
     }
 
     /**
@@ -127,7 +127,7 @@ class ReviewController extends ResourceController
     public function postReviewsAction()
     {
         return $this->manageForm(
-            new ReviewType(), $this->get('myclapboard_user.manager.review')->create(), array('reviewList')
+            new ReviewType(), $this->get('myclapboard_user.manager.review')->create(), array('self')
         );
     }
 
@@ -170,7 +170,7 @@ class ReviewController extends ResourceController
         $review = $this->getResourceIfExists($id);
         $this->checkSameId($review->getUser()->getId());
 
-        return $this->manageForm(new ReviewType(), $review, array('reviewList'));
+        return $this->manageForm(new ReviewType(), $review, array('self'));
     }
 
     /**

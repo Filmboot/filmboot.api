@@ -5,3 +5,7 @@ myclapboard_rating:
 myclapboard_review:
     type: rest
     resource: Myclapboard\UserBundle\Controller\ReviewController
+
+myclapboard_security:
+    type: rest
+    resource: Myclapboard\UserBundle\Controller\SecurityController

@@ -37,6 +37,8 @@ class BasicInfo implements BasicInfoInterface
 
     protected $gender;
 
+    protected $apiKey;
+
     /**
      * Constructor.
      */
@@ -194,6 +196,24 @@ class BasicInfo implements BasicInfoInterface
         $this->gender = $gender;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 
     /**

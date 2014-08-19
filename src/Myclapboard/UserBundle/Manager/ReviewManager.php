@@ -73,7 +73,7 @@ class ReviewManager
         if ($order === 'movie') {
             $order = 'm.title';
         } elseif ($order === 'date') {
-            $order = 'createdAt';
+            $order = 'r.createdAt';
         }
         $queryBuilder = $this->repository->createQueryBuilder('r');
 

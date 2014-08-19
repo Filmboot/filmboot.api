@@ -164,7 +164,7 @@ class ResourceController extends BaseApiController
     {
         $resource->setUser($this->getUserLogged());
         $form = $this->createForm($formType, $resource, array('csrf_protection' => false));
-        $form->submit($this->getRequest());
+        $form->submit($this->get('request'));
         if ($form->isValid() === true) {
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($resource);
