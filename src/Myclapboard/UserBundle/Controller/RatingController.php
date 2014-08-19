@@ -63,7 +63,7 @@ class RatingController extends ResourceController
      */
     public function getRatingsAction(ParamFetcher $paramFetcher)
     {
-        return $this->getAllForUser($this->getUserLogged(), $paramFetcher, array('ratingList'));
+        return $this->getAllForUser($this->getUserLogged(), $paramFetcher, array('self'));
     }
 
     /**
@@ -93,7 +93,7 @@ class RatingController extends ResourceController
      */
     public function getRatingAction($id)
     {
-        return $this->handleView($this->createView($this->getRatingIfExist($id), array('ratingList', 'rating')));
+        return $this->handleView($this->createView($this->getRatingIfExist($id), array('self')));
     }
 
     /**
@@ -128,7 +128,7 @@ class RatingController extends ResourceController
     public function postRatingsAction()
     {
         return $this->manageForm(
-            new RatingType(), $this->get('myclapboard_user.manager.rating')->create(), array('ratingList')
+            new RatingType(), $this->get('myclapboard_user.manager.rating')->create(), array('self')
         );
     }
 
@@ -174,11 +174,11 @@ class RatingController extends ResourceController
     {
         $rating = $this->getRatingIfExist($id);
 
-        if ($this->getRequest()->get('movie') !== $rating->getMovie()->getId()) {
+        if ($this->get('request')->get('movie') !== $rating->getMovie()->getId()) {
             throw new BadRequestHttpException('Movie attribute is not possible to update');
         }
 
-        return $this->manageForm(new RatingType(), $rating, array('ratingList'));
+        return $this->manageForm(new RatingType(), $rating, array('self'));
     }
 
     /**

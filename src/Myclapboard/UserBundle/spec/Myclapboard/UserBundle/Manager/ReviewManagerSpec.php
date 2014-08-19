@@ -104,7 +104,7 @@ class ReviewManagerSpec extends ObjectBehavior
         $queryBuilder->setParameter(':id', 'user-id')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setMaxResults(10)->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setFirstResult(10 * 0)->shouldBeCalled()->willReturn($queryBuilder);
-        $queryBuilder->orderBy('createdAt')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->orderBy('r.createdAt')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->getQuery()->shouldBeCalled()->willReturn($query);
         $query
             ->setHint(

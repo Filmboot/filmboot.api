@@ -2,7 +2,7 @@ Myclapboard\UserBundle\Model\Review:
     exclusion_policy: ALL
     relations:
         -
-            rel: self
+            rel: reviews
             href: 
                 route: get_movies_reviews
                 parameters:
@@ -11,6 +11,15 @@ Myclapboard\UserBundle\Model\Review:
             exclusion:
                 groups: [movieList, movie]
         -
+            rel: self
+            href: 
+                route: get_review
+                parameters:
+                    id: expr(object.getId())
+                absolute: true
+            exclusion:
+                groups: [self]
+        -
             rel: movie
             href: 
                 route: get_movie
@@ -18,20 +27,20 @@ Myclapboard\UserBundle\Model\Review:
                     id: expr(object.getMovie().getId())
                 absolute: true
             exclusion:
-                groups: [movieList, movie]
+                groups: [movieList, movie, self]
     properties:
         title:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]
         content:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]
         createdAt:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]
         updatedAt:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]
         locale:
             expose: true
-            groups: [movieList, movie]
+            groups: [movieList, movie, self]

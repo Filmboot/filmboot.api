@@ -72,7 +72,10 @@ class RatingManager
     {
         if ($order === 'movie') {
             $order = 'm.title';
+        } else {
+            $order = 'r.' . $order;
         }
+
         $queryBuilder = $this->repository->createQueryBuilder('r');
 
         $query = $queryBuilder->select(array('r', 'u', 'm'))
