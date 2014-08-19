@@ -16,3 +16,11 @@ services:
     myclapboard_user.manager.review:
         class: Myclapboard\UserBundle\Manager\ReviewManager
         arguments: ['@doctrine', '%myclapboard_user.class.review%']
+
+    #Authentication
+    apikey_user_provider:
+        class: Myclapboard\UserBundle\Security\ApiKeyUserProvider
+        arguments: [@myclapboard_user.manager.user]
+    apikey_authenticator:
+        class:     Myclapboard\UserBundle\Security\ApiKeyAuthenticator
+        arguments: [@apikey_user_provider]

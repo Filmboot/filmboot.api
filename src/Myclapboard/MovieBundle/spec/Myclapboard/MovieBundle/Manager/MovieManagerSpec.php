@@ -72,11 +72,12 @@ class MovieManagerSpec extends ObjectBehavior
     {
         $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
 
-        $queryBuilder->select(array('m', 'c', 'a', 'i'))
+        $queryBuilder->select(array('m', 'c', 'a', 'i', 're'))
             ->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.awards', 'a')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.images', 'i')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.reviews', 're')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->where(' 1=1 ')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setParameters(array())->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setMaxResults(10)->shouldBeCalled()->willReturn($queryBuilder);
@@ -103,11 +104,12 @@ class MovieManagerSpec extends ObjectBehavior
     {
         $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
 
-        $queryBuilder->select(array('m', 'c', 'a', 'i'))
+        $queryBuilder->select(array('m', 'c', 'a', 'i', 're'))
             ->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.awards', 'a')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.images', 'i')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.reviews', 're')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->where(' 1=1 AND m.title LIKE :title ')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setParameters(array('title' => '%dj%'))->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->setMaxResults(10)->shouldBeCalled()->willReturn($queryBuilder);
@@ -136,7 +138,7 @@ class MovieManagerSpec extends ObjectBehavior
     {
         $repository->createQueryBuilder('m')->shouldBeCalled()->willReturn($queryBuilder);
 
-        $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'a', 'i'))
+        $queryBuilder->select(array('m', 'c', 'ca', 'd', 'w', 'g', 'a', 'i', 're'))
             ->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.country', 'c')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.cast', 'ca')->shouldBeCalled()->willReturn($queryBuilder);
@@ -145,6 +147,7 @@ class MovieManagerSpec extends ObjectBehavior
         $queryBuilder->leftJoin('m.genres', 'g')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.awards', 'a')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->leftJoin('m.images', 'i')->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('m.reviews', 're')->shouldBeCalled()->willReturn($queryBuilder);
         $queryBuilder->expr()->shouldBeCalled()->willReturn($expr);
         $expr->eq('m.id', ':id')->shouldBeCalled()->willReturn($comparison);
         $queryBuilder->where($comparison)->shouldBeCalled()->willReturn($queryBuilder);

@@ -13,3 +13,7 @@ myclapboard_core:
 myclapboard_movie:
     type: rest
     resource: '@MyclapboardMovieBundle/Resources/config/routing.yml'
+
+myclapboard_user:
+    type: rest
+    resource: '@MyclapboardUserBundle/Resources/config/routing.yml'

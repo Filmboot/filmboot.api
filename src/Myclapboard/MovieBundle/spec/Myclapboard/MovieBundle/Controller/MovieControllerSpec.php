@@ -18,6 +18,7 @@ use Myclapboard\MovieBundle\Manager\MovieManager;
 use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\MovieBundle\Model\Image;
 use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\UserBundle\Manager\ReviewManager;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -40,9 +41,9 @@ class MovieControllerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Controller\MovieController');
     }
 
-    function it_extends_base_api_controller()
+    function it_extends_resource_controller()
     {
-        $this->shouldHaveType('Myclapboard\CoreBundle\Controller\BaseApiController');
+        $this->shouldHaveType('Myclapboard\CoreBundle\Controller\ResourceController');
     }
 
     function it_gets_movies(
@@ -170,7 +171,8 @@ class MovieControllerSpec extends ObjectBehavior
 
         $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
 
-        $this->getMoviesAwardsAction('movie-id');}
+        $this->getMoviesAwardsAction('movie-id');
+    }
 
     function it_does_not_get_the_images_of_movie_because_the_movie_does_not_exist(
         ContainerInterface $container,
@@ -215,4 +217,41 @@ class MovieControllerSpec extends ObjectBehavior
 
         $this->getMoviesImagesAction('movie-id');
     }
+
+    function it_does_not_get_the_reviews_of_movie_because_the_movie_does_not_exist(
+        ContainerInterface $container,
+        MovieManager $movieManager
+    )
+    {
+        $container->get('myclapboard_movie.manager.movie')
+            ->shouldBeCalled()->willReturn($movieManager);
+        $movieManager->findOneById('movie-id')
+            ->shouldBeCalled()->willReturn(null);
+
+        $this->shouldThrow(
+            new NotFoundHttpException('Does not exist any movie with movie-id id')
+        )->during('getMoviesReviewsAction', array('movie-id'));
+    }
+
+    function it_gets_the_reviews_of_movie(
+        ContainerInterface $container,
+        MovieManager $movieManager,
+        MovieInterface $movie,
+        ReviewManager $reviewManager,
+        ViewHandler $viewHandler
+    )
+    {
+        $container->get('myclapboard_movie.manager.movie')
+            ->shouldBeCalled()->willReturn($movieManager);
+        $movieManager->findOneById('movie-id')
+            ->shouldBeCalled()->willReturn($movie);
+
+        $container->get('myclapboard_user.manager.review')
+            ->shouldBeCalled()->willReturn($reviewManager);
+        $reviewManager->findAllByMovie('movie-id')
+            ->shouldBeCalled()->willReturn(array());
+
+        $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
+
+        $this->getMoviesReviewsAction('movie-id');}
 }

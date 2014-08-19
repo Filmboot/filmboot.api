@@ -37,6 +37,10 @@ Myclapboard\UserBundle\Entity\User:
         gender:
             type: GenderEnum
             nullable: true
+        apiKey:
+            type: string
+            length: 50
+            nullable: true
         role:
             type: string
             length: 20

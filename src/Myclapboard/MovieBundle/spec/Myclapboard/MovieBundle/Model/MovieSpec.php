@@ -242,4 +242,16 @@ class MovieSpec extends ObjectBehavior
 
         $this->getReviews()->shouldHaveCount(0);
     }
+    
+    function it_gets_score()
+    {
+        $this->getScore()->shouldReturn(null);
+    }
+    
+    function it_calculates_score(RatingInterface $rating)
+    {
+        $this->addRating($rating);
+        
+        $this->calculateScore()->shouldReturn($this);
+    }
 }

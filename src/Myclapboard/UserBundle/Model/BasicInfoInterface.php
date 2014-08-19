@@ -153,4 +153,20 @@ interface BasicInfoInterface
      * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
      */
     public function setGender($gender);
+
+    /**
+     * Sets apiKey
+     *
+     * @param string $apiKey The apiKey to be set
+     *
+     * @return self
+     */
+    public function setApiKey($apiKey);
+
+    /**
+     * Returns apiKey
+     *
+     * @return string
+     */
+    public function getApiKey();
 }

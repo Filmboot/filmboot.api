@@ -1,0 +1,20 @@
+Myclapboard\UserBundle\Model\Rating:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [movie, user]
+            message: 'myclapboard.user.validation.uniqueRating'
+    properties:
+        mark:
+            - NotBlank: ~
+        date:
+            - NotBlank: ~
+        movie:
+            - NotBlank: ~
+Myclapboard\UserBundle\Model\Review:
+    properties:
+        title:
+            - NotBlank: ~
+        content:
+            - NotBlank: ~
+        locale:
+            - NotBlank: ~

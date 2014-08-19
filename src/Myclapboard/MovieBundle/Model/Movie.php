@@ -61,9 +61,11 @@ class Movie implements MovieInterface
     protected $images;
 
     protected $translations;
-    
+
     protected $ratings;
-    
+
+    protected $score;
+
     protected $reviews;
 
     /**
@@ -514,5 +516,33 @@ class Movie implements MovieInterface
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function calculateScore()
+    {
+        $this->score = '-';
+        $length = $this->ratings->count();
+
+        $sumOfScores = 0;
+        foreach ($this->ratings as $rating) {
+            $sumOfScores = $sumOfScores + $rating->getMark();
+        }
+
+        if ($length !== 0) {
+            $this->score = $sumOfScores / $length;
+        }
+        
+        return $this;
     }
 }
