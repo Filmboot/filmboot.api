@@ -1,0 +1,43 @@
+Myclapboard\UserBundle\Model\Account:
+    exclusion_policy: ALL
+    relations:
+        - 
+            rel: self
+            href:
+                route: get_me
+                absolute: true
+            exclusion:
+                groups: [self]
+        -
+            rel: reviews
+            href: 
+                route: get_reviews
+                absolute: true
+            exclusion:
+                groups: [self]
+        -
+            rel: ratings
+            href: 
+                route: get_ratings
+                absolute: true
+            exclusion:
+                groups: [self]
+    properties:
+        role:
+            expose: true
+            groups: [self]
+        locale:
+            expose: true
+            groups: [self]
+        createdAt:
+            expose: true
+            groups: [self]
+        lastLogin:
+            expose: true
+            groups: [self]
+        activated:
+            expose: true
+            groups: [self]
+        cookiesAccepted:
+            expose: true
+            groups: [self]

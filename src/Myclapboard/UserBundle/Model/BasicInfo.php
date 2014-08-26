@@ -37,8 +37,6 @@ class BasicInfo implements BasicInfoInterface
 
     protected $gender;
 
-    protected $apiKey;
-
     /**
      * Constructor.
      */

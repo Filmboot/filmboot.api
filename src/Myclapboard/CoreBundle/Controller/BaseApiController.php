@@ -20,7 +20,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class BaseApiController extends FOSRestController
 {
     /**
-     * Returns created view by data, groups and status code given
+     * Returns created view by data, groups and status code given.
      *
      * @param mixed         $data       The data
      * @param null|string[] $groups     The groups

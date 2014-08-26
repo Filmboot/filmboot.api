@@ -15,31 +15,31 @@ suites:
         namespace: Myclapboard
         spec_path: src/Myclapboard/UserBundle
 
-#extensions:
-#    - PhpSpec\Extension\CodeCoverageExtension
-#
-#code_coverage:
-#    whitelist:
-#        - src/**/**/Command
-#        - src/**/**/Controller
-#        - src/**/**/DataFixtures
-#        - src/**/**/DataTransformer
-#        - src/**/**/Entity
-#        - src/**/**/EntityManager
-#        - src/**/**/Event
-#        - src/**/**/Factory
-#        - src/**/**/Form
-#        - src/**/**/Loader
-#        - src/**/**/Listener
-#        - src/**/**/Mailer
-#        - src/**/**/Manager
-#        - src/**/**/Model
-#        - src/**/**/Security
-#        - src/**/**/Type
-#        - src/**/**/Util
-#    format:
-#        - html
-#        - clover
-#    output:
-#        html: coverage
-#        clover: coverage.xml
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+
+code_coverage:
+    whitelist:
+        - src/**/**/Command
+        - src/**/**/Controller
+        - src/**/**/DataFixtures
+        - src/**/**/DataTransformer
+        - src/**/**/Entity
+        - src/**/**/EntityManager
+        - src/**/**/Event
+        - src/**/**/Factory
+        - src/**/**/Form
+        - src/**/**/Loader
+        - src/**/**/Listener
+        - src/**/**/Mailer
+        - src/**/**/Manager
+        - src/**/**/Model
+        - src/**/**/Security
+        - src/**/**/Type
+        - src/**/**/Util
+    format:
+        - html
+        - clover
+    output:
+        html: coverage
+        clover: coverage.xml

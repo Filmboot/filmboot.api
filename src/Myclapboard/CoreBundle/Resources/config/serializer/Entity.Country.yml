@@ -3,10 +3,10 @@ JJs\Bundle\GeonamesBundle\Entity\Country:
     properties:
         id:
             expose: true
-            groups: [movieList, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist, self]
         code:
             expose: true
-            groups: [movieList, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist, self]
         name:
             expose: true
-            groups: [movieList, movie, artistList, artist]
+            groups: [movieList, movie, artistList, artist, self]

@@ -1,0 +1,30 @@
+Myclapboard\UserBundle\Model\BasicInfo:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [self]
+        email:
+            expose: true
+            groups: [self]
+        firstName:
+            expose: true
+            groups: [self]
+        lastName:
+            expose: true
+            groups: [self]
+        mobile:
+            expose: true
+            groups: [self]
+        phone:
+            expose: true
+            groups: [self]
+        location:
+            expose: true
+            groups: [self]
+        birthday:
+            expose: true
+            groups: [self]
+        gender:
+            expose: true
+            groups: [self]

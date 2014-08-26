@@ -23,6 +23,8 @@ class Account extends BasicInfo implements AdvancedUserInterface, AccountInterfa
     protected $password;
 
     protected $salt;
+    
+    protected $apiKey;
 
     protected $role;
 
@@ -140,6 +142,24 @@ class Account extends BasicInfo implements AdvancedUserInterface, AccountInterfa
     public function setSalt($salt)
     {
         $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
 
         return $this;
     }
@@ -296,23 +316,5 @@ class Account extends BasicInfo implements AdvancedUserInterface, AccountInterfa
     public function getReviews()
     {
         return $this->reviews;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
     }
 }
