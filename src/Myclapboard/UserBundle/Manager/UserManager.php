@@ -10,9 +10,7 @@
 namespace Myclapboard\UserBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Myclapboard\UserBundle\Model\BasicInfoInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Util\SecureRandom;
+use Myclapboard\UserBundle\Entity\User;
 
 /**
  * Class UserManager.
@@ -60,7 +58,7 @@ class UserManager
     }
 
     /**
-     * Find all the users of the database
+     * Finds all the users of the database.
      *
      * @return array<\Myclapboard\UserBundle\Entity\User>
      */
@@ -77,11 +75,11 @@ class UserManager
     }
 
     /**
-     * Finds user by API key string
+     * Finds user by API key string.
      *
      * @param string $apiKey API key string
      *
-     * @return null|UserInterface
+     * @return \Myclapboard\UserBundle\Entity\User
      */
     public function findByApiKey($apiKey)
     {
@@ -89,18 +87,25 @@ class UserManager
     }
 
     /**
-     * Finds user by its username
+     * Finds user by its username.
      *
      * @param string $username Username string
      *
-     * @return null|UserInterface
+     * @return \Myclapboard\UserBundle\Entity\User
      */
     public function findByUsername($username)
     {
         return $this->repository->findOneBy(array('email' => $username));
     }
 
-    public function createApiKey(BasicInfoInterface $user)
+    /**
+     * Creates the api key.
+     *
+     * @param \Myclapboard\UserBundle\Entity\User $user The user instance
+     *
+     * @return string
+     */
+    public function createApiKey(User $user)
     {
         $token = md5(uniqid($user->getEmail(), true));
 

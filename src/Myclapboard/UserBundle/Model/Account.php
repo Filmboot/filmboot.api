@@ -297,4 +297,22 @@ class Account extends BasicInfo implements AdvancedUserInterface, AccountInterfa
     {
         return $this->reviews;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
 }

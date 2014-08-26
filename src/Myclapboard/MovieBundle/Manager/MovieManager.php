@@ -81,7 +81,7 @@ class MovieManager
      *
      * @return array<\Myclapboard\MovieBundle\Model\MovieInterface>
      */
-    public function findAll($order, $query = "", $count = 10, $page = 0)
+    public function findAll($order, $query = '', $count = 10, $page = 0)
     {
         $order = 'm.' . $order;
         $whereSql = ' 1=1 ';
@@ -94,17 +94,21 @@ class MovieManager
 
         $queryBuilder = $this->repository->createQueryBuilder('m');
 
-        $query = $queryBuilder->select(array('m', 'c', 'a', 'i', 're'))
+        $queryBuilder->select(array('m', 'c', 'a', 'i', 're'))
             ->leftJoin('m.country', 'c')
             ->leftJoin('m.awards', 'a')
             ->leftJoin('m.images', 'i')
             ->leftJoin('m.reviews', 're')
             ->where($whereSql)
             ->setParameters($parameters)
-            ->setMaxResults($count)
-            ->setFirstResult($count * $page)
-            ->orderBy($order)
-            ->getQuery();
+            ->orderBy($order);
+        if ($count !== 'uncountable') {
+            $queryBuilder
+                ->setMaxResults($count)
+                ->setFirstResult($count * $page);
+        }
+        
+        $query = $queryBuilder->getQuery();
 
         return $query
             ->setHint(

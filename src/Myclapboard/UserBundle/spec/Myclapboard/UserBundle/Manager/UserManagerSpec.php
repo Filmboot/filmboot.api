@@ -16,7 +16,9 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
+use Myclapboard\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 /**
  * Class UserManagerSpec.
@@ -68,5 +70,33 @@ class UserManagerSpec extends ObjectBehavior
         $query->getResult()->shouldBeCalled()->willReturn(array());
 
         $this->findAll()->shouldReturn(array());
+    }
+
+    function it_finds_by_api_key(EntityRepository $repository, User $user)
+    {
+        $repository->findOneBy(array('apiKey' => 'api-key'))
+            ->shouldBeCalled()->willReturn($user);
+
+        $this->findByApiKey('api-key');
+    }
+
+    function it_finds_by_username(EntityRepository $repository, User $user)
+    {
+        $repository->findOneBy(array('email' => 'username'))
+            ->shouldBeCalled()->willReturn($user);
+
+        $this->findByUsername('username');
+    }
+
+    function it_creates_api_key(User $user, EntityManager $manager)
+    {
+        $user->getEmail()->shouldBeCalled();
+
+        $user->setApiKey(Argument::any())->shouldBeCalled()->willReturn($user);
+
+        $manager->persist($user)->shouldBeCalled();
+        $manager->flush()->shouldBeCalled();
+
+        $this->createApiKey($user);
     }
 }

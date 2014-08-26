@@ -201,24 +201,6 @@ class BasicInfo implements BasicInfoInterface
     /**
      * {@inheritdoc}
      */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         if ($this->firstName === null && $this->lastName === null) {

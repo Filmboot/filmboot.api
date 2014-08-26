@@ -42,12 +42,12 @@ class Reviews extends AbstractFixture implements OrderedFixtureInterface, Contai
     public function load(ObjectManager $manager)
     {
         $users = $this->container->get('myclapboard_user.manager.user')->findAll();
-        $movies = $this->container->get('myclapboard_movie.manager.movie')->findAll('title');
+        $movies = $this->container->get('myclapboard_movie.manager.movie')->findAll('title', '', 'uncountable');
 
         foreach ($users as $user) {
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < 5; $i++) {
                 $review = $this->container->get('myclapboard_user.manager.review')->create();
-                $review->setTitle($user->__toString() . '\'s review about' . $movies[$i]->getTitle());
+                $review->setTitle($user->getFirstName() . '\'s review about ' . $movies[$i]->getTitle());
                 $review->setContent(
                     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

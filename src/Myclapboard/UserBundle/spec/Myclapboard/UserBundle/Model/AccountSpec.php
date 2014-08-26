@@ -159,4 +159,10 @@ class AccountSpec extends ObjectBehavior
 
         $this->getReviews()->shouldHaveCount(0);
     }
+
+    function its_apiKey_is_mutable()
+    {
+        $this->setApiKey('wef897fwfwef98')->shouldReturn($this);
+        $this->getApiKey()->shouldReturn('wef897fwfwef98');
+    }
 }

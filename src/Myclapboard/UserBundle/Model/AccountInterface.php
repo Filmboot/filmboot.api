@@ -106,7 +106,7 @@ interface AccountInterface extends BasicInfoInterface
 
     /**
      * Adds rating.
-     * 
+     *
      * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
      *
      * @return \Myclapboard\UserBundle\Model\AccountInterface
@@ -115,7 +115,7 @@ interface AccountInterface extends BasicInfoInterface
 
     /**
      * Removes rating.
-     * 
+     *
      * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
      *
      * @return \Myclapboard\UserBundle\Model\AccountInterface
@@ -124,7 +124,7 @@ interface AccountInterface extends BasicInfoInterface
 
     /**
      * Gets ratings.
-     * 
+     *
      * @return array<\Myclapboard\UserBundle\Model\RatingInterface>
      */
     public function getRatings();
@@ -153,4 +153,20 @@ interface AccountInterface extends BasicInfoInterface
      * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
      */
     public function getReviews();
+
+    /**
+     * Gets apiKey.
+     *
+     * @return string
+     */
+    public function getApiKey();
+
+    /**
+     * Sets apiKey.
+     *
+     * @param string $apiKey The apiKey to be set
+     *
+     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     */
+    public function setApiKey($apiKey);
 }

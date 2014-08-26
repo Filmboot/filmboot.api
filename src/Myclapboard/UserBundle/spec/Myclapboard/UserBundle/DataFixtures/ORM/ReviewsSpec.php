@@ -59,6 +59,8 @@ class ReviewsSpec extends ObjectBehavior
         MovieInterface $movie,
         MovieInterface $movie2,
         MovieInterface $movie3,
+        MovieInterface $movie4,
+        MovieInterface $movie5,
         ReviewManager $reviewManager,
         ReviewInterface $review
     )
@@ -66,12 +68,12 @@ class ReviewsSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.user')
             ->shouldBeCalled()->willReturn($userManager);
         $userManager->findAll()->shouldBeCalled()->willReturn(array($user));
-        
+
         $container->get('myclapboard_movie.manager.movie')
             ->shouldBeCalled()->willReturn($movieManager);
-        $movieManager->findAll('title')
-            ->shouldBeCalled()->willReturn(array($movie, $movie2, $movie3));
-        
+        $movieManager->findAll('title', '', 'uncountable')
+            ->shouldBeCalled()->willReturn(array($movie, $movie2, $movie3, $movie4, $movie5));
+
         $container->get('myclapboard_user.manager.review')
             ->shouldBeCalled()->willReturn($reviewManager);
         $reviewManager->create()->shouldBeCalled()->willReturn($review);
@@ -97,9 +99,9 @@ class ReviewsSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($review);
         $review->setMovie(Argument::type('Myclapboard\MovieBundle\Model\MovieInterface'))
             ->shouldBeCalled()->willReturn($review);
-        
+
         $manager->persist($review)->shouldBeCalled();
-        
+
         $manager->flush()->shouldBeCalled();
 
         $this->load($manager);

@@ -59,6 +59,8 @@ class RatingsSpec extends ObjectBehavior
         MovieInterface $movie,
         MovieInterface $movie2,
         MovieInterface $movie3,
+        MovieInterface $movie4,
+        MovieInterface $movie5,
         RatingManager $ratingManager,
         RatingInterface $rating
     )
@@ -69,9 +71,9 @@ class RatingsSpec extends ObjectBehavior
         
         $container->get('myclapboard_movie.manager.movie')
             ->shouldBeCalled()->willReturn($movieManager);
-        $movieManager->findAll('title')
-            ->shouldBeCalled()->willReturn(array($movie, $movie2, $movie3));
-        
+        $movieManager->findAll('title', '', 'uncountable')
+            ->shouldBeCalled()->willReturn(array($movie, $movie2, $movie3, $movie4, $movie5));
+
         $container->get('myclapboard_user.manager.rating')
             ->shouldBeCalled()->willReturn($ratingManager);
         $ratingManager->create()->shouldBeCalled()->willReturn($rating);
