@@ -102,6 +102,14 @@ jms_serializer:
 
 nelmio_api_doc: ~
 
+nelmio_cors:
+    paths:
+        '^/':
+            allow_origin: ['*']
+            allow_headers: ['X-Custom-Auth']
+            allow_methods: ['POST', 'PUT', 'DELETE']
+            max_age: 3600
+
 sensio_framework_extra:
     view:
         annotations: false
