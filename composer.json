@@ -22,6 +22,7 @@
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "friendsofsymfony/rest-bundle": "1.4.x",
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
         "incenteev/composer-parameter-handler": "~2.0",
         "jjs/common": "*@dev",
         "jjs/geonames-bundle": "*@dev",
@@ -33,7 +34,7 @@
         "stof/doctrine-extensions-bundle": "1.1.x",
         "symfony/monolog-bundle": "~2.4",
         "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/symfony": "2.5.*",
+        "symfony/symfony": "2.5.x",
         "willdurand/hateoas-bundle": "0.3.x"
     },
     "require-dev": {
