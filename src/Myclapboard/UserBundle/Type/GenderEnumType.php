@@ -20,5 +20,5 @@ use Myclapboard\CoreBundle\Type\BaseEnumType;
 class GenderEnumType extends BaseEnumType
 {
     protected $name = 'GenderEnum';
-    protected $values = array('female', 'male');
+    protected $values = array(null, 'female', 'male');
 }

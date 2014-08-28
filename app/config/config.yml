@@ -92,6 +92,14 @@ fos_rest:
             jsonp: true
             json: true
 
+fos_user:
+    db_driver: orm
+    firewall_name: secured_area
+    user_class: Myclapboard\UserBundle\Entity\User
+    registration:
+        form:
+            type: myclapboard_user_registration
+
 jms_serializer:
     metadata:
         auto_detection: true

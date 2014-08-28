@@ -113,7 +113,7 @@ class UserManager
      */
     public function findByUsername($username)
     {
-        return $this->repository->findOneBy(array('email' => $username));
+        return $this->repository->findOneBy(array('username' => $username));
     }
 
     /**

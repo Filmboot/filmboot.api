@@ -4,6 +4,20 @@ parameters:
     myclapboard_user.class.review: Myclapboard\UserBundle\Entity\Review
 
 services:
+    # Authentication
+    apikey_user_provider:
+        class: Myclapboard\UserBundle\Security\ApiKeyUserProvider
+        arguments: [@myclapboard_user.manager.user]
+    apikey_authenticator:
+        class:     Myclapboard\UserBundle\Security\ApiKeyAuthenticator
+        arguments: [@apikey_user_provider]
+
+    # Forms
+    myclapboard_user.registration.form.type:
+        class: Myclapboard\UserBundle\Form\RegisterType
+        tags:
+            - { name: form.type, alias: myclapboard_user_registration }
+
     # Managers
     myclapboard_user.manager.user:
         class: Myclapboard\UserBundle\Manager\UserManager
@@ -16,11 +30,3 @@ services:
     myclapboard_user.manager.review:
         class: Myclapboard\UserBundle\Manager\ReviewManager
         arguments: ['@doctrine', '%myclapboard_user.class.review%']
-
-    #Authentication
-    apikey_user_provider:
-        class: Myclapboard\UserBundle\Security\ApiKeyUserProvider
-        arguments: [@myclapboard_user.manager.user]
-    apikey_authenticator:
-        class:     Myclapboard\UserBundle\Security\ApiKeyAuthenticator
-        arguments: [@apikey_user_provider]

@@ -18,20 +18,20 @@ namespace Myclapboard\UserBundle\Model;
 interface AccountInterface extends BasicInfoInterface
 {
     /**
-     * Gets role.
+     * Gets apiKey.
      *
      * @return string
      */
-    public function getRole();
+    public function getApiKey();
 
     /**
-     * Sets role.
+     * Sets apiKey.
      *
-     * @param string $role The role
+     * @param string $apiKey The apiKey to be set
      *
      * @return \Myclapboard\UserBundle\Model\AccountInterface
      */
-    public function setRole($role);
+    public function setApiKey($apiKey);
 
     /**
      * Gets locale.
@@ -50,43 +50,11 @@ interface AccountInterface extends BasicInfoInterface
     public function setLocale($locale);
 
     /**
-     * Gets true if has account activated, otherwise gets false.
-     *
-     * @return boolean
-     */
-    public function hasActivated();
-
-    /**
-     * Sets activated.
-     *
-     * @param boolean $activated The activated
-     *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
-     */
-    public function setActivated($activated);
-
-    /**
      * Gets createdAt.
      *
      * @return \DateTime
      */
     public function getCreatedAt();
-
-    /**
-     * Gets lastLogin.
-     *
-     * @return \DateTime
-     */
-    public function getLastLogin();
-
-    /**
-     * Sets lastLogin.
-     *
-     * @param \DateTime $lastLogin The last login
-     *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
-     */
-    public function setLastLogin(\DateTime $lastLogin);
 
     /**
      * Gets true if has cookies accepted, otherwise gets false.
@@ -153,20 +121,4 @@ interface AccountInterface extends BasicInfoInterface
      * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
      */
     public function getReviews();
-
-    /**
-     * Gets apiKey.
-     *
-     * @return string
-     */
-    public function getApiKey();
-
-    /**
-     * Sets apiKey.
-     *
-     * @param string $apiKey The apiKey to be set
-     *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
-     */
-    public function setApiKey($apiKey);
 }

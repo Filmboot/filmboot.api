@@ -10,6 +10,7 @@
 
 namespace Myclapboard\UserBundle\Model;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 
 /**
@@ -17,12 +18,8 @@ use JJs\Bundle\GeonamesBundle\Entity\City;
  *
  * @package Myclapboard\UserBundle\Model
  */
-class BasicInfo implements BasicInfoInterface
+class BasicInfo extends BaseUser implements BasicInfoInterface
 {
-    protected $id;
-
-    protected $email;
-
     protected $firstName;
 
     protected $lastName;
@@ -36,39 +33,6 @@ class BasicInfo implements BasicInfoInterface
     protected $birthday;
 
     protected $gender;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
 
     /**
      * {@inheritdoc}

@@ -20,29 +20,6 @@ use JJs\Bundle\GeonamesBundle\Entity\City;
 interface BasicInfoInterface
 {
     /**
-     * Gets id.
-     *
-     * @return string
-     */
-    public function getId();
-
-    /**
-     * Gets email.
-     *
-     * @return string
-     */
-    public function getEmail();
-
-    /**
-     * Sets email.
-     *
-     * @param string $email The email
-     *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
-     */
-    public function setEmail($email);
-
-    /**
      * Gets firstName.
      *
      * @return string

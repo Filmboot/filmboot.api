@@ -1,3 +1,7 @@
+myclapboard_authenticate:
+    type: rest
+    resource: Myclapboard\UserBundle\Controller\AuthenticateController
+
 myclapboard_profile:
     type: rest
     resource: Myclapboard\UserBundle\Controller\ProfileController
