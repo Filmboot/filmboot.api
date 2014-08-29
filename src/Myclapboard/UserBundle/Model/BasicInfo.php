@@ -20,6 +20,8 @@ use JJs\Bundle\GeonamesBundle\Entity\City;
  */
 class BasicInfo extends BaseUser implements BasicInfoInterface
 {
+    protected $id;
+
     protected $firstName;
 
     protected $lastName;
@@ -33,6 +35,14 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
     protected $birthday;
 
     protected $gender;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * {@inheritdoc}

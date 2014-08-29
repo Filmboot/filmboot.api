@@ -18,3 +18,33 @@ Myclapboard\UserBundle\Model\Review:
             - NotBlank: ~
         locale:
             - NotBlank: ~
+
+FOS\UserBundle\Model\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+             fields: email
+             errorPath: email 
+             message: fos_user.email.already_used
+             groups: ['MyclapboardRegistration', 'MyclapboardProfile']
+    properties:
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: ['MyclapboardRegistration', 'MyclapboardProfile']
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: ['MyclapboardRegistration', 'ResetPassword']
+            - Email:
+                message: fos_user.email.invalid
+                groups: ['MyclapboardRegistration', 'MyclapboardProfile']
+        plainPassword:
+            - NotBlank:
+                message: fos_user.password.blank
+                groups: ['MyclapboardRegistration', 'ResetPassword', 'ChangePassword']
+            - Length:
+                min: 2
+                minMessage: fos_user.password.blank
+                groups: ['MyclapboardRegistration', 'MyclapboardProfile', 'ResetPassword', 'ChangePassword']

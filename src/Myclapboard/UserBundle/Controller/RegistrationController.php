@@ -16,19 +16,20 @@ use FOS\UserBundle\FOSUserEvents;
 use Myclapboard\CoreBundle\Controller\BaseApiController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
- * Class AuthenticateController.
+ * Class RegistrationController.
  *
  * @package Myclapboard\UserBundle\Controller
  */
-class AuthenticateController extends BaseApiController
+class RegistrationController extends BaseApiController
 {
     /**
-     * Creates the new user with very basic information (email, username, and password).
+     * Creates the new user with very basic information (email and password).
      *
      * @ApiDoc(
-     *  description = "Creates the new user with very basic information (email, username, and password)",
+     *  description = "Creates the new user with very basic information (email and password)",
      *  https = true,
      *  requirements = {
      *    {
@@ -45,16 +46,16 @@ class AuthenticateController extends BaseApiController
      *      "description"="Its name into payload is fos_user_registration_form[email]"
      *    },
      *    {
-     *      "name"="username",
+     *      "name"="plainPassword[first]",
      *      "dataType"="string",
      *      "required"="true",
-     *      "description"="Its name into payload is fos_user_registration_form[username]"
+     *      "description"="Its name into payload is fos_user_registration_form[plainPassword][first]"
      *    },
      *    {
-     *      "name"="plainPassword",
+     *      "name"="plainPassword[second]",
      *      "dataType"="string",
      *      "required"="true",
-     *      "description"="Its name into payload is fos_user_registration_form[plainPassword]"
+     *      "description"="Its name into payload is fos_user_registration_form[plainPassword][second]"
      *    }
      *  },
      *  statusCodes = {
@@ -62,15 +63,19 @@ class AuthenticateController extends BaseApiController
      *      400 = {
      *          "The email is not valid",
      *          "The email is already used",
-     *          "The username is already used"
+     *          "Please enter an email",
+     *          "Please enter a password",
+     *          "The entered passwords don't match",
+     *          "This is not the right way to insert the password, for more info you could read the Api documentation"
      *      },
      *      403 = "Forbidden"
      *  }
      * )
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function postRegisterAction()
+    public function registerAction()
     {
         $formFactory = $this->container->get('fos_user.registration.form.factory');
         $userManager = $this->container->get('fos_user.user_manager');
@@ -90,16 +95,20 @@ class AuthenticateController extends BaseApiController
         $form->setData($user);
         $form->submit($request);
 
-        if ($form->isValid() === true) {
-            $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+        if (is_array($form->get('plainPassword')->getViewData()) === true) {
+            if ($form->isValid() === true) {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
-            $user->setPlainPassword($form->get('plainPassword')->getViewData());
-            $userManager->updateUser($user);
+                $userManager->updateUser($user);
 
-            return $this->handleView($this->createView($user, array('self')));
+                return $this->handleView($this->createView($user, array('self')));
+            }
+
+            return $this->handleView($this->createView($this->getFormErrors($form), null, 400));
         }
-
-        return $this->handleView($this->createView($this->getFormErrors($form), null, 400));
+        throw new BadRequestHttpException(
+            'This is not the right way to insert the password, for more info you could read the Api documentation'
+        );
     }
 }

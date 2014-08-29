@@ -18,8 +18,6 @@ use Myclapboard\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 /**
  * Class UsersSpec.
@@ -57,9 +55,7 @@ class UsersSpec extends ObjectBehavior
         City $location,
         ContainerInterface $container,
         UserManager $userManager,
-        User $user,
-        EncoderFactoryInterface $encoderFactory,
-        PasswordEncoderInterface $passwordEncoder
+        User $user
     )
     {
         $this->createUsers(
@@ -69,8 +65,6 @@ class UsersSpec extends ObjectBehavior
             $container,
             $userManager,
             $user,
-            $encoderFactory,
-            $passwordEncoder,
             'ROLE_USER',
             false
         );
@@ -82,12 +76,10 @@ class UsersSpec extends ObjectBehavior
             $container,
             $userManager,
             $user,
-            $encoderFactory,
-            $passwordEncoder,
             'ROLE_ADMIN',
             true
         );
-        
+
         $manager->flush()->shouldBeCalled();
 
         $this->load($manager);
@@ -105,10 +97,8 @@ class UsersSpec extends ObjectBehavior
         ContainerInterface $container,
         UserManager $userManager,
         User $user,
-        EncoderFactoryInterface $encoderFactory,
-        PasswordEncoderInterface $passwordEncoder,
         $role,
-        $activated
+        $enabled
     )
     {
         $manager->getRepository('JJsGeonamesBundle:City')
@@ -122,18 +112,7 @@ class UsersSpec extends ObjectBehavior
         $user->setEmail(Argument::any())->shouldBeCalled()->willReturn($user);
         $user->setFirstName(Argument::any())->shouldBeCalled()->willReturn($user);
         $user->setLastName(Argument::any())->shouldBeCalled()->willReturn($user);
-
-        $user->setSalt(Argument::any())->shouldBeCalled()->willReturn($user);
-        $container->get('security.encoder_factory')
-            ->shouldBeCalled()->willReturn($encoderFactory);
-        $encoderFactory->getEncoder($user)
-            ->shouldBeCalled()->willReturn($passwordEncoder);
-        $user->getSalt()->shouldBeCalled()->willReturn('password-salt');
-        $passwordEncoder->encodePassword(Argument::any(), 'password-salt')
-            ->shouldBeCalled()->willReturn('encoded-password');
-        $user->setPassword('encoded-password')
-            ->shouldBeCalled()->willReturn($user);
-
+        $user->setPlainPassword(Argument::any())->shouldBeCalled()->willReturn($user);
         $user->setMobile('666666666')->shouldBeCalled()->willReturn($user);
         $user->setPhone('999999999')->shouldBeCalled()->willReturn($user);
         $locations = array($location);
@@ -141,8 +120,8 @@ class UsersSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($user);
         $user->setBirthday(Argument::any())->shouldBeCalled()->willReturn($user);
         $user->setGender(Argument::any())->shouldBeCalled()->willReturn($user);
-        $user->setRole($role)->shouldBeCalled()->willReturn($user);
-        $user->setActivated($activated)->shouldBeCalled()->willReturn($user);
+        $user->setRoles(array($role))->shouldBeCalled()->willReturn($user);
+        $user->setEnabled($enabled)->shouldBeCalled()->willReturn($user);
 
         $manager->persist($user)->shouldBeCalled();
     }

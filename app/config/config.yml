@@ -99,6 +99,7 @@ fos_user:
     registration:
         form:
             type: myclapboard_user_registration
+            validation_groups: [MyclapboardRegistration]
 
 jms_serializer:
     metadata:
@@ -107,7 +108,9 @@ jms_serializer:
             JJsGeonamesBundle:
                 namespace_prefix: "JJs\\Bundle\\GeonamesBundle"
                 path: "@MyclapboardCoreBundle/Resources/config/serializer"
-
+            FOSUserBundle:
+                namespace_prefix: "FOS\\UserBundle"
+                path: "@MyclapboardUserBundle/Resources/config/serializer"
 nelmio_api_doc: ~
 
 nelmio_cors:

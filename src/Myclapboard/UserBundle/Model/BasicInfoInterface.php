@@ -20,6 +20,13 @@ use JJs\Bundle\GeonamesBundle\Entity\City;
 interface BasicInfoInterface
 {
     /**
+     * Gets id.
+     *
+     * @return string
+     */
+    public function getId();
+
+    /**
      * Gets firstName.
      *
      * @return string

@@ -23,19 +23,13 @@ Myclapboard\UserBundle\Model\Account:
             exclusion:
                 groups: [self]
     properties:
-        role:
+        apikey:
             expose: true
             groups: [self]
         locale:
             expose: true
             groups: [self]
         createdAt:
-            expose: true
-            groups: [self]
-        lastLogin:
-            expose: true
-            groups: [self]
-        activated:
             expose: true
             groups: [self]
         cookiesAccepted:

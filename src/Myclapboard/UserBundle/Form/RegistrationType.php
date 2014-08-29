@@ -11,15 +11,25 @@
 namespace Myclapboard\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Class RegisterType.
+ * Class RegistrationType.
  *
  * @package Myclapboard\UserBundle\Form
  */
-class RegisterType extends AbstractType
+class RegistrationType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+        $builder->remove('username');
+    }
+
     /**
      * {@inheritdoc}
      */

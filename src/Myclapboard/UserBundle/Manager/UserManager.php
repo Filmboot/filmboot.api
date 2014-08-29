@@ -76,17 +76,20 @@ class UserManager
 
     /**
      * Finds user with the id given.
+     * 
+     * @param string $id The id
      *
      * @return \Myclapboard\UserBundle\Entity\User
      */
-    public function findOneById()
+    public function findOneById($id)
     {
         $queryBuilder = $this->repository->createQueryBuilder('u');
 
         $query = $queryBuilder->select(array('u', 'r', 're'))
             ->leftJoin('u.ratings', 'r')
             ->leftJoin('u.reviews', 're')
-            ->setMaxResults(1)
+            ->where($queryBuilder->expr()->eq('u.id', ':id'))
+            ->setParameter(':id', $id)
             ->getQuery();
 
         return $query->getOneOrNullResult();

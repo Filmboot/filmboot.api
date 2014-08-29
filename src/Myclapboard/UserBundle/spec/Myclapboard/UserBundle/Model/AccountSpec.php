@@ -26,74 +26,21 @@ class AccountSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Myclapboard\UserBundle\Model\Account');
     }
-    
+
     function it_extends_basic_info()
     {
         $this->shouldHaveType('Myclapboard\UserBundle\Model\BasicInfo');
     }
 
-    function it_implements_advanced_user_interface_and_account_interface()
+    function it_implements_account_interface()
     {
-        $this->shouldImplement('Symfony\Component\Security\Core\User\AdvancedUserInterface');
         $this->shouldImplement('Myclapboard\UserBundle\Model\AccountInterface');
     }
 
-    function it_is_account_non_expired()
+    function its_apiKey_is_mutable()
     {
-        $this->isAccountNonExpired()->shouldReturn(true);
-    }
-
-    function it_is_account_non_locked()
-    {
-        $this->isAccountNonLocked()->shouldReturn(true);
-    }
-
-    function it_is_credentials_non_expired()
-    {
-        $this->isCredentialsNonExpired()->shouldReturn(true);
-    }
-
-    function it_is_enabled()
-    {
-        $this->isEnabled()->shouldReturn(false);
-        
-        $this->setActivated(true)->shouldReturn($this);
-        $this->isEnabled()->shouldReturn(true);
-    }
-
-    function it_gets_roles()
-    {        
-        $this->setRole('ROLE_ADMIN')->shouldReturn($this);
-        $this->getRoles()->shouldReturn(array('ROLE_ADMIN'));
-    }
-
-    function it_erases_credentials()
-    {
-        $this->eraseCredentials();
-    }
-    
-    function it_gets_username()
-    {
-        $this->setEmail('email@email.com')->shouldReturn($this);
-        $this->getUsername()->shouldReturn('email@email.com');
-    }
-
-    function its_password_is_mutable()
-    {
-        $this->setPassword('my-password')->shouldReturn($this);
-        $this->getPassword()->shouldReturn('my-password');
-    }
-
-    function its_salt_is_mutable()
-    {
-        $this->setSalt('password-salt')->shouldReturn($this);
-        $this->getSalt()->shouldReturn('password-salt');
-    }
-
-    function its_role_is_mutable()
-    {
-        $this->setRole('ROLE_USER')->shouldReturn($this);
-        $this->getRole()->shouldReturn('ROLE_USER');
+        $this->setApiKey('wef897fwfwef98')->shouldReturn($this);
+        $this->getApiKey()->shouldReturn('wef897fwfwef98');
     }
 
     function its_locale_is_mutable()
@@ -107,23 +54,6 @@ class AccountSpec extends ObjectBehavior
     function its_created_with_the_current_datetime()
     {
         $this->getCreatedAt()->shouldHaveType('DateTime');
-    }
-
-    function its_last_login_is_mutable()
-    {
-        $this->getLastLogin()->shouldReturn(null);
-
-        $lastLogin = new \DateTime();
-        $this->setLastLogin($lastLogin)->shouldReturn($this);
-        $this->getLastLogin()->shouldReturn($lastLogin);
-    }
-
-    function its_activated_is_mutable()
-    {
-        $this->hasActivated()->shouldReturn(false);
-
-        $this->setActivated(true)->shouldReturn($this);
-        $this->hasActivated()->shouldReturn(true);
     }
 
     function its_cookies_accepted_is_mutable()
@@ -146,7 +76,7 @@ class AccountSpec extends ObjectBehavior
 
         $this->getRatings()->shouldHaveCount(0);
     }
-    
+
     function its_reviews_be_mutable(ReviewInterface $review)
     {
         $this->getReviews()->shouldHaveCount(0);
@@ -160,9 +90,9 @@ class AccountSpec extends ObjectBehavior
         $this->getReviews()->shouldHaveCount(0);
     }
 
-    function its_apiKey_is_mutable()
+    function its_username_is_equal_to_its_email()
     {
-        $this->setApiKey('wef897fwfwef98')->shouldReturn($this);
-        $this->getApiKey()->shouldReturn('wef897fwfwef98');
+        $this->setUsername('admin@gmail.com')->shouldReturn($this);
+        $this->setEmail('admin@gmail.com');
     }
 }

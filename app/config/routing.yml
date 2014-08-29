@@ -2,6 +2,22 @@ api_docs:
     resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
     prefix: /doc
 
+myclapboard_artist:
+    type: rest
+    resource: '@MyclapboardArtistBundle/Resources/config/routing.yml'
+
+myclapboard_core:
+    type: rest
+    resource: '@MyclapboardCoreBundle/Resources/config/routing.yml'
+
+myclapboard_movie:
+    type: rest
+    resource: '@MyclapboardMovieBundle/Resources/config/routing.yml'
+
+myclapboard_user:
+    type: rest
+    resource: '@MyclapboardUserBundle/Resources/config/routing.yml'
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -20,19 +36,3 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
-myclapboard_artist:
-    type: rest
-    resource: '@MyclapboardArtistBundle/Resources/config/routing.yml'
-
-myclapboard_core:
-    type: rest
-    resource: '@MyclapboardCoreBundle/Resources/config/routing.yml'
-
-myclapboard_movie:
-    type: rest
-    resource: '@MyclapboardMovieBundle/Resources/config/routing.yml'
-
-myclapboard_user:
-    type: rest
-    resource: '@MyclapboardUserBundle/Resources/config/routing.yml'

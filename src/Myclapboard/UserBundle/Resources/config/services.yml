@@ -14,7 +14,7 @@ services:
 
     # Forms
     myclapboard_user.registration.form.type:
-        class: Myclapboard\UserBundle\Form\RegisterType
+        class: Myclapboard\UserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: myclapboard_user_registration }
 

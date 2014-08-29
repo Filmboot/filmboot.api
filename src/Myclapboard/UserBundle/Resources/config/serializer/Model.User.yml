@@ -1,0 +1,42 @@
+FOS\UserBundle\Model\User:
+    exclusion_policy: ALL
+    properties:
+        email:
+            expose: true
+            groups: [self]
+        emailCanonical:
+            expose: true
+            groups: [self]
+        enabled:
+            expose: true
+            groups: [self]
+        lastLogin:
+            expose: true
+            groups: [self]
+        confirmationToken:
+            expose: true
+            groups: [self]
+        passwordRequestedAt:
+            expose: true
+            groups: [self]
+        groups:
+            expose: true
+            groups: [self]
+        locked:
+            expose: true
+            groups: [self]
+        expired:
+            expose: true
+            groups: [self]
+        expiresAt:
+            expose: true
+            groups: [self]
+        roles:
+            expose: true
+            groups: [self]
+        credentialsExpired:
+            expose: true
+            groups: [self]
+        credentialsExpireAt:
+            expose: true
+            groups: [self]

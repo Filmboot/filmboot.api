@@ -4,9 +4,6 @@ Myclapboard\UserBundle\Model\BasicInfo:
         id:
             expose: true
             groups: [self]
-        email:
-            expose: true
-            groups: [self]
         firstName:
             expose: true
             groups: [self]

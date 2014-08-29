@@ -72,7 +72,6 @@ class Users extends AbstractFixture implements OrderedFixtureInterface, Containe
 
         for ($i = 0; $i < 10; $i++) {
             $user = $this->container->get('myclapboard_user.manager.user')->create();
-            $user->setUsername($name . $i);
             $user->setEmail($name . $i . '@gmail.com');
             $user->setFirstName($name . $i);
             $user->setLastName('surname');

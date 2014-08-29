@@ -1,7 +1,3 @@
-myclapboard_authenticate:
-    type: rest
-    resource: Myclapboard\UserBundle\Controller\AuthenticateController
-
 myclapboard_profile:
     type: rest
     resource: Myclapboard\UserBundle\Controller\ProfileController
@@ -17,3 +13,10 @@ myclapboard_review:
 myclapboard_security:
     type: rest
     resource: Myclapboard\UserBundle\Controller\SecurityController
+
+myclapboard_user_post_register:
+    type: rest
+    pattern: /register
+    defaults: { _controller: MyclapboardUserBundle:Registration:register }
+    requirements:
+        _method: POST

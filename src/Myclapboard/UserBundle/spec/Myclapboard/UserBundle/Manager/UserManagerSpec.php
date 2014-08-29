@@ -10,11 +10,13 @@
 
 namespace spec\Myclapboard\UserBundle\Manager;
 
+use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use Myclapboard\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
@@ -72,6 +74,40 @@ class UserManagerSpec extends ObjectBehavior
         $this->findAll()->shouldReturn(array());
     }
 
+    function it_finds_one_by_id(
+        EntityRepository $repository,
+        QueryBuilder $queryBuilder,
+        AbstractQuery $query,
+        Expr $expr,
+        Comparison $comparison,
+        User $user
+    )
+    {
+        $repository->createQueryBuilder('u')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->select(array('u', 'r', 're'))
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.ratings', 'r')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.reviews', 're')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->expr()
+            ->shouldBeCalled()->willReturn($expr);
+        $expr->eq('u.id', ':id')
+            ->shouldBeCalled()->willReturn($comparison);
+        $queryBuilder->where($comparison)
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->setParameter(':id', 'user-id')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->getQuery()
+            ->shouldBeCalled()->willReturn($query);
+
+        $query->getOneOrNullResult()->shouldBeCalled()->willReturn($user);
+
+        $this->findOneById('user-id')->shouldReturn($user);
+    }
+
+
     function it_finds_by_api_key(EntityRepository $repository, User $user)
     {
         $repository->findOneBy(array('apiKey' => 'api-key'))
@@ -82,7 +118,7 @@ class UserManagerSpec extends ObjectBehavior
 
     function it_finds_by_username(EntityRepository $repository, User $user)
     {
-        $repository->findOneBy(array('email' => 'username'))
+        $repository->findOneBy(array('username' => 'username'))
             ->shouldBeCalled()->willReturn($user);
 
         $this->findByUsername('username');

@@ -42,7 +42,6 @@ class Account extends BasicInfo implements AccountInterface
         $this->cookiesAccepted = false;
         $this->ratings = new ArrayCollection();
         $this->reviews = new ArrayCollection();
-        $this->enabled = true;
     }
 
     /**
@@ -161,5 +160,14 @@ class Account extends BasicInfo implements AccountInterface
     public function getReviews()
     {
         return $this->reviews;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
+        $this->setUsername($email);
+        parent::setEmail($email);
     }
 }
