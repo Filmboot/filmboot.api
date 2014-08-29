@@ -47,10 +47,10 @@ class RegistrationControllerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\CoreBundle\Controller\BaseApiController');
     }
 
-    function it_does_not_register_because_the_event_has_a_response()
-    {
-        // ToDo
-    }
+// ToDo
+//    function it_does_not_register_because_the_event_has_a_response()
+//    {
+//    }
 
     function it_does_not_register_because_the_plainPassword_is_not_an_array(
         ContainerInterface $container,
