@@ -25,7 +25,7 @@ Myclapboard\UserBundle\Model\Account:
     properties:
         apikey:
             expose: true
-            groups: [self]
+            groups: [self, auth]
         locale:
             expose: true
             groups: [self]

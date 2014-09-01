@@ -10,9 +10,12 @@ myclapboard_review:
     type: rest
     resource: Myclapboard\UserBundle\Controller\ReviewController
 
-myclapboard_security:
+myclapboard_user_post_login:
     type: rest
-    resource: Myclapboard\UserBundle\Controller\SecurityController
+    pattern: /login
+    defaults: { _controller: MyclapboardUserBundle:Security:login }
+    requirements:
+        _method: POST
 
 myclapboard_user_post_register:
     type: rest
@@ -20,3 +23,10 @@ myclapboard_user_post_register:
     defaults: { _controller: MyclapboardUserBundle:Registration:register }
     requirements:
         _method: POST
+
+myclapboard_user_get_register_confirmed:
+    type: rest
+    pattern: /register/confirmed
+    defaults: { _controller: MyclapboardUserBundle:Registration:confirmed }
+    requirements:
+        _method: GET

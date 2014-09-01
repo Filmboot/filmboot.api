@@ -19,6 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 
 /**
  * Class SecurityController.
@@ -42,7 +43,7 @@ class SecurityControllerSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\CoreBundle\Controller\BaseApiController');
     }
 
-    function it_does_not_post_token_because_the_user_is_not_exist(
+    function it_does_not_post_login_because_the_user_is_not_exist(
         ContainerInterface $container,
         UserManager $userManager,
         ParamFetcher $paramFetcher,
@@ -52,19 +53,19 @@ class SecurityControllerSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.user')
             ->shouldBeCalled()->willReturn($userManager);
 
-        $paramFetcher->get('username')
-            ->shouldBeCalled()->willReturn('username-parameter');
+        $paramFetcher->get('email')
+            ->shouldBeCalled()->willReturn('email-parameter');
 
-        $userManager->findByUsername('username-parameter')
+        $userManager->findOneByEmail('email-parameter')
             ->shouldBeCalled()->willReturn(null);
 
         $container->get('fos_rest.view_handler')
             ->shouldBeCalled()->willReturn($viewHandler);
 
-        $this->postTokenAction($paramFetcher);
+        $this->loginAction($paramFetcher);
     }
 
-    function it_does_not_post_token_because_the_password_is_not_valid(
+    function it_does_not_post_login_because_the_password_is_not_valid(
         ContainerInterface $container,
         UserManager $userManager,
         ParamFetcher $paramFetcher,
@@ -77,10 +78,10 @@ class SecurityControllerSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.user')
             ->shouldBeCalled()->willReturn($userManager);
 
-        $paramFetcher->get('username')
-            ->shouldBeCalled()->willReturn('username-parameter');
+        $paramFetcher->get('email')
+            ->shouldBeCalled()->willReturn('email-parameter');
 
-        $userManager->findByUsername('username-parameter')
+        $userManager->findOneByEmail('email-parameter')
             ->shouldBeCalled()->willReturn($user);
 
         $container->get('security.encoder_factory')
@@ -97,10 +98,10 @@ class SecurityControllerSpec extends ObjectBehavior
         $container->get('fos_rest.view_handler')
             ->shouldBeCalled()->willReturn($viewHandler);
 
-        $this->postTokenAction($paramFetcher);
+        $this->loginAction($paramFetcher);
     }
 
-    function it_posts_token(
+    function it_posts_login(
         ContainerInterface $container,
         UserManager $userManager,
         ParamFetcher $paramFetcher,
@@ -115,10 +116,10 @@ class SecurityControllerSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.user')
             ->shouldBeCalled()->willReturn($userManager);
 
-        $paramFetcher->get('username')
-            ->shouldBeCalled()->willReturn('username-parameter');
+        $paramFetcher->get('email')
+            ->shouldBeCalled()->willReturn('email-parameter');
 
-        $userManager->findByUsername('username-parameter')
+        $userManager->findOneByEmail('email-parameter')
             ->shouldBeCalled()->willReturn($user);
 
         $container->get('security.encoder_factory')
@@ -140,6 +141,6 @@ class SecurityControllerSpec extends ObjectBehavior
         $container->get('fos_rest.view_handler')
             ->shouldBeCalled()->willReturn($viewHandler);
 
-        $this->postTokenAction($paramFetcher);
+        $this->loginAction($paramFetcher);
     }
 }

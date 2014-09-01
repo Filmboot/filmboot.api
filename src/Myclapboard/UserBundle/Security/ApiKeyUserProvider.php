@@ -49,10 +49,10 @@ class ApiKeyUserProvider implements UserProviderInterface
      */
     public function getUsernameForApiKey($apiKey)
     {
-        $user = $this->manager->findByApiKey($apiKey);
+        $user = $this->manager->findOneByApiKey($apiKey);
 
         if ($user !== null) {
-            return $user->getUsername();
+            return $user->getEmail();
         } else {
             return null;
         }
@@ -63,7 +63,7 @@ class ApiKeyUserProvider implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        return $this->manager->findByUsername($username);
+        return $this->manager->findOneByEmail($username);
     }
 
     /**

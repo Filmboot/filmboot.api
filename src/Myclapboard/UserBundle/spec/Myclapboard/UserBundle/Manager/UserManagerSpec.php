@@ -113,15 +113,40 @@ class UserManagerSpec extends ObjectBehavior
         $repository->findOneBy(array('apiKey' => 'api-key'))
             ->shouldBeCalled()->willReturn($user);
 
-        $this->findByApiKey('api-key');
+        $this->findOneByApiKey('api-key');
     }
 
-    function it_finds_by_username(EntityRepository $repository, User $user)
+    function it_finds_one_by_email(
+        EntityRepository $repository,
+        QueryBuilder $queryBuilder,
+        AbstractQuery $query,
+        Expr $expr,
+        Comparison $comparison,
+        User $user
+    )
     {
-        $repository->findOneBy(array('username' => 'username'))
-            ->shouldBeCalled()->willReturn($user);
+        $repository->createQueryBuilder('u')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->select(array('u', 'r', 're'))
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.ratings', 'r')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->leftJoin('u.reviews', 're')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->expr()
+            ->shouldBeCalled()->willReturn($expr);
+        $expr->eq('u.email', ':email')
+            ->shouldBeCalled()->willReturn($comparison);
+        $queryBuilder->where($comparison)
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->setParameter(':email', 'user-email')
+            ->shouldBeCalled()->willReturn($queryBuilder);
+        $queryBuilder->getQuery()
+            ->shouldBeCalled()->willReturn($query);
 
-        $this->findByUsername('username');
+        $query->getOneOrNullResult()->shouldBeCalled()->willReturn($user);
+
+        $this->findOneByEmail('user-email')->shouldReturn($user);
     }
 
     function it_creates_api_key(User $user, EntityManager $manager)

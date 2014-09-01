@@ -14,8 +14,10 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Myclapboard\CoreBundle\Controller\BaseApiController;
+use Myclapboard\UserBundle\Model\AccountInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Class RegistrationController.
@@ -29,7 +31,6 @@ class RegistrationController extends BaseApiController
      *
      * @ApiDoc(
      *  description = "Creates the new user with very basic information (email and password)",
-     *  https = true,
      *  requirements = {
      *    {
      *      "name"="_format",
@@ -58,16 +59,16 @@ class RegistrationController extends BaseApiController
      *    }
      *  },
      *  statusCodes = {
-     *      201 = "Successfully created",
-     *      400 = {
-     *          "The email is not valid",
-     *          "The email is already used",
-     *          "Please enter an email",
-     *          "Please enter a password",
-     *          "The entered passwords don't match",
-     *          "This is not the right way to insert the password, for more info you could read the Api documentation"
-     *      },
-     *      403 = "Forbidden"
+     *    201 = "Successfully created",
+     *    400 = {
+     *      "The email is not valid",
+     *      "The email is already used",
+     *      "Please enter an email",
+     *      "Please enter a password",
+     *      "The entered passwords don't match",
+     *      "This is not the right way to insert the password, for more info you could read the Api documentation"
+     *    },
+     *    403 = "Forbidden"
      *  }
      * )
      *
@@ -101,7 +102,9 @@ class RegistrationController extends BaseApiController
 
                 $userManager->updateUser($user);
 
-                return $this->handleView($this->createView($user, array('self')));
+                $token = $this->get('myclapboard_user.manager.user')->createApiKey($user);
+
+                return $this->handleView($this->createView(array('token' => $token)));
             }
 
             return $this->handleView($this->createView($this->getFormErrors($form), null, 400));
@@ -109,5 +112,37 @@ class RegistrationController extends BaseApiController
         throw new BadRequestHttpException(
             'This is not the right way to insert the password, for more info you could read the Api documentation'
         );
+    }
+
+    /**
+     * Tells the user his account is now confirmed, returning the object.
+     *
+     * @ApiDoc(
+     *  description = "Tells the user his account is now confirmed, returning the object",
+     *  requirements = {
+     *    {
+     *      "name"="_format",
+     *      "requirement"="json|jsonp",
+     *      "description"="Supported formats, by default json."
+     *    }
+     *  },
+     *  statusCodes = {
+     *    200 = "Successfully created",
+     *    403 = "This user does not have access to this section",
+     *    404 = "The user with confirmation token <$confirmation_token> does not exist"
+     *  }
+     * )
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function confirmedAction()
+    {
+        $user = $this->getUser();
+        if (is_object($user) === false || $user instanceof AccountInterface === false) {
+            throw new AccessDeniedException('This user does not have access to this section');
+        }
+
+        return $this->handleView($this->createView($user, array('self')));
     }
 }

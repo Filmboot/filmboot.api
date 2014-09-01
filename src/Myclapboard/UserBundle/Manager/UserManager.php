@@ -76,7 +76,7 @@ class UserManager
 
     /**
      * Finds user with the id given.
-     * 
+     *
      * @param string $id The id
      *
      * @return \Myclapboard\UserBundle\Entity\User
@@ -96,27 +96,36 @@ class UserManager
     }
 
     /**
-     * Finds user by API key string.
+     * Finds user with the apiKey given.
      *
      * @param string $apiKey API key string
      *
      * @return \Myclapboard\UserBundle\Entity\User
      */
-    public function findByApiKey($apiKey)
+    public function findOneByApiKey($apiKey)
     {
         return $this->repository->findOneBy(array('apiKey' => $apiKey));
     }
 
     /**
-     * Finds user by its username.
+     * Finds user by its email.
      *
-     * @param string $username Username string
+     * @param string $email The email
      *
      * @return \Myclapboard\UserBundle\Entity\User
      */
-    public function findByUsername($username)
+    public function findOneByEmail($email)
     {
-        return $this->repository->findOneBy(array('username' => $username));
+        $queryBuilder = $this->repository->createQueryBuilder('u');
+
+        $query = $queryBuilder->select(array('u', 'r', 're'))
+            ->leftJoin('u.ratings', 'r')
+            ->leftJoin('u.reviews', 're')
+            ->where($queryBuilder->expr()->eq('u.email', ':email'))
+            ->setParameter(':email', $email)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 
     /**

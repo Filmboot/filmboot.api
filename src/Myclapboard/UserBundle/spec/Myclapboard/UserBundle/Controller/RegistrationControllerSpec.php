@@ -23,6 +23,8 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContext;
 
 /**
@@ -147,25 +149,26 @@ class RegistrationControllerSpec extends ObjectBehavior
     function it_registers_the_user(
         ContainerInterface $container,
         FactoryInterface $formFactory,
-        UserManager $userManager,
+        UserManager $fosUserManager,
         TraceableEventDispatcherInterface $dispatcher,
         Request $request,
         FormInterface $form,
         User $user,
         Event $event,
+        \Myclapboard\UserBundle\Manager\UserManager $userManager,
         ViewHandler $viewHandler
     )
     {
         $container->get('fos_user.registration.form.factory')
             ->shouldBeCalled()->willReturn($formFactory);
         $container->get('fos_user.user_manager')
-            ->shouldBeCalled()->willReturn($userManager);
+            ->shouldBeCalled()->willReturn($fosUserManager);
         $container->get('event_dispatcher')
             ->shouldBeCalled()->willReturn($dispatcher);
         $container->get('request')
             ->shouldBeCalled()->willReturn($request);
 
-        $userManager->createUser()
+        $fosUserManager->createUser()
             ->shouldBeCalled()->willReturn($user);
         $dispatcher->dispatch(Argument::any(), Argument::any())
             ->shouldBeCalled()->willReturn($event);
@@ -180,10 +183,59 @@ class RegistrationControllerSpec extends ObjectBehavior
         $form->isValid()->shouldBeCalled()->willReturn(true);
         $dispatcher->dispatch(Argument::any(), Argument::any())
             ->shouldBeCalled()->willReturn($event);
-        $userManager->updateUser($user)->shouldBeCalled();
+        $fosUserManager->updateUser($user)->shouldBeCalled();
 
-        $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
+        $container->get('myclapboard_user.manager.user')
+            ->shouldBeCalled()->willReturn($userManager);
+        $userManager->createApiKey($user)
+            ->shouldBeCalled()->willReturn('token-string');
+
+        $container->get('fos_rest.view_handler')
+            ->shouldBeCalled()->willReturn($viewHandler);
 
         $this->registerAction();
+    }
+
+    function it_does_not_confirm_because_this_user_has_not_acces_to_this_section(
+        ContainerInterface $container,
+        SecurityContext $securityContext,
+        TokenInterface $token
+    )
+    {
+        $container->has('security.context')
+            ->shouldBeCalled()->willReturn(true);
+        $container->get('security.context')
+            ->shouldBeCalled()->willReturn($securityContext);
+        $securityContext->getToken()
+            ->shouldBeCalled()->willReturn($token);
+        $token->getUser()
+            ->shouldBeCalled()->willReturn(null);
+
+        $this->shouldThrow(
+            new AccessDeniedException('This user does not have access to this section')
+        )->during('confirmedAction');
+    }
+
+    function it_confirms_the_account(
+        ContainerInterface $container,
+        SecurityContext $securityContext,
+        TokenInterface $token,
+        User $user,
+        ViewHandler $viewHandler
+    )
+    {
+        $container->has('security.context')
+            ->shouldBeCalled()->willReturn(true);
+        $container->get('security.context')
+            ->shouldBeCalled()->willReturn($securityContext);
+        $securityContext->getToken()
+            ->shouldBeCalled()->willReturn($token);
+        $token->getUser()
+            ->shouldBeCalled()->willReturn($user);
+
+        $container->get('fos_rest.view_handler')
+            ->shouldBeCalled()->willReturn($viewHandler);
+
+        $this->confirmedAction();
     }
 }

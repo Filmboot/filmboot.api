@@ -42,17 +42,17 @@ class ApiKeyUserProviderSpec extends ObjectBehavior
 
     function it_gets_username_for_api_key(UserManager $userManager, User $user)
     {
-        $userManager->findByApiKey('api-key')
+        $userManager->findOneByApiKey('api-key')
             ->shouldBeCalled()->willReturn($user);
 
-        $user->getUsername()->shouldBeCalled()->willReturn('my-user-email');
+        $user->getEmail()->shouldBeCalled()->willReturn('my-user-email');
 
         $this->getUsernameForApiKey('api-key')->shouldReturn('my-user-email');
     }
 
     function it_does_not_get_username_because_the_user_is_not_exist(UserManager $userManager)
     {
-        $userManager->findByApiKey('api-key')
+        $userManager->findOneByApiKey('api-key')
             ->shouldBeCalled()->willReturn(null);
 
         $this->getUsernameForApiKey('api-key')->shouldReturn(null);
@@ -60,10 +60,10 @@ class ApiKeyUserProviderSpec extends ObjectBehavior
 
     function it_loads_user_by_username(UserManager $userManager, User $user)
     {
-        $userManager->findByUsername('username')
+        $userManager->findOneByEmail('email')
             ->shouldBeCalled()->willReturn($user);
 
-        $this->loadUserByUsername('username')->shouldReturn($user);
+        $this->loadUserByUsername('email')->shouldReturn($user);
     }
 
     function it_refreshes_user(UserInterface $user)
