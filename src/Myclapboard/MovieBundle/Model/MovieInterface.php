@@ -15,7 +15,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Entity\MovieTranslation;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 use Myclapboard\UserBundle\Model\RatingInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;
 
@@ -24,7 +24,7 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
  *
  * @package Myclapboard\MovieBundle\Model
  */
-interface MovieInterface
+interface MovieInterface extends TranslatableInterface
 {
     /**
      * Gets id.
@@ -326,31 +326,6 @@ interface MovieInterface
      * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
      */
     public function getImages();
-
-    /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\MovieBundle\Entity\MovieTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\MovieTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function addTranslation(MovieTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\MovieTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function removeTranslation(MovieTranslation $translation);
 
     /**
      * Adds rating.

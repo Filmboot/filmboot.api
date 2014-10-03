@@ -16,6 +16,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
 use Myclapboard\UserBundle\Model\RatingInterface;
@@ -28,6 +29,8 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
  */
 class Movie implements MovieInterface
 {
+    use TranslatableTrait;
+
     protected $id;
 
     protected $slug;
@@ -59,8 +62,6 @@ class Movie implements MovieInterface
     protected $awards;
 
     protected $images;
-
-    protected $translations;
 
     protected $ratings;
 
@@ -421,37 +422,6 @@ class Movie implements MovieInterface
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(MovieTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(MovieTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**
