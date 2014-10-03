@@ -12,10 +12,8 @@ namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\City;
-use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
-use Myclapboard\ArtistBundle\Entity\Director;
-use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\ArtistBundle\Model\Traits\RolesTrait;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -25,6 +23,8 @@ use Myclapboard\MovieBundle\Util\Util;
  */
 class Artist implements ArtistInterface
 {
+    use RolesTrait;
+
     protected $id;
 
     protected $slug;
@@ -42,12 +42,6 @@ class Artist implements ArtistInterface
     protected $website;
 
     protected $photo;
-
-    protected $actors;
-
-    protected $directors;
-
-    protected $writers;
 
     protected $images;
 
@@ -215,90 +209,6 @@ class Artist implements ArtistInterface
         $this->photo = $photo;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addActor(Actor $actor)
-    {
-        $this->actors[] = $actor;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeActor(Actor $actor)
-    {
-        $this->actors->removeElement($actor);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getActors()
-    {
-        return $this->actors;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addDirector(Director $director)
-    {
-        $this->directors[] = $director;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeDirector(Director $director)
-    {
-        $this->directors->removeElement($director);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDirectors()
-    {
-        return $this->directors;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addWriter(Writer $writer)
-    {
-        $this->writers[] = $writer;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeWriter(Writer $writer)
-    {
-        $this->writers->removeElement($writer);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getWriters()
-    {
-        return $this->writers;
     }
 
     /**

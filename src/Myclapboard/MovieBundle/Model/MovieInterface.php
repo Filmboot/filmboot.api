@@ -11,9 +11,7 @@
 namespace Myclapboard\MovieBundle\Model;
 
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Entity\Director;
-use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\ArtistBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\UserBundle\Model\RatingInterface;
@@ -24,7 +22,7 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
  *
  * @package Myclapboard\MovieBundle\Model
  */
-interface MovieInterface
+interface MovieInterface extends RolesTraitInterface
 {
     /**
      * Gets id.
@@ -176,81 +174,6 @@ interface MovieInterface
      * @return \Myclapboard\MovieBundle\Model\MovieInterface
      */
     public function setPoster($poster);
-
-    /**
-     * Adds actor.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function addActor(Actor $actor);
-
-    /**
-     * Removes actor.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function removeActor(Actor $actor);
-
-    /**
-     * Gets array of actors.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Entity\Actor>
-     */
-    public function getCast();
-
-    /**
-     * Adds director.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function addDirector(Director $director);
-
-    /**
-     * Removes director.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function removeDirector(Director $director);
-
-    /**
-     * Gets array of directors.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Entity\Director>
-     */
-    public function getDirectors();
-
-    /**
-     * Adds writer.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function addWriter(Writer $writer);
-
-    /**
-     * Removes writer.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function removeWriter(Writer $writer);
-
-    /**
-     * Gets array of writers.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Entity\Writer>
-     */
-    public function getWriters();
 
     /**
      * Adds genre.

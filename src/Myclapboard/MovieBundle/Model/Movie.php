@@ -15,6 +15,7 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\ArtistBundle\Model\Traits\RolesTrait;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
@@ -28,6 +29,8 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
  */
 class Movie implements MovieInterface
 {
+    use RolesTrait;
+
     protected $id;
 
     protected $slug;
@@ -48,12 +51,6 @@ class Movie implements MovieInterface
 
     protected $poster;
 
-    protected $cast;
-
-    protected $directors;
-
-    protected $writers;
-
     protected $genres;
 
     protected $awards;
@@ -73,7 +70,7 @@ class Movie implements MovieInterface
      */
     public function __construct()
     {
-        $this->cast = new ArrayCollection();
+        $this->actors = new ArrayCollection();
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->genres = new ArrayCollection();
@@ -253,90 +250,6 @@ class Movie implements MovieInterface
         $this->poster = $poster;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addActor(Actor $actor)
-    {
-        $this->cast[] = $actor;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeActor(Actor $actor)
-    {
-        $this->cast->removeElement($actor);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCast()
-    {
-        return $this->cast;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addDirector(Director $director)
-    {
-        $this->directors[] = $director;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeDirector(Director $director)
-    {
-        $this->directors->removeElement($director);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDirectors()
-    {
-        return $this->directors;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addWriter(Writer $writer)
-    {
-        $this->writers[] = $writer;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeWriter(Writer $writer)
-    {
-        $this->writers->removeElement($writer);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getWriters()
-    {
-        return $this->writers;
     }
 
     /**

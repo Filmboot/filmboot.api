@@ -109,15 +109,15 @@ class MovieSpec extends ObjectBehavior
 
     function its_actors_be_mutable(Actor $actor)
     {
-        $this->getCast()->shouldHaveCount(0);
+        $this->getActors()->shouldHaveCount(0);
 
         $this->addActor($actor);
 
-        $this->getCast()->shouldHaveCount(1);
+        $this->getActors()->shouldHaveCount(1);
 
         $this->removeActor($actor);
 
-        $this->getCast()->shouldHaveCount(0);
+        $this->getActors()->shouldHaveCount(0);
     }
 
     function its_director_be_mutable(Director $director)
