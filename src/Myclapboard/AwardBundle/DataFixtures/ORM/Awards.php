@@ -41,7 +41,7 @@ class Awards extends AbstractFixture implements OrderedFixtureInterface, Contain
      */
     public function load(ObjectManager $manager)
     {
-        $this->container->get('myclapboard_award.command_awards')->loadAwards(
+        $this->container->get('myclapboard_award.command_awards')->loadEntity(
             $this->container->get('kernel')->getRootDir() . '/../app/Resources/fixtures/awards.yml'
         );
 
