@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace spec\Myclapboard\MovieBundle\DataFixtures\ORM;
@@ -55,7 +56,7 @@ class MoviesSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_movie.command_movies')
             ->shouldBeCalled()->willReturn($loadMoviesCommand);
-        $loadMoviesCommand->loadMovies('rootDir/../app/Resources/fixtures/movies.yml')
+        $loadMoviesCommand->loadEntity('rootDir/../app/Resources/fixtures/movies.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

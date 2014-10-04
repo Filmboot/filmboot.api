@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace spec\Myclapboard\MovieBundle\Command;
@@ -53,7 +54,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Command\LoadMoviesCommand');
     }
 
-    function it_should_be_extends_load_artists_command_spec()
+    function it_should_be_extends_load_artists_command()
     {
         $this->shouldHaveType('Myclapboard\ArtistBundle\Command\LoadArtistsCommand');
     }

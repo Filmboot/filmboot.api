@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace spec\Myclapboard\AwardBundle\DataFixtures\ORM;
@@ -55,7 +56,7 @@ class AwardsWonSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_award.command_awardsWon')
             ->shouldBeCalled()->willReturn($loadAwardsWonCommand);
-        $loadAwardsWonCommand->loadAwardsWon('rootDir/../app/Resources/fixtures/awardswon.yml')
+        $loadAwardsWonCommand->loadEntity('rootDir/../app/Resources/fixtures/awardswon.yml')
             ->shouldBeCalled();
 
         $this->load($manager);
