@@ -55,7 +55,7 @@ class ArtistsSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_artist.command_artists')
             ->shouldBeCalled()->willReturn($loadArtistsCommand);
-        $loadArtistsCommand->loadArtists('rootDir/../app/Resources/fixtures/artists.yml')
+        $loadArtistsCommand->loadEntity('rootDir/../app/Resources/fixtures/artists.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

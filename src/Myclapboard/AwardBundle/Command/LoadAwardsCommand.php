@@ -1,20 +1,20 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\AwardBundle\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\AwardBundle\Entity\AwardTranslation;
 use Myclapboard\CoreBundle\Command\DataFixtureCommand;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class LoadAwardsCommand.
@@ -23,9 +23,15 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class LoadAwardsCommand extends DataFixtureCommand
 {
-    protected $factory = 'myclapboard_award.manager.award';
+    /**
+     * {@inheritdoc}
+     */
     protected $initMessage = 'Loading awards';
-    protected $endMessage =  'Awards loaded successfully';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $endMessage = 'Awards loaded successfully';
 
     /**
      * {@inheritdoc}
@@ -45,14 +51,16 @@ class LoadAwardsCommand extends DataFixtureCommand
     /**
      * {@inheritdoc}
      */
-    protected function hydrateFixture($entity, $values)
+    protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values)
     {
-        $entity->setName($values['en']);
+        $award = $container->get('myclapboard_award.manager.award')->create();
+
+        $award->setName($values['en']);
         if ($values['es'] !== null) {
             $translation = new AwardTranslation('es', 'name', $values['es']);
-            $entity->addTranslation($translation);
+            $award->addTranslation($translation);
         }
 
-        return $entity;
+        $manager->persist($award);
     }
 }

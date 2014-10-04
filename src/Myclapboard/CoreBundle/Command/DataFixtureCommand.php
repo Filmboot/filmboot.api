@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file belongs to myClapboard.
+ * The source code of application includes a LICENSE file
+ * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
+ */
+
 namespace Myclapboard\CoreBundle\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -15,10 +26,18 @@ use Symfony\Component\Yaml\Parser;
  */
 abstract class DataFixtureCommand extends ContainerAwareCommand
 {
-    protected $factory;
-
+    /**
+     * The init message.
+     *
+     * @var string
+     */
     protected $initMessage;
 
+    /**
+     * The end message.
+     *
+     * @var string
+     */
     protected $endMessage;
 
     /**
@@ -40,9 +59,9 @@ abstract class DataFixtureCommand extends ContainerAwareCommand
     }
 
     /**
-     * Loads all the awards from fixtures app folder.
+     * Loads all the objects from fixtures app folder.
      *
-     * @param string $path    The path of file
+     * @param string $path The path of file
      *
      * @return void
      */
@@ -55,20 +74,22 @@ abstract class DataFixtureCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         $doctrine = $container->get('doctrine');
         $manager = $doctrine->getManager();
+
         foreach ($fixtures as $values) {
-            $entity = $container->get($this->factory)->create();
-
-            $entity = $this->hydrateFixture($entity, $values);
-
-            $manager->persist($entity);
+            $this->hydrateFixture($container, $manager, $values);
         }
 
         $manager->flush();
     }
 
     /**
-     * @param object $entity Entity to hydrate
-     * @param array  $values values to add to entity
+     * Hydrates the entity with the fixture values.
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container The container
+     * @param \Doctrine\Common\Persistence\ObjectManager                $manager   The object manager
+     * @param mixed[]                                                   $values    The values to add to entity
+     *
+     * @return void
      */
-    abstract protected function hydrateFixture($entity, $values);
+    abstract protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values);
 } 

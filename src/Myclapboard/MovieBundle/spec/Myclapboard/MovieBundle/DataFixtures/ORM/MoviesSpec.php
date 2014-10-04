@@ -55,7 +55,7 @@ class MoviesSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_movie.command_movies')
             ->shouldBeCalled()->willReturn($loadMoviesCommand);
-        $loadMoviesCommand->loadMovies('rootDir/../app/Resources/fixtures/movies.yml')
+        $loadMoviesCommand->loadEntity('rootDir/../app/Resources/fixtures/movies.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

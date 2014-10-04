@@ -57,14 +57,14 @@ class AwardsSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_award.command_awards')
             ->shouldBeCalled()->willReturn($loadAwardsCommand);
-        $loadAwardsCommand->loadAwards('rootDir/../app/Resources/fixtures/awards.yml')
+        $loadAwardsCommand->loadEntity('rootDir/../app/Resources/fixtures/awards.yml')
             ->shouldBeCalled();
 
         $container->get('kernel')->shouldBeCalled()->willReturn($kernel);
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_award.command_categories')
             ->shouldBeCalled()->willReturn($loadCategoriesCommand);
-        $loadCategoriesCommand->loadCategories('rootDir/../app/Resources/fixtures/categories.yml')
+        $loadCategoriesCommand->loadEntity('rootDir/../app/Resources/fixtures/categories.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

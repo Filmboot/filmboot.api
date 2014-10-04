@@ -55,7 +55,7 @@ class GenresSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_movie.command_genres')
             ->shouldBeCalled()->willReturn($loadGenresCommand);
-        $loadGenresCommand->loadGenres('rootDir/../app/Resources/fixtures/genres.yml')
+        $loadGenresCommand->loadEntity('rootDir/../app/Resources/fixtures/genres.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

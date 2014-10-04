@@ -53,7 +53,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $this->shouldHaveType('Myclapboard\MovieBundle\Command\LoadMoviesCommand');
     }
 
-    function it_should_be_extends_load_artists_command_spec()
+    function it_should_be_extends_load_artists_command()
     {
         $this->shouldHaveType('Myclapboard\ArtistBundle\Command\LoadArtistsCommand');
     }

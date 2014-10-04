@@ -55,7 +55,7 @@ class AwardsWonSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_award.command_awardsWon')
             ->shouldBeCalled()->willReturn($loadAwardsWonCommand);
-        $loadAwardsWonCommand->loadAwardsWon('rootDir/../app/Resources/fixtures/awardswon.yml')
+        $loadAwardsWonCommand->loadEntity('rootDir/../app/Resources/fixtures/awardswon.yml')
             ->shouldBeCalled();
 
         $this->load($manager);
