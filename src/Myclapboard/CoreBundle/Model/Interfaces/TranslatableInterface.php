@@ -35,5 +35,4 @@ interface TranslatableInterface
      * @return self $this object
      */
     public function removeTranslation(AbstractPersonalTranslation $translation);
-
-} 
+}

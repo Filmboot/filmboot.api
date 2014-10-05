@@ -13,16 +13,16 @@ namespace Myclapboard\ArtistBundle\Model;
 
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
  * Interface ArtistInterface.
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-interface ArtistInterface
+interface ArtistInterface extends TranslatableInterface
 {
     /**
      * Gets id.
@@ -41,7 +41,7 @@ interface ArtistInterface
     /**
      * Sets slug.
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setSlug();
 
@@ -57,7 +57,7 @@ interface ArtistInterface
      *
      * @param string $firstName The first name
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setFirstName($firstName);
 
@@ -73,7 +73,7 @@ interface ArtistInterface
      *
      * @param string $lastName The last name
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setLastName($lastName);
 
@@ -89,7 +89,7 @@ interface ArtistInterface
      *
      * @param \DateTime $birthday The birthday
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBirthday(\DateTime $birthday);
 
@@ -105,7 +105,7 @@ interface ArtistInterface
      *
      * @param \JJs\Bundle\GeonamesBundle\Entity\City $birthplace The birthplace
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBirthplace(City $birthplace);
 
@@ -121,7 +121,7 @@ interface ArtistInterface
      *
      * @param string $biography The biography
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBiography($biography);
 
@@ -137,7 +137,7 @@ interface ArtistInterface
      *
      * @param string $website The website
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setWebsite($website);
 
@@ -153,7 +153,7 @@ interface ArtistInterface
      *
      * @param string $photo The photo
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setPhoto($photo);
 
@@ -162,7 +162,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addActor(Actor $actor);
 
@@ -171,7 +171,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeActor(Actor $actor);
 
@@ -187,7 +187,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addDirector(Director $director);
 
@@ -196,7 +196,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeDirector(Director $director);
 
@@ -212,7 +212,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addWriter(Writer $writer);
 
@@ -221,7 +221,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeWriter(Writer $writer);
 
@@ -237,7 +237,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addImage(ImageInterface $image);
 
@@ -246,7 +246,7 @@ interface ArtistInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeImage(ImageInterface $image);
 
@@ -256,29 +256,4 @@ interface ArtistInterface
      * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
      */
     public function getImages();
-
-    /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Entity\ArtistTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\ArtistTranslation $translation The translation
-     *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
-     */
-    public function addTranslation(ArtistTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\ArtistTranslation $translation The translation
-     *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
-     */
-    public function removeTranslation(ArtistTranslation $translation);
 }

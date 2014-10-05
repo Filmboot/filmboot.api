@@ -20,14 +20,12 @@ use Myclapboard\CoreBundle\Model\BaseImage;
  */
 class Image extends BaseImage implements ImageInterface
 {
-    protected $artist;
-
     /**
-     * Constructor.
+     * The artist.
+     *
+     * @var \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
-    public function __construct()
-    {
-    }
+    protected $artist;
 
     /**
      * {@inheritdoc}

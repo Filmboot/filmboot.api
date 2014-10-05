@@ -20,14 +20,12 @@ use Myclapboard\CoreBundle\Model\BaseImage;
  */
 class Image extends BaseImage implements ImageInterface
 {
-    protected $movie;
-
     /**
-     * Constructor.
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
      */
-    public function __construct()
-    {
-    }
+    protected $movie;
 
     /**
      * {@inheritdoc}

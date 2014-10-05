@@ -11,14 +11,14 @@
 
 namespace Myclapboard\MovieBundle\Model;
 
-use Myclapboard\MovieBundle\Entity\GenreTranslation;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
  * Interface GenreInterface.
  *
  * @package Myclapboard\MovieBundle\Model
  */
-interface GenreInterface
+interface GenreInterface extends TranslatableInterface
 {
     /**
      * Gets id.
@@ -39,7 +39,7 @@ interface GenreInterface
      *
      * @param string $slug The slug
      *
-     * @return \Myclapboard\MovieBundle\Model\GenreInterface
+     * @return $this self Object
      */
     public function setSlug($slug);
 
@@ -55,32 +55,7 @@ interface GenreInterface
      *
      * @param string $name The name
      *
-     * @return \Myclapboard\MovieBundle\Model\GenreInterface
+     * @return $this self Object
      */
     public function setName($name);
-
-    /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\MovieBundle\Entity\GenreTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\GenreTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\GenreInterface
-     */
-    public function addTranslation(GenreTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\GenreTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\GenreInterface
-     */
-    public function removeTranslation(GenreTranslation $translation);
 }

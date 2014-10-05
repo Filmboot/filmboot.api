@@ -1,19 +1,27 @@
 <?php
 
+/**
+ * This file belongs to myClapboard.
+ * The source code of application includes a LICENSE file
+ * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
+ */
+
 namespace Myclapboard\CoreBundle\Model\Traits;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 
 /**
- * Trait for translatable elements.
+ * Trait TranslatableTrait.
  *
  * @package Myclapboard\CoreBundle\Model\Traits
  */
 trait TranslatableTrait
 {
     /**
-     * @var ArrayCollection
+     * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $translations;
 
@@ -47,4 +55,4 @@ trait TranslatableTrait
     {
         return $this->translations;
     }
-} 
+}

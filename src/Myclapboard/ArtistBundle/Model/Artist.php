@@ -14,9 +14,9 @@ namespace Myclapboard\ArtistBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -26,6 +26,8 @@ use Myclapboard\MovieBundle\Util\Util;
  */
 class Artist implements ArtistInterface
 {
+    use TranslatableTrait;
+
     protected $id;
 
     protected $slug;
@@ -51,8 +53,6 @@ class Artist implements ArtistInterface
     protected $writers;
 
     protected $images;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -328,37 +328,6 @@ class Artist implements ArtistInterface
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(ArtistTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(ArtistTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

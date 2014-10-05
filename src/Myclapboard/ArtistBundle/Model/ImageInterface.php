@@ -11,12 +11,14 @@
 
 namespace Myclapboard\ArtistBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
+
 /**
  * Interface ImageInterface.
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-interface ImageInterface
+interface ImageInterface extends BaseImageInterface
 {
     /**
      * Gets artist.
@@ -30,7 +32,7 @@ interface ImageInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ImageInterface
+     * @return $this self Object
      */
     public function setArtist(ArtistInterface $artist);
 }

@@ -11,12 +11,14 @@
 
 namespace Myclapboard\MovieBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
+
 /**
  * Interface ImageInterface,
  *
  * @package Myclapboard\MovieBundle\Model
  */
-interface ImageInterface
+interface ImageInterface extends BaseImageInterface
 {
     /**
      * Gets movie.
@@ -30,7 +32,7 @@ interface ImageInterface
      *
      * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
      *
-     * @return \Myclapboard\MovieBundle\Model\ImageInterface
+     * @return $this self Object
      */
     public function setMovie(MovieInterface $movie);
 }

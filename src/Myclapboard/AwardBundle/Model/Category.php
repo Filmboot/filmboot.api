@@ -12,7 +12,7 @@
 namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\AwardBundle\Entity\CategoryTranslation;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**
  * Class Category model.
@@ -21,11 +21,11 @@ use Myclapboard\AwardBundle\Entity\CategoryTranslation;
  */
 class Category implements CategoryInterface
 {
+    use TranslatableTrait;
+
     protected $id;
 
     protected $name;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -59,37 +59,6 @@ class Category implements CategoryInterface
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(CategoryTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(CategoryTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

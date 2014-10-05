@@ -20,7 +20,7 @@ use Myclapboard\ArtistBundle\Model\ArtistInterface;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Model\Image;
 use Myclapboard\CoreBundle\Manager\BaseImageManager;
-use Myclapboard\CoreBundle\Model\BaseImageInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -92,14 +92,14 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $artist->setWebsite(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
-        
+
         $this->addPhoto(
             $container,
             $baseImageManager,
             $baseImage,
             $artist
         );
-        
+
         $this->addImage(
             $container,
             $imageManager,
@@ -107,7 +107,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
             $artist,
             $manager
         );
-        
+
         $manager->persist($artist)->shouldBeCalled();
 
         $manager->flush()->shouldBeCalled();
@@ -137,7 +137,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
 
         $artist->setPhoto('quentin-tarantino.jpg')->shouldBeCalled()->willReturn($artist);
     }
-    
+
     private function addImage(
         ContainerInterface $container,
         ImageManager $imageManager,
@@ -152,7 +152,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
 
         $image->getFixturePath('images/artists')
             ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../app/Resources/fixtures/images/artists/');
-        
+
         $artist->getSlug()->shouldBeCalled()->willReturn('quentin-tarantino');
 
         $image->getAbsolutePath()

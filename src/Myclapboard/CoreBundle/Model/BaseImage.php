@@ -11,6 +11,7 @@
 
 namespace Myclapboard\CoreBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

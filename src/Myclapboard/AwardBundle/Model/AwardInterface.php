@@ -11,14 +11,14 @@
 
 namespace Myclapboard\AwardBundle\Model;
 
-use Myclapboard\AwardBundle\Entity\AwardTranslation;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
  * Interface AwardInterface.
  *
  * @package Myclapboard\AwardBundle\Model
  */
-interface AwardInterface
+interface AwardInterface extends TranslatableInterface
 {
     /**
      * Gets id.
@@ -39,32 +39,7 @@ interface AwardInterface
      *
      * @param string $name The name
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardInterface
+     * @return $this self Object
      */
     public function setName($name);
-
-    /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\AwardBundle\Entity\AwardTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\AwardBundle\Entity\AwardTranslation $translation The translation
-     *
-     * @return \Myclapboard\AwardBundle\Model\AwardInterface
-     */
-    public function addTranslation(AwardTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\AwardBundle\Entity\AwardTranslation $translation The translation
-     *
-     * @return \Myclapboard\AwardBundle\Model\AwardInterface
-     */
-    public function removeTranslation(AwardTranslation $translation);
 }

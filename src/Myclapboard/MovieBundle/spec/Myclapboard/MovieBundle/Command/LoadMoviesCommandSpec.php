@@ -25,7 +25,7 @@ use Myclapboard\ArtistBundle\Manager\WriterManager;
 use Myclapboard\ArtistBundle\Model\ArtistInterface;
 use Myclapboard\CoreBundle\Manager\BaseImageManager;
 use Myclapboard\MovieBundle\Manager\ImageManager;
-use Myclapboard\CoreBundle\Model\BaseImageInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 use Myclapboard\MovieBundle\Model\Image;
 use Myclapboard\MovieBundle\Manager\GenreManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;

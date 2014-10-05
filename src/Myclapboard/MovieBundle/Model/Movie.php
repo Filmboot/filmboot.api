@@ -18,7 +18,6 @@ use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
-use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Util\Util;
 use Myclapboard\UserBundle\Model\RatingInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;

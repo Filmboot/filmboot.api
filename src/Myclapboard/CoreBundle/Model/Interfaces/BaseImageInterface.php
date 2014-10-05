@@ -9,7 +9,7 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\CoreBundle\Model;
+namespace Myclapboard\CoreBundle\Model\Interfaces;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -32,7 +32,7 @@ interface BaseImageInterface
      *
      * @param string $name The name of image
      *
-     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -48,7 +48,7 @@ interface BaseImageInterface
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file The image file
      *
-     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
+     * @return $this self Object
      */
     public function setFile(UploadedFile $file = null);
 

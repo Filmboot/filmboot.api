@@ -54,7 +54,7 @@ class LoadArtistsCommand extends DataFixtureCommand
     protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values)
     {
         $artist = $container->get('myclapboard_artist.manager.artist')->create();
-        $birthplace = $manager->getRepository('JJsGeonamesBundle:City')
+        $birthplace = $container->get('doctrine')->getRepository('JJsGeonamesBundle:City')
             ->findOneBy(array('geonameIdentifier' => $values['birthplace']));
 
         $artist->setFirstName($values['firstName']);
