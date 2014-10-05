@@ -16,7 +16,11 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
+/**
+ * Class DataFixtures.
+ *
+ * @package Myclapboard\CoreBundle\DataFixtures\ORM
+ */
 abstract class DataFixtures extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
     /**

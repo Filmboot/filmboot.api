@@ -9,21 +9,21 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace spec\Myclapboard\UserBundle\Form;
+namespace spec\Myclapboard\UserBundle\Form\Type;
 
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Form\FormBuilder;
 
 /**
- * Class RatingTypeSpec.
+ * Class ReviewTypeSpec.
  *
  * @package spec\Myclapboard\UserBundle\Form
  */
-class RatingTypeSpec extends ObjectBehavior
+class ReviewTypeSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Myclapboard\UserBundle\Form\RatingType');
+        $this->shouldHaveType('Myclapboard\UserBundle\Form\Type\ReviewType');
     }
 
     function it_extends_form_abstract_type()
@@ -34,7 +34,15 @@ class RatingTypeSpec extends ObjectBehavior
     function it_builds_a_form(FormBuilder $builder)
     {
         $builder
-            ->add('mark', 'integer')
+            ->add('title')
+            ->shouldBeCalled()->willReturn($builder);
+
+        $builder
+            ->add('content')
+            ->shouldBeCalled()->willReturn($builder);
+
+        $builder
+            ->add('locale')
             ->shouldBeCalled()->willReturn($builder);
 
         $builder
@@ -44,12 +52,12 @@ class RatingTypeSpec extends ObjectBehavior
                 )
             )
             ->shouldBeCalled()->willReturn($builder);
-        
+
         $this->buildForm($builder, array());
     }
-    
+
     function it_gets_name()
     {
-        $this->getName()->shouldReturn('');    
+        $this->getName()->shouldReturn('');
     }
 }

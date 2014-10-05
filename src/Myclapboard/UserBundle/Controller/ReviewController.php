@@ -14,7 +14,7 @@ namespace Myclapboard\UserBundle\Controller;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\CoreBundle\Controller\ResourceController;
-use Myclapboard\UserBundle\Form\ReviewType;
+use Myclapboard\UserBundle\Form\Type\ReviewType;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**

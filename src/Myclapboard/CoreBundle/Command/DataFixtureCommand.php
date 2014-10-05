@@ -92,4 +92,4 @@ abstract class DataFixtureCommand extends ContainerAwareCommand
      * @return void
      */
     abstract protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values);
-} 
+}

@@ -15,7 +15,7 @@ use Doctrine\Common\Persistence\AbstractManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\View\ViewHandler;
-use Myclapboard\UserBundle\Form\ReviewType;
+use Myclapboard\UserBundle\Form\Type\ReviewType;
 use Myclapboard\UserBundle\Manager\ReviewManager;
 use Myclapboard\UserBundle\Model\AccountInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;

@@ -68,7 +68,7 @@ fixtures). The recommended way to do all of these steps is executing the followi
 
     sh scripts/update_doctrine_dev.sh
 
-And that's all! Now, if you to go the `http://myclapboard.api.localhost/doc` url, you can see all the methods that
+And that's all! Now, if you go to the `http://myclapboard.api.localhost/doc` url, you can see all the methods that
 are available for now.
 
 Tests

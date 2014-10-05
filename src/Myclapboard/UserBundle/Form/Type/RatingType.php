@@ -9,7 +9,7 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\UserBundle\Form;
+namespace Myclapboard\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * Class RatingType.
  *
- * @package Myclapboard\UserBundle\Form
+ * @package Myclapboard\UserBundle\Form\Type
  */
 class RatingType extends AbstractType
 {

@@ -9,7 +9,7 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace spec\Myclapboard\UserBundle\Form;
+namespace spec\Myclapboard\UserBundle\Form\Type;
 
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,13 +18,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * Class RegistrationTypeSpec.
  *
- * @package spec\Myclapboard\UserBundle\Form
+ * @package spec\Myclapboard\UserBundle\Form\Type
  */
 class RegistrationTypeSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Myclapboard\UserBundle\Form\RegistrationType');
+        $this->shouldHaveType('Myclapboard\UserBundle\Form\Type\RegistrationType');
     }
 
     function it_extends_form_abstract_type()

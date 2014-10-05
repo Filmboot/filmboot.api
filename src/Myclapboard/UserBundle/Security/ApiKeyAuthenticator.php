@@ -68,7 +68,7 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
 
         $username = $this->userProvider->getUsernameForApiKey($apiKey);
 
-        if ($username == null) {
+        if ($username === null) {
             throw new AuthenticationException(
                 sprintf('API Key "%s" does not exist.', $apiKey)
             );

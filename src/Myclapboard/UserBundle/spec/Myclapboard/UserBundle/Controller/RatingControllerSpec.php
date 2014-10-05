@@ -17,7 +17,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\View\ViewHandler;
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use Myclapboard\MovieBundle\Model\MovieInterface;
-use Myclapboard\UserBundle\Form\RatingType;
+use Myclapboard\UserBundle\Form\Type\RatingType;
 use Myclapboard\UserBundle\Manager\RatingManager;
 use Myclapboard\UserBundle\Model\AccountInterface;
 use Myclapboard\UserBundle\Model\RatingInterface;
@@ -176,7 +176,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->getRatingAction('movie-id');
     }
-    
+
     function it_does_not_post_rating_because_the_user_is_not_logged(
         ContainerInterface $container,
         RatingManager $ratingManager,
@@ -189,14 +189,14 @@ class RatingControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($ratingManager);
         $ratingManager->create()
             ->shouldBeCalled()->willReturn($rating);
-        
+
         $this->getsUserLogged($container, $securityContext, $token)
             ->shouldBeCalled()->willReturn(null);
 
         $this->shouldThrow(new AccessDeniedException('Not allowed to access this resource'))
             ->during('postRatingsAction');
     }
-    
+
     function it_does_not_post_rating_because_the_form_is_not_valid(
         ContainerInterface $container,
         RatingManager $ratingManager,
@@ -244,7 +244,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->postRatingsAction();
     }
-    
+
     function it_posts_rating(
         ContainerInterface $container,
         RatingManager $ratingManager,
@@ -288,7 +288,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->postRatingsAction();
     }
-    
+
     function it_does_not_put_rating_because_the_user_is_not_logged(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -319,7 +319,7 @@ class RatingControllerSpec extends ObjectBehavior
             'putRatingsAction'
         );
     }
-    
+
     function it_does_not_put_rating_because_rating_does_not_exist(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -341,7 +341,7 @@ class RatingControllerSpec extends ObjectBehavior
             'putRatingsAction'
         );
     }
-    
+
     function it_does_no_put_rating_because_movie_attribute_is_not_possible_to_update(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -364,7 +364,7 @@ class RatingControllerSpec extends ObjectBehavior
             $ratingManager,
             $rating
         );
-        
+
         $container->get('request')->shouldBeCalled()->willReturn($request);
         $request->get('movie')->shouldBeCalled()->willReturn('other-movie-id');
         $rating->getMovie()->shouldBeCalled()->willReturn($movie);
@@ -435,7 +435,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->putRatingsAction('movie-id');
     }
-    
+
     function it_puts_rating(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -491,9 +491,8 @@ class RatingControllerSpec extends ObjectBehavior
         $container->get('fos_rest.view_handler')->shouldBeCalled()->willReturn($viewHandler);
 
         $this->putRatingsAction('movie-id');
-        
     }
-    
+
     function it_does_not_delete_because_the_user_is_not_logged(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -505,9 +504,8 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->shouldThrow(new AccessDeniedException('Not allowed to access this resource'))
             ->during('deleteRatingsAction', array('movie-id'));
-        
     }
-    
+
     function it_does_not_delete_because_the_movie_does_not_exist(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -525,7 +523,7 @@ class RatingControllerSpec extends ObjectBehavior
             'deleteRatingsAction'
         );
     }
-    
+
     function it_does_not_delete_because_rating_does_not_exist(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -547,7 +545,7 @@ class RatingControllerSpec extends ObjectBehavior
             'deleteRatingsAction'
         );
     }
-    
+
     function it_deletes_rating(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -584,7 +582,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         $this->deleteRatingsAction('movie-id');
     }
-    
+
     private function getsExistingRating(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -612,7 +610,7 @@ class RatingControllerSpec extends ObjectBehavior
 
         return $rating;
     }
-    
+
     private function ratingsDoesNotExist(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -642,7 +640,7 @@ class RatingControllerSpec extends ObjectBehavior
             new NotFoundHttpException('Does not exist any rating with movie-id id of movie for user-id user')
         )->during($method, array('movie-id'));
     }
-    
+
     private function movieDoesNotExist(
         ContainerInterface $container,
         SecurityContext $securityContext,
@@ -663,7 +661,7 @@ class RatingControllerSpec extends ObjectBehavior
         $this->shouldThrow(new NotFoundHttpException('Movie not found'))
             ->during($method, array('movie-id'));
     }
-    
+
     private function baseManageForm(
         ContainerInterface $container,
         RatingInterface $rating,
@@ -686,7 +684,7 @@ class RatingControllerSpec extends ObjectBehavior
         $container->get('request')
             ->shouldBeCalled()->willReturn($request);
         $form->submit($request)->shouldBeCalled()->willReturn($form);
-        
+
         return $form;
     }
 

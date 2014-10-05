@@ -14,7 +14,7 @@ namespace Myclapboard\UserBundle\Controller;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\CoreBundle\Controller\ResourceController;
-use Myclapboard\UserBundle\Form\RatingType;
+use Myclapboard\UserBundle\Form\Type\RatingType;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
