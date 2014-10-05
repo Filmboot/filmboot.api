@@ -12,7 +12,7 @@
 namespace Myclapboard\ArtistBundle\Model;
 
 use JJs\Bundle\GeonamesBundle\Entity\City;
-use Myclapboard\ArtistBundle\Model\Interfaces\RolesTraitInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**

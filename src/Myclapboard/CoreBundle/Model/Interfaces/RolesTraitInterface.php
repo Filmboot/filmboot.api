@@ -1,6 +1,15 @@
 <?php
 
-namespace Myclapboard\ArtistBundle\Model\Interfaces;
+/**
+ * This file belongs to myClapboard.
+ * The source code of application includes a LICENSE file
+ * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
+ */
+
+namespace Myclapboard\CoreBundle\Model\Interfaces;
 
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
@@ -9,7 +18,7 @@ use Myclapboard\ArtistBundle\Entity\Writer;
 /**
  * Interface RolesTraitInterface.
  *
- * @package Myclapboard\ArtistBundle\Model\Interfaces
+ * @package Myclapboard\CoreBundle\Model\Interfaces
  */
 interface RolesTraitInterface
 {
@@ -18,7 +27,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addActor(Actor $actor);
 
@@ -27,7 +36,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeActor(Actor $actor);
 
@@ -43,7 +52,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addDirector(Director $director);
 
@@ -52,7 +61,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeDirector(Director $director);
 
@@ -68,7 +77,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addWriter(Writer $writer);
 
@@ -77,7 +86,7 @@ interface RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeWriter(Writer $writer);
 
@@ -87,4 +96,4 @@ interface RolesTraitInterface
      * @return array<\Myclapboard\ArtistBundle\Entity\Writer>
      */
     public function getWriters();
-} 
+}

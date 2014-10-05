@@ -1,15 +1,24 @@
 <?php
 
-namespace Myclapboard\ArtistBundle\Model\Traits;
+/**
+ * This file belongs to myClapboard.
+ * The source code of application includes a LICENSE file
+ * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
+ */
+
+namespace Myclapboard\CoreBundle\Model\Traits;
 
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 
 /**
- * Trait for elements managing movie roles
+ * Trait RolesTrait.
  *
- * @package Myclapboard\ArtistBundle\Model\Traits
+ * @package Myclapboard\CoreBundle\Model\Traits
  */
 trait RolesTrait
 {

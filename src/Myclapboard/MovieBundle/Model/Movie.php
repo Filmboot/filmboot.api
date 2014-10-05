@@ -13,7 +13,7 @@ namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\ArtistBundle\Model\Traits\RolesTrait;
+use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;

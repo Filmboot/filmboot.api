@@ -12,8 +12,8 @@
 namespace Myclapboard\MovieBundle\Model;
 
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\ArtistBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 use Myclapboard\UserBundle\Model\RatingInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;
