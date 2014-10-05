@@ -1,3 +1,10 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 Myclapboard\UserBundle\Model\Rating:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
@@ -21,9 +28,9 @@ Myclapboard\UserBundle\Model\Review:
 
 FOS\UserBundle\Model\User:
     constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
              fields: email
-             errorPath: email 
+             errorPath: email
              message: fos_user.email.already_used
              groups: ['MyclapboardRegistration', 'MyclapboardProfile']
     properties:

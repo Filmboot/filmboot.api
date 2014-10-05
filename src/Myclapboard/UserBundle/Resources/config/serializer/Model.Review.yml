@@ -1,9 +1,16 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 Myclapboard\UserBundle\Model\Review:
     exclusion_policy: ALL
     relations:
         -
             rel: reviews
-            href: 
+            href:
                 route: get_movies_reviews
                 parameters:
                     id: expr(object.getMovie().getId())
@@ -12,7 +19,7 @@ Myclapboard\UserBundle\Model\Review:
                 groups: [movieList, movie]
         -
             rel: self
-            href: 
+            href:
                 route: get_review
                 parameters:
                     id: expr(object.getId())
@@ -21,7 +28,7 @@ Myclapboard\UserBundle\Model\Review:
                 groups: [self]
         -
             rel: movie
-            href: 
+            href:
                 route: get_movie
                 parameters:
                     id: expr(object.getMovie().getId())

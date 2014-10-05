@@ -1,7 +1,14 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 Myclapboard\UserBundle\Model\Account:
     exclusion_policy: ALL
     relations:
-        - 
+        -
             rel: self
             href:
                 route: get_me
@@ -10,14 +17,14 @@ Myclapboard\UserBundle\Model\Account:
                 groups: [self]
         -
             rel: reviews
-            href: 
+            href:
                 route: get_reviews
                 absolute: true
             exclusion:
                 groups: [self]
         -
             rel: ratings
-            href: 
+            href:
                 route: get_ratings
                 absolute: true
             exclusion:

@@ -1,9 +1,16 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 Myclapboard\ArtistBundle\Model\Artist:
     exclusion_policy: ALL
     relations:
         -
             rel: self
-            href: 
+            href:
                 route: get_artist
                 parameters:
                     id: expr(object.getId())
@@ -12,14 +19,14 @@ Myclapboard\ArtistBundle\Model\Artist:
                 groups: [movieList, movie, artistList, artist, role]
         -
             rel: artists
-            href: 
+            href:
                 route: get_artists
                 absolute: true
             exclusion:
                 groups: [artist]
         -
             rel: movies
-            href: 
+            href:
                 route: get_artists_movies
                 parameters:
                     id: expr(object.getId())
@@ -28,7 +35,7 @@ Myclapboard\ArtistBundle\Model\Artist:
                 groups: [artistList, artist]
         -
             rel: awards
-            href: 
+            href:
                 route: get_artists_awards
                 parameters:
                     id: expr(object.getId())
@@ -37,7 +44,7 @@ Myclapboard\ArtistBundle\Model\Artist:
                 groups: [artistList, artist, role]
         -
             rel: images
-            href: 
+            href:
                 route: get_artists_images
                 parameters:
                     id: expr(object.getId())

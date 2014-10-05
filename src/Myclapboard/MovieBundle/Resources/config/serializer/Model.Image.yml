@@ -1,9 +1,16 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 Myclapboard\MovieBundle\Model\Image:
     exclusion_policy: ALL
     relations:
         -
             rel: self
-            href: 
+            href:
                 route: get_movies_images
                 parameters:
                     id: expr(object.getMovie().getId())
@@ -12,7 +19,7 @@ Myclapboard\MovieBundle\Model\Image:
                 groups: []
         -
             rel: movie
-            href: 
+            href:
                 route: get_movie
                 parameters:
                     id: expr(object.getMovie().getId())

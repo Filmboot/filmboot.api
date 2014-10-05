@@ -1,3 +1,10 @@
+# This file belongs to myClapboard.
+# The source code of application includes a LICENSE file
+# with all information about license.
+#
+# @author benatespina <benatespina@gmail.com>
+# @author gorkalaucirica <gorka.lauzirika@gmail.com>
+
 parameters:
     myclapboard_award.class.award: Myclapboard\AwardBundle\Entity\Award
     myclapboard_award.class.awardWon: Myclapboard\AwardBundle\Entity\AwardWon
