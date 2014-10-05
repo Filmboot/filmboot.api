@@ -1,17 +1,18 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\AwardBundle\Entity\CategoryTranslation;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**
  * Class Category model.
@@ -20,11 +21,11 @@ use Myclapboard\AwardBundle\Entity\CategoryTranslation;
  */
 class Category implements CategoryInterface
 {
+    use TranslatableTrait;
+
     protected $id;
 
     protected $name;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -58,37 +59,6 @@ class Category implements CategoryInterface
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(CategoryTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(CategoryTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

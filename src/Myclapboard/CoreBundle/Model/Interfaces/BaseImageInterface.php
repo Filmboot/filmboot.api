@@ -1,14 +1,15 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\CoreBundle\Model;
+namespace Myclapboard\CoreBundle\Model\Interfaces;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -31,7 +32,7 @@ interface BaseImageInterface
      *
      * @param string $name The name of image
      *
-     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -47,7 +48,7 @@ interface BaseImageInterface
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file The image file
      *
-     * @return \Myclapboard\CoreBundle\Model\BaseImageInterface
+     * @return $this self Object
      */
     public function setFile(UploadedFile $file = null);
 

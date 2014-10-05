@@ -1,47 +1,32 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\ArtistBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Myclapboard\CoreBundle\DataFixtures\ORM\DataFixtures;
 
 /**
  * Class Artists.
  *
  * @package Myclapboard\ArtistBundle\DataFixtures\ORM
  */
-class Artists extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class Artists extends DataFixtures
 {
-    /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
-     */
-    private $container;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
-        $this->container->get('myclapboard_artist.command_artists')->loadArtists(
+        $this->container->get('myclapboard_artist.command_artists')->loadEntity(
             $this->container->get('kernel')->getRootDir().'/../app/Resources/fixtures/artists.yml'
         );
     }

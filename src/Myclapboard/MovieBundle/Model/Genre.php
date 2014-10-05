@@ -1,17 +1,18 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\MovieBundle\Entity\GenreTranslation;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -21,13 +22,28 @@ use Myclapboard\MovieBundle\Util\Util;
  */
 class Genre implements GenreInterface
 {
+    use TranslatableTrait;
+
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The slug.
+     *
+     * @var string
+     */
     protected $slug;
 
+    /**
+     * The name.
+     *
+     * @var string
+     */
     protected $name;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -80,37 +96,6 @@ class Genre implements GenreInterface
         $this->slug = Util::getSlug($name);
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(GenreTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(GenreTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

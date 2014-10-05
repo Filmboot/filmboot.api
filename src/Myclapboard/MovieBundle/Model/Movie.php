@@ -1,23 +1,21 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Entity\Director;
-use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\ArtistBundle\Model\Traits\RolesTrait;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Entity\MovieTranslation;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
 use Myclapboard\UserBundle\Model\RatingInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;
@@ -30,6 +28,7 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
 class Movie implements MovieInterface
 {
     use RolesTrait;
+    use TranslatableTrait;
 
     protected $id;
 
@@ -56,8 +55,6 @@ class Movie implements MovieInterface
     protected $awards;
 
     protected $images;
-
-    protected $translations;
 
     protected $ratings;
 
@@ -339,37 +336,6 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function addTranslation(MovieTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(MovieTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function addRating(RatingInterface $rating)
     {
         $this->ratings[] = $rating;
@@ -428,7 +394,7 @@ class Movie implements MovieInterface
      */
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->title;
     }
 
     /**
@@ -455,7 +421,7 @@ class Movie implements MovieInterface
         if ($length !== 0) {
             $this->score = $sumOfScores / $length;
         }
-        
+
         return $this;
     }
 }

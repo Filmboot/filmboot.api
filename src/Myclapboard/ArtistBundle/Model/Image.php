@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\ArtistBundle\Model;
@@ -19,14 +20,12 @@ use Myclapboard\CoreBundle\Model\BaseImage;
  */
 class Image extends BaseImage implements ImageInterface
 {
-    protected $artist;
-
     /**
-     * Constructor.
+     * The artist.
+     *
+     * @var \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
-    public function __construct()
-    {
-    }
+    protected $artist;
 
     /**
      * {@inheritdoc}

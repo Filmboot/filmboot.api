@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace spec\Myclapboard\ArtistBundle\DataFixtures\ORM;
@@ -55,7 +56,7 @@ class ArtistsSpec extends ObjectBehavior
         $kernel->getRootDir()->shouldBeCalled()->willReturn('rootDir');
         $container->get('myclapboard_artist.command_artists')
             ->shouldBeCalled()->willReturn($loadArtistsCommand);
-        $loadArtistsCommand->loadArtists('rootDir/../app/Resources/fixtures/artists.yml')
+        $loadArtistsCommand->loadEntity('rootDir/../app/Resources/fixtures/artists.yml')
             ->shouldBeCalled();
 
         $this->load($manager);

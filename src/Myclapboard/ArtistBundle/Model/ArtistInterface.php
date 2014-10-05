@@ -1,25 +1,26 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\ArtistBundle\Model;
 
 use JJs\Bundle\GeonamesBundle\Entity\City;
-use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Model\Interfaces\RolesTraitInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
  * Interface ArtistInterface.
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-interface ArtistInterface extends RolesTraitInterface
+interface ArtistInterface extends RolesTraitInterface, TranslatableInterface
 {
     /**
      * Gets id.
@@ -38,7 +39,7 @@ interface ArtistInterface extends RolesTraitInterface
     /**
      * Sets slug.
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setSlug();
 
@@ -54,7 +55,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param string $firstName The first name
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setFirstName($firstName);
 
@@ -70,7 +71,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param string $lastName The last name
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setLastName($lastName);
 
@@ -86,7 +87,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param \DateTime $birthday The birthday
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBirthday(\DateTime $birthday);
 
@@ -102,7 +103,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param \JJs\Bundle\GeonamesBundle\Entity\City $birthplace The birthplace
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBirthplace(City $birthplace);
 
@@ -118,7 +119,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param string $biography The biography
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setBiography($biography);
 
@@ -134,7 +135,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param string $website The website
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setWebsite($website);
 
@@ -150,7 +151,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param string $photo The photo
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function setPhoto($photo);
 
@@ -159,7 +160,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function addImage(ImageInterface $image);
 
@@ -168,7 +169,7 @@ interface ArtistInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return $this self Object
      */
     public function removeImage(ImageInterface $image);
 
@@ -178,29 +179,4 @@ interface ArtistInterface extends RolesTraitInterface
      * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
      */
     public function getImages();
-
-    /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Entity\ArtistTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\ArtistTranslation $translation The translation
-     *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
-     */
-    public function addTranslation(ArtistTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\ArtistBundle\Entity\ArtistTranslation $translation The translation
-     *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
-     */
-    public function removeTranslation(ArtistTranslation $translation);
 }

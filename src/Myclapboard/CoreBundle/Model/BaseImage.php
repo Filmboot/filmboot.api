@@ -1,15 +1,17 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\CoreBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

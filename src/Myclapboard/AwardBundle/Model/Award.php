@@ -1,17 +1,18 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\AwardBundle\Entity\AwardTranslation;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**
  * Class Award model.
@@ -20,11 +21,21 @@ use Myclapboard\AwardBundle\Entity\AwardTranslation;
  */
 class Award implements AwardInterface
 {
+    use TranslatableTrait;
+
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The name.
+     *
+     * @var string
+     */
     protected $name;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -58,37 +69,6 @@ class Award implements AwardInterface
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(AwardTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(AwardTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

@@ -1,19 +1,20 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\City;
-use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Model\Traits\RolesTrait;
+use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**
@@ -24,6 +25,7 @@ use Myclapboard\MovieBundle\Util\Util;
 class Artist implements ArtistInterface
 {
     use RolesTrait;
+    use TranslatableTrait;
 
     protected $id;
 
@@ -44,8 +46,6 @@ class Artist implements ArtistInterface
     protected $photo;
 
     protected $images;
-
-    protected $translations;
 
     /**
      * Constructor.
@@ -237,37 +237,6 @@ class Artist implements ArtistInterface
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTranslation(ArtistTranslation $translation)
-    {
-        if ($this->translations->contains($translation) === false) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTranslation(ArtistTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     /**

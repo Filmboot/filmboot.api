@@ -1,21 +1,24 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\ArtistBundle\Model;
+
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 
 /**
  * Interface ImageInterface.
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-interface ImageInterface
+interface ImageInterface extends BaseImageInterface
 {
     /**
      * Gets artist.
@@ -29,7 +32,7 @@ interface ImageInterface
      *
      * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
      *
-     * @return \Myclapboard\ArtistBundle\Model\ImageInterface
+     * @return $this self Object
      */
     public function setArtist(ArtistInterface $artist);
 }

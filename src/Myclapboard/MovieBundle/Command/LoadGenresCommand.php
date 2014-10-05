@@ -1,29 +1,38 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\MovieBundle\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Myclapboard\CoreBundle\Command\DataFixtureCommand;
 use Myclapboard\MovieBundle\Entity\GenreTranslation;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Parser;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class LoadGenresCommand.
  *
  * @package Myclapboard\MovieBundle\Command
  */
-class LoadGenresCommand extends ContainerAwareCommand
+class LoadGenresCommand extends DataFixtureCommand
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected $initMessage = 'Loading genres';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $endMessage = 'Genres loaded successfully';
+
     /**
      * {@inheritdoc}
      */
@@ -32,7 +41,6 @@ class LoadGenresCommand extends ContainerAwareCommand
         $this
             ->setName('myclapboard:movie:load:genre')
             ->setDescription('Loads genre from yml file')
-            ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
                 'The <info>myclapboard:movie:load:genre</info> command loads content of file passed by argument
 <info>php app/console myclapboard:movie:load:genre <path-of-file></info>'
@@ -42,40 +50,15 @@ class LoadGenresCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values)
     {
-        $output->writeln('Loading genres');
-        $this->loadGenres($input->getArgument('file'));
-        $output->writeln('Genres loaded successfully');
-    }
+        $genre = $container->get('myclapboard_movie.manager.genre')->create();
 
-    /**
-     * Loads all the genres from fixtures app folder
-     *
-     * @param string $path The path of file
-     *
-     * @return void
-     */
-    public function loadGenres($path)
-    {
-        $yaml = new Parser();
-
-        $fixtures = $yaml->parse(file_get_contents($path));
-
-        $container = $this->getContainer();
-        $doctrine = $container->get('doctrine');
-        $manager = $doctrine->getManager();
-        foreach ($fixtures as $values) {
-            $genre = $container->get('myclapboard_movie.manager.genre')->create();
-
-            $genre->setName($values['en']);
-            if ($values['es'] !== null) {
-                $translation = new GenreTranslation('es', 'name', $values['es']);
-                $genre->addTranslation($translation);
-            }
-            $manager->persist($genre);
+        $genre->setName($values['en']);
+        if ($values['es'] !== null) {
+            $translation = new GenreTranslation('es', 'name', $values['es']);
+            $genre->addTranslation($translation);
         }
-
-        $manager->flush();
+        $manager->persist($genre);
     }
 }

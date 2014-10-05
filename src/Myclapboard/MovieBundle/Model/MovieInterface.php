@@ -1,11 +1,12 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\MovieBundle\Model;
@@ -13,7 +14,7 @@ namespace Myclapboard\MovieBundle\Model;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Entity\MovieTranslation;
+use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 use Myclapboard\UserBundle\Model\RatingInterface;
 use Myclapboard\UserBundle\Model\ReviewInterface;
 
@@ -22,7 +23,7 @@ use Myclapboard\UserBundle\Model\ReviewInterface;
  *
  * @package Myclapboard\MovieBundle\Model
  */
-interface MovieInterface extends RolesTraitInterface
+interface MovieInterface extends RolesTraitInterface, TranslatableInterface
 {
     /**
      * Gets id.
@@ -43,7 +44,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $slug The slug
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setSlug($slug);
 
@@ -59,7 +60,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $title The title
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setTitle($title);
 
@@ -75,7 +76,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \DateTime $duration The duration
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setDuration($duration);
 
@@ -91,7 +92,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \DateTime $releaseDate The release date
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setReleaseDate(\DateTime $releaseDate);
 
@@ -107,7 +108,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \JJs\Bundle\GeonamesBundle\Entity\Country $country The code of the country
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setCountry(Country $country);
 
@@ -123,7 +124,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $storyline The storyline
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setStoryline($storyline);
 
@@ -139,7 +140,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $producer The name of producer
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setProducer($producer);
 
@@ -155,7 +156,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $website The website
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setWebsite($website);
 
@@ -171,7 +172,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param string $poster The poster
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function setPoster($poster);
 
@@ -180,7 +181,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\MovieBundle\Model\GenreInterface $genre The genre object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function addGenre(GenreInterface $genre);
 
@@ -189,7 +190,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\MovieBundle\Model\GenreInterface $genre The genre object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function removeGenre(GenreInterface $genre);
 
@@ -205,7 +206,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function addAward(AwardWonInterface $award);
 
@@ -214,7 +215,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function removeAward(AwardWonInterface $award);
 
@@ -230,7 +231,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function addImage(ImageInterface $image);
 
@@ -239,7 +240,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function removeImage(ImageInterface $image);
 
@@ -251,36 +252,11 @@ interface MovieInterface extends RolesTraitInterface
     public function getImages();
 
     /**
-     * Gets array of translations.
-     *
-     * @return array<\Myclapboard\MovieBundle\Entity\MovieTranslation>
-     */
-    public function getTranslations();
-
-    /**
-     * Adds translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\MovieTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function addTranslation(MovieTranslation $translation);
-
-    /**
-     * Removes translation.
-     *
-     * @param \Myclapboard\MovieBundle\Entity\MovieTranslation $translation The translation
-     *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
-     */
-    public function removeTranslation(MovieTranslation $translation);
-
-    /**
      * Adds rating.
      *
      * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function addRating(RatingInterface $rating);
 
@@ -289,7 +265,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function removeRating(RatingInterface $rating);
 
@@ -305,7 +281,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function addReview(ReviewInterface $review);
 
@@ -314,7 +290,7 @@ interface MovieInterface extends RolesTraitInterface
      *
      * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function removeReview(ReviewInterface $review);
 
@@ -327,7 +303,7 @@ interface MovieInterface extends RolesTraitInterface
 
     /**
      * Gets the score average.
-     * 
+     *
      * @return float
      */
     public function getScore();
@@ -335,7 +311,7 @@ interface MovieInterface extends RolesTraitInterface
     /**
      * Calculates the score average.
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return $this self Object
      */
     public function calculateScore();
 }

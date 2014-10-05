@@ -1,21 +1,20 @@
 <?php
 
 /**
- * (c) benatespina <benatespina@gmail.com>
- *
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file
  * with all information about license.
+ *
+ * @author benatespina <benatespina@gmail.com>
+ * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
 namespace Myclapboard\MovieBundle\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\ArtistBundle\Command\LoadArtistsCommand;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Parser;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class LoadMoviesCommand.
@@ -27,12 +26,21 @@ class LoadMoviesCommand extends LoadArtistsCommand
     /**
      * {@inheritdoc}
      */
+    protected $initMessage = 'Loading movies';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $endMessage = 'Movies loaded successfully';
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
             ->setName('myclapboard:movie:load:movie')
             ->setDescription('Loads movie from yml file')
-            ->addArgument('file', InputArgument::REQUIRED, 'Path of file to be loaded')
             ->setHelp(
                 'The <info>myclapboard:movie:load:movie</info> command loads content of file passed by argument 
 <info>php app/console myclapboard:movie:load:movie <path-of-file></info>'
@@ -42,64 +50,39 @@ class LoadMoviesCommand extends LoadArtistsCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values)
     {
-        $output->writeln('Loading movies');
-        $this->loadMovies($input->getArgument('file'));
-        $output->writeln('Movies loaded successfully');
-    }
+        $movie = $container->get('myclapboard_movie.manager.movie')->create();
+        $country = $container->get('doctrine')->getRepository('JJsGeonamesBundle:Country')
+            ->findOneBy(array('code' => $values['country']));
 
-    /**
-     * Loads all the movies from fixtures app folder
-     *
-     * @param string $path The path of file
-     *
-     * @return void
-     */
-    public function loadMovies($path)
-    {
-        $yaml = new Parser();
+        $movie->setTitle($values['title']['en']);
+        $this->addTranslation($movie, $values, 'title');
 
-        $fixtures = $yaml->parse(file_get_contents($path));
+        $movie->setDuration($values['duration']);
+        $movie->setReleaseDate(new \DateTime($values['releaseDate']));
+        $movie->setCountry($country);
+        $movie->setWebsite($values['website']);
 
-        $container = $this->getContainer();
-        $doctrine = $container->get('doctrine');
-        $manager = $doctrine->getManager();
-        foreach ($fixtures as $values) {
-            $movie = $container->get('myclapboard_movie.manager.movie')->create();
-            $country = $doctrine->getRepository('JJsGeonamesBundle:Country')
-                ->findOneBy(array('code' => $values['country']));
+        $movie->setStoryline($values['storyline']['en']);
+        $this->addTranslation($movie, $values, 'storyline');
 
-            $movie->setTitle($values['title']['en']);
-            $this->addTranslation($movie, $values, 'title');
+        $movie->setProducer($values['producer']);
 
-            $movie->setDuration($values['duration']);
-            $movie->setReleaseDate(new \DateTime($values['releaseDate']));
-            $movie->setCountry($country);
-            $movie->setWebsite($values['website']);
+        $this->addArtists($movie, $values['cast'], 'addActor', 'actor');
+        $this->addArtists($movie, $values['directors'], 'addDirector', 'director');
+        $this->addArtists($movie, $values['writers'], 'addWriter', 'writer');
 
-            $movie->setStoryline($values['storyline']['en']);
-            $this->addTranslation($movie, $values, 'storyline');
-
-            $movie->setProducer($values['producer']);
-
-            $this->addArtists($movie, $values['cast'], 'addActor', 'actor');
-            $this->addArtists($movie, $values['directors'], 'addDirector', 'director');
-            $this->addArtists($movie, $values['writers'], 'addWriter', 'writer');
-
-            foreach ($values['genres'] as $nameOfGenre) {
-                $genre = $container->get('myclapboard_movie.manager.genre')
-                    ->findOneByName(array('name' => $nameOfGenre));
-                $movie->addGenre($genre);
-            }
-
-            $this->linkedMainImage($movie, 'setPoster', 'posters');
-            $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
-
-            $manager->persist($movie);
+        foreach ($values['genres'] as $nameOfGenre) {
+            $genre = $container->get('myclapboard_movie.manager.genre')
+                ->findOneByName(array('name' => $nameOfGenre));
+            $movie->addGenre($genre);
         }
 
-        $manager->flush();
+        $this->linkedMainImage($movie, 'setPoster', 'posters');
+        $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
+
+        $manager->persist($movie);
     }
 
     /**
