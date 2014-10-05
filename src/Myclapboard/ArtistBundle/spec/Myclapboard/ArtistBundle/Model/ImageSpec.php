@@ -11,7 +11,7 @@
 
 namespace spec\Myclapboard\ArtistBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -29,7 +29,7 @@ class ImageSpec extends ObjectBehavior
 
     function it_implements_image_interface()
     {
-        $this->shouldImplement('Myclapboard\ArtistBundle\Model\ImageInterface');
+        $this->shouldImplement('Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface');
     }
 
     function its_artist_is_mutable(ArtistInterface $artist)

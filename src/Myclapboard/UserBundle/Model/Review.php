@@ -11,7 +11,9 @@
 
 namespace Myclapboard\UserBundle\Model;
 
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Class Review.
@@ -157,7 +159,7 @@ class Review implements ReviewInterface
     public function setMovie(MovieInterface $movie)
     {
         $this->movie = $movie;
-        
+
         return $this;
     }
 
@@ -175,7 +177,7 @@ class Review implements ReviewInterface
     public function setUser(AccountInterface $user)
     {
         $this->user = $user;
-        
+
         return $this;
     }
 

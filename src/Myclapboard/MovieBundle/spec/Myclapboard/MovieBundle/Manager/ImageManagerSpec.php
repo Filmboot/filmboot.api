@@ -15,7 +15,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Myclapboard\MovieBundle\Model\ImageInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use PhpSpec\ObjectBehavior;
 
 /**

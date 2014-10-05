@@ -13,6 +13,8 @@ namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
@@ -27,24 +29,74 @@ class Artist implements ArtistInterface
     use RolesTrait;
     use TranslatableTrait;
 
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The slug.
+     *
+     * @var string
+     */
     protected $slug;
 
+    /**
+     * The first name.
+     *
+     * @var string
+     */
     protected $firstName;
 
+    /**
+     * The last name.
+     *
+     * @var string
+     */
     protected $lastName;
 
+    /**
+     * The birthday.
+     *
+     * @var \DateTime
+     */
     protected $birthday;
 
+    /**
+     * The birthplace.
+     *
+     * @var \JJs\Bundle\GeonamesBundle\Entity\City
+     */
     protected $birthplace;
 
+    /**
+     * The biography.
+     *
+     * @var string
+     */
     protected $biography;
 
+    /**
+     * The url of his/her website.
+     *
+     * @var string
+     */
     protected $website;
 
+    /**
+     * The photo.
+     *
+     * @var string
+     */
     protected $photo;
 
+    /**
+     * Array that contains images.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
     protected $images;
 
     /**

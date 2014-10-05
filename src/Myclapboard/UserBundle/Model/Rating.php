@@ -11,7 +11,9 @@
 
 namespace Myclapboard\UserBundle\Model;
 
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
 
 /**
  * Class Rating.

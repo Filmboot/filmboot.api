@@ -15,7 +15,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Myclapboard\MovieBundle\Model\GenreInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -57,7 +57,7 @@ class GenreManagerSpec extends ObjectBehavior
     {
         $repository->findOneBy(array('name' => 'Thriller'))
             ->shouldBeCalled()->willReturn($genre);
-        
+
         $this->findOneByName('Thriller');
     }
 }

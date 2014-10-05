@@ -7,6 +7,6 @@ Myclapboard\MovieBundle\Entity\Image:
             length: 100
     manyToOne:
         movie:
-            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
     lifecycleCallbacks:
         postRemove: [removeUpload]

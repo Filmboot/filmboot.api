@@ -14,9 +14,9 @@ namespace spec\Myclapboard\AwardBundle\Model;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\AwardBundle\Model\AwardInterface;
-use Myclapboard\AwardBundle\Model\CategoryInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -34,7 +34,7 @@ class AwardWonSpec extends ObjectBehavior
 
     function it_implements_award_won_interface()
     {
-        $this->shouldImplement('Myclapboard\AwardBundle\Model\AwardWonInterface');
+        $this->shouldImplement('Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface');
     }
 
     function it_should_not_have_id_by_default()

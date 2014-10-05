@@ -12,8 +12,8 @@
 namespace Myclapboard\ArtistBundle\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Class DirectorManager.
@@ -63,8 +63,8 @@ class DirectorManager
     /**
      * Finds the director with artist and movie given.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface   $movie  The movie
+     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface $artist The artist
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface   $movie  The movie
      *
      * @return null|\Myclapboard\ArtistBundle\Entity\Director
      */

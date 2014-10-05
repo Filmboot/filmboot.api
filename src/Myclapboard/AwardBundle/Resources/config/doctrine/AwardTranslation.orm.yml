@@ -18,7 +18,7 @@ Myclapboard\AwardBundle\Entity\AwardTranslation:
             type: text
     manyToOne:
         object:
-            targetEntity: Myclapboard\AwardBundle\Model\AwardInterface
+            targetEntity: Myclapboard\AwardBundle\Model\Interfaces\AwardInterface
             inversedBy: translations
             joinColumn:
                 name: object_id

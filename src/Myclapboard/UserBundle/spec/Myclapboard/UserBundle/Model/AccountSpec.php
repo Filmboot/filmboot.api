@@ -11,8 +11,8 @@
 
 namespace spec\Myclapboard\UserBundle\Model;
 
-use Myclapboard\UserBundle\Model\RatingInterface;
-use Myclapboard\UserBundle\Model\ReviewInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -35,7 +35,7 @@ class AccountSpec extends ObjectBehavior
 
     function it_implements_account_interface()
     {
-        $this->shouldImplement('Myclapboard\UserBundle\Model\AccountInterface');
+        $this->shouldImplement('Myclapboard\UserBundle\Model\Interfaces\AccountInterface');
     }
 
     function its_apiKey_is_mutable()

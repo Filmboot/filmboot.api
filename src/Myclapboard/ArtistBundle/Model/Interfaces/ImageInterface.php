@@ -9,28 +9,28 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\ArtistBundle\Model;
+namespace Myclapboard\ArtistBundle\Model\Interfaces;
 
 use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 
 /**
  * Interface ImageInterface.
  *
- * @package Myclapboard\ArtistBundle\Model
+ * @package Myclapboard\ArtistBundle\Model\Interfaces
  */
 interface ImageInterface extends BaseImageInterface
 {
     /**
      * Gets artist.
      *
-     * @return \Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
     public function getArtist();
 
     /**
      * Sets artist.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ArtistInterface $artist The artist object
+     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface $artist The artist object
      *
      * @return $this self Object
      */

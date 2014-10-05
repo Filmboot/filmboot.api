@@ -12,8 +12,10 @@
 namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\RoleInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Class Role model.

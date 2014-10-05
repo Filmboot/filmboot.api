@@ -9,14 +9,14 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\AwardBundle\Model;
+namespace Myclapboard\AwardBundle\Model\Interfaces;
 
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
  * Interface AwardInterface.
  *
- * @package Myclapboard\AwardBundle\Model
+ * @package Myclapboard\AwardBundle\Model\Interfaces
  */
 interface AwardInterface extends TranslatableInterface
 {

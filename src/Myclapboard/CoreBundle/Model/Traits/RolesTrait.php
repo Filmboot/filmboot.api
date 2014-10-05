@@ -23,16 +23,22 @@ use Myclapboard\ArtistBundle\Entity\Writer;
 trait RolesTrait
 {
     /**
+     * Array that contains actors.
+     *
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $actors;
 
     /**
+     * Array that contains directors.
+     *
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $directors;
 
     /**
+     * Array that contains writers.
+     *
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $writers;

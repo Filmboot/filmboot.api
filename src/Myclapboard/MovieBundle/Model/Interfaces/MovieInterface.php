@@ -9,19 +9,19 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\MovieBundle\Model;
+namespace Myclapboard\MovieBundle\Model\Interfaces;
 
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\AwardBundle\Model\AwardWonInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\RolesTraitInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
-use Myclapboard\UserBundle\Model\RatingInterface;
-use Myclapboard\UserBundle\Model\ReviewInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Interface MovieInterface.
  *
- * @package Myclapboard\MovieBundle\Model
+ * @package Myclapboard\MovieBundle\Model\Interfaces
  */
 interface MovieInterface extends RolesTraitInterface, TranslatableInterface
 {
@@ -179,7 +179,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Adds genre.
      *
-     * @param \Myclapboard\MovieBundle\Model\GenreInterface $genre The genre object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\GenreInterface $genre The genre object
      *
      * @return $this self Object
      */
@@ -188,7 +188,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes genre.
      *
-     * @param \Myclapboard\MovieBundle\Model\GenreInterface $genre The genre object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\GenreInterface $genre The genre object
      *
      * @return $this self Object
      */
@@ -197,14 +197,14 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets genres.
      *
-     * @return array<\Myclapboard\MovieBundle\Model\GenreInterface>
+     * @return array<\Myclapboard\MovieBundle\Model\Interfaces\GenreInterface>
      */
     public function getGenres();
 
     /**
      * Adds award.
      *
-     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
+     * @param \Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface $award The award object
      *
      * @return $this self Object
      */
@@ -213,7 +213,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes award.
      *
-     * @param \Myclapboard\AwardBundle\Model\AwardWonInterface $award The award object
+     * @param \Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface $award The award object
      *
      * @return $this self Object
      */
@@ -222,14 +222,14 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets array of awards.
      *
-     * @return array<\Myclapboard\AwardBundle\Model\AwardWonInterface>
+     * @return array<\Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface>
      */
     public function getAwards();
 
     /**
      * Adds images.
      *
-     * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\ImageInterface $image The image object
      *
      * @return $this self Object
      */
@@ -238,7 +238,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes image.
      *
-     * @param \Myclapboard\MovieBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\ImageInterface $image The image object
      *
      * @return $this self Object
      */
@@ -247,14 +247,14 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets image.
      *
-     * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\MovieBundle\Model\Interfaces\ImageInterface>
      */
     public function getImages();
 
     /**
      * Adds rating.
      *
-     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
      *
      * @return $this self Object
      */
@@ -263,7 +263,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes rating.
      *
-     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
      *
      * @return $this self Object
      */
@@ -272,14 +272,14 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets ratings.
      *
-     * @return array<\Myclapboard\UserBundle\Model\RatingInterface>
+     * @return array<\Myclapboard\UserBundle\Model\Interfaces\RatingInterface>
      */
     public function getRatings();
 
     /**
      * Adds review.
      *
-     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
      *
      * @return $this self Object
      */
@@ -288,7 +288,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes review.
      *
-     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
      *
      * @return $this self Object
      */
@@ -297,7 +297,7 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets reviews.
      *
-     * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
+     * @return array<\Myclapboard\UserBundle\Model\Interfaces\ReviewInterface>
      */
     public function getReviews();
 

@@ -63,7 +63,7 @@ class ImageManager
      *
      * @param string $id The movie id
      *
-     * @return array<\Myclapboard\MovieBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\MovieBundle\Model\Interfaces\ImageInterface>
      */
     public function findAllBy($id)
     {

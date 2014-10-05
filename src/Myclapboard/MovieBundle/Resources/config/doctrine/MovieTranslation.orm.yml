@@ -18,7 +18,7 @@ Myclapboard\MovieBundle\Entity\MovieTranslation:
             type: text
     manyToOne:
         object:
-            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
             inversedBy: translations
             joinColumn:
                 name: object_id

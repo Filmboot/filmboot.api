@@ -9,16 +9,16 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\AwardBundle\Model;
+namespace Myclapboard\MovieBundle\Model\Interfaces;
 
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
- * Interface CategoryInterface.
+ * Interface GenreInterface.
  *
- * @package Myclapboard\AwardBundle\Model
+ * @package Myclapboard\MovieBundle\Model\Interfaces
  */
-interface CategoryInterface extends TranslatableInterface
+interface GenreInterface extends TranslatableInterface
 {
     /**
      * Gets id.
@@ -26,6 +26,22 @@ interface CategoryInterface extends TranslatableInterface
      * @return string
      */
     public function getId();
+
+    /**
+     * Gets slug.
+     *
+     * @return string
+     */
+    public function getSlug();
+
+    /**
+     * Sets slug.
+     *
+     * @param string $slug The slug
+     *
+     * @return $this self Object
+     */
+    public function setSlug($slug);
 
     /**
      * Gets name.

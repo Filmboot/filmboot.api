@@ -12,6 +12,7 @@
 namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**

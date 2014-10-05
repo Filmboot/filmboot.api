@@ -11,9 +11,9 @@
 
 namespace spec\Myclapboard\ArtistBundle\Model;
 
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -31,7 +31,7 @@ class RoleSpec extends ObjectBehavior
 
     function it_implements_role_interface()
     {
-        $this->shouldImplement('Myclapboard\ArtistBundle\Model\RoleInterface');
+        $this->shouldImplement('Myclapboard\ArtistBundle\Model\Interfaces\RoleInterface');
     }
 
     function it_should_not_have_id_by_default()

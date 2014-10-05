@@ -15,7 +15,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Myclapboard\CoreBundle\Controller\BaseApiController;
-use Myclapboard\UserBundle\Model\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;

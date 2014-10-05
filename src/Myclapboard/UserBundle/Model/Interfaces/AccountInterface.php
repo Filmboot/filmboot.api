@@ -9,12 +9,12 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\UserBundle\Model;
+namespace Myclapboard\UserBundle\Model\Interfaces;
 
 /**
  * Interface AccountInterface.
  *
- * @package Myclapboard\UserBundle\Model
+ * @package Myclapboard\UserBundle\Model\Interfaces
  */
 interface AccountInterface extends BasicInfoInterface
 {
@@ -30,7 +30,7 @@ interface AccountInterface extends BasicInfoInterface
      *
      * @param string $apiKey The apiKey to be set
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function setApiKey($apiKey);
 
@@ -46,7 +46,7 @@ interface AccountInterface extends BasicInfoInterface
      *
      * @param string $locale The locale
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function setLocale($locale);
 
@@ -69,57 +69,57 @@ interface AccountInterface extends BasicInfoInterface
      *
      * @param boolean $cookiesAccepted The cookies accepted
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function setCookiesAccepted($cookiesAccepted);
 
     /**
      * Adds rating.
      *
-     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function addRating(RatingInterface $rating);
 
     /**
      * Removes rating.
      *
-     * @param \Myclapboard\UserBundle\Model\RatingInterface $rating The rating
+     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function removeRating(RatingInterface $rating);
 
     /**
      * Gets ratings.
      *
-     * @return array<\Myclapboard\UserBundle\Model\RatingInterface>
+     * @return array<\Myclapboard\UserBundle\Model\Interfaces\RatingInterface>
      */
     public function getRatings();
 
     /**
      * Adds review.
      *
-     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function addReview(ReviewInterface $review);
 
     /**
      * Removes review.
      *
-     * @param \Myclapboard\UserBundle\Model\ReviewInterface $review The review
+     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return $this self Object
      */
     public function removeReview(ReviewInterface $review);
 
     /**
      * Gets reviews.
      *
-     * @return array<\Myclapboard\UserBundle\Model\ReviewInterface>
+     * @return array<\Myclapboard\UserBundle\Model\Interfaces\ReviewInterface>
      */
     public function getReviews();
 }

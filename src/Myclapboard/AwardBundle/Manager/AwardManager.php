@@ -63,7 +63,7 @@ class AwardManager
      *
      * @param string $name The name of award
      *
-     * @return null|\Myclapboard\AwardBundle\Model\AwardInterface
+     * @return null|\Myclapboard\AwardBundle\Model\Interfaces\AwardInterface
      */
     public function findOneByName($name)
     {

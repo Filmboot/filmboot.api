@@ -21,6 +21,8 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 trait TranslatableTrait
 {
     /**
+     * Array that contains translations.
+     *
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $translations;

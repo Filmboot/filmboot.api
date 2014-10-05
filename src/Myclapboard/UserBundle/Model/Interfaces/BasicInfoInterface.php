@@ -9,14 +9,14 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\UserBundle\Model;
+namespace Myclapboard\UserBundle\Model\Interfaces;
 
 use JJs\Bundle\GeonamesBundle\Entity\City;
 
 /**
  * Interface BasicInfoInterface.
  *
- * @package Myclapboard\UserBundle\Model
+ * @package Myclapboard\UserBundle\Model\Interfaces
  */
 interface BasicInfoInterface
 {
@@ -39,7 +39,7 @@ interface BasicInfoInterface
      *
      * @param string $firstName The firstName
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setFirstName($firstName);
 
@@ -55,7 +55,7 @@ interface BasicInfoInterface
      *
      * @param string $lastName The lastName
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setLastName($lastName);
 
@@ -71,7 +71,7 @@ interface BasicInfoInterface
      *
      * @param string $mobile The mobile
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setMobile($mobile);
 
@@ -87,7 +87,7 @@ interface BasicInfoInterface
      *
      * @param string $phone The phone
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setPhone($phone);
 
@@ -103,7 +103,7 @@ interface BasicInfoInterface
      *
      * @param \JJs\Bundle\GeonamesBundle\Entity\City $location The location
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setLocation(City $location);
 
@@ -119,7 +119,7 @@ interface BasicInfoInterface
      *
      * @param \DateTime $birthday The birthday
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setBirthday(\DateTime $birthday);
 
@@ -135,7 +135,7 @@ interface BasicInfoInterface
      *
      * @param string $gender The gender
      *
-     * @return \Myclapboard\UserBundle\Model\BasicInfoInterface
+     * @return $this self Object
      */
     public function setGender($gender);
 }

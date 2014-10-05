@@ -29,7 +29,7 @@ class GenreSpec extends ObjectBehavior
 
     function it_implements_movie_interface()
     {
-        $this->shouldImplement('Myclapboard\MovieBundle\Model\GenreInterface');
+        $this->shouldImplement('Myclapboard\MovieBundle\Model\Interfaces\GenreInterface');
     }
 
     function it_should_not_have_id_by_default()
@@ -47,7 +47,7 @@ class GenreSpec extends ObjectBehavior
     {
         $this->setName('Science Fiction')->shouldReturn($this);
         $this->getName()->shouldReturn('Science Fiction');
-        
+
         $this->__toString()->shouldReturn('Science Fiction');
     }
 

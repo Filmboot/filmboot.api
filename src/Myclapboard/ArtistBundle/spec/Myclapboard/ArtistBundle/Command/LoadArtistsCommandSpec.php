@@ -16,7 +16,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Myclapboard\ArtistBundle\Manager\ArtistManager;
 use Myclapboard\ArtistBundle\Manager\ImageManager;
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\ArtistBundle\Model\Image;
 use Myclapboard\CoreBundle\Manager\BaseImageManager;

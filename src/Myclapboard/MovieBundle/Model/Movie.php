@@ -14,11 +14,14 @@ namespace Myclapboard\MovieBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
-use Myclapboard\AwardBundle\Model\AwardWonInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
+use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\MovieBundle\Util\Util;
-use Myclapboard\UserBundle\Model\RatingInterface;
-use Myclapboard\UserBundle\Model\ReviewInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Class Movie model.

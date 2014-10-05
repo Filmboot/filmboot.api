@@ -12,8 +12,8 @@ Myclapboard\UserBundle\Entity\Rating:
             type: datetime
     manyToOne:
         user:
-            targetEntity: Myclapboard\UserBundle\Model\AccountInterface
+            targetEntity: Myclapboard\UserBundle\Model\Interfaces\AccountInterface
             inversedBy: ratings
         movie:
-            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
             inversedBy: ratings

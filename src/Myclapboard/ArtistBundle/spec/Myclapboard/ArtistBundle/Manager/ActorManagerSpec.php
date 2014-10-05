@@ -16,8 +16,8 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -54,7 +54,7 @@ class ActorManagerSpec extends ObjectBehavior
     {
         $this->create()->shouldReturnAnInstanceOf('Myclapboard\ArtistBundle\Entity\Actor');
     }
-    
+
     function it_finds_one_by_artist_and_movie(
         EntityRepository $repository,
         ArtistInterface $artist,
@@ -64,15 +64,15 @@ class ActorManagerSpec extends ObjectBehavior
     {
         $repository->findOneBy(array('artist' => $artist, 'movie' => $movie))
             ->shouldBeCalled()->willReturn($actor);
-        
+
         $this->findOneByArtistAndMovie($artist, $movie)->shouldReturn($actor);
     }
-    
+
     function it_finds_all_by_movie(EntityRepository $repository)
     {
         $repository->findBy(array('movie' => 'movie-id'))
             ->shouldBeCalled()->willReturn(array());
-        
+
         $this->findAllByMovie('movie-id')->shouldReturn(array());
     }
 }

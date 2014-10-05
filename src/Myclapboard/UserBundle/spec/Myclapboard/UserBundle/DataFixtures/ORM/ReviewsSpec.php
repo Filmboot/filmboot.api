@@ -13,11 +13,11 @@ namespace spec\Myclapboard\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\UserBundle\Manager\ReviewManager;
 use Myclapboard\UserBundle\Manager\UserManager;
 use Myclapboard\UserBundle\Model\Account;
-use Myclapboard\UserBundle\Model\ReviewInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,8 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Class ReviewsSpec.
  *
- * @package spec\Myclapboard\UserBundle
- * \DataFixtures\ORM
+ * @package spec\Myclapboard\UserBundle\DataFixtures\ORM
  */
 class ReviewsSpec extends ObjectBehavior
 {
@@ -98,7 +97,7 @@ class ReviewsSpec extends ObjectBehavior
 
         $review->setUser($user)
             ->shouldBeCalled()->willReturn($review);
-        $review->setMovie(Argument::type('Myclapboard\MovieBundle\Model\MovieInterface'))
+        $review->setMovie(Argument::type('Myclapboard\MovieBundle\Model\Interfaces\MovieInterface'))
             ->shouldBeCalled()->willReturn($review);
 
         $manager->persist($review)->shouldBeCalled();

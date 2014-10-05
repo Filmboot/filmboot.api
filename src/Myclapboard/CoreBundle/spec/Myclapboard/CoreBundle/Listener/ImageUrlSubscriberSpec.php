@@ -12,8 +12,8 @@
 namespace spec\Myclapboard\CoreBundle\Listener;
 
 use JMS\Serializer\EventDispatcher\ObjectEvent;
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 

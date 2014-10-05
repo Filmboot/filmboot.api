@@ -11,7 +11,7 @@
 
 namespace spec\Myclapboard\MovieBundle\Model;
 
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -29,7 +29,7 @@ class ImageSpec extends ObjectBehavior
 
     function it_implements_image_interface()
     {
-        $this->shouldImplement('Myclapboard\MovieBundle\Model\ImageInterface');
+        $this->shouldImplement('Myclapboard\MovieBundle\Model\Interfaces\ImageInterface');
     }
 
     function its_movie_is_mutable(MovieInterface $movie)

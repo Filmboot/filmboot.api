@@ -12,13 +12,28 @@
 namespace Myclapboard\CoreBundle\Controller;
 
 use FOS\RestBundle\Request\ParamFetcher;
-use Myclapboard\UserBundle\Model\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class ResourceController.
+ *
+ * @package Myclapboard\CoreBundle\Controller
+ */
 class ResourceController extends BaseApiController
 {
+    /**
+     * The name of class.
+     *
+     * @var string
+     */
     protected $class;
 
+    /**
+     * The name of bundle.
+     *
+     * @var string
+     */
     protected $bundle;
 
     /**
@@ -45,9 +60,9 @@ class ResourceController extends BaseApiController
     /**
      * Returns all the resources, it admits ordering, filter, count and pagination.
      *
-     * @param \Myclapboard\UserBundle\Model\AccountInterface $user         The user object
-     * @param ParamFetcher                                   $paramFetcher The param fetcher
-     * @param string[]                                       $groups       The array of serialization groups
+     * @param \Myclapboard\UserBundle\Model\Interfaces\AccountInterface $user         The user object
+     * @param ParamFetcher                                              $paramFetcher The param fetcher
+     * @param string[]                                                  $groups       The array of serialization groups
      *
      * @throws \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException
      * @return \Symfony\Component\HttpFoundation\Response

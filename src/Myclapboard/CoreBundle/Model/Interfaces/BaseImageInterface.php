@@ -14,9 +14,9 @@ namespace Myclapboard\CoreBundle\Model\Interfaces;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Interface BaseImageInterface,
+ * Interface BaseImageInterface.
  *
- * @package Myclapboard\CoreBundle\Model
+ * @package Myclapboard\CoreBundle\Model\Interfaces
  */
 interface BaseImageInterface
 {

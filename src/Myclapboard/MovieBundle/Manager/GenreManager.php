@@ -63,7 +63,7 @@ class GenreManager
      *
      * @param string $name The name of genre
      *
-     * @return null|\Myclapboard\MovieBundle\Model\GenreInterface
+     * @return null|\Myclapboard\MovieBundle\Model\Interfaces\GenreInterface
      */
     public function findOneByName($name)
     {

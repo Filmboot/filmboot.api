@@ -14,7 +14,7 @@ namespace spec\Myclapboard\AwardBundle\Command;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\AwardBundle\Manager\CategoryManager;
-use Myclapboard\AwardBundle\Model\CategoryInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;

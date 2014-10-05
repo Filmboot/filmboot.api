@@ -14,7 +14,7 @@ namespace spec\Myclapboard\AwardBundle\Command;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\AwardBundle\Manager\AwardManager;
-use Myclapboard\AwardBundle\Model\AwardInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;

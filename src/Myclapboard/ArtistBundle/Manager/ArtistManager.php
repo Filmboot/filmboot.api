@@ -64,7 +64,7 @@ class ArtistManager
      * @param string $firstName The first name
      * @param string $lastName  The last name
      *
-     * @return null|\Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return null|\Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
     public function findOneByFullName($firstName, $lastName)
     {
@@ -83,7 +83,7 @@ class ArtistManager
      * @param int    $count The number of results
      * @param int    $page  The number of page
      *
-     * @return array<\Myclapboard\ArtistBundle\Model\ArtistInterface>
+     * @return array<\Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface>
      */
     public function findAll($order, $query = '', $count = 10, $page = 0)
     {
@@ -124,7 +124,7 @@ class ArtistManager
      *
      * @param string $id The id
      *
-     * @return null|\Myclapboard\ArtistBundle\Model\ArtistInterface
+     * @return null|\Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
     public function findOneById($id)
     {

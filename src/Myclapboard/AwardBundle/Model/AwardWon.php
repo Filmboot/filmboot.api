@@ -14,7 +14,9 @@ namespace Myclapboard\AwardBundle\Model;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Class AwardWon model: ternary relationship table that joins Movie, Role and Award tables.
@@ -38,13 +40,6 @@ class AwardWon implements AwardWonInterface
     protected $category;
 
     protected $year;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-    }
 
     /**
      * {@inheritdoc}

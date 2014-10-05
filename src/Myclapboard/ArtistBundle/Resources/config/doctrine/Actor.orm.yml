@@ -8,14 +8,14 @@ Myclapboard\ArtistBundle\Entity\Actor:
                 strategy: UUID
     manyToOne:
         artist:
-            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+            targetEntity: Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
             inversedBy: actors
         movie:
-            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
             inversedBy: cast
     oneToMany:
         awards:
-            targetEntity: Myclapboard\AwardBundle\Model\AwardWonInterface
+            targetEntity: Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface
             mappedBy: actor
             cascade: ["persist", "remove"]
             joinColumn:

@@ -15,7 +15,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\View\ViewHandler;
 use Myclapboard\ArtistBundle\Manager\ArtistManager;
 use Myclapboard\ArtistBundle\Manager\ImageManager;
-use Myclapboard\ArtistBundle\Model\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
 use Myclapboard\ArtistBundle\Model\Image;
 use Myclapboard\AwardBundle\Manager\AwardWonManager;
 use PhpSpec\ObjectBehavior;
@@ -109,11 +109,11 @@ class ArtistControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->findOneById('non-exist-artist-id')
             ->shouldBeCalled()->willReturn(null);
-        
+
         $this->shouldThrow(new NotFoundHttpException('Does not exist any artist with non-exist-artist-id id'))
             ->during('getArtistsMoviesAction', array('non-exist-artist-id', $paramFetcher));
     }
-    
+
     function it_gets_all_the_movies_for_given_artist_id(
         ParamFetcher $paramFetcher,
         ContainerInterface $container,
@@ -143,7 +143,7 @@ class ArtistControllerSpec extends ObjectBehavior
     )
     {
         $paramFetcher->get('q')->shouldBeCalled()->willReturn('actor');
-        
+
         $container->get('myclapboard_artist.manager.artist')
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->findOneById('artist-id')
@@ -163,7 +163,7 @@ class ArtistControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->findOneById('non-exist-artist-id')
             ->shouldBeCalled()->willReturn(null);
-        
+
         $this->shouldThrow(new NotFoundHttpException('Does not exist any artist with non-exist-artist-id id'))
             ->during('getArtistsAwardsAction', array('non-exist-artist-id'));
     }
@@ -180,7 +180,7 @@ class ArtistControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($artistManager);
         $artistManager->findOneById('artist-id')
             ->shouldBeCalled()->willReturn($artist);
-        
+
         $container->get('myclapboard_award.manager.awardWon')
             ->shouldBeCalled()->willReturn($awardWonManager);
         $awardWonManager->findAllByArtist('artist-id')

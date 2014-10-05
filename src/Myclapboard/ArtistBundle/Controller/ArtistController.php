@@ -16,10 +16,21 @@ use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\CoreBundle\Controller\ResourceController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
+/**
+ * Class ArtistController.
+ *
+ * @package Myclapboard\ArtistBundle\Controller
+ */
 class ArtistController extends ResourceController
 {
+    /**
+     * {@inheritdoc}
+     */
     protected $class;
 
+    /**
+     * {@inheritdoc}
+     */
     protected $bundle;
 
     /**

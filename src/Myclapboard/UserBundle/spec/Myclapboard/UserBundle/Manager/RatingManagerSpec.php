@@ -19,7 +19,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
-use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
 use PhpSpec\ObjectBehavior;
 
 /**

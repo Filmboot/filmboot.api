@@ -63,7 +63,7 @@ class MovieManager
      *
      * @param string $title The title of movie
      *
-     * @return null|\Myclapboard\MovieBundle\Model\MovieInterface
+     * @return null|\Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
      */
     public function findOneByTitle($title)
     {
@@ -80,7 +80,7 @@ class MovieManager
      * @param int    $count The number of results
      * @param int    $page  The number of page
      *
-     * @return array<\Myclapboard\MovieBundle\Model\MovieInterface>
+     * @return array<\Myclapboard\\Model\Interfaces\ndle\Model\MovieInterface>
      */
     public function findAll($order, $query = '', $count = 10, $page = 0)
     {
@@ -108,7 +108,7 @@ class MovieManager
                 ->setMaxResults($count)
                 ->setFirstResult($count * $page);
         }
-        
+
         $query = $queryBuilder->getQuery();
 
         return $query

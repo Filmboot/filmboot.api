@@ -29,7 +29,7 @@ class AwardSpec extends ObjectBehavior
 
     function it_implements_award_interface()
     {
-        $this->shouldImplement('Myclapboard\AwardBundle\Model\AwardInterface');
+        $this->shouldImplement('Myclapboard\AwardBundle\Model\Interfaces\AwardInterface');
     }
 
     function it_should_not_have_id_by_default()

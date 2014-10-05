@@ -14,7 +14,7 @@ namespace spec\Myclapboard\MovieBundle\Command;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\MovieBundle\Manager\GenreManager;
-use Myclapboard\MovieBundle\Model\GenreInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Console\Input\InputInterface;

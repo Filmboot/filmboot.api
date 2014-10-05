@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file belongs to myClapboard.
  * The source code of application includes a LICENSE file

@@ -11,6 +11,8 @@
 
 namespace Myclapboard\ArtistBundle\Model;
 
+use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\CoreBundle\Model\BaseImage;
 
 /**

@@ -12,6 +12,8 @@
 namespace Myclapboard\MovieBundle\Model;
 
 use Myclapboard\CoreBundle\Model\BaseImage;
+use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Class Image.

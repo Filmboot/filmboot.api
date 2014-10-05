@@ -44,7 +44,7 @@ Myclapboard\ArtistBundle\Entity\Artist:
             targetEntity: Myclapboard\ArtistBundle\Entity\Writer
             mappedBy: artist
         images:
-            targetEntity: Myclapboard\ArtistBundle\Model\ImageInterface
+            targetEntity: Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface
             mappedBy: artist
             cascade: ["persist", "remove"]
         translations:

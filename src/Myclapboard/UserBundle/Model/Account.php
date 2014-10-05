@@ -12,6 +12,9 @@
 namespace Myclapboard\UserBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Class Account.
@@ -162,7 +165,7 @@ class Account extends BasicInfo implements AccountInterface
     {
         return $this->reviews;
     }
-    
+
     /**
      * {@inheritdoc}
      */

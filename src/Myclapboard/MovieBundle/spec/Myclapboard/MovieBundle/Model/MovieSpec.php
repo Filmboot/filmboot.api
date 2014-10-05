@@ -15,12 +15,12 @@ use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\AwardBundle\Model\AwardWonInterface;
-use Myclapboard\MovieBundle\Model\ImageInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
-use Myclapboard\MovieBundle\Model\GenreInterface;
-use Myclapboard\UserBundle\Model\RatingInterface;
-use Myclapboard\UserBundle\Model\ReviewInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -38,7 +38,7 @@ class MovieSpec extends ObjectBehavior
 
     function it_implements_movie_interface()
     {
-        $this->shouldImplement('Myclapboard\MovieBundle\Model\MovieInterface');
+        $this->shouldImplement('Myclapboard\MovieBundle\Model\Interfaces\MovieInterface');
     }
 
     function it_should_not_have_id_by_default()
@@ -61,7 +61,7 @@ class MovieSpec extends ObjectBehavior
     function its_release_date_is_mutable()
     {
         $releaseDate = new \DateTime('12-05-1994');
-        
+
         $this->setReleaseDate($releaseDate)->shouldReturn($this);
         $this->getReleaseDate()->shouldReturn($releaseDate);
     }
@@ -243,16 +243,16 @@ class MovieSpec extends ObjectBehavior
 
         $this->getReviews()->shouldHaveCount(0);
     }
-    
+
     function it_gets_score()
     {
         $this->getScore()->shouldReturn(null);
     }
-    
+
     function it_calculates_score(RatingInterface $rating)
     {
         $this->addRating($rating);
-        
+
         $this->calculateScore()->shouldReturn($this);
     }
 }

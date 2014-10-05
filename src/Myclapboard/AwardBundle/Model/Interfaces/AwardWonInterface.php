@@ -9,17 +9,17 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\AwardBundle\Model;
+namespace Myclapboard\AwardBundle\Model\Interfaces;
 
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Interface AwardWonInterface: ternary relationship table that joins Movie, Role and Award tables.
  *
- * @package Myclapboard\AwardBundle\Model
+ * @package Myclapboard\AwardBundle\Model\Interfaces
  */
 interface AwardWonInterface
 {
@@ -33,16 +33,16 @@ interface AwardWonInterface
     /**
      * Gets movie.
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
      */
     public function getMovie();
 
     /**
      * Sets movie.
      *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie object
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setMovie(MovieInterface $movie);
 
@@ -58,7 +58,7 @@ interface AwardWonInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setActor(Actor $actor);
 
@@ -74,7 +74,7 @@ interface AwardWonInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setDirector(Director $director);
 
@@ -90,23 +90,23 @@ interface AwardWonInterface
      *
      * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setWriter(Writer $writer);
 
     /**
      * Gets award.
      *
-     * @return \Myclapboard\MovieBundle\Model\MovieInterface
+     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
      */
     public function getAward();
 
     /**
      * Sets award.
      *
-     * @param \Myclapboard\AwardBundle\Model\AwardInterface $award The award object
+     * @param \Myclapboard\AwardBundle\Model\Interfaces\AwardInterface $award The award object
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setAward(AwardInterface $award);
 
@@ -122,7 +122,7 @@ interface AwardWonInterface
      *
      * @param int $year The year
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setYear($year);
 
@@ -138,7 +138,7 @@ interface AwardWonInterface
      *
      * @param string $category The category
      *
-     * @return \Myclapboard\AwardBundle\Model\AwardWonInterface
+     * @return $this self Object
      */
     public function setCategory($category);
 }

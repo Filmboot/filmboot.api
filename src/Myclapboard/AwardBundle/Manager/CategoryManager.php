@@ -63,7 +63,7 @@ class CategoryManager
      *
      * @param string $name The name of category
      *
-     * @return null|\Myclapboard\AwardBundle\Model\CategoryInterface
+     * @return null|\Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface
      */
     public function findOneByName($name)
     {

@@ -63,7 +63,7 @@ class AwardWonManager
      *
      * @param string $id The movie id
      *
-     * @return array<\Myclapboard\AwardBundle\Model\AwardWonInterface>
+     * @return array<\Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface>
      */
     public function findAllByMovie($id)
     {

@@ -15,7 +15,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Myclapboard\AwardBundle\Model\AwardInterface;
+use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
 use PhpSpec\ObjectBehavior;
 
 /**

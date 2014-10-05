@@ -10,7 +10,7 @@ Myclapboard\AwardBundle\Entity\AwardWon:
             type: integer
     manyToOne:
         movie:
-            targetEntity: Myclapboard\MovieBundle\Model\MovieInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
         actor:
             targetEntity: Myclapboard\ArtistBundle\Entity\Actor
             inversedBy: awards
@@ -21,6 +21,6 @@ Myclapboard\AwardBundle\Entity\AwardWon:
             targetEntity: Myclapboard\ArtistBundle\Entity\Writer
             inversedBy: awards
         award:
-            targetEntity: Myclapboard\AwardBundle\Model\AwardInterface
+            targetEntity: Myclapboard\AwardBundle\Model\Interfaces\AwardInterface
         category:
-            targetEntity: Myclapboard\AwardBundle\Model\CategoryInterface
+            targetEntity: Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface

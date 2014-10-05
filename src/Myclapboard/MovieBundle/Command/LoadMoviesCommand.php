@@ -42,7 +42,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
             ->setName('myclapboard:movie:load:movie')
             ->setDescription('Loads movie from yml file')
             ->setHelp(
-                'The <info>myclapboard:movie:load:movie</info> command loads content of file passed by argument 
+                'The <info>myclapboard:movie:load:movie</info> command loads content of file passed by argument
 <info>php app/console myclapboard:movie:load:movie <path-of-file></info>'
             );
     }
@@ -88,7 +88,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
     /**
      * Finds artist and creates the role with the role given, adding this role into movie object.
      *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie  The movie object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie  The movie object
      * @param array                                         $array  The values of yaml file
      * @param string                                        $method The name of the function
      * @param string                                        $class  The class

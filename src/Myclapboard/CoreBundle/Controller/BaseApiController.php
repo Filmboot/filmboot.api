@@ -14,10 +14,15 @@ namespace Myclapboard\CoreBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializationContext;
-use Myclapboard\UserBundle\Model\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * Class BaseApiController.
+ *
+ * @package Myclapboard\CoreBundle\Controller
+ */
 class BaseApiController extends FOSRestController
 {
     /**

@@ -13,11 +13,11 @@ namespace spec\Myclapboard\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\UserBundle\Manager\RatingManager;
 use Myclapboard\UserBundle\Manager\UserManager;
-use Myclapboard\UserBundle\Model\AccountInterface;
-use Myclapboard\UserBundle\Model\RatingInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
+use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,8 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Class RatingsSpec.
  *
- * @package spec\Myclapboard\UserBundle
- * \DataFixtures\ORM
+ * @package spec\Myclapboard\UserBundle\DataFixtures\ORM
  */
 class RatingsSpec extends ObjectBehavior
 {
@@ -69,7 +68,7 @@ class RatingsSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.user')
             ->shouldBeCalled()->willReturn($userManager);
         $userManager->findAll()->shouldBeCalled()->willReturn(array($user));
-        
+
         $container->get('myclapboard_movie.manager.movie')
             ->shouldBeCalled()->willReturn($movieManager);
         $movieManager->findAll('title', '', 'uncountable')
@@ -78,18 +77,18 @@ class RatingsSpec extends ObjectBehavior
         $container->get('myclapboard_user.manager.rating')
             ->shouldBeCalled()->willReturn($ratingManager);
         $ratingManager->create()->shouldBeCalled()->willReturn($rating);
-        
+
         $rating->setMark(Argument::any())
             ->shouldBeCalled()->willReturn($rating);
         $rating->setDate(Argument::type('DateTime'))
             ->shouldBeCalled()->willReturn($rating);
         $rating->setUser($user)
             ->shouldBeCalled()->willReturn($rating);
-        $rating->setMovie(Argument::type('Myclapboard\MovieBundle\Model\MovieInterface'))
+        $rating->setMovie(Argument::type('Myclapboard\MovieBundle\Model\Interfaces\MovieInterface'))
             ->shouldBeCalled()->willReturn($rating);
-        
+
         $manager->persist($rating)->shouldBeCalled();
-        
+
         $manager->flush()->shouldBeCalled();
 
         $this->load($manager);

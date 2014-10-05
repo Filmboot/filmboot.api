@@ -13,6 +13,7 @@ namespace Myclapboard\UserBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\UserBundle\Model\Interfaces\BasicInfoInterface;
 
 /**
  * Class BasicInfo.

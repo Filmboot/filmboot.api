@@ -49,20 +49,20 @@ doctrine:
                 alias: GedmoTree # this one is optional and will default to the name set for the mapping
                 is_bundle: false
         resolve_target_entities:
-            Myclapboard\ArtistBundle\Model\ArtistInterface: Myclapboard\ArtistBundle\Entity\Artist
-            Myclapboard\ArtistBundle\Model\ImageInterface: Myclapboard\ArtistBundle\Entity\Image
-            
-            Myclapboard\AwardBundle\Model\AwardInterface: Myclapboard\AwardBundle\Entity\Award
-            Myclapboard\AwardBundle\Model\AwardWonInterface: Myclapboard\AwardBundle\Entity\AwardWon
-            Myclapboard\AwardBundle\Model\CategoryInterface: Myclapboard\AwardBundle\Entity\Category
-            
-            Myclapboard\MovieBundle\Model\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
-            Myclapboard\MovieBundle\Model\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
-            Myclapboard\MovieBundle\Model\ImageInterface: Myclapboard\MovieBundle\Entity\Image
-            
-            Myclapboard\UserBundle\Model\RatingInterface: Myclapboard\UserBundle\Entity\Rating
-            Myclapboard\UserBundle\Model\ReviewInterface: Myclapboard\UserBundle\Entity\Review
-            Myclapboard\UserBundle\Model\AccountInterface: Myclapboard\UserBundle\Entity\User
+            Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface: Myclapboard\ArtistBundle\Entity\Artist
+            Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface: Myclapboard\ArtistBundle\Entity\Image
+
+            Myclapboard\AwardBundle\Model\Interfaces\AwardInterface: Myclapboard\AwardBundle\Entity\Award
+            Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface: Myclapboard\AwardBundle\Entity\AwardWon
+            Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface: Myclapboard\AwardBundle\Entity\Category
+
+            Myclapboard\MovieBundle\Model\Interfaces\GenreInterface: Myclapboard\MovieBundle\Entity\Genre
+            Myclapboard\MovieBundle\Model\Interfaces\MovieInterface: Myclapboard\MovieBundle\Entity\Movie
+            Myclapboard\MovieBundle\Model\Interfaces\ImageInterface: Myclapboard\MovieBundle\Entity\Image
+
+            Myclapboard\UserBundle\Model\Interfaces\RatingInterface: Myclapboard\UserBundle\Entity\Rating
+            Myclapboard\UserBundle\Model\Interfaces\ReviewInterface: Myclapboard\UserBundle\Entity\Review
+            Myclapboard\UserBundle\Model\Interfaces\AccountInterface: Myclapboard\UserBundle\Entity\User
 
 swiftmailer:
     transport: "%mailer_transport%"

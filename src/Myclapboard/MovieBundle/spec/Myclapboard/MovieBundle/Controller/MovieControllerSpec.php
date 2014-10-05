@@ -18,7 +18,7 @@ use Myclapboard\MovieBundle\Manager\ImageManager;
 use Myclapboard\MovieBundle\Manager\MovieManager;
 use FOS\RestBundle\Request\ParamFetcher;
 use Myclapboard\MovieBundle\Model\Image;
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\UserBundle\Manager\ReviewManager;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -98,7 +98,7 @@ class MovieControllerSpec extends ObjectBehavior
 
         $this->getMovieAction('movie-id');
     }
-    
+
     function it_does_not_get_the_cast_of_movie_because_the_movie_does_not_exist(
         ContainerInterface $container,
         MovieManager $movieManager
@@ -108,12 +108,12 @@ class MovieControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($movieManager);
         $movieManager->findOneById('movie-id')
             ->shouldBeCalled()->willReturn(null);
-        
+
         $this->shouldThrow(
             new NotFoundHttpException('Does not exist any movie with movie-id id')
         )->during('getMoviesCastAction', array('movie-id'));
     }
-    
+
     function it_gets_the_cast_of_movie(
         ContainerInterface $container,
         MovieManager $movieManager,
@@ -126,7 +126,7 @@ class MovieControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($movieManager);
         $movieManager->findOneById('movie-id')
             ->shouldBeCalled()->willReturn($movie);
-        
+
         $container->get('myclapboard_artist.manager.actor')
             ->shouldBeCalled()->willReturn($actorManager);
         $actorManager->findAllByMovie('movie-id')
@@ -151,7 +151,7 @@ class MovieControllerSpec extends ObjectBehavior
             new NotFoundHttpException('Does not exist any movie with movie-id id')
         )->during('getMoviesAwardsAction', array('movie-id'));
     }
-    
+
     function it_gets_the_awards_of_movie(
         ContainerInterface $container,
         MovieManager $movieManager,
@@ -189,7 +189,7 @@ class MovieControllerSpec extends ObjectBehavior
             new NotFoundHttpException('Does not exist any movie with movie-id id')
         )->during('getMoviesImagesAction', array('movie-id'));
     }
-    
+
     function it_gets_the_images_of_movie(
         ContainerInterface $container,
         MovieManager $movieManager,
@@ -209,7 +209,7 @@ class MovieControllerSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($imageManager);
         $imageManager->findAllBy('movie-id')
             ->shouldBeCalled()->willReturn(array($image));
-        
+
         $image->getName()->shouldBeCalled()->willReturn('image-name.jpg');
         $container->get('router')->shouldBeCalled()->willReturn($router);
         $image->setName(null)->shouldBeCalled()->willReturn($image);

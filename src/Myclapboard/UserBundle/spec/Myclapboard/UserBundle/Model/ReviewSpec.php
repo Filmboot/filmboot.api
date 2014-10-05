@@ -11,8 +11,8 @@
 
 namespace spec\Myclapboard\UserBundle\Model;
 
-use Myclapboard\MovieBundle\Model\MovieInterface;
-use Myclapboard\UserBundle\Model\AccountInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
+use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -29,7 +29,7 @@ class ReviewSpec extends ObjectBehavior
 
     function it_implements_account()
     {
-        $this->shouldImplement('Myclapboard\UserBundle\Model\ReviewInterface');
+        $this->shouldImplement('Myclapboard\UserBundle\Model\Interfaces\ReviewInterface');
     }
 
     function it_should_not_have_id_by_default()
@@ -42,7 +42,7 @@ class ReviewSpec extends ObjectBehavior
         $this->setTitle('The title of review')->shouldReturn($this);
         $this->gettitle()->shouldReturn('The title of review');
     }
-    
+
     function its_content_is_mutable()
     {
         $this->setContent('The content of review')->shouldReturn($this);

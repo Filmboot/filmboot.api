@@ -9,7 +9,7 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\ArtistBundle\Model;
+namespace Myclapboard\ArtistBundle\Model\Interfaces;
 
 use JJs\Bundle\GeonamesBundle\Entity\City;
 use Myclapboard\CoreBundle\Model\Interfaces\RolesTraitInterface;
@@ -18,7 +18,7 @@ use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 /**
  * Interface ArtistInterface.
  *
- * @package Myclapboard\ArtistBundle\Model
+ * @package Myclapboard\ArtistBundle\Model\Interfaces
  */
 interface ArtistInterface extends RolesTraitInterface, TranslatableInterface
 {
@@ -158,7 +158,7 @@ interface ArtistInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Adds images.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface $image The image object
      *
      * @return $this self Object
      */
@@ -167,7 +167,7 @@ interface ArtistInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Removes image.
      *
-     * @param \Myclapboard\ArtistBundle\Model\ImageInterface $image The image object
+     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface $image The image object
      *
      * @return $this self Object
      */
@@ -176,7 +176,7 @@ interface ArtistInterface extends RolesTraitInterface, TranslatableInterface
     /**
      * Gets image.
      *
-     * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface>
      */
     public function getImages();
 }

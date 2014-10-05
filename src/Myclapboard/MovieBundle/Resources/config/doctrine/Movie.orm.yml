@@ -37,7 +37,7 @@ Myclapboard\MovieBundle\Entity\Movie:
     lifecycleCallbacks:
         postLoad: [calculateScore]
     oneToMany:
-        cast:
+        actors:
             targetEntity: Myclapboard\ArtistBundle\Entity\Actor
             mappedBy: movie
             cascade: ["persist", "remove"]
@@ -62,7 +62,7 @@ Myclapboard\MovieBundle\Entity\Movie:
                 referencedColumnName: id
                 onDelete: cascade
         awards:
-            targetEntity: Myclapboard\AwardBundle\Model\AwardWonInterface
+            targetEntity: Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface
             mappedBy: movie
             cascade: ["persist", "remove"]
             joinColumn:
@@ -70,7 +70,7 @@ Myclapboard\MovieBundle\Entity\Movie:
                 referencedColumnName: id
                 onDelete: cascade
         images:
-            targetEntity: Myclapboard\MovieBundle\Model\ImageInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\ImageInterface
             mappedBy: movie
             cascade: ["persist", "remove"]
         translations:
@@ -78,7 +78,7 @@ Myclapboard\MovieBundle\Entity\Movie:
             mappedBy: object
             cascade: ["persist", "remove"]
         ratings:
-            targetEntity: Myclapboard\UserBundle\Model\RatingInterface
+            targetEntity: Myclapboard\UserBundle\Model\Interfaces\RatingInterface
             mappedBy: movie
             fetch: EXTRA_LAZY
             cascade: ["persist", "remove"]
@@ -87,7 +87,7 @@ Myclapboard\MovieBundle\Entity\Movie:
                 referencedColumnName: id
                 onDelete: cascade
         reviews:
-            targetEntity: Myclapboard\UserBundle\Model\ReviewInterface
+            targetEntity: Myclapboard\UserBundle\Model\Interfaces\ReviewInterface
             mappedBy: movie
             cascade: ["persist", "remove"]
             joinColumn:
@@ -99,7 +99,7 @@ Myclapboard\MovieBundle\Entity\Movie:
             targetEntity: JJs\Bundle\GeonamesBundle\Entity\Country
     manyToMany:
         genres:
-            targetEntity: Myclapboard\MovieBundle\Model\GenreInterface
+            targetEntity: Myclapboard\MovieBundle\Model\Interfaces\GenreInterface
             joinTable:
                 name: MovieGenre
                 joinColumns:

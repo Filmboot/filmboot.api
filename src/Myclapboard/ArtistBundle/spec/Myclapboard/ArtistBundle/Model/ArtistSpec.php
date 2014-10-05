@@ -16,7 +16,7 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\ArtistTranslation;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
-use Myclapboard\ArtistBundle\Model\ImageInterface;
+use Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -34,7 +34,7 @@ class ArtistSpec extends ObjectBehavior
 
     function it_implements_artist_interface()
     {
-        $this->shouldImplement('Myclapboard\ArtistBundle\Model\ArtistInterface');
+        $this->shouldImplement('Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface');
     }
 
     function it_should_not_have_id_by_default()

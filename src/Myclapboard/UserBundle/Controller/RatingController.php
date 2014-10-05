@@ -229,7 +229,7 @@ class RatingController extends ResourceController
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return \Myclapboard\UserBundle\Model\RatingInterface
+     * @return \Myclapboard\UserBundle\Model\Interfaces\RatingInterface
      */
     private function getRatingIfExist($id)
     {

@@ -18,7 +18,7 @@ Myclapboard\ArtistBundle\Entity\ArtistTranslation:
             type: text
     manyToOne:
         object:
-            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+            targetEntity: Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
             inversedBy: translations
             joinColumn:
                 name: object_id

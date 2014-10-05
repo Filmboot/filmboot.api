@@ -21,16 +21,19 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class BaseImage implements BaseImageInterface
 {
+    /**
+     * THe name.
+     *
+     * @var string
+     */
     protected $name;
 
-    protected $file;
-
     /**
-     * Constructor.
+     * The file.
+     *
+     * @var string
      */
-    public function __construct()
-    {
-    }
+    protected $file;
 
     /**
      * {@inheritdoc}

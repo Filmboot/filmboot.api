@@ -44,7 +44,7 @@ Myclapboard\UserBundle\Entity\User:
             targetEntity: JJs\Bundle\GeonamesBundle\Entity\City
     oneToMany:
         ratings:
-            targetEntity: Myclapboard\UserBundle\Model\RatingInterface
+            targetEntity: Myclapboard\UserBundle\Model\Interfaces\RatingInterface
             mappedBy: user
             cascade: ["persist", "remove"]
             joinColumn:
@@ -52,7 +52,7 @@ Myclapboard\UserBundle\Entity\User:
                 referencedColumnName: id
                 onDelete: cascade
         reviews:
-            targetEntity: Myclapboard\UserBundle\Model\ReviewInterface
+            targetEntity: Myclapboard\UserBundle\Model\Interfaces\ReviewInterface
             mappedBy: user
             cascade: ["persist", "remove"]
             joinColumn:

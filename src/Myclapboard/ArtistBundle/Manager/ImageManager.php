@@ -63,7 +63,7 @@ class ImageManager
      *
      * @param string $id The artist id
      *
-     * @return array<\Myclapboard\ArtistBundle\Model\ImageInterface>
+     * @return array<\Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface>
      */
     public function findAllBy($id)
     {

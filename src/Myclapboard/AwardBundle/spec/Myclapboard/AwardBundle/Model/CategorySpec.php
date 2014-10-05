@@ -29,7 +29,7 @@ class CategorySpec extends ObjectBehavior
 
     function it_implements_category_interface()
     {
-        $this->shouldImplement('Myclapboard\AwardBundle\Model\CategoryInterface');
+        $this->shouldImplement('Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface');
     }
 
     function it_should_not_have_id_by_default()

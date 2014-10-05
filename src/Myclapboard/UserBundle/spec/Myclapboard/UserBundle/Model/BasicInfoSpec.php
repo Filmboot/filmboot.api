@@ -34,7 +34,7 @@ class BasicInfoSpec extends ObjectBehavior
 
     function it_implements_basic_info_interface()
     {
-        $this->shouldImplement('Myclapboard\UserBundle\Model\BasicInfoInterface');
+        $this->shouldImplement('Myclapboard\UserBundle\Model\Interfaces\BasicInfoInterface');
     }
 
     function it_should_not_have_id_by_default()

@@ -9,14 +9,14 @@
  * @author gorkalaucirica <gorka.lauzirika@gmail.com>
  */
 
-namespace Myclapboard\UserBundle\Model;
+namespace Myclapboard\UserBundle\Model\Interfaces;
 
-use Myclapboard\MovieBundle\Model\MovieInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
  * Interface ReviewInterface.
  *
- * @package Myclapboard\UserBundle\Model
+ * @package Myclapboard\UserBundle\Model\Interfaces
  */
 interface ReviewInterface
 {
@@ -39,7 +39,7 @@ interface ReviewInterface
      *
      * @param string $title The title
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setTitle($title);
 
@@ -55,7 +55,7 @@ interface ReviewInterface
      *
      * @param string $content The content
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setContent($content);
 
@@ -71,7 +71,7 @@ interface ReviewInterface
      *
      * @param \DateTime $createdAt The created date
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setCreatedAt(\DateTime $createdAt);
 
@@ -87,7 +87,7 @@ interface ReviewInterface
      *
      * @param \DateTime $updatedAt The updated date
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setUpdatedAt($updatedAt);
 
@@ -103,39 +103,39 @@ interface ReviewInterface
      *
      * @param string $locale The locale
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setLocale($locale);
 
     /**
      * Gets movie.
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface
      */
     public function getMovie();
 
     /**
      * Sets movie.
      *
-     * @param \Myclapboard\MovieBundle\Model\MovieInterface $movie The movie object
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie object
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setMovie(MovieInterface $movie);
 
     /**
      * Gets user.
      *
-     * @return \Myclapboard\UserBundle\Model\AccountInterface
+     * @return \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
      */
     public function getUser();
 
     /**
      * Sets user.
      *
-     * @param \Myclapboard\UserBundle\Model\AccountInterface $user The user object
+     * @param \Myclapboard\UserBundle\Model\Interfaces\AccountInterface $user The user object
      *
-     * @return \Myclapboard\UserBundle\Model\ReviewInterface
+     * @return $this self Object
      */
     public function setUser(AccountInterface $user);
 }

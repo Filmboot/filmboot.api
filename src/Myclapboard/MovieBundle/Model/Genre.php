@@ -13,6 +13,7 @@ namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
+use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
 use Myclapboard\MovieBundle\Util\Util;
 
 /**

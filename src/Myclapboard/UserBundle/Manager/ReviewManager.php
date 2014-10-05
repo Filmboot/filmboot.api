@@ -66,7 +66,7 @@ class ReviewManager
      * @param int    $count The number of results
      * @param int    $page  The number of page
      *
-     * @return array<\Myclapboard\UserBundle\Model\RatingInterface>
+     * @return array<\Myclapboard\UserBundle\Model\Interfaces\RatingInterface>
      */
     public function findAll($id, $order, $count = 10, $page = 0)
     {

@@ -7,6 +7,6 @@ Myclapboard\ArtistBundle\Entity\Image:
             length: 100
     manyToOne:
         artist:
-            targetEntity: Myclapboard\ArtistBundle\Model\ArtistInterface
+            targetEntity: Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
     lifecycleCallbacks:
         postRemove: [removeUpload]
