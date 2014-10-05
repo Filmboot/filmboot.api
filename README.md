@@ -23,9 +23,10 @@ ssh client as [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download
 **[vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater)** plugin for Vagrant, which adds an entry
 to your `/etc/hosts` file on the host system and **[vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest)**
 plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.
-
-    vagrant plugin install vagrant-hostsupdater
-    vagrant plugin install vagrant-vbguest
+```
+vagrant plugin install vagrant-hostsupdater
+vagrant plugin install vagrant-vbguest
+```
 
 Getting started
 ---------------
