@@ -12,6 +12,7 @@
 namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
 use Myclapboard\MovieBundle\Util\Util;
@@ -21,16 +22,9 @@ use Myclapboard\MovieBundle\Util\Util;
  *
  * @package Myclapboard\MovieBundle\Model
  */
-class Genre implements GenreInterface
+class Genre extends AbstractBaseModel implements GenreInterface
 {
     use TranslatableTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
 
     /**
      * The name.
@@ -52,14 +46,6 @@ class Genre implements GenreInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -97,13 +83,5 @@ class Genre implements GenreInterface
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return $this->getName();
     }
 }

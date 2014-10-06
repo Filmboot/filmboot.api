@@ -25,13 +25,6 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
     use HumanTrait;
 
     /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
      * The gender that it can be 'female' or 'male'
      *
      * @var string
@@ -51,14 +44,6 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
      * @var int
      */
     protected $phone;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * {@inheritdoc}
@@ -135,22 +120,24 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
     }
 
     /**
-     * {@inheritdoc}
+     * String representation of a BasicInfo.
+     *
+     * @return string
      */
     public function __toString()
     {
-        if ($this->firstName === null && $this->lastName === null) {
-            return $this->email;
+        if ($this->firstName !== null && $this->lastName !== null) {
+            return $this->firstName . ' ' . $this->lastName;
         }
 
-        if ($this->firstName === null) {
-            return $this->lastName;
-        }
-
-        if ($this->lastName === null) {
+        if ($this->firstName !== null) {
             return $this->firstName;
         }
 
-        return $this->firstName . ' ' . $this->lastName;
+        if ($this->lastName !== null) {
+            return $this->lastName;
+        }
+
+        return $this->email;
     }
 }

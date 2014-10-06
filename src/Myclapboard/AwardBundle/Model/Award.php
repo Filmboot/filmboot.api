@@ -13,6 +13,7 @@ namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**
@@ -20,16 +21,9 @@ use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
  *
  * @package Myclapboard\AwardBundle\Model
  */
-class Award implements AwardInterface
+class Award extends AbstractBaseModel implements AwardInterface
 {
     use TranslatableTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
 
     /**
      * The name.
@@ -49,22 +43,6 @@ class Award implements AwardInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setName($name)
     {
         $this->name = $name;
@@ -75,8 +53,8 @@ class Award implements AwardInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function getName()
     {
-        return$this->getName();
+        return $this->name;
     }
 }

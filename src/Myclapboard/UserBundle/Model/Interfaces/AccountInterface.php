@@ -37,22 +37,6 @@ interface AccountInterface extends BasicInfoInterface, ActivityInterface
     public function getApiKey();
 
     /**
-     * Sets locale.
-     *
-     * @param string $locale The locale
-     *
-     * @return $this self Object
-     */
-    public function setLocale($locale);
-
-    /**
-     * Gets locale.
-     *
-     * @return string
-     */
-    public function getLocale();
-
-    /**
      * Sets cookiesAccepted.
      *
      * @param boolean $cookiesAccepted The cookies accepted
@@ -69,9 +53,25 @@ interface AccountInterface extends BasicInfoInterface, ActivityInterface
     public function hasCookiesAccepted();
 
     /**
-     * Gets createdAt.
+     * Gets created at.
      *
      * @return \DateTime
      */
     public function getCreatedAt();
+
+    /**
+     * Sets locale.
+     *
+     * @param string $locale The locale
+     *
+     * @return $this self Object
+     */
+    public function setLocale($locale);
+
+    /**
+     * Gets locale.
+     *
+     * @return string
+     */
+    public function getLocale();
 }

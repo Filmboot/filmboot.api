@@ -32,18 +32,18 @@ class Image extends BaseImage implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setMovie(MovieInterface $movie)
     {
         $this->movie = $movie;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMovie()
+    {
+        return $this->movie;
     }
 }

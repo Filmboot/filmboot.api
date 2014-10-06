@@ -21,11 +21,20 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 interface RatingInterface
 {
     /**
-     * Gets mark.
+     * Sets date.
      *
-     * @return int
+     * @param \DateTime $date The date
+     *
+     * @return $this self Object
      */
-    public function getMark();
+    public function setDate(\DateTime $date);
+
+    /**
+     * Gets date.
+     *
+     * @return \DateTime
+     */
+    public function getDate();
 
     /**
      * Sets mark.
@@ -37,27 +46,27 @@ interface RatingInterface
     public function setMark($mark);
 
     /**
-     * Gets date.
+     * Gets mark.
      *
-     * @return \DateTime
+     * @return int
      */
-    public function getDate();
+    public function getMark();
 
     /**
-     * Sets date.
+     * Sets movie.
      *
-     * @param \DateTime $date The date
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie
      *
      * @return $this self Object
      */
-    public function setDate(\DateTime $date);
+    public function setMovie(MovieInterface $movie);
 
     /**
-     * Gets user.
+     * Gets movie.
      *
-     * @return \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
+     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
      */
-    public function getUser();
+    public function getMovie();
 
     /**
      * Sets user.
@@ -69,18 +78,9 @@ interface RatingInterface
     public function setUser(AccountInterface $user);
 
     /**
-     * Gets movie.
+     * Gets user.
      *
-     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     * @return \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
      */
-    public function getMovie();
-
-    /**
-     * Sets movie.
-     *
-     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie
-     *
-     * @return $this self Object
-     */
-    public function setMovie(MovieInterface $movie);
+    public function getUser();
 }

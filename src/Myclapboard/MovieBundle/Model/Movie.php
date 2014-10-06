@@ -14,12 +14,12 @@ namespace Myclapboard\MovieBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\CoreBundle\Model\Traits\ActivityTrait;
+use Myclapboard\CoreBundle\Model\Traits\CollectionTrait;
 use Myclapboard\CoreBundle\Model\Traits\MediaTrait;
-use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
-use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\MovieBundle\Util\Util;
 
@@ -28,75 +28,12 @@ use Myclapboard\MovieBundle\Util\Util;
  *
  * @package Myclapboard\MovieBundle\Model
  */
-class Movie implements MovieInterface
+class Movie extends AbstractBaseModel implements MovieInterface
 {
     use ActivityTrait;
+    use CollectionTrait;
     use MediaTrait;
-    use RolesTrait;
     use TranslatableTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * The slug.
-     *
-     * @var string
-     */
-    protected $slug;
-
-    /**
-     * The title.
-     *
-     * @var string
-     */
-    protected $title;
-
-    /**
-     * The duration in minutes.
-     *
-     * @var int
-     */
-    protected $duration;
-
-    /**
-     * The release date.
-     *
-     * @var \DateTime
-     */
-    protected $releaseDate;
-
-    /**
-     * The country.
-     *
-     * @var string
-     */
-    protected $country;
-
-    /**
-     * The storyline.
-     *
-     * @var string
-     */
-    protected $storyline;
-
-    /**
-     * The producer.
-     *
-     * @var string
-     */
-    protected $producer;
-
-    /**
-     * Array that contains genres.
-     *
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    protected $genres;
 
     /**
      * Array that contains awards.
@@ -106,11 +43,60 @@ class Movie implements MovieInterface
     protected $awards;
 
     /**
-     * Array that contains images.
+     * The country.
+     *
+     * @var string
+     */
+    protected $country;
+
+    /**
+     * The duration in minutes.
+     *
+     * @var int
+     */
+    protected $duration;
+
+    /**
+     * Array that contains genres.
      *
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    protected $images;
+    protected $genres;
+
+    /**
+     * The producer.
+     *
+     * @var string
+     */
+    protected $producer;
+
+    /**
+     * The slug.
+     *
+     * @var string
+     */
+    protected $slug;
+
+    /**
+     * The storyline.
+     *
+     * @var string
+     */
+    protected $storyline;
+
+    /**
+     * The release date.
+     *
+     * @var \DateTime
+     */
+    protected $releaseDate;
+
+    /**
+     * The title.
+     *
+     * @var string
+     */
+    protected $title;
 
     /**
      * The average of marks.
@@ -124,181 +110,17 @@ class Movie implements MovieInterface
      */
     public function __construct()
     {
+        $this->actors = new ArrayCollection();
         $this->awards = new ArrayCollection();
+        $this->directors = new ArrayCollection();
         $this->genres = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->writers = new ArrayCollection();
 
         $this->ratings = new ArrayCollection();
         $this->reviews = new ArrayCollection();
 
         $this->translations = new ArrayCollection();
-
-        $this->actors = new ArrayCollection();
-        $this->directors = new ArrayCollection();
-        $this->writers = new ArrayCollection();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-        $this->slug = Util::getSlug($title);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getReleaseDate()
-    {
-        return $this->releaseDate;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setReleaseDate(\DateTime $releaseDate)
-    {
-        $this->releaseDate = $releaseDate;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCountry(Country $country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getStoryline()
-    {
-        return $this->storyline;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setStoryline($storyline)
-    {
-        $this->storyline = $storyline;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getProducer()
-    {
-        return $this->producer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setProducer($producer)
-    {
-        $this->producer = $producer;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addGenre(GenreInterface $genre)
-    {
-        $this->genres[] = $genre;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeGenre(GenreInterface $genre)
-    {
-        $this->genres->removeElement($genre);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getGenres()
-    {
-        return $this->genres;
     }
 
     /**
@@ -332,9 +154,9 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function addImage(ImageInterface $image)
+    public function setCountry(Country $country)
     {
-        $this->images[] = $image;
+        $this->country = $country;
 
         return $this;
     }
@@ -342,9 +164,17 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function removeImage(ImageInterface $image)
+    public function getCountry()
     {
-        $this->images->removeElement($image);
+        return $this->country;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
 
         return $this;
     }
@@ -352,25 +182,73 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function getImages()
+    public function getDuration()
     {
-        return $this->images;
+        return $this->duration;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function addGenre(GenreInterface $genre)
     {
-        return $this->title;
+        $this->genres[] = $genre;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getScore()
+    public function removeGenre(GenreInterface $genre)
     {
-        return $this->score;
+        $this->genres->removeElement($genre);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setProducer($producer)
+    {
+        $this->producer = $producer;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProducer()
+    {
+        return $this->producer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setReleaseDate(\DateTime $releaseDate)
+    {
+        $this->releaseDate = $releaseDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
     }
 
     /**
@@ -391,5 +269,68 @@ class Movie implements MovieInterface
         }
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStoryline($storyline)
+    {
+        $this->storyline = $storyline;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStoryline()
+    {
+        return $this->storyline;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        $this->slug = Util::getSlug($title);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

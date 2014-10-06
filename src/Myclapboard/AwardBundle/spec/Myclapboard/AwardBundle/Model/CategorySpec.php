@@ -32,11 +32,6 @@ class CategorySpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
     function its_name_is_mutable()
     {
         $this->setName('Best director')->shouldReturn($this);
@@ -57,14 +52,5 @@ class CategorySpec extends ObjectBehavior
 
         $this->removeTranslation($translation);
         $this->getTranslations()->shouldHaveCount(0);
-    }
-
-    function its_to_string_is_formed_by_name()
-    {
-        $this->__toString()->shouldReturn(null);
-
-        $this->setName('Best director')->shouldReturn($this);
-
-        $this->__toString()->shouldReturn('Best director');
     }
 }

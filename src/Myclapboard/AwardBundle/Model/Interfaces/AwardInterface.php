@@ -28,13 +28,6 @@ interface AwardInterface extends TranslatableInterface
     public function getId();
 
     /**
-     * Gets name.
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
      * Sets name.
      *
      * @param string $name The name
@@ -42,4 +35,11 @@ interface AwardInterface extends TranslatableInterface
      * @return $this self Object
      */
     public function setName($name);
+
+    /**
+     * Gets name.
+     *
+     * @return string
+     */
+    public function getName();
 }

@@ -16,9 +16,9 @@ use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
-use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\MovieBundle\Entity\MovieTranslation;
 use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
+use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
 use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 use PhpSpec\ObjectBehavior;
@@ -39,11 +39,6 @@ class MovieSpec extends ObjectBehavior
     function it_implements_movie_interface()
     {
         $this->shouldImplement('Myclapboard\MovieBundle\Model\Interfaces\MovieInterface');
-    }
-
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
     }
 
     function its_slug_is_mutable()
@@ -98,8 +93,6 @@ class MovieSpec extends ObjectBehavior
     {
         $this->setTitle('Pulp fiction')->shouldReturn($this);
         $this->getTitle()->shouldReturn('Pulp fiction');
-
-        $this->__toString()->shouldReturn('Pulp fiction');
     }
 
     function its_picture_is_mutable()

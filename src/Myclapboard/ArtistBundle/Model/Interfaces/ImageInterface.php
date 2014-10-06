@@ -21,13 +21,6 @@ use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 interface ImageInterface extends BaseImageInterface
 {
     /**
-     * Gets artist.
-     *
-     * @return \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
-     */
-    public function getArtist();
-
-    /**
      * Sets artist.
      *
      * @param \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface $artist The artist object
@@ -35,4 +28,11 @@ interface ImageInterface extends BaseImageInterface
      * @return $this self Object
      */
     public function setArtist(ArtistInterface $artist);
+
+    /**
+     * Gets artist.
+     *
+     * @return \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
+     */
+    public function getArtist();
 }

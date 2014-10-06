@@ -11,6 +11,7 @@
 
 namespace Myclapboard\UserBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\CoreBundle\Model\Traits\DateTimeTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
@@ -21,16 +22,9 @@ use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
  *
  * @package Myclapboard\UserBundle\Model
  */
-class Review implements ReviewInterface
+class Review extends AbstractBaseModel implements ReviewInterface
 {
     use DateTimeTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
 
     /**
      * The content.
@@ -74,14 +68,6 @@ class Review implements ReviewInterface
     {
         $this->createdAt = new \DateTime();
         $this->locale = 'en';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -172,13 +158,5 @@ class Review implements ReviewInterface
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return $this->getTitle();
     }
 }

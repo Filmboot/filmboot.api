@@ -32,11 +32,6 @@ class GenreSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\MovieBundle\Model\Interfaces\GenreInterface');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
     function its_slug_is_mutable()
     {
         $this->setSlug('science-fiction')->shouldReturn($this);
@@ -47,8 +42,6 @@ class GenreSpec extends ObjectBehavior
     {
         $this->setName('Science Fiction')->shouldReturn($this);
         $this->getName()->shouldReturn('Science Fiction');
-
-        $this->__toString()->shouldReturn('Science Fiction');
     }
 
     function its_name_translations_be_mutable()

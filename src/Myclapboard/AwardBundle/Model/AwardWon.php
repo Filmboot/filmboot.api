@@ -11,11 +11,10 @@
 
 namespace Myclapboard\AwardBundle\Model;
 
-use Myclapboard\ArtistBundle\Entity\Actor;
-use Myclapboard\ArtistBundle\Entity\Director;
-use Myclapboard\ArtistBundle\Entity\Writer;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardInterface;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
+use Myclapboard\CoreBundle\Model\Traits\RoleTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
@@ -23,42 +22,9 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
  *
  * @package Myclapboard\AwardBundle\Model
  */
-class AwardWon implements AwardWonInterface
+class AwardWon extends AbstractBaseModel implements AwardWonInterface
 {
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * The movie.
-     *
-     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
-     */
-    protected $movie;
-
-    /**
-     * The actor.
-     *
-     * @var \Myclapboard\ArtistBundle\Entity\Actor
-     */
-    protected $actor;
-
-    /**
-     * The director.
-     *
-     * @var \Myclapboard\ArtistBundle\Entity\Director
-     */
-    protected $director;
-
-    /**
-     * The writer.
-     *
-     * @var \Myclapboard\ArtistBundle\Entity\Writer
-     */
-    protected $writer;
+    use RoleTrait;
 
     /**
      * The award.
@@ -75,6 +41,13 @@ class AwardWon implements AwardWonInterface
     protected $category;
 
     /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
+    protected $movie;
+
+    /**
      * The year.
      *
      * @var int
@@ -84,61 +57,9 @@ class AwardWon implements AwardWonInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function setAward(AwardInterface $award)
     {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getActor()
-    {
-        return $this->actor;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setActor(Actor $actor)
-    {
-        $this->actor = $actor;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDirector()
-    {
-        return $this->director;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setDirector(Director $director)
-    {
-        $this->director = $director;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getWriter()
-    {
-        return $this->writer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setWriter(Writer $writer)
-    {
-        $this->writer = $writer;
+        $this->award = $award;
 
         return $this;
     }
@@ -154,45 +75,9 @@ class AwardWon implements AwardWonInterface
     /**
      * {@inheritdoc}
      */
-    public function setAward(AwardInterface $award)
+    public function setCategory($category)
     {
-        $this->award = $award;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setMovie(MovieInterface $movie)
-    {
-        $this->movie = $movie;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getYear()
-    {
-        return $this->year;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setYear($year)
-    {
-        $this->year = $year;
+        $this->category = $category;
 
         return $this;
     }
@@ -208,10 +93,36 @@ class AwardWon implements AwardWonInterface
     /**
      * {@inheritdoc}
      */
-    public function setCategory($category)
+    public function setMovie(MovieInterface $movie)
     {
-        $this->category = $category;
+        $this->movie = $movie;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMovie()
+    {
+        return $this->movie;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getYear()
+    {
+        return $this->year;
     }
 }

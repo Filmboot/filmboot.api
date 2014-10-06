@@ -14,13 +14,14 @@ namespace Myclapboard\CoreBundle\Model\Traits;
 use Myclapboard\ArtistBundle\Entity\Actor;
 use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
+use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 
 /**
- * Trait RolesTrait.
+ * Trait CollectionTrait.
  *
  * @package Myclapboard\CoreBundle\Model\Traits
  */
-trait RolesTrait
+trait CollectionTrait
 {
     /**
      * Array that contains actors.
@@ -35,6 +36,13 @@ trait RolesTrait
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $directors;
+
+    /**
+     * Array that contains images.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $images;
 
     /**
      * Array that contains writers.
@@ -117,6 +125,44 @@ trait RolesTrait
     public function getDirectors()
     {
         return $this->directors;
+    }
+
+    /**
+     * Adds images.
+     *
+     * @param \Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface $image The image object
+     *
+     * @return $this self Object
+     */
+    public function addImage(BaseImageInterface $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Removes image.
+     *
+     * @param \Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface $image The image object
+     *
+     * @return $this self Object
+     */
+    public function removeImage(BaseImageInterface $image)
+    {
+        $this->images->removeElement($image);
+
+        return $this;
+    }
+
+    /**
+     * Gets image.
+     *
+     * @return array<\Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface>
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**

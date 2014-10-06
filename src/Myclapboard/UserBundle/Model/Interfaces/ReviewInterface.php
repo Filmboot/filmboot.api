@@ -29,29 +29,6 @@ interface ReviewInterface extends DateTimeInterface
     public function getId();
 
     /**
-     * Gets title.
-     *
-     * @return string
-     */
-    public function getTitle();
-
-    /**
-     * Sets title.
-     *
-     * @param string $title The title
-     *
-     * @return $this self Object
-     */
-    public function setTitle($title);
-
-    /**
-     * Gets content.
-     *
-     * @return string
-     */
-    public function getContent();
-
-    /**
      * Sets content.
      *
      * @param string $content The content
@@ -61,11 +38,11 @@ interface ReviewInterface extends DateTimeInterface
     public function setContent($content);
 
     /**
-     * Gets locale.
+     * Gets content.
      *
      * @return string
      */
-    public function getLocale();
+    public function getContent();
 
     /**
      * Sets locale.
@@ -77,11 +54,11 @@ interface ReviewInterface extends DateTimeInterface
     public function setLocale($locale);
 
     /**
-     * Gets movie.
+     * Gets locale.
      *
-     * @return \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface
+     * @return string
      */
-    public function getMovie();
+    public function getLocale();
 
     /**
      * Sets movie.
@@ -93,11 +70,27 @@ interface ReviewInterface extends DateTimeInterface
     public function setMovie(MovieInterface $movie);
 
     /**
-     * Gets user.
+     * Gets movie.
      *
-     * @return \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
+     * @return \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface
      */
-    public function getUser();
+    public function getMovie();
+
+    /**
+     * Sets title.
+     *
+     * @param string $title The title
+     *
+     * @return $this self Object
+     */
+    public function setTitle($title);
+
+    /**
+     * Gets title.
+     *
+     * @return string
+     */
+    public function getTitle();
 
     /**
      * Sets user.
@@ -107,4 +100,11 @@ interface ReviewInterface extends DateTimeInterface
      * @return $this self Object
      */
     public function setUser(AccountInterface $user);
+
+    /**
+     * Gets user.
+     *
+     * @return \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
+     */
+    public function getUser();
 }

@@ -32,21 +32,16 @@ class ReviewSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\UserBundle\Model\Interfaces\ReviewInterface');
     }
 
-    function it_should_not_have_id_by_default()
+    function its_content_is_mutable()
     {
-        $this->getId()->shouldReturn(null);
+        $this->setContent('The content of review')->shouldReturn($this);
+        $this->getContent()->shouldReturn('The content of review');
     }
 
     function its_title_is_mutable()
     {
         $this->setTitle('The title of review')->shouldReturn($this);
         $this->gettitle()->shouldReturn('The title of review');
-    }
-
-    function its_content_is_mutable()
-    {
-        $this->setContent('The content of review')->shouldReturn($this);
-        $this->getContent()->shouldReturn('The content of review');
     }
 
     function its_created_date_is_mutable()
@@ -81,12 +76,5 @@ class ReviewSpec extends ObjectBehavior
     {
         $this->setUser($user)->shouldReturn($this);
         $this->getUser()->shouldReturn($user);
-    }
-
-    function its_to_string_returns_the_title()
-    {
-        $this->setTitle('The title of review')->shouldReturn($this);
-
-        $this->__toString()->shouldReturn('The title of review');
     }
 }

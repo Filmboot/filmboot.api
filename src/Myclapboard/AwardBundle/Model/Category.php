@@ -13,6 +13,7 @@ namespace Myclapboard\AwardBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 
 /**
@@ -20,16 +21,9 @@ use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
  *
  * @package Myclapboard\AwardBundle\Model
  */
-class Category implements CategoryInterface
+class Category extends AbstractBaseModel implements CategoryInterface
 {
     use TranslatableTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
 
     /**
      * The name.
@@ -49,22 +43,6 @@ class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setName($name)
     {
         $this->name = $name;
@@ -75,8 +53,8 @@ class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function getName()
     {
-        return $this->getName();
+        return $this->name;
     }
 }

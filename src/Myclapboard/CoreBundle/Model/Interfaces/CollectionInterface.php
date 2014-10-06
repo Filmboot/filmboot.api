@@ -16,11 +16,11 @@ use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 
 /**
- * Interface RolesInterface.
+ * Interface CollectionInterface.
  *
  * @package Myclapboard\CoreBundle\Model\Interfaces
  */
-interface RolesInterface
+interface CollectionInterface
 {
     /**
      * Adds actor.
@@ -71,6 +71,31 @@ interface RolesInterface
      * @return array<\Myclapboard\ArtistBundle\Entity\Director>
      */
     public function getDirectors();
+
+    /**
+     * Adds images.
+     *
+     * @param \Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface $image The image object
+     *
+     * @return $this self Object
+     */
+    public function addImage(BaseImageInterface $image);
+
+    /**
+     * Removes image.
+     *
+     * @param \Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface $image The image object
+     *
+     * @return $this self Object
+     */
+    public function removeImage(BaseImageInterface $image);
+
+    /**
+     * Gets image.
+     *
+     * @return array<\Myclapboard\MovieBundle\Model\Interfaces\ImageInterface>
+     */
+    public function getImages();
 
     /**
      * Adds writer.

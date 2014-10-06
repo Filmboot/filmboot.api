@@ -13,10 +13,10 @@ namespace Myclapboard\ArtistBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
-use Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
+use Myclapboard\CoreBundle\Model\Traits\CollectionTrait;
 use Myclapboard\CoreBundle\Model\Traits\HumanTrait;
 use Myclapboard\CoreBundle\Model\Traits\MediaTrait;
-use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Util\Util;
 
@@ -25,26 +25,12 @@ use Myclapboard\MovieBundle\Util\Util;
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-class Artist implements ArtistInterface
+class Artist extends AbstractBaseModel implements ArtistInterface
 {
+    use CollectionTrait;
     use HumanTrait;
     use MediaTrait;
-    use RolesTrait;
     use TranslatableTrait;
-
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * Array that contains images.
-     *
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    protected $images;
 
     /**
      * The slug.
@@ -58,10 +44,9 @@ class Artist implements ArtistInterface
      */
     public function __construct()
     {
-        $this->images = new ArrayCollection();
-
         $this->actors = new ArrayCollection();
         $this->directors = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->writers = new ArrayCollection();
 
         $this->translations = new ArrayCollection();
@@ -70,45 +55,9 @@ class Artist implements ArtistInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addImage(ImageInterface $image)
-    {
-        $this->images[] = $image;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeImage(ImageInterface $image)
-    {
-        $this->images->removeElement($image);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setSlug()
     {
-        $this->slug = Util::getSlug($this->__toString());
+        $this->slug = Util::getSlug($this->firstName . '-' . $this->lastName);
 
         return $this;
     }
@@ -139,17 +88,5 @@ class Artist implements ArtistInterface
         $this->lastName = $lastName;
 
         return self::setSlug();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        if (!$this->getFirstName() || !$this->getLastName()) {
-            return $this->getFirstName() . $this->getLastName();
-        }
-
-        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 }

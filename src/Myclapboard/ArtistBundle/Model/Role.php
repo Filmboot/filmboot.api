@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface;
 use Myclapboard\ArtistBundle\Model\Interfaces\RoleInterface;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Abstracts\AbstractBaseModel;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
@@ -22,28 +23,14 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
  *
  * @package Myclapboard\ArtistBundle\Model
  */
-class Role implements RoleInterface
+class Role extends AbstractBaseModel implements RoleInterface
 {
-    /**
-     * The id.
-     *
-     * @var string
-     */
-    protected $id;
-
     /**
      * The artist.
      *
      * @var \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
     protected $artist;
-
-    /**
-     * The movie.
-     *
-     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
-     */
-    protected $movie;
 
     /**
      * Array that contains awards.
@@ -53,27 +40,18 @@ class Role implements RoleInterface
     protected $awards;
 
     /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
+    protected $movie;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->awards = new ArrayCollection;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getArtist()
-    {
-        return $this->artist;
     }
 
     /**
@@ -89,19 +67,9 @@ class Role implements RoleInterface
     /**
      * {@inheritdoc}
      */
-    public function getMovie()
+    public function getArtist()
     {
-        return $this->movie;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setMovie(MovieInterface $movie)
-    {
-        $this->movie = $movie;
-
-        return $this;
+        return $this->artist;
     }
 
     /**
@@ -130,5 +98,23 @@ class Role implements RoleInterface
     public function getAwards()
     {
         return $this->awards;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMovie(MovieInterface $movie)
+    {
+        $this->movie = $movie;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMovie()
+    {
+        return $this->movie;
     }
 }

@@ -37,11 +37,6 @@ class BasicInfoSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\UserBundle\Model\Interfaces\BasicInfoInterface');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
     function its_email_is_mutable()
     {
         $this->setEmail('email@email.com')->shouldReturn($this);
@@ -90,6 +85,11 @@ class BasicInfoSpec extends ObjectBehavior
     {
         $this->setGender('female')->shouldReturn($this);
         $this->getGender()->shouldReturn('female');
+    }
+
+    function its_returns_empty_string_if_its_first_name_last_name_and_email_are_null()
+    {
+        $this->__toString()->shouldReturn(null);
     }
 
     function it_returns_email_if_first_name_and_last_name_are_null()

@@ -32,18 +32,18 @@ class Image extends BaseImage implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getArtist()
-    {
-        return $this->artist;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setArtist(ArtistInterface $artist)
     {
         $this->artist = $artist;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getArtist()
+    {
+        return $this->artist;
     }
 }

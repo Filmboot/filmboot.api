@@ -21,13 +21,6 @@ use Myclapboard\CoreBundle\Model\Interfaces\BaseImageInterface;
 interface ImageInterface extends BaseImageInterface
 {
     /**
-     * Gets movie.
-     *
-     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
-     */
-    public function getMovie();
-
-    /**
      * Sets movie.
      *
      * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie object
@@ -35,4 +28,11 @@ interface ImageInterface extends BaseImageInterface
      * @return $this self Object
      */
     public function setMovie(MovieInterface $movie);
+
+    /**
+     * Gets movie.
+     *
+     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
+    public function getMovie();
 }

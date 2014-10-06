@@ -11,9 +11,9 @@
 
 namespace Myclapboard\ArtistBundle\Model\Interfaces;
 
+use Myclapboard\CoreBundle\Model\Interfaces\CollectionInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\HumanInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\MediaInterface;
-use Myclapboard\CoreBundle\Model\Interfaces\RolesInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
 
 /**
@@ -21,7 +21,7 @@ use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
  *
  * @package Myclapboard\ArtistBundle\Model\Interfaces
  */
-interface ArtistInterface extends HumanInterface, MediaInterface, RolesInterface, TranslatableInterface
+interface ArtistInterface extends CollectionInterface, HumanInterface, MediaInterface, TranslatableInterface
 {
     /**
      * Gets id.
@@ -31,13 +31,6 @@ interface ArtistInterface extends HumanInterface, MediaInterface, RolesInterface
     public function getId();
 
     /**
-     * Gets slug.
-     *
-     * @return string
-     */
-    public function getSlug();
-
-    /**
      * Sets slug.
      *
      * @return $this self Object
@@ -45,27 +38,9 @@ interface ArtistInterface extends HumanInterface, MediaInterface, RolesInterface
     public function setSlug();
 
     /**
-     * Adds images.
+     * Gets slug.
      *
-     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface $image The image object
-     *
-     * @return $this self Object
+     * @return string
      */
-    public function addImage(ImageInterface $image);
-
-    /**
-     * Removes image.
-     *
-     * @param \Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface $image The image object
-     *
-     * @return $this self Object
-     */
-    public function removeImage(ImageInterface $image);
-
-    /**
-     * Gets image.
-     *
-     * @return array<\Myclapboard\ArtistBundle\Model\Interfaces\ImageInterface>
-     */
-    public function getImages();
+    public function getSlug();
 }

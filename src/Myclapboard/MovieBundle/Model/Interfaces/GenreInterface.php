@@ -28,13 +28,6 @@ interface GenreInterface extends TranslatableInterface
     public function getId();
 
     /**
-     * Gets slug.
-     *
-     * @return string
-     */
-    public function getSlug();
-
-    /**
      * Sets slug.
      *
      * @param string $slug The slug
@@ -44,11 +37,11 @@ interface GenreInterface extends TranslatableInterface
     public function setSlug($slug);
 
     /**
-     * Gets name.
+     * Gets slug.
      *
      * @return string
      */
-    public function getName();
+    public function getSlug();
 
     /**
      * Sets name.
@@ -58,4 +51,11 @@ interface GenreInterface extends TranslatableInterface
      * @return $this self Object
      */
     public function setName($name);
+
+    /**
+     * Gets name.
+     *
+     * @return string
+     */
+    public function getName();
 }

@@ -112,15 +112,6 @@ class Account extends BasicInfo implements AccountInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmail($email)
-    {
-        $this->setUsername($email);
-        parent::setEmail($email);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setLocale($locale)
     {
         $this->locale = $locale;
@@ -134,5 +125,14 @@ class Account extends BasicInfo implements AccountInterface
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
+        $this->setUsername($email);
+        parent::setEmail($email);
     }
 }

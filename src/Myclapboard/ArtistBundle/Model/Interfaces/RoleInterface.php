@@ -29,13 +29,6 @@ interface RoleInterface
     public function getId();
 
     /**
-     * Gets artist.
-     *
-     * @return \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
-     */
-    public function getArtist();
-
-    /**
      * Sets artist.
      *
      * @param \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface $artist The artist object
@@ -45,20 +38,11 @@ interface RoleInterface
     public function setArtist(ArtistInterface $artist);
 
     /**
-     * Gets movie.
+     * Gets artist.
      *
-     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     * @return \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
      */
-    public function getMovie();
-
-    /**
-     * Sets movie.
-     *
-     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie object
-     *
-     * @return $this self Object
-     */
-    public function setMovie(MovieInterface $movie);
+    public function getArtist();
 
     /**
      * Adds award.
@@ -84,4 +68,20 @@ interface RoleInterface
      * @return array<\Myclapboard\MovieBundle\Model\Interfaces\AwardWonInterface>
      */
     public function getAwards();
+
+    /**
+     * Sets movie.
+     *
+     * @param \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface $movie The movie object
+     *
+     * @return $this self Object
+     */
+    public function setMovie(MovieInterface $movie);
+
+    /**
+     * Gets movie.
+     *
+     * @return \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
+    public function getMovie();
 }

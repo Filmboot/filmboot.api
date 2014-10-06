@@ -37,11 +37,6 @@ class ArtistSpec extends ObjectBehavior
         $this->shouldImplement('Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface');
     }
 
-    function it_should_not_have_id_by_default()
-    {
-        $this->getId()->shouldReturn(null);
-    }
-
     function its_slug_is_mutable()
     {
         $this->setFirstName('Leonardo')->shouldReturn($this);
