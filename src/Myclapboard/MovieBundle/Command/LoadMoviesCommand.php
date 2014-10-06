@@ -79,7 +79,7 @@ class LoadMoviesCommand extends LoadArtistsCommand
             $movie->addGenre($genre);
         }
 
-        $this->linkedMainImage($movie, 'setPoster', 'posters');
+        $this->linkedMainImage($movie, 'setPicture', 'posters');
         $this->linkedOtherImages($movie, 'movie', 'setMovie', $manager);
 
         $manager->persist($movie);

@@ -45,62 +45,62 @@ class ImageUrlSubscriberSpec extends ObjectBehavior
             array(
                 array(
                     'event'  => 'serializer.pre_serialize',
-                    'method' => 'onChangeArtistPhoto'
+                    'method' => 'onChangeArtistPicture'
                 ),
                 array(
                     'event'  => 'serializer.pre_serialize',
                     'class'  => 'Myclapboard\MovieBundle\Entity\Movie',
-                    'method' => 'onChangeMoviePoster'
+                    'method' => 'onChangeMoviePicture'
                 )
             )
         );
     }
 
-    public function it_does_not_change_artist_photo_because_the_object_does_not_be_an_artist(
+    public function it_does_not_change_artist_picture_because_the_object_does_not_be_an_artist(
         ObjectEvent $event,
         MovieInterface $movie
     )
     {
         $event->getObject()->shouldBeCalled()->willReturn($movie);
 
-        $this->onChangeArtistPhoto($event);
+        $this->onChangeArtistPicture($event);
     }
 
-    public function it_does_not_change_artist_photo_because_the_name_already_become_into_url(
+    public function it_does_not_change_artist_picture_because_the_name_already_become_into_url(
         ObjectEvent $event,
         ArtistInterface $artist
     )
     {
         $event->getObject()->shouldBeCalled()->willReturn($artist);
-        $artist->getPhoto()
+        $artist->getPicture()
             ->shouldBeCalled()->willReturn('http://myclapboard.com/uploads/images/quentin-tarantino.jpg');
 
-        $this->onChangeArtistPhoto($event);
+        $this->onChangeArtistPicture($event);
     }
 
-    public function it_changes_artist_photo(ObjectEvent $event, ArtistInterface $artist, Router $router)
+    public function it_changes_artist_picture(ObjectEvent $event, ArtistInterface $artist, Router $router)
     {
         $event->getObject()->shouldBeCalled()->willReturn($artist);
-        $artist->getPhoto()->shouldBeCalled()->willReturn('quentin-tarantino.jpg');
+        $artist->getPicture()->shouldBeCalled()->willReturn('quentin-tarantino.jpg');
 
         $router->generate('myclapboard_core_get_image', array('name' => 'quentin-tarantino.jpg'), true)
             ->shouldBeCalled()->willReturn('http://myclapboard.com/uploads/images/quentin-tarantino.jpg');
-        $artist->setPhoto('http://myclapboard.com/uploads/images/quentin-tarantino.jpg')
+        $artist->setPicture('http://myclapboard.com/uploads/images/quentin-tarantino.jpg')
             ->shouldBeCalled()->willReturn($artist);
 
-        $this->onChangeArtistPhoto($event);
+        $this->onChangeArtistPicture($event);
     }
 
-    public function it_changes_movie_poster(ObjectEvent $event, MovieInterface $movie, Router $router)
+    public function it_changes_movie_picture(ObjectEvent $event, MovieInterface $movie, Router $router)
     {
         $event->getObject()->shouldBeCalled()->willReturn($movie);
-        $movie->getPoster()->shouldBeCalled()->willReturn('django-unchained.jpg');
+        $movie->getPicture()->shouldBeCalled()->willReturn('django-unchained.jpg');
 
         $router->generate('myclapboard_core_get_image', array('name' => 'django-unchained.jpg'), true)
             ->shouldBeCalled()->willReturn('http://myclapboard.com/uploads/images/django-unchained.jpg');
-        $movie->setPoster('http://myclapboard.com/uploads/images/django-unchained.jpg')
+        $movie->setPicture('http://myclapboard.com/uploads/images/django-unchained.jpg')
             ->shouldBeCalled()->willReturn($movie);
 
-        $this->onChangeMoviePoster($event);
+        $this->onChangeMoviePicture($event);
     }
 }

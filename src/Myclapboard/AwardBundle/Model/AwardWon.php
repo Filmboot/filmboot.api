@@ -25,20 +25,60 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
  */
 class AwardWon implements AwardWonInterface
 {
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
     protected $movie;
 
+    /**
+     * The actor.
+     *
+     * @var \Myclapboard\ArtistBundle\Entity\Actor
+     */
     protected $actor;
 
+    /**
+     * The director.
+     *
+     * @var \Myclapboard\ArtistBundle\Entity\Director
+     */
     protected $director;
 
+    /**
+     * The writer.
+     *
+     * @var \Myclapboard\ArtistBundle\Entity\Writer
+     */
     protected $writer;
 
+    /**
+     * The award.
+     *
+     * @var \Myclapboard\AwardBundle\Model\Interfaces\AwardInterface
+     */
     protected $award;
 
+    /**
+     * The category.
+     *
+     * @var \Myclapboard\AwardBundle\Model\Interfaces\CategoryInterface
+     */
     protected $category;
 
+    /**
+     * The year.
+     *
+     * @var int
+     */
     protected $year;
 
     /**

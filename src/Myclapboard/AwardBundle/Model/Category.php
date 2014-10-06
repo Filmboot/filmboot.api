@@ -24,8 +24,18 @@ class Category implements CategoryInterface
 {
     use TranslatableTrait;
 
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The name.
+     *
+     * @var string
+     */
     protected $name;
 
     /**

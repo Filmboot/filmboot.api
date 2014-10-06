@@ -12,13 +12,6 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 interface TranslatableInterface
 {
     /**
-     * Gets array of translations.
-     *
-     * @return array<\Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation>
-     */
-    public function getTranslations();
-
-    /**
      * Adds translation.
      *
      * @param \Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation $translation The translation
@@ -35,4 +28,11 @@ interface TranslatableInterface
      * @return self $this object
      */
     public function removeTranslation(AbstractPersonalTranslation $translation);
+
+    /**
+     * Gets array of translations.
+     *
+     * @return array<\Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation>
+     */
+    public function getTranslations();
 }

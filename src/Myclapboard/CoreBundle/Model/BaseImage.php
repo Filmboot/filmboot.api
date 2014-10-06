@@ -22,13 +22,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class BaseImage implements BaseImageInterface
 {
     /**
-     * THe name.
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
      * The file.
      *
      * @var string
@@ -36,11 +29,26 @@ class BaseImage implements BaseImageInterface
     protected $file;
 
     /**
+     * THe name.
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function setFile(UploadedFile $file = null)
     {
-        return $this->name;
+        $this->file = $file;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**
@@ -56,17 +64,9 @@ class BaseImage implements BaseImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getFile()
+    public function getName()
     {
-        return $this->file;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
+        return $this->name;
     }
 
     /**

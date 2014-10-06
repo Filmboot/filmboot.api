@@ -58,7 +58,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         ArtistManager $artistManager,
         ArtistInterface $artist,
         ObjectRepository $cityRepository,
-        City $birthplace,
+        City $location,
         BaseImageManager $baseImageManager,
         BaseImageInterface $baseImage,
         ImageManager $imageManager,
@@ -82,18 +82,18 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $managerRegistry->getRepository('JJsGeonamesBundle:City')
             ->shouldBeCalled()->willReturn($cityRepository);
         $cityRepository->findOneBy(Argument::any())
-            ->shouldBeCalled()->willReturn($birthplace);
+            ->shouldBeCalled()->willReturn($location);
 
 
         $artist->setFirstName(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setLastName(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->setBirthday(Argument::type('DateTime'))->shouldBeCalled()->willReturn($artist);
-        $artist->setBirthplace($birthplace)->shouldBeCalled()->willReturn($artist);
+        $artist->setLocation($location)->shouldBeCalled()->willReturn($artist);
         $artist->setWebsite(Argument::any())->shouldBeCalled()->willReturn($artist);
-        $artist->setBiography(Argument::any())->shouldBeCalled()->willReturn($artist);
+        $artist->setAboutMe(Argument::any())->shouldBeCalled()->willReturn($artist);
         $artist->addTranslation(Argument::any())->shouldBeCalled()->willReturn($artist);
 
-        $this->addPhoto(
+        $this->addPicture(
             $container,
             $baseImageManager,
             $baseImage,
@@ -117,7 +117,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $this->run($input, $output);
     }
 
-    private function addPhoto(
+    private function addPicture(
         ContainerInterface $container,
         BaseImageManager $imageManager,
         BaseImageInterface $image,
@@ -135,7 +135,7 @@ class LoadArtistsCommandSpec extends ObjectBehavior
         $image->getAbsolutePath()
             ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
 
-        $artist->setPhoto('quentin-tarantino.jpg')->shouldBeCalled()->willReturn($artist);
+        $artist->setPicture('quentin-tarantino.jpg')->shouldBeCalled()->willReturn($artist);
     }
 
     private function addImage(

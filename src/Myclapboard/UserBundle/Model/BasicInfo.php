@@ -12,7 +12,7 @@
 namespace Myclapboard\UserBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
-use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\CoreBundle\Model\Traits\HumanTrait;
 use Myclapboard\UserBundle\Model\Interfaces\BasicInfoInterface;
 
 /**
@@ -22,21 +22,35 @@ use Myclapboard\UserBundle\Model\Interfaces\BasicInfoInterface;
  */
 class BasicInfo extends BaseUser implements BasicInfoInterface
 {
+    use HumanTrait;
+
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
-    protected $firstName;
+    /**
+     * The gender that it can be 'female' or 'male'
+     *
+     * @var string
+     */
+    protected $gender;
 
-    protected $lastName;
-
+    /**
+     * The mobile phone number.
+     *
+     * @var int
+     */
     protected $mobile;
 
+    /**
+     * The phone number.
+     *
+     * @var int
+     */
     protected $phone;
-
-    protected $location;
-
-    protected $birthday;
-
-    protected $gender;
 
     /**
      * {@inheritdoc}
@@ -49,107 +63,9 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
     /**
      * {@inheritdoc}
      */
-    public function getFirstName()
+    public function setGender($gender)
     {
-        return $this->firstName;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMobile()
-    {
-        return $this->mobile;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setMobile($mobile)
-    {
-        $this->mobile = $mobile;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLocation(City $location)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBirthday()
-    {
-        return $this->birthday;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setBirthday(\DateTime $birthday)
-    {
-        $this->birthday = $birthday;
+        $this->gender = $gender;
 
         return $this;
     }
@@ -165,9 +81,55 @@ class BasicInfo extends BaseUser implements BasicInfoInterface
     /**
      * {@inheritdoc}
      */
-    public function setGender($gender)
+    public function setMobile($mobile)
     {
-        $this->gender = $gender;
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }

@@ -12,9 +12,8 @@
 namespace Myclapboard\UserBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Myclapboard\CoreBundle\Model\Traits\ActivityTrait;
 use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
-use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
-use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Class Account.
@@ -23,17 +22,35 @@ use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
  */
 class Account extends BasicInfo implements AccountInterface
 {
+    use ActivityTrait;
+
+    /**
+     * The api key.
+     *
+     * @var string
+     */
     protected $apiKey;
 
-    protected $locale;
-
-    protected $createdAt;
-
+    /**
+     * Boolean that tells the cookies are accepted or not.
+     *
+     * @var bool
+     */
     protected $cookiesAccepted;
 
-    protected $ratings;
+    /**
+     * Created at.
+     *
+     * @var \Datetime
+     */
+    protected $createdAt;
 
-    protected $reviews;
+    /**
+     * The locale.
+     *
+     * @var string
+     */
+    protected $locale;
 
     /**
      * Constructor.
@@ -41,19 +58,11 @@ class Account extends BasicInfo implements AccountInterface
     public function __construct()
     {
         parent::__construct();
-        $this->locale = 'en';
-        $this->createdAt = new \Datetime();
         $this->cookiesAccepted = false;
+        $this->createdAt = new \Datetime();
+        $this->locale = 'en';
         $this->ratings = new ArrayCollection();
         $this->reviews = new ArrayCollection();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
     }
 
     /**
@@ -69,35 +78,9 @@ class Account extends BasicInfo implements AccountInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getApiKey()
     {
-        return $this->locale;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasCookiesAccepted()
-    {
-        return $this->cookiesAccepted;
+        return $this->apiKey;
     }
 
     /**
@@ -113,57 +96,17 @@ class Account extends BasicInfo implements AccountInterface
     /**
      * {@inheritdoc}
      */
-    public function addRating(RatingInterface $rating)
+    public function hasCookiesAccepted()
     {
-        $this->ratings[] = $rating;
-
-        return $this;
+        return $this->cookiesAccepted;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeRating(RatingInterface $rating)
+    public function getCreatedAt()
     {
-        $this->ratings->removeElement($rating);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRatings()
-    {
-        return $this->ratings;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addReview(ReviewInterface $review)
-    {
-        $this->reviews[] = $review;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeReview(ReviewInterface $review)
-    {
-        $this->reviews->removeElement($review);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
+        return $this->createdAt;
     }
 
     /**
@@ -173,5 +116,23 @@ class Account extends BasicInfo implements AccountInterface
     {
         $this->setUsername($email);
         parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

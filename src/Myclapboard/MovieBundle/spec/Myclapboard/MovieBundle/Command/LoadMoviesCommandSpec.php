@@ -151,7 +151,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
             ->shouldBeCalled()->willReturn($genre);
         $movie->addGenre($genre)->shouldBeCalled()->willReturn($movie);
 
-        $this->addPoster(
+        $this->addPicture(
             $container,
             $baseImageManager,
             $baseImage,
@@ -202,7 +202,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $movie->$method($role)->shouldBeCalled()->willReturn($role);
     }
 
-    private function addPoster(
+    private function addPicture(
         ContainerInterface $container,
         BaseImageManager $imageManager,
         BaseImageInterface $image,
@@ -220,7 +220,7 @@ class LoadMoviesCommandSpec extends ObjectBehavior
         $image->getAbsolutePath()
             ->shouldBeCalled()->willReturn(__DIR__ . '/../../../../../../../web/uploads/images/');
 
-        $movie->setPoster('django-unchained.jpg')->shouldBeCalled()->willReturn($movie);
+        $movie->setPicture('django-unchained.jpg')->shouldBeCalled()->willReturn($movie);
     }
 
     private function addImage(

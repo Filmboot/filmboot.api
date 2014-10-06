@@ -24,12 +24,32 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
  */
 class Role implements RoleInterface
 {
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The artist.
+     *
+     * @var \Myclapboard\ArtistBundle\Model\Interfaces\ArtistInterface
+     */
     protected $artist;
 
+    /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
     protected $movie;
 
+    /**
+     * Array that contains awards.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
     protected $awards;
 
     /**

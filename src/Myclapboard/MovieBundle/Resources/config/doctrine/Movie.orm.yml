@@ -37,7 +37,7 @@ Myclapboard\MovieBundle\Entity\Movie:
         website:
             type: string
             nullable: true
-        poster:
+        picture:
             type: string
             length: 100
             nullable: true

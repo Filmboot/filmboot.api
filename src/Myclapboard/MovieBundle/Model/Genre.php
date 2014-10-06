@@ -33,18 +33,18 @@ class Genre implements GenreInterface
     protected $id;
 
     /**
-     * The slug.
-     *
-     * @var string
-     */
-    protected $slug;
-
-    /**
      * The name.
      *
      * @var string
      */
     protected $name;
+
+    /**
+     * The slug.
+     *
+     * @var string
+     */
+    protected $slug;
 
     /**
      * Constructor.
@@ -65,17 +65,10 @@ class Genre implements GenreInterface
     /**
      * {@inheritdoc}
      */
-    public function getSlug()
+    public function setName($name)
     {
-        return $this->slug;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
+        $this->name = $name;
+        $this->slug = Util::getSlug($name);
 
         return $this;
     }
@@ -91,12 +84,19 @@ class Genre implements GenreInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setSlug($slug)
     {
-        $this->name = $name;
-        $this->slug = Util::getSlug($name);
+        $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

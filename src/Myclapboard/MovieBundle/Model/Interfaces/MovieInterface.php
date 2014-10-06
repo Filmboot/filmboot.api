@@ -13,17 +13,17 @@ namespace Myclapboard\MovieBundle\Model\Interfaces;
 
 use JJs\Bundle\GeonamesBundle\Entity\Country;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
-use Myclapboard\CoreBundle\Model\Interfaces\RolesTraitInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\ActivityInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\MediaInterface;
+use Myclapboard\CoreBundle\Model\Interfaces\RolesInterface;
 use Myclapboard\CoreBundle\Model\Interfaces\TranslatableInterface;
-use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
-use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Interface MovieInterface.
  *
  * @package Myclapboard\MovieBundle\Model\Interfaces
  */
-interface MovieInterface extends RolesTraitInterface, TranslatableInterface
+interface MovieInterface extends ActivityInterface, MediaInterface, RolesInterface, TranslatableInterface
 {
     /**
      * Gets id.
@@ -145,38 +145,6 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
     public function setProducer($producer);
 
     /**
-     * Gets website.
-     *
-     * @return string
-     */
-    public function getWebsite();
-
-    /**
-     * Sets website.
-     *
-     * @param string $website The website
-     *
-     * @return $this self Object
-     */
-    public function setWebsite($website);
-
-    /**
-     * Gets poster.
-     *
-     * @return string
-     */
-    public function getPoster();
-
-    /**
-     * Sets poster.
-     *
-     * @param string $poster The poster
-     *
-     * @return $this self Object
-     */
-    public function setPoster($poster);
-
-    /**
      * Adds genre.
      *
      * @param \Myclapboard\MovieBundle\Model\Interfaces\GenreInterface $genre The genre object
@@ -250,56 +218,6 @@ interface MovieInterface extends RolesTraitInterface, TranslatableInterface
      * @return array<\Myclapboard\MovieBundle\Model\Interfaces\ImageInterface>
      */
     public function getImages();
-
-    /**
-     * Adds rating.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
-     *
-     * @return $this self Object
-     */
-    public function addRating(RatingInterface $rating);
-
-    /**
-     * Removes rating.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
-     *
-     * @return $this self Object
-     */
-    public function removeRating(RatingInterface $rating);
-
-    /**
-     * Gets ratings.
-     *
-     * @return array<\Myclapboard\UserBundle\Model\Interfaces\RatingInterface>
-     */
-    public function getRatings();
-
-    /**
-     * Adds review.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
-     *
-     * @return $this self Object
-     */
-    public function addReview(ReviewInterface $review);
-
-    /**
-     * Removes review.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
-     *
-     * @return $this self Object
-     */
-    public function removeReview(ReviewInterface $review);
-
-    /**
-     * Gets reviews.
-     *
-     * @return array<\Myclapboard\UserBundle\Model\Interfaces\ReviewInterface>
-     */
-    public function getReviews();
 
     /**
      * Gets the score average.

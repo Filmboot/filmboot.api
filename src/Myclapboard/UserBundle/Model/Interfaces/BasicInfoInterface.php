@@ -11,15 +11,18 @@
 
 namespace Myclapboard\UserBundle\Model\Interfaces;
 
-use JJs\Bundle\GeonamesBundle\Entity\City;
+use Myclapboard\CoreBundle\Model\Interfaces\HumanInterface;
 
 /**
  * Interface BasicInfoInterface.
  *
  * @package Myclapboard\UserBundle\Model\Interfaces
  */
-interface BasicInfoInterface
+interface BasicInfoInterface extends HumanInterface
 {
+    const GENDER_FEMALE = 'female';
+    const GENDER_MALE = 'male';
+
     /**
      * Gets id.
      *
@@ -28,100 +31,13 @@ interface BasicInfoInterface
     public function getId();
 
     /**
-     * Gets firstName.
+     * Sets gender.
      *
-     * @return string
-     */
-    public function getFirstName();
-
-    /**
-     * Sets firstName.
-     *
-     * @param string $firstName The firstName
+     * @param string $gender The gender that it can be 'female' or 'male'
      *
      * @return $this self Object
      */
-    public function setFirstName($firstName);
-
-    /**
-     * Gets lastName.
-     *
-     * @return string
-     */
-    public function getLastName();
-
-    /**
-     * Sets lastName.
-     *
-     * @param string $lastName The lastName
-     *
-     * @return $this self Object
-     */
-    public function setLastName($lastName);
-
-    /**
-     * Gets mobile.
-     *
-     * @return string
-     */
-    public function getMobile();
-
-    /**
-     * Sets mobile.
-     *
-     * @param string $mobile The mobile
-     *
-     * @return $this self Object
-     */
-    public function setMobile($mobile);
-
-    /**
-     * Gets phone.
-     *
-     * @return string
-     */
-    public function getPhone();
-
-    /**
-     * Sets phone.
-     *
-     * @param string $phone The phone
-     *
-     * @return $this self Object
-     */
-    public function setPhone($phone);
-
-    /**
-     * Gets location.
-     *
-     * @return \JJs\Bundle\GeonamesBundle\Entity\City
-     */
-    public function getLocation();
-
-    /**
-     * Sets location.
-     *
-     * @param \JJs\Bundle\GeonamesBundle\Entity\City $location The location
-     *
-     * @return $this self Object
-     */
-    public function setLocation(City $location);
-
-    /**
-     * Gets birthday.
-     *
-     * @return \DateTime
-     */
-    public function getBirthday();
-
-    /**
-     * Sets birthday.
-     *
-     * @param \DateTime $birthday The birthday
-     *
-     * @return $this self Object
-     */
-    public function setBirthday(\DateTime $birthday);
+    public function setGender($gender);
 
     /**
      * Gets gender.
@@ -131,11 +47,34 @@ interface BasicInfoInterface
     public function getGender();
 
     /**
-     * Sets gender.
+     * Sets mobile.
      *
-     * @param string $gender The gender
+     * @param int $mobile The mobile
      *
      * @return $this self Object
      */
-    public function setGender($gender);
+    public function setMobile($mobile);
+
+    /**
+     * Gets mobile.
+     *
+     * @return int
+     */
+    public function getMobile();
+
+    /**
+     * Sets phone.
+     *
+     * @param int $phone The phone
+     *
+     * @return $this self Object
+     */
+    public function setPhone($phone);
+
+    /**
+     * Gets phone.
+     *
+     * @return int
+     */
+    public function getPhone();
 }

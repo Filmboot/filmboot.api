@@ -11,6 +11,7 @@
 
 namespace Myclapboard\UserBundle\Model;
 
+use Myclapboard\CoreBundle\Model\Traits\DateTimeTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\UserBundle\Model\Interfaces\AccountInterface;
 use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
@@ -22,21 +23,49 @@ use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
  */
 class Review implements ReviewInterface
 {
+    use DateTimeTrait;
+
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
-    protected $title;
-
+    /**
+     * The content.
+     *
+     * @var string
+     */
     protected $content;
 
-    protected $createdAt;
-
-    protected $updatedAt;
-
+    /**
+     * The locale.
+     *
+     * @var string
+     */
     protected $locale;
 
-    protected $user;
-
+    /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
     protected $movie;
+
+    /**
+     * The title.
+     *
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * The user.
+     *
+     * @var \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
+     */
+    protected $user;
 
     /**
      * Constructor.
@@ -58,17 +87,9 @@ class Review implements ReviewInterface
     /**
      * {@inheritdoc}
      */
-    public function getTitle()
+    public function setContent($content)
     {
-        return $this->title;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
+        $this->content = $content;
 
         return $this;
     }
@@ -84,45 +105,9 @@ class Review implements ReviewInterface
     /**
      * {@inheritdoc}
      */
-    public function setContent($content)
+    public function setLocale($locale)
     {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
+        $this->locale = $locale;
 
         return $this;
     }
@@ -138,9 +123,9 @@ class Review implements ReviewInterface
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setMovie(MovieInterface $movie)
     {
-        $this->locale = $locale;
+        $this->movie = $movie;
 
         return $this;
     }
@@ -156,9 +141,9 @@ class Review implements ReviewInterface
     /**
      * {@inheritdoc}
      */
-    public function setMovie(MovieInterface $movie)
+    public function setTitle($title)
     {
-        $this->movie = $movie;
+        $this->title = $title;
 
         return $this;
     }
@@ -166,9 +151,9 @@ class Review implements ReviewInterface
     /**
      * {@inheritdoc}
      */
-    public function getUser()
+    public function getTitle()
     {
-        return $this->user;
+        return $this->title;
     }
 
     /**
@@ -179,6 +164,14 @@ class Review implements ReviewInterface
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

@@ -28,7 +28,7 @@ Myclapboard\ArtistBundle\Entity\Artist:
         birthday:
             type: datetime
             nullable: true
-        biography:
+        aboutMe:
             type: text
             nullable: true
             gedmo:
@@ -36,7 +36,7 @@ Myclapboard\ArtistBundle\Entity\Artist:
         website:
             type: string
             nullable: true
-        photo:
+        picture:
             type: string
             length: 100
             nullable: true
@@ -59,5 +59,5 @@ Myclapboard\ArtistBundle\Entity\Artist:
             mappedBy: object
             cascade: ["persist", "remove"]
     manyToOne:
-        birthplace:
+        location:
             targetEntity: JJs\Bundle\GeonamesBundle\Entity\City

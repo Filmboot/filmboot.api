@@ -13,15 +13,15 @@ namespace Myclapboard\MovieBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JJs\Bundle\GeonamesBundle\Entity\Country;
-use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\AwardBundle\Model\Interfaces\AwardWonInterface;
+use Myclapboard\CoreBundle\Model\Traits\ActivityTrait;
+use Myclapboard\CoreBundle\Model\Traits\MediaTrait;
+use Myclapboard\CoreBundle\Model\Traits\RolesTrait;
 use Myclapboard\CoreBundle\Model\Traits\TranslatableTrait;
 use Myclapboard\MovieBundle\Model\Interfaces\GenreInterface;
 use Myclapboard\MovieBundle\Model\Interfaces\ImageInterface;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 use Myclapboard\MovieBundle\Util\Util;
-use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
-use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
 
 /**
  * Class Movie model.
@@ -30,55 +30,112 @@ use Myclapboard\UserBundle\Model\Interfaces\ReviewInterface;
  */
 class Movie implements MovieInterface
 {
+    use ActivityTrait;
+    use MediaTrait;
     use RolesTrait;
     use TranslatableTrait;
 
+    /**
+     * The id.
+     *
+     * @var string
+     */
     protected $id;
 
+    /**
+     * The slug.
+     *
+     * @var string
+     */
     protected $slug;
 
+    /**
+     * The title.
+     *
+     * @var string
+     */
     protected $title;
 
+    /**
+     * The duration in minutes.
+     *
+     * @var int
+     */
     protected $duration;
 
+    /**
+     * The release date.
+     *
+     * @var \DateTime
+     */
     protected $releaseDate;
 
+    /**
+     * The country.
+     *
+     * @var string
+     */
     protected $country;
 
+    /**
+     * The storyline.
+     *
+     * @var string
+     */
     protected $storyline;
 
+    /**
+     * The producer.
+     *
+     * @var string
+     */
     protected $producer;
 
-    protected $website;
-
-    protected $poster;
-
+    /**
+     * Array that contains genres.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
     protected $genres;
 
+    /**
+     * Array that contains awards.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
     protected $awards;
 
+    /**
+     * Array that contains images.
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
     protected $images;
 
-    protected $ratings;
-
+    /**
+     * The average of marks.
+     *
+     * @var float
+     */
     protected $score;
-
-    protected $reviews;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
+        $this->awards = new ArrayCollection();
+        $this->genres = new ArrayCollection();
+        $this->images = new ArrayCollection();
+
+        $this->ratings = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
+
+        $this->translations = new ArrayCollection();
+
         $this->actors = new ArrayCollection();
         $this->directors = new ArrayCollection();
         $this->writers = new ArrayCollection();
-        $this->genres = new ArrayCollection();
-        $this->awards = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->translations = new ArrayCollection();
-        $this->ratings = new ArrayCollection();
-        $this->reviews = new ArrayCollection();
     }
 
     /**
@@ -219,42 +276,6 @@ class Movie implements MovieInterface
     /**
      * {@inheritdoc}
      */
-    public function getWebsite()
-    {
-        return $this->website;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setWebsite($website)
-    {
-        $this->website = $website;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPoster()
-    {
-        return $this->poster;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPoster($poster)
-    {
-        $this->poster = $poster;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function addGenre(GenreInterface $genre)
     {
         $this->genres[] = $genre;
@@ -334,62 +355,6 @@ class Movie implements MovieInterface
     public function getImages()
     {
         return $this->images;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addRating(RatingInterface $rating)
-    {
-        $this->ratings[] = $rating;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeRating(RatingInterface $rating)
-    {
-        $this->ratings->removeElement($rating);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRatings()
-    {
-        return $this->ratings;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addReview(ReviewInterface $review)
-    {
-        $this->reviews[] = $review;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeReview(ReviewInterface $review)
-    {
-        $this->reviews->removeElement($review);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
     }
 
     /**

@@ -28,7 +28,11 @@ trait TranslatableTrait
     protected $translations;
 
     /**
-     * {@inheritdoc}
+     * Adds translation.
+     *
+     * @param \Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation $translation The translation
+     *
+     * @return self $this object
      */
     public function addTranslation(AbstractPersonalTranslation $translation)
     {
@@ -41,7 +45,11 @@ trait TranslatableTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Removes translation.
+     *
+     * @param \Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation $translation The translation
+     *
+     * @return self $this object
      */
     public function removeTranslation(AbstractPersonalTranslation $translation)
     {
@@ -51,7 +59,9 @@ trait TranslatableTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Gets array of translations.
+     *
+     * @return array<\Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation>
      */
     public function getTranslations()
     {

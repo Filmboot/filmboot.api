@@ -11,20 +11,15 @@
 
 namespace Myclapboard\UserBundle\Model\Interfaces;
 
+use Myclapboard\CoreBundle\Model\Interfaces\ActivityInterface;
+
 /**
  * Interface AccountInterface.
  *
  * @package Myclapboard\UserBundle\Model\Interfaces
  */
-interface AccountInterface extends BasicInfoInterface
+interface AccountInterface extends BasicInfoInterface, ActivityInterface
 {
-    /**
-     * Gets apiKey.
-     *
-     * @return string
-     */
-    public function getApiKey();
-
     /**
      * Sets apiKey.
      *
@@ -35,11 +30,11 @@ interface AccountInterface extends BasicInfoInterface
     public function setApiKey($apiKey);
 
     /**
-     * Gets locale.
+     * Gets apiKey.
      *
      * @return string
      */
-    public function getLocale();
+    public function getApiKey();
 
     /**
      * Sets locale.
@@ -51,18 +46,11 @@ interface AccountInterface extends BasicInfoInterface
     public function setLocale($locale);
 
     /**
-     * Gets createdAt.
+     * Gets locale.
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt();
-
-    /**
-     * Gets true if has cookies accepted, otherwise gets false.
-     *
-     * @return boolean
-     */
-    public function hasCookiesAccepted();
+    public function getLocale();
 
     /**
      * Sets cookiesAccepted.
@@ -74,52 +62,16 @@ interface AccountInterface extends BasicInfoInterface
     public function setCookiesAccepted($cookiesAccepted);
 
     /**
-     * Adds rating.
+     * Gets true if has cookies accepted, otherwise gets false.
      *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
-     *
-     * @return $this self Object
+     * @return boolean
      */
-    public function addRating(RatingInterface $rating);
+    public function hasCookiesAccepted();
 
     /**
-     * Removes rating.
+     * Gets createdAt.
      *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\RatingInterface $rating The rating
-     *
-     * @return $this self Object
+     * @return \DateTime
      */
-    public function removeRating(RatingInterface $rating);
-
-    /**
-     * Gets ratings.
-     *
-     * @return array<\Myclapboard\UserBundle\Model\Interfaces\RatingInterface>
-     */
-    public function getRatings();
-
-    /**
-     * Adds review.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
-     *
-     * @return $this self Object
-     */
-    public function addReview(ReviewInterface $review);
-
-    /**
-     * Removes review.
-     *
-     * @param \Myclapboard\UserBundle\Model\Interfaces\ReviewInterface $review The review
-     *
-     * @return $this self Object
-     */
-    public function removeReview(ReviewInterface $review);
-
-    /**
-     * Gets reviews.
-     *
-     * @return array<\Myclapboard\UserBundle\Model\Interfaces\ReviewInterface>
-     */
-    public function getReviews();
+    public function getCreatedAt();
 }

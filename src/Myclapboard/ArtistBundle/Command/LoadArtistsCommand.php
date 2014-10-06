@@ -54,21 +54,21 @@ class LoadArtistsCommand extends DataFixtureCommand
     protected function hydrateFixture(ContainerInterface $container, ObjectManager $manager, $values)
     {
         $artist = $container->get('myclapboard_artist.manager.artist')->create();
-        $birthplace = $container->get('doctrine')->getRepository('JJsGeonamesBundle:City')
+        $location = $container->get('doctrine')->getRepository('JJsGeonamesBundle:City')
             ->findOneBy(array('geonameIdentifier' => $values['birthplace']));
 
         $artist->setFirstName($values['firstName']);
         $artist->setLastName($values['lastName']);
         $artist->setBirthday(new \DateTime($values['birthday']));
-        $artist->setBirthplace($birthplace);
+        $artist->setLocation($location);
         $artist->setWebsite($values['website']);
-        $artist->setBiography($values['biography']['en']);
+        $artist->setAboutMe($values['biography']['en']);
         if ($values['biography']['es'] !== null) {
             $translation = new ArtistTranslation('es', 'biography', $values['biography']['es']);
             $artist->addTranslation($translation);
         }
 
-        $this->linkedMainImage($artist, 'setPhoto', 'photos');
+        $this->linkedMainImage($artist, 'setPicture', 'photos');
         $this->linkedOtherImages($artist, 'artist', 'setArtist', $manager);
 
         $manager->persist($artist);

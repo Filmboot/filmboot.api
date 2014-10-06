@@ -22,13 +22,33 @@ use Myclapboard\UserBundle\Model\Interfaces\RatingInterface;
  */
 class Rating implements RatingInterface
 {
-    protected $mark;
-
+    /**
+     * The date.
+     *
+     * @var \DateTime
+     */
     protected $date;
 
-    protected $user;
+    /**
+     * The mark.
+     *
+     * @var int
+     */
+    protected $mark;
 
+    /**
+     * The movie.
+     *
+     * @var \Myclapboard\MovieBundle\Model\Interfaces\MovieInterface
+     */
     protected $movie;
+
+    /**
+     * THe user.
+     *
+     * @var \Myclapboard\UserBundle\Model\Interfaces\AccountInterface
+     */
+    protected $user;
 
     /**
      * Constructor.

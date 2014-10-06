@@ -44,7 +44,11 @@ trait RolesTrait
     protected $writers;
 
     /**
-     * {@inheritdoc}
+     * Adds actor.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
+     *
+     * @return $this self Object
      */
     public function addActor(Actor $actor)
     {
@@ -54,7 +58,11 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Removes actor.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Actor $actor The actor object
+     *
+     * @return $this self Object
      */
     public function removeActor(Actor $actor)
     {
@@ -64,7 +72,9 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Gets array of actors.
+     *
+     * @return array<\Myclapboard\ArtistBundle\Entity\Actor>
      */
     public function getActors()
     {
@@ -72,7 +82,11 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Adds director.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
+     *
+     * @return $this self Object
      */
     public function addDirector(Director $director)
     {
@@ -82,7 +96,11 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Removes director.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Director $director The director object
+     *
+     * @return $this self Object
      */
     public function removeDirector(Director $director)
     {
@@ -92,7 +110,9 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Gets array of directors.
+     *
+     * @return array<\Myclapboard\ArtistBundle\Entity\Director>
      */
     public function getDirectors()
     {
@@ -100,7 +120,11 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Adds writer.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
+     *
+     * @return $this self Object
      */
     public function addWriter(Writer $writer)
     {
@@ -110,7 +134,11 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Removes writer.
+     *
+     * @param \Myclapboard\ArtistBundle\Entity\Writer $writer The writer object
+     *
+     * @return $this self Object
      */
     public function removeWriter(Writer $writer)
     {
@@ -120,7 +148,9 @@ trait RolesTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Gets array of writers.
+     *
+     * @return array<\Myclapboard\ArtistBundle\Entity\Writer>
      */
     public function getWriters()
     {

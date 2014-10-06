@@ -11,6 +11,7 @@
 
 namespace Myclapboard\UserBundle\Model\Interfaces;
 
+use Myclapboard\CoreBundle\Model\Interfaces\DateTimeInterface;
 use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
 
 /**
@@ -18,7 +19,7 @@ use Myclapboard\MovieBundle\Model\Interfaces\MovieInterface;
  *
  * @package Myclapboard\UserBundle\Model\Interfaces
  */
-interface ReviewInterface
+interface ReviewInterface extends DateTimeInterface
 {
     /**
      * Gets id.
@@ -58,38 +59,6 @@ interface ReviewInterface
      * @return $this self Object
      */
     public function setContent($content);
-
-    /**
-     * Gets created date.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt();
-
-    /**
-     *  Sets created date.
-     *
-     * @param \DateTime $createdAt The created date
-     *
-     * @return $this self Object
-     */
-    public function setCreatedAt(\DateTime $createdAt);
-
-    /**
-     * Gets updated date.
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt();
-
-    /**
-     * Sets updated date.
-     *
-     * @param \DateTime $updatedAt The updated date
-     *
-     * @return $this self Object
-     */
-    public function setUpdatedAt($updatedAt);
 
     /**
      * Gets locale.

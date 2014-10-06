@@ -102,10 +102,10 @@ class MovieSpec extends ObjectBehavior
         $this->__toString()->shouldReturn('Pulp fiction');
     }
 
-    function its_poster_is_mutable()
+    function its_picture_is_mutable()
     {
-        $this->setPoster('pulp-fiction.jpg')->shouldReturn($this);
-        $this->getPoster()->shouldReturn('pulp-fiction.jpg');
+        $this->setPicture('pulp-fiction.jpg')->shouldReturn($this);
+        $this->getPicture()->shouldReturn('pulp-fiction.jpg');
     }
 
     function its_actors_be_mutable(Actor $actor)

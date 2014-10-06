@@ -80,18 +80,18 @@ class ArtistSpec extends ObjectBehavior
         $this->getBirthday()->shouldReturn($birthday);
     }
 
-    function its_birthplace_is_mutable(City $birthplace)
+    function its_location_is_mutable(City $birthplace)
     {
-        $this->setBirthplace($birthplace)->shouldReturn($this);
-        $this->getBirthplace()->shouldReturn($birthplace);
+        $this->setLocation($birthplace)->shouldReturn($this);
+        $this->getLocation()->shouldReturn($birthplace);
     }
 
-    function its_biography_is_mutable()
+    function its_about_me_is_mutable()
     {
-        $this->setBiography(
+        $this->setAboutMe(
             'Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in eum liber hendrerit an.'
         )->shouldReturn($this);
-        $this->getBiography()->shouldReturn(
+        $this->getAboutMe()->shouldReturn(
             'Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in eum liber hendrerit an.'
         );
     }
@@ -104,8 +104,8 @@ class ArtistSpec extends ObjectBehavior
 
     function its_photo_is_mutable()
     {
-        $this->setPhoto('quentin-tarantino.jpg')->shouldReturn($this);
-        $this->getPhoto()->shouldReturn('quentin-tarantino.jpg');
+        $this->setPicture('quentin-tarantino.jpg')->shouldReturn($this);
+        $this->getPicture()->shouldReturn('quentin-tarantino.jpg');
     }
 
     function its_actors_be_mutable(Actor $actor)
@@ -160,7 +160,7 @@ class ArtistSpec extends ObjectBehavior
         $this->getImages()->shouldHaveCount(0);
     }
 
-    function its_biography_translation_be_mutable()
+    function its_about_me_translation_be_mutable()
     {
         $translation = new ArtistTranslation('es', 'biography', 'spanish-biography-translation');
 

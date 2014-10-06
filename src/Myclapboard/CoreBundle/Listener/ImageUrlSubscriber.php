@@ -42,35 +42,35 @@ class ImageUrlSubscriber implements EventSubscriberInterface
         return array(
             array(
                 'event'  => 'serializer.pre_serialize',
-                'method' => 'onChangeArtistPhoto'
+                'method' => 'onChangeArtistPicture'
             ),
             array(
                 'event'  => 'serializer.pre_serialize',
                 'class'  => 'Myclapboard\MovieBundle\Entity\Movie',
-                'method' => 'onChangeMoviePoster'
+                'method' => 'onChangeMoviePicture'
             )
         );
     }
 
     /**
-     * Event that updates the photo attribute of artist object,
+     * Event that updates the picture attribute of artist object,
      * turning the name of the image into the absolute url.
      *
      * @param ObjectEvent $event The event
      *
      * @return void
      */
-    public function onChangeArtistPhoto(ObjectEvent $event)
+    public function onChangeArtistPicture(ObjectEvent $event)
     {
         $artist = $event->getObject();
 
-        if (method_exists($artist, 'getPhoto') === true
-            && preg_match('/^[\w,\s-]+\.[A-Za-z]{3}$/', $artist->getPhoto()) === 1
+        if (method_exists($artist, 'getPicture') === true
+            && preg_match('/^[\w,\s-]+\.[A-Za-z]{3}$/', $artist->getPicture()) === 1
         ) {
-            $artist->setPhoto(
+            $artist->setPicture(
                 $this->router->generate(
                     'myclapboard_core_get_image',
-                    array('name' => $artist->getPhoto()),
+                    array('name' => $artist->getPicture()),
                     true
                 )
             );
@@ -78,21 +78,21 @@ class ImageUrlSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * Event that updates the poster attribute of movie object,
+     * Event that updates the picture attribute of movie object,
      * turning the name of the image into the absolute url.
      *
      * @param ObjectEvent $event The event
      *
      * @return void
      */
-    public function onChangeMoviePoster(ObjectEvent $event)
+    public function onChangeMoviePicture(ObjectEvent $event)
     {
         $movie = $event->getObject();
 
-        $movie->setPoster(
+        $movie->setPicture(
             $this->router->generate(
                 'myclapboard_core_get_image',
-                array('name' => $movie->getPoster()),
+                array('name' => $movie->getPicture()),
                 true
             )
         );

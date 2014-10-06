@@ -16,11 +16,11 @@ use Myclapboard\ArtistBundle\Entity\Director;
 use Myclapboard\ArtistBundle\Entity\Writer;
 
 /**
- * Interface RolesTraitInterface.
+ * Interface RolesInterface.
  *
  * @package Myclapboard\CoreBundle\Model\Interfaces
  */
-interface RolesTraitInterface
+interface RolesInterface
 {
     /**
      * Adds actor.
