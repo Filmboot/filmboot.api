@@ -15,6 +15,7 @@ web/uploads/images/*
 /composer.phar
 /coverage
 coverage.xml
+behat.yml
 
 # Configuration files
 .settings

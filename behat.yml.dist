@@ -1,0 +1,20 @@
+default:
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+
+    extensions:
+        Behat\WebApiExtension:
+           base_url: http://localhost/app_test.php/
+        Behat\Symfony2Extension: ~
+
+    suites:
+        artist:
+            contexts:
+                - Behat\WebApiExtension\Context\WebApiContext
+                - Myclapboard\CoreBundle\Behat\DefaultApiContext
+                - Myclapboard\ArtistBundle\Behat\ArtistContext
+            tags:
+                - artist
