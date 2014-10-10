@@ -37,8 +37,9 @@ script:
 #
     - bin/behat --suite=artist
 #
-#after_script:
+after_script:
 #    - bin/coveralls -v
+    - cat ${APACHE_LOG_DIR}/error.log
 #
 #cache:
 #    directories:
