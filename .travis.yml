@@ -2,15 +2,15 @@ language: php
 
 php:
     - 5.4
-    - 5.5
-    - 5.6
-    - hhvm-nightly
-
-env:
-    - SYMFONY_VERSION=2.3.*
-    - SYMFONY_VERSION=2.4.*
-    - SYMFONY_VERSION=2.5.*
-    - SYMFONY_VERSION=dev-master
+#    - 5.5
+#    - 5.6
+#    - hhvm-nightly
+#
+#env:
+#    - SYMFONY_VERSION=2.3.*
+#    - SYMFONY_VERSION=2.4.*
+#    - SYMFONY_VERSION=2.5.*
+#    - SYMFONY_VERSION=dev-master
 
 before_install:
     - sudo apt-get update > /dev/null
@@ -22,32 +22,33 @@ install:
     - sudo /etc/init.d/apache2 restart
     - cp behat.yml.dist behat.yml
     - cp app/config/parameters.yml.travis app/config/parameters.yml
+    - cat /etc/apache2/sites-available/default
 
-before_script:
-    - composer self-update
-    - composer require symfony/symfony:${SYMFONY_VERSION}
-
-    - app/console doctrine:database:create --env=test > /dev/null
-    - app/console doctrine:schema:create --env=test > /dev/null
-
-script:
-    - bin/phpspec run -fpretty
-
-    - bin/behat --suite=artist
-
-after_script:
-    - bin/coveralls -v
-
-cache:
-    directories:
-        - $COMPOSER_CACHE_DIR
-
-matrix:
-    allow_failures:
-        - php: 5.3
-        - php: 5.3.3
-        - php: 5.6
-        - php: hhvm-nightly
-        - env: SYMFONY_VERSION=2.3.*
-        - env: SYMFONY_VERSION=2.4.*
-        - env: SYMFONY_VERSION=dev-master
+#before_script:
+#    - composer self-update
+#    - composer require symfony/symfony:${SYMFONY_VERSION}
+#
+#    - app/console doctrine:database:create --env=test > /dev/null
+#    - app/console doctrine:schema:create --env=test > /dev/null
+#
+#script:
+#    - bin/phpspec run -fpretty
+#
+#    - bin/behat --suite=artist
+#
+#after_script:
+#    - bin/coveralls -v
+#
+#cache:
+#    directories:
+#        - $COMPOSER_CACHE_DIR
+#
+#matrix:
+#    allow_failures:
+#        - php: 5.3
+#        - php: 5.3.3
+#        - php: 5.6
+#        - php: hhvm-nightly
+#        - env: SYMFONY_VERSION=2.3.*
+#        - env: SYMFONY_VERSION=2.4.*
+#        - env: SYMFONY_VERSION=dev-master
