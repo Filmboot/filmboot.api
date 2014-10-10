@@ -21,6 +21,7 @@ install:
     - sudo sed -i -e "s,/var/www,$(pwd)/web,g" /etc/apache2/sites-available/default
     - sudo /etc/init.d/apache2 restart
     - cp behat.yml.dist behat.yml
+    - cp app/config/parameters.yml.travis app/config/parameters.yml
 
 before_script:
     - composer self-update

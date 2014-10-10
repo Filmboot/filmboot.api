@@ -48,7 +48,7 @@
         "henrikbjorn/phpspec-code-coverage": "1.0.x-dev",
         "satooshi/php-coveralls": "0.6",
         "squizlabs/php_codesniffer": "1.*",
-        "phpmd/phpmd": "dev-master"
+        "phpmd/phpmd": "2.1.1"
     },
     "autoload": {
         "psr-0": { "": "src/" }
