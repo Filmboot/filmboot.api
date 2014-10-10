@@ -13,7 +13,8 @@ Feature: Artist API
 
   Scenario: Seeing all artists
     When I send a GET request to "/artists"
-    Then the response code should be 200
+    Then print response
+    And the response code should be 200
     And the response should contain "Santiago"
     And the response should contain "Armando"
     And the response should contain "Stanley"
