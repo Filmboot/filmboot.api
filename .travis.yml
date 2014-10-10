@@ -40,6 +40,8 @@ script:
 after_script:
 #    - bin/coveralls -v
     - cat ${APACHE_LOG_DIR}/error.log
+    - cat /dev/shm/symfony/logs/test.log
+    - cat app/logs/test.log
 #
 #cache:
 #    directories:
